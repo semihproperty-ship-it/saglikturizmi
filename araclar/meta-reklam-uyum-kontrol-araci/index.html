@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meta Reklam Uyum Kontrol Aracı — Sağlık Turizmi | saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizmi reklamlarınızı yayına almadan önce Meta reklam politikaları ve sağlıkta tanıtım mevzuatı açısından kontrol edin. 18 maddelik kontrol listesi." />
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/meta-reklam-uyum-kontrol-araci/" />
+  <meta property="og:title" content="Meta Reklam Uyum Kontrol Aracı | Sağlık Turizmi" />
+  <meta property="og:description" content="Sağlık reklamı yayına almadan önce uyum kontrolü." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://saglikturizmi.info/"},
+      {"@type":"ListItem","position":2,"name":"Araçlar","item":"https://saglikturizmi.info/araclar/"},
+      {"@type":"ListItem","position":3,"name":"Meta Reklam Uyum Kontrol Aracı","item":"https://saglikturizmi.info/araclar/meta-reklam-uyum-kontrol-araci/"}
+    ]},
+    {"@type":"WebApplication","name":"Meta Reklam Uyum Kontrol Aracı","url":"https://saglikturizmi.info/araclar/meta-reklam-uyum-kontrol-araci/","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"}}
+  ]}
+  </script>
+  <style>
+    .check-item { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin-bottom: 12px; display: flex; gap: 14px; align-items: flex-start; cursor: pointer; transition: all 0.15s; }
+    .check-item:hover { border-color: var(--purple-main); }
+    .check-item.checked { background: var(--bg-soft); }
+    .check-box { width: 22px; height: 22px; border: 2px solid var(--border); border-radius: 6px; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+    .check-item.checked .check-box { background: var(--purple-main); border-color: var(--purple-main); color: white; }
+    .check-title { font-weight: 600; font-size: 14.5px; color: var(--text-dark); margin-bottom: 4px; }
+    .check-desc { font-size: 13px; color: var(--text-mid); line-height: 1.55; }
+    .check-cat { font-size: 11px; font-weight: 700; color: var(--purple-main); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="page-wrap">
+
+  <section class="page-hero">
+    <div class="container-sm">
+      <nav class="breadcrumb"><a href="/">Ana Sayfa</a><span>›</span><a href="/araclar/">Araçlar</a><span>›</span><span style="color:var(--text-mid)">Meta Reklam Uyum Kontrol Aracı</span></nav>
+      <span class="badge badge-purple">Reklam ve Uyum Aracı</span>
+      <h1 class="mt-12">Meta Reklam Uyum Kontrol Aracı</h1>
+      <p class="lead mt-16" style="max-width:680px"><strong>Sağlık turizmi</strong> reklamlarınızı yayına almadan önce; Meta'nın sağlık reklam politikaları, sağlıkta reklam yönetmelikleri ve KVKK gereklilikleri açısından 18 maddelik bir kontrol listesinden geçirin. Reklamlarınızın yayından kaldırılma riskini öngörün.</p>
+      <div class="flex gap-16 mt-16 wrap" style="font-size:13px;color:var(--text-light)">
+        <span>5 dakika</span><span>·</span><span>Reklam yöneticisi, klinik sahibi</span><span>·</span><span>18 kontrol maddesi</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-sm">
+      <div class="insight insight-warning mb-24">
+        <div class="insight-icon">!</div>
+        <div>
+          <div class="insight-title">Önemli Uyarı</div>
+          <div class="insight-body">Bu araç bir hukuki uyum garantisi vermez. <strong>Sağlık turizmi dijital pazarlama</strong> alanında reklam yayınlamadan önce sağlık hukuku ve reklam mevzuatı uzmanından profesyonel görüş alınması önerilir.</div>
+        </div>
+      </div>
+
+      <div id="checklist"></div>
+
+      <button class="btn btn-primary btn-lg mt-24" onclick="evaluate()">Risk Seviyesini Hesapla</button>
+
+      <div id="result" style="display:none" class="mt-24"></div>
+    </div>
+  </section>
+
+  <article class="seo-article" style="background:var(--bg-soft);padding:80px 0">
+    <div class="container-xs">
+      <h2>Sağlık Turizmi Reklamlarında Meta Politika Uyumu</h2>
+      <div class="aeo-box">
+        <div class="aeo-box-label">Kısa Cevap</div>
+        <div class="aeo-box-q">Meta sağlık turizmi reklamı politikaları nelerdir?</div>
+        <div class="aeo-box-a">Meta; sağlık ve estetik tanıtımlarda gerçekçi olmayan sonuç vaatleri, "öncesi-sonrası" görselleri, sağlık problemini büyüten dil ve hastayı kişisel özelliği üzerinden hedefleyen mesajları sınırlandırır. <strong>Sağlık turizmi</strong> reklamlarınızda bu sınırların aşılması yayından kaldırılma ve hesap kısıtlama riski yaratır.</p>
+      </div>
+
+      <h3>"Öncesi-Sonrası" Görselleri Neden Riski Yüksektir?</h3>
+      <p>Hasta görselleri; KVKK kapsamında sağlık verisi olarak değerlendirilir. Açık rıza belgesi, doğru saklama ve görsel üzerinde kişiyi belirsizleştirme yükümlülükleri vardır. Meta da bu tür görsellerin kişisel özelliği vurgulayan reklam olarak yorumlanmasını sınırlar.</p>
+
+      <h3>Sağlıkta Reklam Mevzuatı ile Meta Politikaları Çakışıyor mu?</h3>
+      <p><strong>Sağlık turizmi dijital pazarlama</strong> sürecinde iki farklı kural seti aynı anda uygulanmalıdır: sağlıkta reklam yönetmelikleri (yerel mevzuat) ve Meta'nın küresel reklam politikaları. Bir kuralın izin verdiği şey diğeri tarafından yasaklanmış olabilir; bu durumda en kısıtlayıcı olan uygulanır.</p>
+
+      <h3>Açıklayıcı Notlar ve Kaynak Beyanı</h3>
+      <p>Reklamda kullanılan istatistik, oran veya iddialar için kaynak gösterilmesi; "%99 başarı" gibi yuvarlak sayılardan kaçınılması; her tedavinin bireysel olduğuna dair açıklayıcı not eklenmesi <span class="kw">sağlık turizmi reklam uyumu</span> açısından temel uygulamadır.</p>
+
+      <h2 class="mt-40">Sık Sorulan Sorular</h2>
+      <div class="faq-item"><button class="faq-q">Reklam reddedildiğinde ne yapmalıyım? <span class="faq-icon">+</span></button><div class="faq-a">İtiraz hakkınızı kullanın, ancak öncelikle reddedilme nedenini tam olarak anlamaya çalışın. Aynı içeriği değiştirmeden tekrar yüklemek hesap puanınızı düşürür.</div></div>
+      <div class="faq-item"><button class="faq-q">Hesabım kısıtlanırsa ne yapmalıyım? <span class="faq-icon">+</span></button><div class="faq-a">Bu durumda Meta'nın işletme destek kanalı üzerinden iletişime geçilmeli ve mevcut tüm reklamların politika uyumu yeniden değerlendirilmelidir.</div></div>
+      <div class="faq-item"><button class="faq-q">Hangi ülkelere reklam vermek daha kısıtlayıcıdır? <span class="faq-icon">+</span></button><div class="faq-a">Almanya, İngiltere, Fransa gibi ülkelerde sağlık reklam mevzuatı oldukça sıkıdır. Bu pazarlara reklam verirken hem Meta hem yerel mevzuata ek özen gerekir.</div></div>
+      <div class="faq-item"><button class="faq-q">Etkileyici (influencer) reklamı yapabilir miyim? <span class="faq-icon">+</span></button><div class="faq-a">Yapabilirsiniz, ancak influencer'ın iddialarından da klinik sorumludur. Sponsor içerik etiketi, kesin sonuç vaadinden kaçınma ve KVKK uyumu zorunludur.</div></div>
+
+      <div class="disclaimer mt-32">Bu araç bilgilendirme ve ön değerlendirme amacıyla hazırlanmıştır. Sonuçlar profesyonel hukuki danışmanlık yerine geçmez. Sağlıkta reklam ve tanıtım faaliyetlerinde mevzuat dinamik biçimde değişebilir.</div>
+    </div>
+  </article>
+</div>
+<div id="site-footer"></div>
+<script src="../../shared.js"></script>
+<script>
+const CHECKS = [
+  { cat: 'İçerik', title: 'Kesin sonuç veya iyileşme vaadi içermiyor', desc: '"Garantili sonuç", "kesinlikle iyileşir", "%100 başarı" gibi ifadeler bulunmuyor.' },
+  { cat: 'İçerik', title: 'Hastalığı veya kusuru büyüten dil yok', desc: 'Hastayı korkutarak veya kişisel özelliğini olumsuzlayarak satışa yönelten ifadeler kullanılmıyor.' },
+  { cat: 'İçerik', title: 'Tıbbi terimler doğru ve abartısız kullanılmış', desc: 'Tıbbi terimlerin yanlış veya manipülatif kullanımı yok.' },
+  { cat: 'İçerik', title: '"Öncesi-Sonrası" görseli içermiyor veya açık rıza ile kullanılıyor', desc: 'Hasta görseli kullanılıyorsa açık rıza belgesi mevcut ve görsel mevzuata uygun.' },
+  { cat: 'İçerik', title: 'Bireysel sonuç farklılığı belirtilmiş', desc: 'Sonuçların kişiden kişiye değişebileceğine dair not eklenmiş.' },
+  { cat: 'İçerik', title: 'Doktor görseli kullanılıyorsa hekim onayı alınmış', desc: 'Hekim görsel veya iddiada yer alıyorsa yazılı onayı bulunuyor.' },
+  { cat: 'Hedefleme', title: 'Hassas hedefleme kategorileri kullanılmamış', desc: 'Sağlık durumu, kilo, ten rengi gibi hassas kategorilerle hedefleme yapılmamış.' },
+  { cat: 'Hedefleme', title: 'Yaş hedeflemesi mevzuatla uyumlu', desc: 'Reklamı görüntüleyebilecek yaş aralığı sağlıkta reklam mevzuatı ile uyumlu.' },
+  { cat: 'Hedefleme', title: 'Coğrafi kısıtlamalar dikkate alınmış', desc: 'Hedef ülkenin sağlık reklam mevzuatı ek kısıtlama gerektiriyor mu kontrol edilmiş.' },
+  { cat: 'Açıklama', title: 'Klinik adı ve kurumsal kimlik açık', desc: 'Hangi kuruluşun reklam verdiği reklam içinde net olarak görünüyor.' },
+  { cat: 'Açıklama', title: 'İletişim kanalı doğrulanabilir', desc: 'Reklamın yönlendirdiği iletişim kanalı (web, WhatsApp) gerçek ve aktif.' },
+  { cat: 'Açıklama', title: 'KVKK aydınlatma metni ve veri politikası mevcut', desc: 'Reklam üzerinden veri toplanıyorsa aydınlatma metni ve gizlilik politikası bağlantısı yer alıyor.' },
+  { cat: 'Açıklama', title: 'Çerez ve takip teknolojileri açıklanmış', desc: 'Landing sayfasında piksel ve çerez kullanımı için açık rıza alınıyor.' },
+  { cat: 'Fiyat ve Kampanya', title: 'Aldatıcı fiyat sunumu yok', desc: '"Sadece bugün" gibi yapay aciliyet veya gerçek dışı indirim sunumu yok.' },
+  { cat: 'Fiyat ve Kampanya', title: 'Tedavi kapsamı net belirtilmiş', desc: 'Belirtilen fiyat hangi hizmetleri kapsadığı açıkça yazılmış.' },
+  { cat: 'Fiyat ve Kampanya', title: 'Kampanyalı sunumlar mevzuata uygun', desc: 'Sağlıkta reklam yönetmeliği kampanyalı sunumları sınırlar; uyum sağlanmış.' },
+  { cat: 'Görsel', title: 'Görseller fotoğraf bankası lisanslı veya orijinal', desc: 'Telif hakkı ihlali içermeyen, lisanslı veya kliniğe ait görseller kullanılıyor.' },
+  { cat: 'Görsel', title: 'Görsellerde manipülatif filtreleme yok', desc: 'Sonucu olduğundan farklı gösteren retouching veya filtreleme uygulanmamış.' },
+];
+
+const state = new Set();
+
+function render() {
+  document.getElementById('checklist').innerHTML = CHECKS.map((c, i) => `
+    <div class="check-item ${state.has(i) ? 'checked' : ''}" onclick="toggle(${i})">
+      <div class="check-box">${state.has(i) ? '✓' : ''}</div>
+      <div>
+        <div class="check-cat">${c.cat}</div>
+        <div class="check-title">${c.title}</div>
+        <div class="check-desc">${c.desc}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggle(i) { if (state.has(i)) state.delete(i); else state.add(i); render(); }
+
+function evaluate() {
+  const total = CHECKS.length;
+  const checked = state.size;
+  const pct = Math.round((checked/total)*100);
+  let level, color, title, msg;
+  if (pct >= 85) { level = 'Düşük Risk'; color = '#059669'; title = 'Yayın için makul görünüyor'; msg = 'Önemli kontrollerin büyük çoğunluğu işaretli. Yine de reklam yayına almadan önce hukuki uzmandan onay almanız önerilir.'; }
+  else if (pct >= 60) { level = 'Orta Risk'; color = '#D97706'; title = 'Eksik alanlar var'; msg = 'Reklamın bazı alanlarında uyum açıkları görünüyor. İşaretlenmemiş maddeleri gözden geçirip düzeltmeniz gerekir.'; }
+  else { level = 'Yüksek Risk'; color = '#DC2626'; title = 'Yayına almadan önce uzman incelemesi gerekli'; msg = 'Reklamınızda ciddi sayıda uyum riski var. Mevcut haliyle yayına alınması yayından kaldırılma veya hesap kısıtlama riski taşır.'; }
+
+  document.getElementById('result').innerHTML = `
+    <div class="card-base" style="padding:28px;border-top:3px solid ${color}">
+      <div style="font-size:11px;font-weight:700;color:${color};letter-spacing:0.08em;text-transform:uppercase">${level}</div>
+      <div style="font-size:22px;font-weight:800;margin:8px 0;color:var(--text-dark)">${title}</div>
+      <div style="font-size:48px;font-weight:900;color:${color};margin:12px 0">${checked}/${total}</div>
+      <p style="font-size:14px;color:var(--text-mid);line-height:1.7;max-width:560px">${msg}</p>
+      <div class="cta-block mt-20" style="margin-top:24px">
+        <div class="cta-block-content">
+          <div class="cta-block-title">Reklam içeriğinizi birlikte gözden geçirelim</div>
+          <div class="cta-block-desc">Eksik alanları kapatmak ve reklam metninizi güvenli hale getirmek için destek alabilirsiniz.</div>
+        </div>
+        <a href="https://wa.me/905397232292?text=Merhaba%2C+Meta+reklam+uyum+kontrol%C3%BC+i%C3%A7in+destek+almak+istiyorum." target="_blank" rel="noopener noreferrer" class="wa-cta wa-cta-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.418A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="1.5" fill="none"/></svg>
+          WhatsApp ile Ulaşın
+        </a>
+      </div>
+    </div>
+  `;
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+render();
+</script>
+</body>
+</html>

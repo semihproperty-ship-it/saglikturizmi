@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRM Pipeline Oluşturucu — Sağlık Turizmi Klinikleri | saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizmi kliniğiniz için özelleştirilmiş CRM pipeline oluşturun. Hasta yolculuğunun her aşaması için doğru takip aralıkları, görev tanımları ve KPI önerileri." />
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/crm-pipeline-olusturucu/" />
+  <meta property="og:title" content="CRM Pipeline Oluşturucu — Sağlık Turizmi" />
+  <meta property="og:description" content="Kliniğiniz için CRM pipeline aşamalarını oluşturun." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://saglikturizmi.info/"},
+      {"@type":"ListItem","position":2,"name":"Araçlar","item":"https://saglikturizmi.info/araclar/"},
+      {"@type":"ListItem","position":3,"name":"CRM Pipeline Oluşturucu","item":"https://saglikturizmi.info/araclar/crm-pipeline-olusturucu/"}
+    ]},
+    {"@type":"WebApplication","name":"CRM Pipeline Oluşturucu","url":"https://saglikturizmi.info/araclar/crm-pipeline-olusturucu/","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"}}
+  ]}
+  </script>
+  <style>
+    .pipeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 24px; }
+    .stage { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 18px; position: relative; }
+    .stage-num { display: inline-flex; width: 28px; height: 28px; border-radius: 50%; background: var(--bg-lavender); color: var(--purple-main); font-weight: 800; font-size: 13px; align-items: center; justify-content: center; margin-bottom: 10px; }
+    .stage-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .stage-desc { font-size: 12.5px; color: var(--text-mid); line-height: 1.55; margin-bottom: 10px; }
+    .stage-meta { font-size: 11px; color: var(--text-light); border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; }
+    .stage-meta strong { color: var(--purple-main); font-weight: 700; }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="page-wrap">
+
+  <section class="page-hero">
+    <div class="container-sm">
+      <nav class="breadcrumb"><a href="/">Ana Sayfa</a><span>›</span><a href="/araclar/">Araçlar</a><span>›</span><span style="color:var(--text-mid)">CRM Pipeline Oluşturucu</span></nav>
+      <span class="badge badge-purple">WhatsApp ve CRM Aracı</span>
+      <h1 class="mt-12">CRM Pipeline Oluşturucu</h1>
+      <p class="lead mt-16" style="max-width:640px"><strong>Sağlık turizmi</strong> kliniğinizin satış sürecini, branş, lead hacmi ve hasta yolculuğu uzunluğuna göre özelleştirilmiş aşamalara bölün. Her aşama için takip aralığı, görev tanımı ve KPI önerisi alın.</p>
+      <div class="flex gap-16 mt-16 wrap" style="font-size:13px;color:var(--text-light)">
+        <span>3-5 dakika</span><span>·</span><span>Operasyon yöneticisi, satış ekibi</span><span>·</span><span>5-9 aşamalı pipeline</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-sm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Branş</label>
+          <select id="inp-brans" class="form-select">
+            <option value="dis">Diş tedavisi</option>
+            <option value="sac">Saç ekimi</option>
+            <option value="estetik">Estetik cerrahi</option>
+            <option value="goz">Göz tedavileri</option>
+            <option value="obezite">Obezite cerrahisi</option>
+            <option value="ivf">Tüp bebek (IVF)</option>
+            <option value="diger">Diğer</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Aylık Lead Hacmi</label>
+          <select id="inp-hacim" class="form-select">
+            <option value="dusuk">0–50 lead</option>
+            <option value="orta" selected>50–200 lead</option>
+            <option value="yuksek">200–500 lead</option>
+            <option value="cok">500+ lead</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Hasta Yolculuğu Süresi</label>
+          <select id="inp-sure" class="form-select">
+            <option value="kisa">0–14 gün</option>
+            <option value="orta" selected>15–45 gün</option>
+            <option value="uzun">45+ gün</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Detay Seviyesi</label>
+          <select id="inp-detay" class="form-select">
+            <option value="basit">Basit (5 aşama)</option>
+            <option value="standart" selected>Standart (7 aşama)</option>
+            <option value="detayli">Detaylı (9 aşama)</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-lg mt-24" onclick="generatePipeline()">Pipeline Oluştur</button>
+
+      <div id="output" style="display:none">
+        <h2 class="mt-32" style="font-size:22px">Önerilen Pipeline Aşamaları</h2>
+        <div id="pipeline" class="pipeline"></div>
+
+        <div class="insight insight-warning mt-24">
+          <div class="insight-icon">!</div>
+          <div>
+            <div class="insight-title">Genel Kural</div>
+            <div class="insight-body">Her aşamada bir lead "ölü kalmamalıdır". Yani sistemde her lead için bir sonraki adım, sorumlu kişi ve takip tarihi olmalı. Bu pipeline'ı CRM yazılımınıza (Salesforce, HubSpot, Zoho, Pipedrive vb.) bu mantıkla aktarın.</div>
+          </div>
+        </div>
+
+        <div class="cta-block mt-24">
+          <div class="cta-block-content">
+            <div class="cta-block-title">Pipeline'ı CRM'e geçirme aşamasında destek ister misiniz?</div>
+            <div class="cta-block-desc">Bu çıktıyı sahada uygulanabilir hale getirmek için kliniğinizin mevcut iletişim akışını birlikte değerlendirebiliriz.</div>
+          </div>
+          <a href="https://wa.me/905397232292?text=Merhaba%2C+CRM+pipeline+yap%C4%B1m%C4%B1+i%C3%A7in+yard%C4%B1m+almak+istiyorum." target="_blank" rel="noopener noreferrer" class="wa-cta wa-cta-sm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.418A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="1.5" fill="none"/><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.761-1.653-2.059-.173-.297-.018-.458.13-.606z" fill="white"/></svg>
+            WhatsApp ile Ulaşın
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="seo-article" style="background:var(--bg-soft);padding:80px 0">
+    <div class="container-xs">
+      <h2>Sağlık Turizmi Klinikleri için CRM Pipeline Nedir?</h2>
+      <div class="aeo-box">
+        <div class="aeo-box-label">Kısa Cevap</div>
+        <div class="aeo-box-q">Sağlık turizminde CRM pipeline neden gereklidir?</div>
+        <div class="aeo-box-a"><strong>Sağlık turizmi</strong> kliniklerinde CRM pipeline; yeni gelen lead'in ilk temastan ameliyat sonrası takibe kadar geçtiği aşamaları, sorumlu kişileri ve takip aralıklarını sistemleştiren yapıdır. <strong>Dijital pazarlama</strong> yatırımının somut hasta sonucuna dönüşmesi büyük ölçüde bu yapıya bağlıdır.</p>
+      </div>
+
+      <h3>Pipeline Olmayan Bir Klinikte Ne Olur?</h3>
+      <p>Pipeline'sız çalışan kliniklerin ortak problemi şudur: lead gelir, biri cevap verir, sonra takip kaybolur. Hasta adayı arar, ulaşamaz, başka kliniğe gider. Bu kayıplar genellikle <span class="kw">reklam bütçesinin yetersizliği</span> ile karıştırılır; oysa asıl sorun sistemsel takip eksikliğidir.</p>
+
+      <h3>Aşamaları Nasıl Belirlemeli?</h3>
+      <p>Aşamalar; gerçek hasta yolculuğunuzu yansıtmalıdır. Tipik bir <span class="kw">sağlık turizmi pipeline</span> şu aşamalardan geçer: yeni lead → ilk temas → bilgilendirme → fiyat görüşmesi → planlama → seyahat hazırlığı → tedavi → takip. Her aşamanın net bir giriş ve çıkış kriteri olmalıdır.</p>
+
+      <h3>Görev Tanımları Neden Önemlidir?</h3>
+      <p>Her aşamada "kim ne yapar, ne kadar zamanda yapar" tanımı olmazsa, pipeline sadece bir liste olarak kalır. <strong>Sağlık turizmi dijital pazarlama</strong> ekibinizin çıktısının takım performansına dönüşmesi için her aşamada bir SLA (servis seviyesi anlaşması) tanımlanmalıdır.</p>
+
+      <h3>Pipeline Sağlık Verilerinden Nasıl Korunur?</h3>
+      <p>CRM içindeki kişisel ve sağlık verileri, KVKK ve ilgili sağlık mevzuatları kapsamında özel kategori veridir. Erişim yetkilendirmesi, log tutma ve veri silme süreçleri tanımlanmalıdır.</p>
+
+      <h2 class="mt-40">Sık Sorulan Sorular</h2>
+      <div class="faq-item"><button class="faq-q">Hangi CRM yazılımını seçmeliyim? <span class="faq-icon">+</span></button><div class="faq-a">Klinik büyüklüğü, ekip yapısı ve bütçenize göre değişir. Önemli olan yazılımdan önce süreci doğru tasarlamaktır; yanlış süreç hiçbir yazılımla düzelmez.</div></div>
+      <div class="faq-item"><button class="faq-q">Pipeline aşamaları kaç olmalı? <span class="faq-icon">+</span></button><div class="faq-a">Genellikle 5–9 aşama arası önerilir. Çok az aşama detay kaybına, çok fazla aşama operasyonel yavaşlığa neden olur.</div></div>
+      <div class="faq-item"><button class="faq-q">Takip aralıkları nasıl belirlenir? <span class="faq-icon">+</span></button><div class="faq-a">Hasta adayının karar süresine göre belirlenir. Acil branşlarda (örn. acil estetik) takip sıkı; uzun karar süreçli branşlarda (örn. IVF) daha yumuşak olabilir.</div></div>
+      <div class="faq-item"><button class="faq-q">Manuel pipeline yeterli midir? <span class="faq-icon">+</span></button><div class="faq-a">Ayda 30+ lead alan bir klinik için manuel takip risklidir. CRM yazılımı bu noktada zorunluluk haline gelir.</div></div>
+
+      <div class="disclaimer mt-32">Bu araç bilgilendirme ve planlama amacıyla hazırlanmıştır. Sağlık alanındaki kişisel veri işleme süreçlerinde KVKK ve ilgili sağlık mevzuatlarına uyum profesyonel danışmanlık gerektirir.</div>
+    </div>
+  </article>
+</div>
+<div id="site-footer"></div>
+<script src="../../shared.js"></script>
+<script>
+function generatePipeline() {
+  const brans = document.getElementById('inp-brans').value;
+  const hacim = document.getElementById('inp-hacim').value;
+  const sure = document.getElementById('inp-sure').value;
+  const detay = document.getElementById('inp-detay').value;
+
+  const baseStages = [
+    { title: 'Yeni Lead', desc: 'Form, DM, arama veya WhatsApp üzerinden gelen tüm yeni hasta adayları.', sla: '0-15 dk', kpi: 'İlk temas hızı' },
+    { title: 'İlk Temas Yapıldı', desc: 'Hasta adayına ulaşıldı, kısa karşılama yapıldı, kapı açıldı.', sla: 'Aynı gün', kpi: 'Ulaşma oranı' },
+    { title: 'Bilgilendirme', desc: 'Tedavi süreci, klinik tanıtımı ve hasta beklentileri ele alındı. Henüz fiyat verilmedi.', sla: '1-3 gün', kpi: 'Bilgilendirme tamamlanma %' },
+    { title: 'Fiyat ve Plan Görüşmesi', desc: 'Fiyat ve tedavi planı paylaşıldı, hasta adayının soruları yanıtlandı.', sla: '2-7 gün', kpi: 'Teklif dönüş süresi' },
+    { title: 'Karar Aşaması', desc: 'Hasta adayı düşünüyor; nazik takipler ve ek bilgi paylaşımı yapılıyor.', sla: '7-21 gün', kpi: 'Karar verme süresi' },
+    { title: 'Seyahat / Tedavi Hazırlığı', desc: 'Tarih belirlendi; uçuş, konaklama, tedavi öncesi hazırlık koordinasyonu.', sla: 'Tedaviye 7-30 gün', kpi: 'Hazırlık tamamlanma %' },
+    { title: 'Tedavi', desc: 'Hasta klinikte; tedavi sürecinin koordinasyonu ve hasta deneyiminin yönetimi.', sla: 'Tedavi süresi', kpi: 'Hasta memnuniyeti' },
+    { title: 'Tedavi Sonrası Takip', desc: 'Hasta evde; iyileşme süreci ve geri bildirim toplama aşaması.', sla: '30-180 gün', kpi: 'Takip sürdürme %' },
+    { title: 'Yorum ve Referans', desc: 'Memnun hastalardan yorum, referans ve sosyal medya içeriği talebi.', sla: '90+ gün', kpi: 'Referans dönüşüm %' },
+  ];
+
+  // simplification rules
+  let stages;
+  if (detay === 'basit') {
+    stages = [baseStages[0], baseStages[1], baseStages[3], baseStages[6], baseStages[7]];
+  } else if (detay === 'detayli') {
+    stages = baseStages;
+  } else {
+    stages = [baseStages[0], baseStages[1], baseStages[2], baseStages[3], baseStages[5], baseStages[6], baseStages[7]];
+  }
+
+  // Adjust SLA for short journeys
+  if (sure === 'kisa') {
+    stages = stages.map(s => ({ ...s, sla: s.sla.replace(/\d+-\d+ gün/g, m => {
+      const [a, b] = m.match(/\d+/g).map(Number);
+      return Math.max(1, Math.round(a/2)) + '-' + Math.max(2, Math.round(b/2)) + ' gün';
+    })}));
+  }
+
+  const html = stages.map((s, i) => `
+    <div class="stage">
+      <div class="stage-num">${i+1}</div>
+      <div class="stage-title">${s.title}</div>
+      <div class="stage-desc">${s.desc}</div>
+      <div class="stage-meta"><strong>SLA:</strong> ${s.sla}</div>
+      <div class="stage-meta" style="border-top:none;padding-top:0;margin-top:4px"><strong>KPI:</strong> ${s.kpi}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('pipeline').innerHTML = html;
+  document.getElementById('output').style.display = 'block';
+  document.getElementById('output').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lead Cevap Hızı Hesaplayıcı | Sağlık Turizmi Fırsat Kaybı Analizi — saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizmi reklamlarından gelen leadlere geç dönüş yapmanın maliyetini hesaplayın. Aylık lead kaybı, boşa giden reklam bütçesi ve potansiyel kayıp gelir analizi." />
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/lead-cevap-hizi-hesaplayici/" />
+  <meta property="og:title" content="Lead Cevap Hızı Hesaplayıcı | Sağlık Turizmi" />
+  <meta property="og:description" content="Geç dönüş yapılan her hasta adayının size olan maliyetini hesaplayın." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://saglikturizmi.info/"},
+      {"@type":"ListItem","position":2,"name":"Araçlar","item":"https://saglikturizmi.info/araclar/"},
+      {"@type":"ListItem","position":3,"name":"Lead Cevap Hızı Hesaplayıcı","item":"https://saglikturizmi.info/araclar/lead-cevap-hizi-hesaplayici/"}
+    ]},
+    {"@type":"WebApplication","name":"Lead Cevap Hızı Hesaplayıcı","url":"https://saglikturizmi.info/araclar/lead-cevap-hizi-hesaplayici/","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Lead cevap hızı neden önemlidir?","acceptedAnswer":{"@type":"Answer","text":"İlk 15 dakika içinde dönüş yapılması, hasta adayının karar verme sürecinin en aktif anını yakalar. Geç dönüş, rekabetli pazarlarda ciddi lead kaybına yol açar."}},
+      {"@type":"Question","name":"Sağlık turizminde ideal ilk temas süresi nedir?","acceptedAnswer":{"@type":"Answer","text":"Meta ve Instagram reklamlarından gelen leadler için 15 dakika, diğer kaynaklar için en geç 1 saat önerilir."}}
+    ]}
+  ]}
+  </script>
+  <style>
+    .calc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .result-metric { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; }
+    .result-metric-label { font-size: 12px; color: var(--text-light); margin-bottom: 6px; }
+    .result-metric-value { font-size: 26px; font-weight: 900; }
+    .speed-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .speed-bar-wrap { flex: 1; margin: 0 16px; height: 6px; background: var(--border); border-radius: 3px; }
+    .speed-bar-fill { height: 100%; border-radius: 3px; }
+    @media(max-width:768px){ .calc-layout{grid-template-columns:1fr;} .result-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="page-wrap">
+
+  <section class="page-hero">
+    <div class="container-sm">
+      <nav class="breadcrumb"><a href="/">Ana Sayfa</a><span>›</span><a href="/araclar/">Araçlar</a><span>›</span><span style="color:var(--text-mid)">Lead Cevap Hızı Hesaplayıcı</span></nav>
+      <span class="badge badge-purple">WhatsApp ve CRM Aracı</span>
+      <h1 class="mt-12">Lead Cevap Hızı Etki Hesaplayıcı</h1>
+      <p class="lead mt-16" style="max-width:640px"><strong>Lead maliyeti sadece reklam panelinde değil, geç dönüş yapılan her hasta adayında da oluşur.</strong> Bu araç, ilk temas sürenizin aylık lead kaybına, boşa giden reklam bütçesine ve potansiyel kayıp gelire etkisini hesaplar.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-sm">
+      <div class="calc-layout">
+        <!-- INPUTS -->
+        <div>
+          <h2 style="font-size:20px;margin-bottom:24px">Verilerinizi Girin</h2>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div class="form-group">
+              <label class="form-label">Aylık Lead Sayısı</label>
+              <input type="number" id="inp-leads" class="form-input" value="100" min="1" oninput="calculate()" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Ortalama Lead Maliyeti (€)</label>
+              <input type="number" id="inp-cost" class="form-input" value="15" min="1" oninput="calculate()" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Ortalama İlk Dönüş Süresi</label>
+              <select id="inp-speed" class="form-select" onchange="calculate()">
+                <option value="1.00">5 dakika içinde</option>
+                <option value="0.85">15 dakika içinde</option>
+                <option value="0.70" selected>30 dakika içinde</option>
+                <option value="0.55">1 saat içinde</option>
+                <option value="0.40">3 saat içinde</option>
+                <option value="0.25">Aynı gün</option>
+                <option value="0.15">Ertesi gün veya sonrası</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mevcut Randevu Dönüşüm Oranı (%)</label>
+              <input type="number" id="inp-conv" class="form-input" value="15" min="1" max="100" oninput="calculate()" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Hasta Başı Ortalama Gelir (€)</label>
+              <input type="number" id="inp-rev" class="form-input" value="2500" min="1" oninput="calculate()" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Lead Kaynağı</label>
+              <select id="inp-source" class="form-select" onchange="calculate()">
+                <option value="meta">Meta Reklamı (Facebook/Instagram)</option>
+                <option value="google">Google Reklamı</option>
+                <option value="dm">Instagram DM</option>
+                <option value="whatsapp">WhatsApp Reklamı</option>
+                <option value="organic">Organik Trafik</option>
+                <option value="referans">Referans</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div>
+          <h2 style="font-size:20px;margin-bottom:24px">Analiz Sonucu</h2>
+          <div class="result-grid" id="results">
+            <div class="result-metric"><div class="result-metric-label">Tahmini Soğuyan Lead/Ay</div><div class="result-metric-value" id="r-cold" style="color:#DC2626">—</div></div>
+            <div class="result-metric"><div class="result-metric-label">Boşa Giden Reklam Bütçesi</div><div class="result-metric-value" id="r-waste" style="color:#D97706">—</div></div>
+            <div class="result-metric" style="grid-column:1/-1"><div class="result-metric-label">Potansiyel Kayıp Gelir Senaryosu</div><div class="result-metric-value" id="r-rev" style="color:#DC2626">—</div></div>
+          </div>
+
+          <div class="card mt-20" id="speed-card">
+            <div style="font-weight:700;font-size:14px;margin-bottom:16px">Dönüş Hızı Katsayısı</div>
+            <div id="speed-chart"></div>
+          </div>
+
+          <div class="insight insight-warning mt-16">
+            <div class="insight-icon">!</div>
+            <div>
+              <div class="insight-title" style="color:#D97706">Önemli Uyarı</div>
+              <div class="insight-body">Bu hesaplama tahmini bir analiz çerçevesi sunar. Gerçek sonuçlar birçok faktöre bağlıdır. Rakamlar birebir garanti edilemez.</div>
+            </div>
+          </div>
+
+          <div id="recommendation" class="card mt-16" style="display:none">
+            <div style="font-weight:700;font-size:14px;margin-bottom:10px">Önerilen İlk Temas Standardı</div>
+            <div id="rec-text" style="font-size:14px;color:var(--text-mid);line-height:1.7"></div>
+          </div>
+
+          <div class="mt-20">
+            <a id="wa-result" href="https://wa.me/905397232292?text=Merhaba%2C+lead+cevap+h%C4%B1z%C4%B1+analizi+yapt%C4%B1m.+CRM+sistemimi+geli%C5%9Ftirmek+istiyorum." target="_blank" rel="noopener noreferrer" class="wa-cta">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.418A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="1.5" fill="none"/><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="white"/></svg>
+              WhatsApp ile Ulaşın — CRM Sistemi Kuralım
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related tools -->
+      <div class="mt-40">
+        <h3 style="font-size:16px;margin-bottom:16px">İlgili Araçlar</h3>
+        <div class="grid-3">
+          <a href="/araclar/whatsapp-ilk-mesaj-olusturucu/" class="tool-card-mini">
+            <div class="tool-card-mini-num">03</div>
+            <div><div class="tool-card-mini-title">WhatsApp Mesaj Oluşturucu</div><div class="tool-card-mini-desc">İlk temas mesajı oluşturun</div></div>
+          </a>
+          <a href="/araclar/crm-pipeline-olusturucu/" class="tool-card-mini">
+            <div class="tool-card-mini-num">04</div>
+            <div><div class="tool-card-mini-title">CRM Pipeline Oluşturucu</div><div class="tool-card-mini-desc">Pipeline aşamaları ve KPI</div></div>
+          </a>
+          <a href="/araclar/satis-ekibi-kpi-hesaplayici/" class="tool-card-mini">
+            <div class="tool-card-mini-num">11</div>
+            <div><div class="tool-card-mini-title">Satış Ekibi KPI</div><div class="tool-card-mini-desc">Ekip performans ölçümü</div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO ARTICLE -->
+  <article class="seo-article" style="background:var(--bg-soft);padding:80px 0">
+    <div class="container-xs">
+      <h2>Sağlık Turizminde Lead Cevap Hızı Neden Kritiktir?</h2>
+
+      <div class="aeo-box">
+        <div class="aeo-box-label">Kısa Cevap</div>
+        <div class="aeo-box-q">Sağlık turizminde lead cevap hızı neden önemlidir?</div>
+        <div class="aeo-box-a"><strong>Sağlık turizmi</strong> hasta adayları, form doldurdukları veya mesaj gönderdikleri anda karar verme süreçlerinin en aktif noktasındadır. Geç dönüş yapıldığında hasta adayı soğur, başka bir kliniğe yönelir veya süreci erteler. Bu durum; boşa giden reklam bütçesi ve kaybedilen hasta geliri anlamına gelir.</div>
+      </div>
+
+      <h3>Hasta Adayı Neden Hızlı Dönüş Bekler?</h3>
+      <p><strong>Sağlık turizmi</strong> pazarında rekabet yoğundur. Yabancı hasta adayı, aynı anda birden fazla kliniğin reklamını görmüş ve birden fazla forma doldurmuş olabilir. Bu durumda ilk anlamlı temas kuran klinik, ciddi bir avantaj elde eder.</p>
+      <p>Ayrıca hasta adayı form doldurduğu ya da mesaj gönderdiği an motivasyon zirvesindedir. Birkaç saat sonra bu motivasyon düşer; gündelik işler devreye girer, başka alternatifler araştırılır. <span class="kw">Sağlık turizmi WhatsApp yönetimi</span> ve ilk temas standardı, bu pencereyi doğru kullanmak için kritiktir.</p>
+
+      <h3>Bir Saat İçinde Dönüş Yapmak Neden Bazı Pazarlarda Geç Olabilir?</h3>
+      <p>Meta reklamlarından gelen leadler, Google aramasından gelen leadlerden farklı bir niyet profiline sahiptir. Meta leadleri genellikle anlık bir ilgi anında oluşturulur; bu nedenle dönüş süresi çok daha kritiktir. Aynı gün dönmek, Meta leadleri için gerçekten geç kalınmış olabilir.</p>
+      <p>Pazar coğrafyası da belirleyicidir. Almanya veya İngiltere'den gelen hasta adayları, Orta Doğu pazarından gelen adaylara göre farklı iletişim beklentilerine sahip olabilir. <span class="kw">Sağlık turizmi dijital pazarlama</span> stratejisinde bu farklılıklar gözetilmelidir.</p>
+
+      <h3>WhatsApp İlk Temas Süresi Dönüşümü Nasıl Etkiler?</h3>
+      <p><span class="kw">Sağlık turizmi hasta adayı yönetimi</span> alanındaki deneyimler, 15 dakika içinde yapılan ilk temasın 3+ saat sonra yapılan temasa göre anlamlı ölçüde daha yüksek dönüşüm sağladığını göstermektedir. Bu fark; sadece hız değil, hasta adayının aldığı "bu klinik beni önemsiyor" mesajıyla da ilgilidir.</p>
+      <p>Bot gibi görünen otomatik mesajlar bu etkiyi büyük ölçüde ortadan kaldırır. Hızlı ama insani, kişiselleştirilmiş bir ilk temas; hem hız avantajını hem de güven hissini bir arada sunar.</p>
+
+      <h3>Kliniklerde Lead Kaybı Nasıl Azaltılır?</h3>
+      <ul>
+        <li><span class="kw">İlk temas süresini standartlaştırın:</span> Mesai saatleri dışında da çalışan bir nöbet sistemi ya da akıllı otomasyon kurulumu yapın.</li>
+        <li><span class="kw">CRM olmadan cevap hızı takip edilemez:</span> Hangi leadın ne zaman geldiğini, ne zaman dönüş yapıldığını ve kim tarafından takip edildiğini kayıt altına almadan iyileştirme yapılamaz.</li>
+        <li><span class="kw">Mesaj şablonları hazırlayın:</span> Satış ekibi her seferinde sıfırdan yazmak yerine standart ama insani şablonları kişiselleştirerek kullanabilir.</li>
+        <li><span class="kw">Lead kaynağına göre önceliklendirin:</span> Tüm leadlar eşit değildir; kaynağa göre önceliklendirme yapın.</li>
+      </ul>
+
+      <h3>CRM Olmadan Cevap Hızı Neden Takip Edilemez?</h3>
+      <p><span class="kw">Sağlık turizmi CRM</span> kullanmayan klinikler, genellikle "biz hızlı dönüyoruz" diyebilir ama bunu kanıtlayamazlar. CRM olmadan; ortalama ilk temas süresi, ulaşılan lead oranı, takip sıklığı ve dönüşüm oranı gibi kritik metrikler ölçülemez. Ölçülemeyen süreç iyileştirilemez.</p>
+
+      <h3>Sık Yapılan Hatalar</h3>
+      <ul>
+        <li>Lead gelince WhatsApp'tan hemen "Merhaba nasıl yardımcı olabilirim?" gibi muğlak mesajlar atmak.</li>
+        <li>Mesai saatleri dışında gelen leadleri ertesi güne bırakmak.</li>
+        <li>Cevap hızını artırmak için bot kullanmak ama bot gibi kokan mesajlar göndermek.</li>
+        <li>İlk mesajda fiyat sormak veya baskı yaratmak.</li>
+        <li>Takip mesajlarını standartlaştırmamak; her danışman farklı kalitede dönüş yapıyor.</li>
+      </ul>
+
+      <h2 class="mt-40">Sık Sorulan Sorular</h2>
+      <div class="faq-item"><button class="faq-q">İdeal ilk temas süresi nedir? <span class="faq-icon">+</span></button><div class="faq-a">Meta reklamından gelen leadler için 15 dakika, diğer kaynaklar için en geç 1 saat önerilir. Mesai saatleri dışı için ise mesajın alındığını ve sabah dönüş yapılacağını belirten kısa bir otomatik yanıt faydalı olabilir.</div></div>
+      <div class="faq-item"><button class="faq-q">Hesaplayıcı sonuçları ne kadar güvenilir? <span class="faq-icon">+</span></button><div class="faq-a">Bu araç tahmini bir analiz çerçevesi sunar. Gerçek sonuçlar; pazar, branş, rekabet, mesaj kalitesi ve diğer birçok faktöre bağlıdır. Rakamlar birebir garanti edilemez.</div></div>
+      <div class="faq-item"><button class="faq-q">Meta leadi ile Google leadi aynı hızda mı yönetilmeli? <span class="faq-icon">+</span></button><div class="faq-a">Hayır. Meta leadleri anlık ilgi anında oluşur ve daha hızlı soğur. Google leadleri ise genellikle daha yüksek niyetle gelir, araştırma aşamasında olabilirler. Bu nedenle önceliklendirme ve hız stratejisi kaynak bazında farklılaştırılmalıdır.</div></div>
+      <div class="faq-item"><button class="faq-q">CRM olmadan lead hızını artırabilir miyim? <span class="faq-icon">+</span></button><div class="faq-a">Kısmen. Ama sürdürülebilir değil. CRM olmadan takip çuvalı olur, hangi leadın ne zaman dönüş beklediği karışır ve ölçüm yapılamaz. Küçük hacimler için basit bir CRM bile büyük fark yaratır.</div></div>
+      <div class="faq-item"><button class="faq-q">Hafta sonu gelen leadlere nasıl yaklaşılmalı? <span class="faq-icon">+</span></button><div class="faq-a">Hafta sonu leadleri için iki seçenek var: nöbet sistemi kurmak ya da "Talebiniz alındı, pazartesi sabahı en geç X'e kadar dönüş yapacağız" mesajı göndermek. İkinci seçenek bile tamamen sessiz kalmaktan çok daha iyidir.</div></div>
+
+      <div class="disclaimer mt-32">Bu araç bilgilendirme ve planlama amacıyla hazırlanmıştır. Sağlık alanındaki reklam, tanıtım ve hasta iletişimi süreçlerinde güncel mevzuat ve uzman görüşü dikkate alınmalıdır.</div>
+    </div>
+  </article>
+
+</div>
+<div id="site-footer"></div>
+<script src="../../shared.js"></script>
+<script>
+const SPEED_DATA = [
+  { label: '5 dk', coef: 1.00, color: '#059669' },
+  { label: '15 dk', coef: 0.85, color: '#16A34A' },
+  { label: '30 dk', coef: 0.70, color: '#D97706' },
+  { label: '1 saat', coef: 0.55, color: '#EA580C' },
+  { label: '3 saat', coef: 0.40, color: '#DC2626' },
+  { label: 'Aynı gün', coef: 0.25, color: '#B91C1C' },
+  { label: 'Ertesi gün', coef: 0.15, color: '#7F1D1D' },
+];
+
+const RECS = {
+  meta: 'Meta reklamlarından gelen leadler için ilk 15 dakika kritiktir. Mesai saatleri içinde anlık bildirim sistemi ve standart şablon kullanın.',
+  google: 'Google reklamlarından gelen leadler araştırma aşamasındadır. 1 saat içinde dönüş genellikle kabul görür, ancak hız yine de belirleyicidir.',
+  dm: 'Instagram DM\'den gelen leadler anlık etkileşim bekler. Mümkünse aynı kanal üzerinden 30 dakika içinde yanıt verin.',
+  whatsapp: 'WhatsApp reklamından gelen leadler zaten bu kanalda iletişimi tercih etmiştir. 15 dakika içinde, insani bir mesajla karşılayın.',
+  organic: 'Organik trafik yüksek niyetli olabilir. 1-2 saat içinde dönüş genellikle yeterlidir ama daha hızlı her zaman daha iyidir.',
+  referans: 'Referans leadleri en yüksek dönüşüm potansiyeline sahiptir. Aynı gün, kişiselleştirilmiş bir temas yapın.',
+};
+
+function calculate() {
+  const leads = parseFloat(document.getElementById('inp-leads').value) || 0;
+  const cost = parseFloat(document.getElementById('inp-cost').value) || 0;
+  const coef = parseFloat(document.getElementById('inp-speed').value) || 1;
+  const conv = parseFloat(document.getElementById('inp-conv').value) / 100 || 0;
+  const rev = parseFloat(document.getElementById('inp-rev').value) || 0;
+  const source = document.getElementById('inp-source').value;
+
+  const coldLeads = Math.round(leads * (1 - coef));
+  const wastedBudget = Math.round(coldLeads * cost);
+  const lostRev = Math.round(coldLeads * conv * rev);
+
+  document.getElementById('r-cold').textContent = coldLeads + ' adet/ay';
+  document.getElementById('r-waste').textContent = '€' + wastedBudget.toLocaleString('tr-TR');
+  document.getElementById('r-rev').textContent = '€' + lostRev.toLocaleString('tr-TR') + ' /ay';
+
+  // Speed chart
+  const chart = document.getElementById('speed-chart');
+  chart.innerHTML = SPEED_DATA.map(s => `
+    <div class="speed-row">
+      <span style="font-size:13px;color:var(--text-mid);width:72px">${s.label}</span>
+      <div class="speed-bar-wrap"><div class="speed-bar-fill" style="width:${s.coef*100}%;background:${s.color}"></div></div>
+      <span style="font-size:13px;font-weight:700;color:${s.color};width:36px;text-align:right">%${Math.round(s.coef*100)}</span>
+    </div>
+  `).join('');
+
+  // Recommendation
+  const rec = document.getElementById('recommendation');
+  document.getElementById('rec-text').textContent = RECS[source] || RECS.meta;
+  rec.style.display = 'block';
+
+  // Update WA link
+  const waMsg = encodeURIComponent(`Merhaba, lead cevap hızı analizi yaptım. Aylık tahmini ${coldLeads} lead kaybım var. CRM ve WhatsApp sistemimi geliştirmek istiyorum.`);
+  document.getElementById('wa-result').href = `https://wa.me/905397232292?text=${waMsg}`;
+}
+
+document.addEventListener('DOMContentLoaded', calculate);
+</script>
+</body>
+</html>

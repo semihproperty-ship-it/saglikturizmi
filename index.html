@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sağlık Turizmi | Doktorlar ve Klinikler İçin Büyüme Sistemi — saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizmi; pazar seçimi, dijital varlık, CRM ve satış ekibi disipliniyle kurulan bir sistemdir. Doktorlar ve klinikler için kapsamlı rehber, araçlar ve şablonlar." />
+  <link rel="canonical" href="https://saglikturizmi.info/" />
+  <meta property="og:title" content="Sağlık Turizmi | Doktorlar ve Klinikler İçin Büyüme Sistemi" />
+  <meta property="og:description" content="Sağlık turizminde büyüme reklamla değil sistemle olur. Doktorlar ve klinikler için kapsamlı rehber, araçlar ve şablonlar." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://saglikturizmi.info/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "saglikturizmi.info",
+    "url": "https://saglikturizmi.info",
+    "description": "Doktorlar ve klinikler için sağlık turizmi dijital pazarlama, hasta adayı yönetimi ve büyüme sistemi eğitim platformu.",
+    "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "availableLanguage": "Turkish" }
+  }
+  </script>
+  <style>
+    .hero { padding: 120px 0 96px; background: linear-gradient(160deg, #FFFFFF 0%, #F8F7FB 60%, #EEE7F8 100%); position: relative; overflow: hidden; }
+    .hero::before { content:''; position:absolute; top:-100px; right:-100px; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle, rgba(109,40,217,0.06) 0%, transparent 70%); pointer-events:none; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 400px; gap: 64px; align-items: center; }
+    .hero-badge { display:inline-flex; align-items:center; gap:8px; padding:4px 12px; border-radius:100px; background:var(--bg-lavender); border:1px solid var(--purple-xlight); font-size:12px; font-weight:700; color:var(--purple-main); margin-bottom:20px; }
+    .hero h1 { margin-bottom: 24px; }
+    .hero h1 em { font-style:normal; color:var(--purple-main); }
+    .hero-stats { display:flex; gap:32px; margin-top:40px; }
+    .hero-stat-num { font-size:22px; font-weight:900; color:var(--purple-deep); }
+    .hero-stat-label { font-size:13px; color:var(--text-mid); margin-top:2px; }
+    .funnel-card { background:var(--bg-soft); border:1px solid var(--border); border-radius:20px; padding:28px 24px; }
+    .funnel-title { font-size:12px; font-weight:700; color:var(--purple-main); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px; }
+    .funnel-step { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+    .funnel-dot { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .funnel-label { font-size:13.5px; font-weight:600; color:var(--text-dark); flex:1; }
+    .funnel-bar { width:48px; height:4px; border-radius:2px; }
+    .funnel-footer { margin-top:16px; padding:10px 14px; background:var(--bg-lavender); border-radius:10px; display:flex; justify-content:space-between; align-items:center; font-size:13px; }
+    .problem-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+    .journey-steps { display:flex; align-items:center; gap:0; overflow-x:auto; padding-bottom:8px; }
+    .journey-step { flex-shrink:0; text-align:center; width:110px; }
+    .journey-step-num { width:44px; height:44px; border-radius:12px; background:var(--purple-deep); display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:16px; font-weight:800; color:#fff; }
+    .journey-step-label { font-size:12px; font-weight:600; color:var(--text-dark); line-height:1.3; }
+    .journey-connector { flex:1; height:2px; background:linear-gradient(90deg, var(--purple-deep), var(--purple-main)); min-width:20px; opacity:0.3; flex-shrink:0; }
+    .systems-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+    .system-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:24px; transition:all 0.2s; }
+    .system-card:hover { background:rgba(109,40,217,0.15); border-color:rgba(109,40,217,0.4); }
+    .system-num { font-size:28px; font-weight:900; color:rgba(109,40,217,0.5); margin-bottom:12px; font-family:var(--font-serif); }
+    .system-title { font-weight:700; font-size:15px; color:#fff; margin-bottom:8px; }
+    .system-desc { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.65; }
+    .final-cta { padding:96px 24px; text-align:center; background:linear-gradient(160deg, var(--bg-lavender) 0%, var(--bg) 100%); }
+    @media(max-width:900px){ .hero-grid{grid-template-columns:1fr;} .funnel-card{display:none;} .problem-grid{grid-template-columns:1fr;} .systems-grid{grid-template-columns:1fr 1fr;} }
+    @media(max-width:600px){ .systems-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">Doktorlar ve Klinikler İçin</div>
+        <h1>Sağlık Turizmi<br><em>Reklamla Değil,</em><br>Sistemle Büyür</h1>
+        <p class="lead" style="max-width:520px;margin-bottom:36px">Doktorlar ve klinikler için <strong>sağlık turizmi</strong>; doğru pazar seçimi, güven veren dijital varlık, hızlı ilk temas, CRM disiplini ve sürdürülebilir hasta adayı yönetimiyle kurulan uçtan uca bir büyüme sistemidir.</p>
+        <div class="flex gap-12 wrap">
+          <a href="/rehber/" class="btn btn-primary btn-lg">Rehbere Başla</a>
+          <a href="/araclar/klinik-saglik-turizmi-hazirlik-skoru/" class="btn btn-secondary btn-lg">Hazırlık Skorunu Ölç</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hero-stat-num">15+</div><div class="hero-stat-label">Ücretsiz Araç</div></div>
+          <div><div class="hero-stat-num">50+</div><div class="hero-stat-label">Rehber ve Şablon</div></div>
+          <div><div class="hero-stat-num">12</div><div class="hero-stat-label">Blog Kategorisi</div></div>
+        </div>
+      </div>
+      <div class="funnel-card">
+        <div class="funnel-title">Hasta Yolculuğu Sistemi</div>
+        <div class="funnel-step"><div class="funnel-dot" style="background:#7C3AED"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="3" stroke="white" stroke-width="1.5"/><path d="M5 8h6M8 5v6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="funnel-label">Güven Veren İçerik Sistemi</span><div class="funnel-bar" style="background:#7C3AED;opacity:0.35"></div></div>
+        <div class="funnel-step"><div class="funnel-dot" style="background:#6D28D9"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="white" stroke-width="1.5"/><path d="M5 7h6M5 10h4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="funnel-label">Landing Page</span><div class="funnel-bar" style="background:#6D28D9;opacity:0.4"></div></div>
+        <div class="funnel-step"><div class="funnel-dot" style="background:#5B21B6"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 10.5c0 .3-.1.5-.2.8l-.8 2c-.3.5-.8.7-1.4.7C5.2 14 2 10.8 2 5.4c0-.6.2-1.1.7-1.4l2-.8c.3-.1.5-.1.8 0l1.5 3.5c.1.3.1.6-.1.8L5.6 8.8C6.6 10.4 7.6 11.4 9.2 12.4l1.3-1.3c.2-.2.5-.3.8-.1z" stroke="white" stroke-width="1.5"/></svg></div><span class="funnel-label">WhatsApp / Arama</span><div class="funnel-bar" style="background:#5B21B6;opacity:0.45"></div></div>
+        <div class="funnel-step"><div class="funnel-dot" style="background:#4C1D95"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M5 5h6M5 8h4M5 11h3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="funnel-label">CRM Kaydı</span><div class="funnel-bar" style="background:#4C1D95;opacity:0.5"></div></div>
+        <div class="funnel-step"><div class="funnel-dot" style="background:#3B0A57"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" stroke="white" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="funnel-label">Satış Takibi</span><div class="funnel-bar" style="background:#3B0A57;opacity:0.55"></div></div>
+        <div class="funnel-step"><div class="funnel-dot" style="background:#2D0845"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="2" stroke="white" stroke-width="1.5"/><path d="M5 3V1M11 3V1M2 7h12" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="funnel-label">Randevu</span><div class="funnel-bar" style="background:#2D0845;opacity:0.6"></div></div>
+        <div class="funnel-step"><div class="funnel-dot" style="background:#1E1A2E"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8l3 3 5-6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="funnel-label">Takip ve Referans</span><div class="funnel-bar" style="background:#1E1A2E;opacity:0.65"></div></div>
+        <div class="funnel-footer">
+          <span style="color:var(--text-mid);font-size:12px">Sistem tamamlandığında</span>
+          <span style="font-weight:700;font-size:13px;color:var(--purple-main)">Sürdürülebilir büyüme</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM STATEMENT -->
+<section class="section">
+  <div class="container">
+    <div class="problem-grid">
+      <div>
+        <div class="section-tag"><div class="section-tag-bar"></div><span class="section-tag-text">Gerçek Problem</span></div>
+        <h2>Sağlık Turizminde Asıl Problem Reklam Değil, Sistem Eksikliğidir</h2>
+        <p class="mt-16">Birçok klinik daha çok lead ister — ama asıl sorun lead geldikten sonra başlar. Hasta adayına ne kadar hızlı dönüldüğü, ilk mesajın kalitesi, CRM kaydı, takip sıklığı ve satış ekibinin konuşma standardı dönüşümü belirler.</p>
+        <p class="mt-12">Güven veren dijital varlık olmadan, iyi bir reklam bile boşa gider. Bu platform; reklamdan çok sistemi, sayıdan çok kaliteyi ve kısa vadeli büyümeden çok sürdürülebilir <strong>sağlık turizmi hasta adayı yönetimini</strong> öğretir.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="insight insight-warning"><div class="insight-icon">!</div><div><div class="insight-title" style="color:#D97706">Sık Yapılan Hata</div><div class="insight-body">"Reklam bütçesini artıralım, daha fazla lead gelsin." — Sistemi kurmadan daha fazla lead almak, mevcut problemi büyütür.</div></div></div>
+        <div class="insight insight-success"><div class="insight-icon" style="background:#059669">✓</div><div><div class="insight-title" style="color:#059669">Doğru Yaklaşım</div><div class="insight-body">Önce ilk temas sürecini, CRM akışını ve satış ekibinin iletişim standardını oturtun; sonra reklam bütçesini artırın.</div></div></div>
+        <div class="insight insight-info"><div class="insight-icon">i</div><div><div class="insight-title" style="color:var(--purple-main)">Profesyonel Not</div><div class="insight-body"><strong>Sağlık turizminde büyüme</strong>; reklam, web sitesi, WhatsApp, CRM ve satış ekibinin tek bir hasta yolculuğu gibi çalışmasıyla mümkün olur.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="section section-soft">
+  <div class="container">
+    <div class="text-center mb-32">
+      <div class="section-tag" style="justify-content:center"><div class="section-tag-bar"></div><span class="section-tag-text">Uçtan Uca Sistem</span></div>
+      <h2>Uçtan Uca Sağlık Turizmi Hasta Yolculuğu</h2>
+    </div>
+    <div class="journey-steps">
+      <div class="journey-step"><div class="journey-step-num">1</div><div class="journey-step-label">Pazar Analizi</div></div>
+      <div class="journey-connector"></div>
+      <div class="journey-step"><div class="journey-step-num">2</div><div class="journey-step-label">Reklam Stratejisi</div></div>
+      <div class="journey-connector"></div>
+      <div class="journey-step"><div class="journey-step-num">3</div><div class="journey-step-label">Landing Page</div></div>
+      <div class="journey-connector"></div>
+      <div class="journey-step"><div class="journey-step-num">4</div><div class="journey-step-label">İlk Temas</div></div>
+      <div class="journey-connector"></div>
+      <div class="journey-step"><div class="journey-step-num">5</div><div class="journey-step-label">CRM Kaydı</div></div>
+      <div class="journey-connector"></div>
+      <div class="journey-step"><div class="journey-step-num">6</div><div class="journey-step-label">Satış Takibi</div></div>
+      <div class="journey-connector"></div>
+      <div class="journey-step"><div class="journey-step-num">7</div><div class="journey-step-label">Randevu</div></div>
+      <div class="journey-connector"></div>
+      <div class="journey-step"><div class="journey-step-num">8</div><div class="journey-step-label">Hasta Deneyimi</div></div>
+      <div class="journey-connector"></div>
+      <div class="journey-step"><div class="journey-step-num">9</div><div class="journey-step-label">Yorum ve Referans</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS & CLINICS -->
+<section class="section">
+  <div class="container">
+    <div class="grid-2">
+      <div>
+        <div class="section-tag"><div class="section-tag-bar"></div><span class="section-tag-text">Doktorlar İçin</span></div>
+        <h2>Doktorlar İçin Sağlık Turizmi</h2>
+        <p class="mt-12 mb-24">Klinik dışında da hasta kazanmak için kişisel marka güveni ve doğru iletişim altyapısı şart.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="card" style="padding:16px 20px"><div style="font-weight:700;font-size:14px;margin-bottom:6px">Kişisel Marka Güveni</div><p style="font-size:13.5px;margin:0">Yabancı hasta adayının sizi tercih etmesi için güven veren dijital profil nasıl kurulur.</p></div>
+          <div class="card" style="padding:16px 20px"><div style="font-weight:700;font-size:14px;margin-bottom:6px">Branşa Uygun İçerik</div><p style="font-size:13.5px;margin:0">Hangi içerikler hasta adayında güven yaratır, hangisi risk oluşturur.</p></div>
+          <div class="card" style="padding:16px 20px"><div style="font-weight:700;font-size:14px;margin-bottom:6px">Hasta Adayına Doğru Bilgi</div><p style="font-size:13.5px;margin:0">Süreç, beklenti yönetimi ve doğru bilgilendirme nasıl yapılır.</p></div>
+          <div class="card" style="padding:16px 20px"><div style="font-weight:700;font-size:14px;margin-bottom:6px">Web Sitesi ve Profil Güveni</div><p style="font-size:13.5px;margin:0">Doktor profilinin uluslararası hasta için ne anlam ifade ettiği.</p></div>
+          <div class="card" style="padding:16px 20px"><div style="font-weight:700;font-size:14px;margin-bottom:6px">Uluslararası İletişim</div><p style="font-size:13.5px;margin:0">Dil bariyerini aşmak, kültürel farklar ve empati kurarak etkili ilk temas.</p></div>
+        </div>
+        <div class="mt-20"><a href="/doktorlar/" class="btn btn-secondary btn-md">Doktorlar İçin Rehber</a></div>
+      </div>
+      <div>
+        <div class="section-tag"><div class="section-tag-bar"></div><span class="section-tag-text">Klinikler İçin</span></div>
+        <h2>Klinikler İçin Büyüme Sistemi</h2>
+        <p class="mt-12 mb-24">Lead yönetiminden satış ekibi KPI sistemine kadar klinik büyümesini mümkün kılan operasyonel altyapı.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="card" style="padding:16px 20px"><div style="font-weight:700;font-size:14px;margin-bottom:6px">Lead Yönetimi</div><p style="font-size:13.5px;margin:0">Gelen hasta adaylarının kayıt altına alınması, önceliklendirilmesi ve hızlı karşılanması.</p></div>
+          <div class="card" style="padding:16px 20px"><div style="font-weight:700;font-size:14px;margin-bottom:6px">Satış Ekibi KPI Sistemi</div><p style="font-size:13.5px;margin:0">Satış ekibinin performansını ölçmek için metrikler, standartlar ve takip yapısı.</p></div>
+          <div class="card" style="padding:16px 20px"><div style="font-weight:700;font-size:14px;margin-bottom:6px">WhatsApp ve CRM Akışı</div><p style="font-size:13.5px;margin:0">İlk mesajdan randevuya kadar iletişim akışının nasıl kurgulanacağı.</p></div>
+          <div class="card" style="padding:16px 20px"><div style="font-weight:700;font-size:14px;margin-bottom:6px">Meta Reklam Kurgusu</div><p style="font-size:13.5px;margin:0">Sağlık turizmine özel reklam mimarisi; hedefleme, kreatif ve uyum hassasiyeti.</p></div>
+          <div class="card" style="padding:16px 20px"><div style="font-weight:700;font-size:14px;margin-bottom:6px">Landing Page Optimizasyonu</div><p style="font-size:13.5px;margin:0">Dönüşüm oranını artıran sayfa yapısı, güven unsurları ve formun doğru tasarımı.</p></div>
+        </div>
+        <div class="mt-20"><a href="/klinikler/" class="btn btn-secondary btn-md">Klinikler İçin Rehber</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="section section-soft">
+  <div class="container">
+    <div class="flex-between mb-32 wrap gap-16">
+      <div>
+        <div class="section-tag"><div class="section-tag-bar"></div><span class="section-tag-text">Ücretsiz Araçlar</span></div>
+        <h2>Kliniğinizi Analiz Edin</h2>
+      </div>
+      <a href="/araclar/" class="btn btn-ghost btn-md">Tüm Araçları Gör</a>
+    </div>
+    <div class="grid-4">
+      <a href="/araclar/klinik-saglik-turizmi-hazirlik-skoru/" class="card card-top-accent" style="text-decoration:none;display:block">
+        <div style="font-size:22px;color:var(--purple-main);margin-bottom:12px;font-weight:900">01</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:8px;color:var(--text-dark)">Klinik Hazırlık Skoru</div>
+        <p style="font-size:13px;margin:0">20 soruyla sağlık turizmi hazırlığınızı ölçün.</p>
+      </a>
+      <a href="/araclar/lead-cevap-hizi-hesaplayici/" class="card card-top-accent" style="text-decoration:none;display:block">
+        <div style="font-size:22px;color:var(--purple-main);margin-bottom:12px;font-weight:900">02</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:8px;color:var(--text-dark)">Lead Cevap Hızı Hesaplayıcı</div>
+        <p style="font-size:13px;margin:0">Geç dönüşün size maliyetini hesaplayın.</p>
+      </a>
+      <a href="/araclar/whatsapp-ilk-mesaj-olusturucu/" class="card card-top-accent" style="text-decoration:none;display:block">
+        <div style="font-size:22px;color:var(--purple-main);margin-bottom:12px;font-weight:900">03</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:8px;color:var(--text-dark)">WhatsApp Mesaj Oluşturucu</div>
+        <p style="font-size:13px;margin:0">Branşa ve dile göre ilk mesaj şablonu.</p>
+      </a>
+      <a href="/araclar/meta-reklam-uyum-kontrol-araci/" class="card card-top-accent" style="text-decoration:none;display:block">
+        <div style="font-size:22px;color:var(--purple-main);margin-bottom:12px;font-weight:900">05</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:8px;color:var(--text-dark)">Meta Reklam Uyum Kontrolü</div>
+        <p style="font-size:13px;margin:0">Reklamınızın uyum riskini analiz edin.</p>
+      </a>
+    </div>
+    <div class="mt-20 text-center"><a href="/araclar/" class="btn btn-secondary btn-md">Tüm 15 Aracı Gör</a></div>
+  </div>
+</section>
+
+<!-- BLOG PREVIEWS -->
+<section class="section">
+  <div class="container">
+    <div class="flex-between mb-32 wrap gap-16">
+      <div>
+        <div class="section-tag"><div class="section-tag-bar"></div><span class="section-tag-text">Blog</span></div>
+        <h2>En Çok Okunan Rehberler</h2>
+      </div>
+      <a href="/blog/" class="btn btn-ghost btn-md">Tüm Yazılar</a>
+    </div>
+    <div class="grid-3">
+      <a href="/blog/saglik-turizmi-nasil-yapilir/" class="card" style="text-decoration:none;padding:0;overflow:hidden;display:block">
+        <div style="height:160px;background:linear-gradient(135deg,#3B0A57 0%,#6D28D9 100%);display:flex;align-items:flex-end;padding:16px 20px"><span class="badge badge-purple" style="background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.2)">Temel Rehber</span></div>
+        <div style="padding:24px">
+          <h3 style="font-size:15px;margin-bottom:10px">Sağlık Turizmi Nasıl Yapılır? Sistemli Başlangıç Rehberi</h3>
+          <p style="font-size:13.5px;margin-bottom:14px">Sağlık turizmini yalnızca reklam kampanyası olarak ele alan klinikler uzun vadede büyüyemiyor.</p>
+          <span style="font-size:13px;color:var(--purple-main);font-weight:600">Devamını Oku →</span>
+        </div>
+      </a>
+      <a href="/blog/klinikler-lead-donusturemiyor/" class="card" style="text-decoration:none;padding:0;overflow:hidden;display:block">
+        <div style="height:160px;background:linear-gradient(135deg,#3B0A57 0%,#6D28D9 100%);display:flex;align-items:flex-end;padding:16px 20px"><span class="badge badge-purple" style="background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.2)">CRM</span></div>
+        <div style="padding:24px">
+          <h3 style="font-size:15px;margin-bottom:10px">Klinikler Neden Lead Alır Ama Randevuya Dönüştüremez?</h3>
+          <p style="font-size:13.5px;margin-bottom:14px">Lead alma değil, lead yönetimi problemi. İlk temas süresi ve CRM disiplininin etkisi.</p>
+          <span style="font-size:13px;color:var(--purple-main);font-weight:600">Devamını Oku →</span>
+        </div>
+      </a>
+      <a href="/blog/whatsapp-ilk-mesaj/" class="card" style="text-decoration:none;padding:0;overflow:hidden;display:block">
+        <div style="height:160px;background:linear-gradient(135deg,#3B0A57 0%,#6D28D9 100%);display:flex;align-items:flex-end;padding:16px 20px"><span class="badge badge-purple" style="background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.2)">WhatsApp</span></div>
+        <div style="padding:24px">
+          <h3 style="font-size:15px;margin-bottom:10px">Sağlık Turizminde WhatsApp İlk Mesajı Nasıl Olmalı?</h3>
+          <p style="font-size:13.5px;margin-bottom:14px">Bot gibi kokan ilk mesajlar hasta adayını kaybettirir. İnsan gibi hissettiren yapı nedir?</p>
+          <span style="font-size:13px;color:var(--purple-main);font-weight:600">Devamını Oku →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 5 SYSTEMS -->
+<section class="section section-navy">
+  <div class="container">
+    <div class="text-center mb-32">
+      <span style="font-size:12px;font-weight:700;color:var(--purple-light);letter-spacing:0.1em;text-transform:uppercase">Temel Yapı</span>
+      <h2 style="color:#fff;margin-top:12px">Sağlık Turizmi İçin 5 Temel Sistem</h2>
+    </div>
+    <div class="systems-grid">
+      <div class="system-card"><div class="system-num">01</div><div class="system-title">Pazar Sistemi</div><div class="system-desc">Hangi ülkeye, hangi hasta profiline, hangi rekabet ortamında gireceğinizi belirlemek.</div></div>
+      <div class="system-card"><div class="system-num">02</div><div class="system-title">Reklam Sistemi</div><div class="system-desc">Platform, hedefleme, bütçe, kreatif ve uyum kurallarını bilen yapılandırılmış reklam mimarisi.</div></div>
+      <div class="system-card"><div class="system-num">03</div><div class="system-title">Güven Sistemi</div><div class="system-desc">Web sitesi, içerik, sosyal kanıt, doktor profili ve marka tutarlılığı üzerine kurulu güven katmanı.</div></div>
+      <div class="system-card"><div class="system-num">04</div><div class="system-title">İletişim Sistemi</div><div class="system-desc">Hızlı ilk temas, standart mesaj şablonları, çok dilli iletişim ve WhatsApp/email akışı.</div></div>
+      <div class="system-card"><div class="system-num">05</div><div class="system-title">Takip Sistemi</div><div class="system-desc">CRM, kaybedilen leadların geri kazanımı, satış ekibi disiplini ve randevu takibi.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <span class="badge badge-purple">Hazır mısınız?</span>
+    <h2 style="margin-top:20px;margin-bottom:16px">Kliniğiniz Sağlık Turizmi İçin<br>Gerçekten Hazır mı?</h2>
+    <p class="lead" style="max-width:520px;margin:0 auto 36px">20 soruyla klinik hazırlık skorunuzu ölçün. Güçlü ve geliştirmeye açık noktalarınızı keşfedin.</p>
+    <div class="flex gap-12 justify-center wrap" style="justify-content:center">
+      <a href="/araclar/klinik-saglik-turizmi-hazirlik-skoru/" class="btn btn-primary btn-lg">Hazırlık Skorunu Ölç</a>
+      <a href="/iletisim/" class="btn btn-secondary btn-lg">İletişime Geçin</a>
+      <a href="https://wa.me/905397232292?text=Merhaba%2C+klinik+sa%C4%9Fl%C4%B1k+turizmi+sistemini+de%C4%9Flendirmek+istiyorum." target="_blank" rel="noopener noreferrer" class="wa-cta">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.418A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="1.5" fill="none"/><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="white"/></svg>
+        WhatsApp ile Ulaşın
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="shared.js"></script>
+</body>
+</html>

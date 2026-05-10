@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sağlık Turizmi İçerik Takvimi Oluşturucu | saglikturizmi.info</title>
+  <meta name="description" content="Branşınıza özel 30 günlük sosyal medya ve blog içerik takvimi." />
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/saglik-turizmi-icerik-takvimi-olusturucu/" />
+  <meta property="og:title" content="Sağlık Turizmi İçerik Takvimi Oluşturucu" />
+  <meta property="og:description" content="Branşınıza özel 30 günlük sosyal medya ve blog içerik takvimi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://saglikturizmi.info/"},
+      {"@type":"ListItem","position":2,"name":"Araçlar","item":"https://saglikturizmi.info/araclar/"},
+      {"@type":"ListItem","position":3,"name":"Sağlık Turizmi İçerik Takvimi Oluşturucu","item":"https://saglikturizmi.info/araclar/saglik-turizmi-icerik-takvimi-olusturucu/"}
+    ]},
+    {"@type":"WebApplication","name":"Sağlık Turizmi İçerik Takvimi Oluşturucu","url":"https://saglikturizmi.info/araclar/saglik-turizmi-icerik-takvimi-olusturucu/","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Her gün içerik üretmek şart mı?","acceptedAnswer":{"@type":"Answer","text":"Şart değil. Kalite niceliği yener. Haftada 2-3 iyi içerik, her gün vasat içerikten iyidir."}}]}
+  ]}
+  </script>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="page-wrap">
+  <section class="page-hero">
+    <div class="container-sm">
+      <nav class="breadcrumb"><a href="/">Ana Sayfa</a><span>›</span><a href="/araclar/">Araçlar</a><span>›</span><span style="color:var(--text-mid)">Sağlık Turizmi İçerik Takvimi Oluşturucu</span></nav>
+      <span class="badge badge-purple">Web ve İçerik Aracı</span>
+      <h1 class="mt-12">Sağlık Turizmi İçerik Takvimi Oluşturucu</h1>
+      <p class="lead mt-16" style="max-width:680px">Düzensiz içerik üretimi <strong>sağlık turizmi</strong> klinikleri için en yaygın <strong>dijital pazarlama</strong> hatalarından biridir. Bu araç; branşınıza özel 30 günlük takvim oluşturur.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container-sm">
+      <p style="font-size:15px;color:var(--text-mid);line-height:1.7;margin-bottom:24px">Branşınızı, kanal tercihlerinizi ve yayın frekansınızı seçin.</p>
+      <div class="form-grid"><div class="form-group"><label class="form-label">Branş</label><select id="brans" class="form-select"><option value="dis">Diş</option><option value="sac">Saç ekimi</option><option value="estetik">Estetik</option><option value="goz">Göz</option><option value="obezite">Obezite</option><option value="ivf">IVF</option></select></div><div class="form-group"><label class="form-label">Yayın Frekansı</label><select id="frekans" class="form-select"><option value="2">Haftada 2 (8 içerik/ay)</option><option value="3">Haftada 3 (12 içerik/ay)</option><option value="5">Haftada 5 (20 içerik/ay)</option></select></div><div class="form-group"><label class="form-label">Ana Kanal</label><select id="kanal" class="form-select"><option value="instagram">Instagram</option><option value="tiktok">TikTok</option><option value="youtube">YouTube</option></select></div></div>
+      <button class="btn btn-primary btn-lg mt-24" onclick="run()">Hesapla / Oluştur</button>
+      <div id="output" style="display:none" class="mt-24"></div>
+    </div>
+  </section>
+  <article class="seo-article" style="background:var(--bg-soft);padding:80px 0">
+    <div class="container-xs">
+      <div class="aeo-box"><div class="aeo-box-label">Kısa Cevap</div><div class="aeo-box-q">Sağlık turizminde içerik takvimi nasıl yapılır?</div><div class="aeo-box-a">Branşa özel konu havuzu + kanal formatı + yayın frekansı bir araya getirilerek 30 günlük takvim oluşturulur. Düzensiz değil, sistemli içerik üretimi marka inşası için temeldir.</div></div>
+      <h2 class="mt-40">Sık Sorulan Sorular</h2><div class="faq-item"><button class="faq-q">Her gün içerik üretmek şart mı? <span class="faq-icon">+</span></button><div class="faq-a">Şart değil. Kalite niceliği yener. Haftada 2-3 iyi içerik, her gün vasat içerikten iyidir.</div></div>
+      <div class="disclaimer mt-32">Bu araç bilgilendirme ve planlama amacıyla hazırlanmıştır. Profesyonel danışmanlık yerine geçmez.</div>
+    </div>
+  </article>
+</div>
+<div id="site-footer"></div>
+<script src="../../shared.js"></script>
+<script>
+function run() {
+  
+      const brans = document.getElementById('brans').value;
+      const frek = +document.getElementById('frekans').value;
+      const kanal = document.getElementById('kanal').value;
+      const formats = {
+        instagram: ['Reels - hekim soru cevap', 'Carousel - tedavi süreci', 'Reels - hasta deneyimi', 'Static - akreditasyon', 'Reels - klinik tur', 'Story - günlük', 'Carousel - SSS', 'Reels - öncesi sonrası (rıza ile)'],
+        tiktok: ['Hekim açıklaması (kısa)', 'Tedavi süreci kısa video', 'Hasta deneyimi', 'Klinik tur kısa', 'Trend uyarlaması (etik sınırda)', 'Soru-cevap', 'Mit/gerçek'],
+        youtube: ['Hekim röportajı', 'Tedavi süreci detaylı', 'Vaka çalışması', 'Hasta video röportajı', 'SSS uzun', 'Klinik tur'],
+      };
+      const topics = {
+        dis: ['İmplant nedir?', 'All-on-4 süreci', 'Zirkonyum vs Emax', 'İmplant sonrası bakım', 'Yetişkin ortodonti'],
+        sac: ['FUE vs DHI', 'Saç ekimi sonrası', 'Greft sayısı nasıl belirlenir?', 'Saç ekimi sonrası iyileşme'],
+        estetik: ['Rinoplasti süreci', 'Liposuction nedir?', 'Botoks gerçekleri', 'Mommy makeover'],
+        goz: ['LASIK uygunluğu', 'LASEK vs LASIK', 'Katarakt ameliyatı', 'Smile lazer'],
+        obezite: ['Gastrik bypass vs sleeve', 'Sonrası beslenme', 'BMI ve uygunluk', 'Süreç anlatımı'],
+        ivf: ['Tedavi süreci', 'PGD nedir?', 'Yaş ve başarı oranı', 'Süreç ne kadar sürer?'],
+      };
+      const days = frek * 4;
+      const fmts = formats[kanal];
+      const tpx = topics[brans];
+      const calendar = [];
+      for (let i = 0; i < days; i++) {
+        calendar.push({ gun: 'Gün ' + (i+1), format: fmts[i % fmts.length], konu: tpx[i % tpx.length] });
+      }
+      document.getElementById('output').innerHTML = '<div class="card-base" style="padding:24px"><h3 style="margin-bottom:14px">30 Günlük İçerik Takvimi (' + days + ' içerik)</h3>' +
+        '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr style="background:var(--bg-soft)"><th style="text-align:left;padding:10px;border-bottom:1px solid var(--border)">Gün</th><th style="text-align:left;padding:10px;border-bottom:1px solid var(--border)">Format</th><th style="text-align:left;padding:10px;border-bottom:1px solid var(--border)">Konu</th></tr></thead><tbody>' +
+        calendar.map(c => '<tr><td style="padding:10px;border-bottom:1px solid var(--border)">' + c.gun + '</td><td style="padding:10px;border-bottom:1px solid var(--border)">' + c.format + '</td><td style="padding:10px;border-bottom:1px solid var(--border)">' + c.konu + '</td></tr>').join('') +
+        '</tbody></table></div></div>';
+    
+  document.getElementById('output').style.display = 'block';
+  document.getElementById('output').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>

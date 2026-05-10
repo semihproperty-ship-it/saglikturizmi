@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Başlığı ve SEO Planlayıcı | saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizmi blog yazıları için anahtar kelime, başlık ve içerik yapısı önerileri." />
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/blog-basligi-ve-seo-planlayici/" />
+  <meta property="og:title" content="Blog Başlığı ve SEO Planlayıcı" />
+  <meta property="og:description" content="Sağlık turizmi blog yazıları için anahtar kelime, başlık ve içerik yapısı önerileri." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://saglikturizmi.info/"},
+      {"@type":"ListItem","position":2,"name":"Araçlar","item":"https://saglikturizmi.info/araclar/"},
+      {"@type":"ListItem","position":3,"name":"Blog Başlığı ve SEO Planlayıcı","item":"https://saglikturizmi.info/araclar/blog-basligi-ve-seo-planlayici/"}
+    ]},
+    {"@type":"WebApplication","name":"Blog Başlığı ve SEO Planlayıcı","url":"https://saglikturizmi.info/araclar/blog-basligi-ve-seo-planlayici/","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"AEO ve GEO ne demek?","acceptedAnswer":{"@type":"Answer","text":"AEO (Answer Engine Optimization) arama motorlarının cevap kutularına; GEO (Generative Engine Optimization) ise üretken yapay zeka cevaplarına optimizasyondur."}}]}
+  ]}
+  </script>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="page-wrap">
+  <section class="page-hero">
+    <div class="container-sm">
+      <nav class="breadcrumb"><a href="/">Ana Sayfa</a><span>›</span><a href="/araclar/">Araçlar</a><span>›</span><span style="color:var(--text-mid)">Blog Başlığı ve SEO Planlayıcı</span></nav>
+      <span class="badge badge-purple">Web ve İçerik Aracı</span>
+      <h1 class="mt-12">Blog Başlığı ve SEO Planlayıcı</h1>
+      <p class="lead mt-16" style="max-width:680px">SEO odaklı içerik; <strong>sağlık turizmi</strong> kliniğinin uzun vadeli <strong>dijital pazarlama</strong> stratejisinin temelidir. Bu araç; başlık, anahtar kelime ve içerik yapısı önerir.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container-sm">
+      <p style="font-size:15px;color:var(--text-mid);line-height:1.7;margin-bottom:24px">Branşınızı ve hedef niyeti seçin.</p>
+      <div class="form-grid"><div class="form-group"><label class="form-label">Branş</label><select id="brans" class="form-select"><option value="dis">Diş</option><option value="sac">Saç ekimi</option><option value="estetik">Estetik</option><option value="goz">Göz</option><option value="obezite">Obezite</option></select></div><div class="form-group"><label class="form-label">Arama Niyeti</label><select id="niyet" class="form-select"><option value="bilgilendirici">Bilgilendirici (Nedir, nasıl)</option><option value="karsilastirma">Karşılaştırma (X vs Y)</option><option value="fiyat">Fiyat / maliyet</option><option value="lokal">Lokal (Türkiye'de, İstanbul'da)</option></select></div></div>
+      <button class="btn btn-primary btn-lg mt-24" onclick="run()">Hesapla / Oluştur</button>
+      <div id="output" style="display:none" class="mt-24"></div>
+    </div>
+  </section>
+  <article class="seo-article" style="background:var(--bg-soft);padding:80px 0">
+    <div class="container-xs">
+      <div class="aeo-box"><div class="aeo-box-label">Kısa Cevap</div><div class="aeo-box-q">Sağlık turizmi blog yazısı için SEO yapısı nasıl olmalı?</div><div class="aeo-box-a">Net H1, kısa cevap kutusu (AEO), bilgilendirici H2/H3 başlıklar, hasta sorularını yanıtlayan FAQ, iç linkler ve disclaimer içeren yapı tercih edilmelidir.</div></div>
+      <h2 class="mt-40">Sık Sorulan Sorular</h2><div class="faq-item"><button class="faq-q">AEO ve GEO ne demek? <span class="faq-icon">+</span></button><div class="faq-a">AEO (Answer Engine Optimization) arama motorlarının cevap kutularına; GEO (Generative Engine Optimization) ise üretken yapay zeka cevaplarına optimizasyondur.</div></div>
+      <div class="disclaimer mt-32">Bu araç bilgilendirme ve planlama amacıyla hazırlanmıştır. Profesyonel danışmanlık yerine geçmez.</div>
+    </div>
+  </article>
+</div>
+<div id="site-footer"></div>
+<script src="../../shared.js"></script>
+<script>
+function run() {
+  
+      const brans = document.getElementById('brans').value;
+      const niyet = document.getElementById('niyet').value;
+      const baseTopic = { dis: 'implant', sac: 'saç ekimi', estetik: 'rinoplasti', goz: 'LASIK', obezite: 'gastrik sleeve' }[brans];
+      const titles = {
+        bilgilendirici: [baseTopic + ' nedir, nasıl yapılır?', baseTopic + ' süreci adım adım', baseTopic + ' kimler için uygundur?'],
+        karsilastirma: [baseTopic + ' vs alternatifi', baseTopic + ' Türkiye vs Avrupa', baseTopic + ' marka karşılaştırması'],
+        fiyat: [baseTopic + ' fiyatları 2026', baseTopic + ' Türkiye'de ne kadar?', baseTopic + ' maliyetini etkileyen faktörler'],
+        lokal: [baseTopic + ' Türkiye'de', 'İstanbul'da ' + baseTopic + ' yaptıranlar için rehber', baseTopic + ' için neden Türkiye?'],
+      };
+      const structure = ['H1 (Ana başlık)', 'Kısa cevap kutusu (AEO)', 'H2: ' + baseTopic + ' nedir?', 'H2: Süreç nasıl işler?', 'H2: Kimler için uygundur?', 'H2: Türkiye'deki süreç', 'H2: Sık sorulan sorular', 'H2: Hekim seçimi tavsiyeleri', 'İç linkler + CTA + disclaimer'];
+      document.getElementById('output').innerHTML = '<div class="card-base" style="padding:24px"><h3 style="margin-bottom:14px">Önerilen Başlıklar</h3>' +
+        '<ul style="font-size:14px;line-height:1.9">' + titles[niyet].map(t => '<li>' + t + '</li>').join('') + '</ul>' +
+        '<h3 class="mt-20" style="margin-bottom:14px">Önerilen İçerik Yapısı</h3>' +
+        '<ol style="font-size:14px;line-height:1.9">' + structure.map(s => '<li>' + s + '</li>').join('') + '</ol>' +
+        '<div class="insight insight-info mt-20"><div class="insight-icon">i</div><div class="insight-body">Her yazıda <strong>sağlık turizmi</strong> + branş anahtar kelimesini doğal biçimde kullanın; <strong>dijital pazarlama</strong> uzun-kuyruk anahtar kelimelerini başlık ve H2'lere yerleştirin.</div></div></div>';
+    
+  document.getElementById('output').style.display = 'block';
+  document.getElementById('output').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>

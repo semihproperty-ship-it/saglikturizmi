@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhatsApp İlk Mesaj Oluşturucu | Sağlık Turizmi — saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizmi hasta adaylarına gönderilecek ilk WhatsApp mesajını branşa, dile ve tona göre oluşturun. Güven veren, bot gibi görünmeyen, satış baskısı yapmayan şablonlar." />
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/whatsapp-ilk-mesaj-olusturucu/" />
+  <meta property="og:title" content="WhatsApp İlk Mesaj Oluşturucu | Sağlık Turizmi" />
+  <meta property="og:description" content="Branşa ve dile göre insani, güven veren ilk WhatsApp mesajı oluşturun." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://saglikturizmi.info/"},
+      {"@type":"ListItem","position":2,"name":"Araçlar","item":"https://saglikturizmi.info/araclar/"},
+      {"@type":"ListItem","position":3,"name":"WhatsApp İlk Mesaj Oluşturucu","item":"https://saglikturizmi.info/araclar/whatsapp-ilk-mesaj-olusturucu/"}
+    ]},
+    {"@type":"WebApplication","name":"WhatsApp İlk Mesaj Oluşturucu","url":"https://saglikturizmi.info/araclar/whatsapp-ilk-mesaj-olusturucu/","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"}}
+  ]}
+  </script>
+  <style>
+    .tool-layout { display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start; }
+    .sticky-sidebar { position: sticky; top: 88px; }
+    .msg-output { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--purple-main); border-radius: 12px; padding: 20px 24px; margin-top: 24px; }
+    .msg-label { font-size: 11px; font-weight: 700; color: var(--purple-main); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+    .msg-text { font-size: 15px; color: var(--text-dark); line-height: 1.8; white-space: pre-wrap; }
+    .copy-btn { margin-top: 14px; background: none; border: 1px solid var(--border); border-radius: 8px; padding: 7px 16px; font-size: 13px; color: var(--text-mid); cursor: pointer; font-family: var(--font); transition: all 0.15s; }
+    .copy-btn:hover { border-color: var(--purple-main); color: var(--purple-main); }
+    @media(max-width:900px){ .tool-layout{grid-template-columns:1fr;} .sticky-sidebar{position:static;} }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="page-wrap">
+
+  <section class="page-hero">
+    <div class="container-sm">
+      <nav class="breadcrumb"><a href="/">Ana Sayfa</a><span>›</span><a href="/araclar/">Araçlar</a><span>›</span><span style="color:var(--text-mid)">WhatsApp Mesaj Oluşturucu</span></nav>
+      <span class="badge badge-purple">WhatsApp ve CRM Aracı</span>
+      <h1 class="mt-12">WhatsApp İlk Mesaj Oluşturucu</h1>
+      <p class="lead mt-16" style="max-width:640px">Branş, dil, kaynak ve ton tercihlerinize göre <strong>güven veren, bot gibi görünmeyen</strong> ilk WhatsApp mesajı oluşturun. Satış baskısı, fiyat zorlaması ve gereksiz sağlık verisi isteği içermeyen mesajlar.</p>
+      <div class="flex gap-16 mt-16 wrap" style="font-size:13px;color:var(--text-light)">
+        <span>2–3 dakika</span><span>·</span><span>Hasta danışmanları, satış ekibi</span><span>·</span><span>6 dil desteği</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-sm">
+      <div class="tool-layout">
+        <div>
+          <div class="insight insight-info mb-24">
+            <div class="insight-icon">i</div>
+            <div>
+              <div class="insight-title" style="color:var(--purple-main)">Temel İlke</div>
+              <div class="insight-body">Üretilen mesajlarda kesin tedavi vaadi, fiyat baskısı, kampanya dili ve sağlık verisi isteği bulunmaz. Her mesaj insani, profesyonel ve güven verici bir dilde yazılır.</div>
+            </div>
+          </div>
+
+          <div class="form-grid mb-20">
+            <div class="form-group">
+              <label class="form-label">Branş</label>
+              <input type="text" id="inp-brans" class="form-input" placeholder="Ör: diş, saç ekimi, göz, estetik..." />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mesaj Dili</label>
+              <select id="inp-dil" class="form-select">
+                <option value="tr">Türkçe</option>
+                <option value="en">İngilizce</option>
+                <option value="de">Almanca</option>
+                <option value="ar">Arapça</option>
+                <option value="ru">Rusça</option>
+                <option value="fr">Fransızca</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Lead Kaynağı</label>
+              <select id="inp-kaynak" class="form-select">
+                <option value="form">Web / Meta Formu</option>
+                <option value="dm">Instagram DM</option>
+                <option value="google">Google Formu</option>
+                <option value="whatsapp">WhatsApp Reklamı</option>
+                <option value="referans">Referans</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mesaj Tonu</label>
+              <select id="inp-ton" class="form-select">
+                <option value="sicak">Sıcak ve İnsan</option>
+                <option value="resmi">Resmi ve Kurumsal</option>
+                <option value="kisa">Kısa ve Net</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Klinik / Kurum Adı (isteğe bağlı)</label>
+              <input type="text" id="inp-klinik" class="form-input" placeholder="Ör: Dent Istanbul" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Danışman Adı (isteğe bağlı)</label>
+              <input type="text" id="inp-danisan" class="form-input" placeholder="Ör: Ayşe" />
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-lg" onclick="generateMessages()">Mesajları Oluştur</button>
+
+          <div id="output-area" style="display:none">
+            <div id="msg-1" class="msg-output"></div>
+            <div id="msg-2" class="msg-output mt-16"></div>
+            <div id="msg-3" class="msg-output mt-16"></div>
+
+            <div class="insight insight-warning mt-20">
+              <div class="insight-icon">!</div>
+              <div class="insight-body">Bu mesajlar başlangıç şablonudur. Kendi kliniğinizin tonuna, branşınıza ve hastanın profiline göre uyarlayın. Asla bir şablonu düşünmeden, değiştirmeden kopyalayıp göndermeyin.</div>
+            </div>
+
+            <div class="mt-20">
+              <a id="wa-help" href="https://wa.me/905397232292?text=Merhaba%2C+WhatsApp+ileti%C5%9Fim+standard%C4%B1m%C4%B1+geli%C5%9Ftirmek+istiyorum." target="_blank" rel="noopener noreferrer" class="wa-cta">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.418A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="1.5" fill="none"/><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="white"/></svg>
+                WhatsApp ile Ulaşın — İletişim Standardı Kuralım
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sticky-sidebar">
+          <div class="sticky-cta-card" style="background:var(--bg-lavender);border:1px solid var(--purple-xlight);border-radius:16px;padding:24px">
+            <div style="font-weight:700;font-size:15px;margin-bottom:10px">Mesaj Yazarken Dikkat</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.5"><span style="color:#059669;font-weight:700;flex-shrink:0">✓</span>Önce kendinizi tanıtın</div>
+              <div style="font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.5"><span style="color:#059669;font-weight:700;flex-shrink:0">✓</span>Nasıl yardımcı olabileceğinizi belirtin</div>
+              <div style="font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.5"><span style="color:#059669;font-weight:700;flex-shrink:0">✓</span>Müsaitlik sorun</div>
+              <div style="font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.5"><span style="color:#DC2626;font-weight:700;flex-shrink:0">✗</span>Fiyat vermeyin</div>
+              <div style="font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.5"><span style="color:#DC2626;font-weight:700;flex-shrink:0">✗</span>Kesin sonuç vaat etmeyin</div>
+              <div style="font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.5"><span style="color:#DC2626;font-weight:700;flex-shrink:0">✗</span>Sağlık verisi istemeyin</div>
+              <div style="font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.5"><span style="color:#DC2626;font-weight:700;flex-shrink:0">✗</span>Baskı yaratmayın</div>
+            </div>
+            <hr class="divider mt-16 mb-16">
+            <div style="font-weight:700;font-size:13px;margin-bottom:10px">İlgili Araçlar</div>
+            <a href="/araclar/crm-pipeline-olusturucu/" class="tool-card-mini mb-8" style="display:flex">
+              <div class="tool-card-mini-num">04</div>
+              <div><div class="tool-card-mini-title">CRM Pipeline</div><div class="tool-card-mini-desc">Mesaj sonrası takip süreci</div></div>
+            </a>
+            <a href="/araclar/lead-cevap-hizi-hesaplayici/" class="tool-card-mini" style="display:flex">
+              <div class="tool-card-mini-num">02</div>
+              <div><div class="tool-card-mini-title">Lead Hızı Hesaplayıcı</div><div class="tool-card-mini-desc">Geç dönüşün maliyeti</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="seo-article" style="background:var(--bg-soft);padding:80px 0">
+    <div class="container-xs">
+      <h2>Sağlık Turizminde WhatsApp İlk Mesajı Neden Önemlidir?</h2>
+      <div class="aeo-box">
+        <div class="aeo-box-label">Kısa Cevap</div>
+        <div class="aeo-box-q">Sağlık turizminde WhatsApp ilk mesajı nasıl olmalı?</div>
+        <div class="aeo-box-a"><strong>Sağlık turizmi</strong> WhatsApp ilk mesajı; güven veren, insani bir dilde yazılmış, kesin tedavi vaadi veya fiyat baskısı içermeyen, hasta adayını sürece davet eden kısa ve net bir karşılama mesajı olmalıdır.</div>
+      </div>
+
+      <h3>Hasta Adayına İlk Mesaj Nasıl Güven Verir?</h3>
+      <p>İlk WhatsApp mesajı, hasta adayının kliniğiniz hakkında oluşturacağı ilk canlı izlenimidir. Bu mesaj; profesyonelliği, ilgiyi ve güveni yansıtmalıdır. Muğlak, jenerik veya aşırı satışçı bir mesaj, hasta adayının ilgisini kaybetmesine neden olur.</p>
+      <p><span class="kw">Sağlık turizmi WhatsApp yönetimi</span> alanında etkin mesajlar şu özellikleri taşır: kimden geldiği net, amacı açık, baskı içermeyen ve bir sonraki adımı kolaylaştıran.</p>
+
+      <h3>Bot Gibi Görünen Mesajlar Neden Dönüşümü Düşürür?</h3>
+      <p>Otomatik oluşturulmuş hissi veren mesajlar — aşırı resmi dil, jenerik ifadeler, kopyala-yapıştır belli olan ton — hasta adayına "bu klinik beni gerçekten önemsemiyor" hissini verir. <strong>Sağlık turizmi dijital pazarlama</strong> sürecinde bu his, rekabetçi bir pazarda doğrudan lead kaybına dönüşür.</p>
+
+      <h3>Meta Formdan Gelen Leade Nasıl Yazılmalı?</h3>
+      <p>Meta reklamından gelen hasta adayı, bir an için ilgisini göstermiş ve formu doldurmuştur. Bu an kısa sürer. Mesaj; hızlı gelmeli, formu doldurduğunu kabul etmeli, süreci kısaca açıklamalı ve bir görüşme için kapı açmalıdır.</p>
+      <p>Hata: "Merhaba, formunuz geldi. Fiyat bilgisi için şunu yapın..." — Bu yaklaşım hem çok erken fiyat konuşur hem de insani değildir.</p>
+
+      <h3>WhatsApp Mesajlarında Yapılmaması Gereken Hatalar</h3>
+      <ul>
+        <li><span class="kw">İlk mesajda fiyat vermek:</span> Hasta adayı henüz değer görmemiştir; fiyat bu aşamada korkutur.</li>
+        <li><span class="kw">Kesin iyileşme vaadi:</span> "Garantili sonuç" veya "kesinlikle başarılı olacak" ifadeleri etik ve hukuki risk taşır.</li>
+        <li><span class="kw">Aşırı tıbbi soru:</span> İlk mesajda teşhis sormak veya tıbbi geçmiş istemek uygun değildir.</li>
+        <li><span class="kw">Baskı dili:</span> "Hemen karar verin, kampanya bitiyor" tarzı ifadeler güven yok eder.</li>
+        <li><span class="kw">Kopyala-yapıştır belli olan metin:</span> Her mesajın biraz kişiselleştirilmesi gerekir.</li>
+      </ul>
+
+      <h2 class="mt-40">Sık Sorulan Sorular</h2>
+      <div class="faq-item"><button class="faq-q">WhatsApp mesajında KVKK uyumu nasıl sağlanır? <span class="faq-icon">+</span></button><div class="faq-a">İlk mesajda sağlık verisi talep edilmemeli, kişisel verilerin nasıl işlendiği hakkında genel bir not veya aydınlatma metni bağlantısı eklenebilir.</div></div>
+      <div class="faq-item"><button class="faq-q">Yabancı dilde mesaj göndermek için ne gerekir? <span class="faq-icon">+</span></button><div class="faq-a">Dil bilgisi yeterli değilse, profesyonelce çevrilmiş şablonlar kullanılmalıdır. Makine çevirisi hataları güveni ciddi ölçüde zedeler.</div></div>
+      <div class="faq-item"><button class="faq-q">Akşam gelen leade ne zaman mesaj atılmalı? <span class="faq-icon">+</span></button><div class="faq-a">Mümkünse aynı gece kısa bir "talebiniz alındı, yarın sabah dönüş yapacağız" mesajı. Hiç dönüş yapmamaktan çok daha iyidir.</div></div>
+      <div class="faq-item"><button class="faq-q">Cevap gelmezse ne kadar bekleyip tekrar yazmalı? <span class="faq-icon">+</span></button><div class="faq-a">24-48 saat sonra nazik bir hatırlatma mesajı uygundur. İkinci mesajdan sonra cevap gelmiyorsa 1 hafta sonra bir son deneme yapılabilir.</div></div>
+      <div class="faq-item"><button class="faq-q">Oluşturucu hangi dilleri destekliyor? <span class="faq-icon">+</span></button><div class="faq-a">Türkçe, İngilizce, Almanca, Arapça, Rusça ve Fransızca desteklenmektedir.</div></div>
+
+      <div class="disclaimer mt-32">Bu araç bilgilendirme ve planlama amacıyla hazırlanmıştır. Sağlık alanındaki hasta iletişimi, kişisel veri işleme ve tanıtım süreçlerinde güncel mevzuat ve uzman görüşü dikkate alınmalıdır.</div>
+    </div>
+  </article>
+</div>
+<div id="site-footer"></div>
+<script src="../../shared.js"></script>
+<script>
+const TEMPLATES = {
+  tr: {
+    sicak: (b, k, d) => ({
+      msg1: `Merhaba${d ? ', ben ' + d : ''}${k ? ' — ' + k + ' ekibinden' : ''}. ${b ? b.charAt(0).toUpperCase() + b.slice(1) + ' konusundaki' : 'Gönderdiğiniz'} talebiniz bize ulaştı.\n\nSizi doğru yönlendirebilmemiz için süreci ve değerlendirme adımlarını kısaca paylaşmak istiyorum. Şu an müsait misiniz?`,
+      msg2: `Merhaba, dün talebinizi aldık ancak henüz görüşemedik. Sizinle uygun bir zaman belirleyebilir miyiz? Birkaç dakikalık kısa bir görüşme yeterli olacaktır.`,
+      msg3: `Merhaba, birkaç gündür ulaşmaya çalışıyoruz. Eğer hâlâ ${b || 'bu konu'} hakkında bilgi almak istiyorsanız, size yardımcı olmaktan memnuniyet duyarız. Müsait olduğunuzda yazabilirsiniz.`,
+    }),
+    resmi: (b, k, d) => ({
+      msg1: `Sayın hasta adayımız,\n\n${b ? b.charAt(0).toUpperCase() + b.slice(1) + ' alanındaki' : ''} başvurunuz ${k || 'kliniğimize'} ulaşmıştır. Talebinizi değerlendirmek ve sizi süreç hakkında bilgilendirmek için${d ? ' ' + d + ' olarak' : ''} en kısa sürede iletişime geçeceğiz.\n\nMüsait olduğunuz zaman dilimini belirtirseniz görüşmemizi planlayabiliriz.`,
+      msg2: `Sayın hasta adayımız, önceki mesajımıza henüz yanıt alamadık. Talebiniz hâlâ geçerliyse görüşme planlamaktan memnuniyet duyarız.`,
+      msg3: `Sayın hasta adayımız, ${b || 'başvurunuz'} konusunda bilgi almak isterseniz ekibimiz her zaman hazırdır. Uygun bir zamanda bizimle iletişime geçebilirsiniz.`,
+    }),
+    kisa: (b, k, d) => ({
+      msg1: `Merhaba${d ? ', ' + d : ''}${k ? ' / ' + k : ''}. ${b ? b.charAt(0).toUpperCase() + b.slice(1) + ' talebinizi' : 'Talebinizi'} aldık. Size uygun zaman nedir?`,
+      msg2: `Merhaba, dünkü mesajımıza yanıt bekliyoruz. Müsait olduğunuzda yazabilirsiniz.`,
+      msg3: `Merhaba, son bir hatırlatma. ${b || 'Talebiniz'} için yardımcı olmak istiyoruz.`,
+    }),
+  },
+  en: {
+    sicak: (b, k, d) => ({
+      msg1: `Hi there${d ? ', I'm ' + d : ''}${k ? ' from ' + k : ''}! We received your inquiry${b ? ' about ' + b : ''}.\n\nI'd love to walk you through the process and next steps. Are you available for a quick chat?`,
+      msg2: `Hi, I reached out yesterday but haven't heard back. Whenever you're ready, I'm happy to share some information about ${b || 'our services'}.`,
+      msg3: `Hello, just a gentle follow-up. If you're still interested in ${b || 'our services'}, feel free to reach out anytime.`,
+    }),
+    resmi: (b, k, d) => ({
+      msg1: `Dear prospective patient,\n\nYour inquiry${b ? ' regarding ' + b : ''} has been received by ${k || 'our clinic'}. Our coordination team${d ? ', led by ' + d + ',' : ''} will be in touch shortly to guide you through the evaluation process.\n\nPlease let us know your preferred time for a consultation.`,
+      msg2: `Dear prospective patient, we haven't received a response to our previous message. Should you still wish to proceed, we'd be happy to assist.`,
+      msg3: `Dear prospective patient, this is a final follow-up regarding your ${b || 'inquiry'}. Our team remains available should you wish to continue.`,
+    }),
+    kisa: (b, k, d) => ({
+      msg1: `Hi${d ? ', ' + d + ' here' : ''}${k ? ' from ' + k : ''}. Got your ${b || 'inquiry'}. When's a good time to chat?`,
+      msg2: `Hi, following up from yesterday. Let us know when you're free.`,
+      msg3: `Hi, last follow-up on your ${b || 'inquiry'}. Happy to help anytime.`,
+    }),
+  },
+  de: {
+    sicak: (b, k, d) => ({
+      msg1: `Hallo${d ? ', ich bin ' + d : ''}${k ? ' von ' + k : ''}! Wir haben Ihre Anfrage${b ? ' bezüglich ' + b : ''} erhalten.\n\nIch würde Ihnen gerne den Prozess und die nächsten Schritte erläutern. Haben Sie kurz Zeit für ein Gespräch?`,
+      msg2: `Hallo, wir haben gestern eine Nachricht gesendet, aber noch keine Antwort erhalten. Wann haben Sie Zeit für ein kurzes Gespräch?`,
+      msg3: `Hallo, eine letzte Nachricht bezüglich Ihrer Anfrage. Wir stehen gerne zur Verfügung, wenn Sie weitere Informationen wünschen.`,
+    }),
+  },
+  ar: {
+    sicak: (b, k, d) => ({
+      msg1: `مرحباً${d ? '، أنا ' + d : ''}${k ? ' من ' + k : ''}. وصلنا طلبكم${b ? ' بخصوص ' + b : ''}.\n\nنود توجيهكم خطوة بخطوة عبر العملية. هل لديكم وقت لحديث قصير؟`,
+      msg2: `مرحباً، أرسلنا لكم رسالة بالأمس ولم نتلقَ ردًا. متى يناسبكم التحدث؟`,
+      msg3: `مرحباً، آخر متابعة. فريقنا متاح إذا أردتم معرفة المزيد.`,
+    }),
+  },
+  ru: {
+    sicak: (b, k, d) => ({
+      msg1: `Здравствуйте${d ? ', меня зовут ' + d : ''}${k ? ' из ' + k : ''}! Мы получили ваш запрос${b ? ' по теме ' + b : ''}.\n\nХотел бы рассказать вам о процессе и следующих шагах. Удобно ли вам поговорить?`,
+      msg2: `Здравствуйте, вчера мы написали вам, но не получили ответа. Когда вам удобно поговорить?`,
+      msg3: `Здравствуйте, последнее напоминание о вашем запросе. Мы готовы помочь в любое время.`,
+    }),
+  },
+  fr: {
+    sicak: (b, k, d) => ({
+      msg1: `Bonjour${d ? ', je suis ' + d : ''}${k ? ' de ' + k : ''}. Nous avons bien reçu votre demande${b ? ' concernant ' + b : ''}.\n\nJe serais ravi(e) de vous expliquer le processus et les prochaines étapes. Êtes-vous disponible pour un court entretien ?`,
+      msg2: `Bonjour, nous vous avons contacté hier mais n'avons pas eu de réponse. Quand seriez-vous disponible ?`,
+      msg3: `Bonjour, dernier message de suivi. Notre équipe reste disponible pour toute question.`,
+    }),
+  },
+};
+
+function generateMessages() {
+  const brans = document.getElementById('inp-brans').value.trim();
+  const dil = document.getElementById('inp-dil').value;
+  const ton = document.getElementById('inp-ton').value;
+  const klinik = document.getElementById('inp-klinik').value.trim();
+  const danisan = document.getElementById('inp-danisan').value.trim();
+
+  const langTemplates = TEMPLATES[dil] || TEMPLATES.tr;
+  const tonFn = langTemplates[ton] || langTemplates.sicak;
+  const msgs = tonFn(brans, klinik, danisan);
+
+  const labels = { tr: ['İlk Karşılama Mesajı', 'Takip Mesajı (24-48 saat)', 'Son Hatırlatma (1 hafta)'], en: ['First Welcome Message', 'Follow-up (24-48 hours)', 'Final Follow-up (1 week)'], de: ['Erste Nachricht', 'Nachfassung (24-48 Std.)', 'Letzte Erinnerung'], ar: ['رسالة الترحيب', 'متابعة (24-48 ساعة)', 'المتابعة الأخيرة'], ru: ['Первое сообщение', 'Повторное (24-48 ч.)', 'Последнее напоминание'], fr: ['Premier message', 'Relance (24-48h)', 'Dernier rappel'] };
+  const l = labels[dil] || labels.tr;
+
+  ['msg-1','msg-2','msg-3'].forEach((id, i) => {
+    const key = 'msg' + (i+1);
+    document.getElementById(id).innerHTML = `
+      <div class="msg-label">${l[i]}</div>
+      <div class="msg-text">${msgs[key] || ''}</div>
+      <button class="copy-btn" onclick="copyMsg('${id}')">Kopyala</button>
+    `;
+  });
+
+  document.getElementById('output-area').style.display = 'block';
+  document.getElementById('output-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function copyMsg(id) {
+  const text = document.querySelector('#' + id + ' .msg-text').textContent;
+  navigator.clipboard?.writeText(text);
+  event.target.textContent = 'Kopyalandı!';
+  setTimeout(() => event.target.textContent = 'Kopyala', 2000);
+}
+</script>
+</body>
+</html>

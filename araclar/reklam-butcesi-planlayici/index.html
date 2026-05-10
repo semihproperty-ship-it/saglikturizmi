@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reklam Bütçesi Planlayıcı | saglikturizmi.info</title>
+  <meta name="description" content="Hedef hasta sayısına ulaşmak için ne kadar reklam bütçesi gerekir? CPL, dönüşüm ve kanal dağılımı." />
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/reklam-butcesi-planlayici/" />
+  <meta property="og:title" content="Reklam Bütçesi Planlayıcı" />
+  <meta property="og:description" content="Hedef hasta sayısına ulaşmak için ne kadar reklam bütçesi gerekir? CPL, dönüşüm ve kanal dağılımı." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://saglikturizmi.info/"},
+      {"@type":"ListItem","position":2,"name":"Araçlar","item":"https://saglikturizmi.info/araclar/"},
+      {"@type":"ListItem","position":3,"name":"Reklam Bütçesi Planlayıcı","item":"https://saglikturizmi.info/araclar/reklam-butcesi-planlayici/"}
+    ]},
+    {"@type":"WebApplication","name":"Reklam Bütçesi Planlayıcı","url":"https://saglikturizmi.info/araclar/reklam-butcesi-planlayici/","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"CPL ne kadar olmalı?","acceptedAnswer":{"@type":"Answer","text":"Branş, pazar ve rekabete göre değişir. Türkiye'de saç ekiminde 100-300 TL, IVF'te 500-1500 TL arası tipiktir."}}]}
+  ]}
+  </script>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="page-wrap">
+  <section class="page-hero">
+    <div class="container-sm">
+      <nav class="breadcrumb"><a href="/">Ana Sayfa</a><span>›</span><a href="/araclar/">Araçlar</a><span>›</span><span style="color:var(--text-mid)">Reklam Bütçesi Planlayıcı</span></nav>
+      <span class="badge badge-purple">Pazar ve Strateji Aracı</span>
+      <h1 class="mt-12">Reklam Bütçesi Planlayıcı</h1>
+      <p class="lead mt-16" style="max-width:680px">Bütçe planlama; <strong>sağlık turizmi</strong> <strong>dijital pazarlama</strong> stratejisinin temelidir. Hedef hasta sayısından geriye doğru hesaplama yapılır.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container-sm">
+      <p style="font-size:15px;color:var(--text-mid);line-height:1.7;margin-bottom:24px">Aylık hedef hasta sayınız ve tahmini dönüşüm oranlarınızı girin.</p>
+      <div class="form-grid"><div class="form-group"><label class="form-label">Aylık Hedef Hasta Sayısı</label><input type="number" id="hedef" class="form-input" placeholder="" value="20" /></div><div class="form-group"><label class="form-label">Lead → Hasta Dönüşüm Oranı (%)</label><input type="number" id="lead-hasta" class="form-input" placeholder="" value="5" /></div><div class="form-group"><label class="form-label">Beklenen CPL (TL)</label><input type="number" id="cpl" class="form-input" placeholder="" value="350" /></div></div>
+      <button class="btn btn-primary btn-lg mt-24" onclick="run()">Hesapla / Oluştur</button>
+      <div id="output" style="display:none" class="mt-24"></div>
+    </div>
+  </section>
+  <article class="seo-article" style="background:var(--bg-soft);padding:80px 0">
+    <div class="container-xs">
+      <div class="aeo-box"><div class="aeo-box-label">Kısa Cevap</div><div class="aeo-box-q">Sağlık turizmi için reklam bütçesi nasıl planlanır?</div><div class="aeo-box-a">Hedef hasta sayısı → tahmini dönüşüm oranı → lead başına maliyet (CPL) zinciri üzerinden geriye doğru hesaplama yapılır. Tahminler için kendi geçmiş veriniz; yoksa sektör ortalaması başlangıç noktası olabilir.</div></div>
+      <h2 class="mt-40">Sık Sorulan Sorular</h2><div class="faq-item"><button class="faq-q">CPL ne kadar olmalı? <span class="faq-icon">+</span></button><div class="faq-a">Branş, pazar ve rekabete göre değişir. Türkiye'de saç ekiminde 100-300 TL, IVF'te 500-1500 TL arası tipiktir.</div></div>
+      <div class="disclaimer mt-32">Bu araç bilgilendirme ve planlama amacıyla hazırlanmıştır. Profesyonel danışmanlık yerine geçmez.</div>
+    </div>
+  </article>
+</div>
+<div id="site-footer"></div>
+<script src="../../shared.js"></script>
+<script>
+function run() {
+  
+      const h = +document.getElementById('hedef').value;
+      const d = +document.getElementById('lead-hasta').value / 100;
+      const cpl = +document.getElementById('cpl').value;
+      const leadGerekli = Math.ceil(h / d);
+      const butce = leadGerekli * cpl;
+      const cac = h ? Math.round(butce / h) : 0;
+      document.getElementById('output').innerHTML = '<div class="card-base" style="padding:28px"><h3 style="margin-bottom:16px">Aylık Bütçe Planı</h3>' +
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px">' +
+        '<div style="padding:18px;background:var(--bg-soft);border-radius:12px"><div style="font-size:12px;color:var(--text-light)">Lead Gerekli</div><div style="font-size:30px;font-weight:900;color:var(--purple-main)">' + leadGerekli.toLocaleString('tr') + '</div></div>' +
+        '<div style="padding:18px;background:var(--bg-soft);border-radius:12px"><div style="font-size:12px;color:var(--text-light)">Toplam Bütçe</div><div style="font-size:30px;font-weight:900;color:var(--purple-main)">' + butce.toLocaleString('tr') + ' ₺</div></div>' +
+        '<div style="padding:18px;background:var(--bg-soft);border-radius:12px"><div style="font-size:12px;color:var(--text-light)">CAC (Hasta Maliyeti)</div><div style="font-size:30px;font-weight:900;color:var(--purple-main)">' + cac.toLocaleString('tr') + ' ₺</div></div>' +
+        '</div>' +
+        '<h4 class="mt-20" style="font-size:14px">Önerilen Kanal Dağılımı</h4>' +
+        '<div style="margin-top:10px;font-size:13px;color:var(--text-mid);line-height:1.8"><div>Meta (FB+IG): <strong>%' + 55 + '</strong> — ' + Math.round(butce*0.55).toLocaleString('tr') + ' ₺</div><div>Google Ads: <strong>%' + 30 + '</strong> — ' + Math.round(butce*0.30).toLocaleString('tr') + ' ₺</div><div>Diğer (TikTok, YouTube): <strong>%' + 15 + '</strong> — ' + Math.round(butce*0.15).toLocaleString('tr') + ' ₺</div></div>' +
+        '</div>';
+    
+  document.getElementById('output').style.display = 'block';
+  document.getElementById('output').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>

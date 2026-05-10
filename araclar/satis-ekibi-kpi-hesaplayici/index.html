@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Satış Ekibi KPI Hesaplayıcı | saglikturizmi.info</title>
+  <meta name="description" content="Hasta danışmanlarınızın performansını ölçün: lead başına dönüşüm, dönüş süresi ve hasta başına ciro." />
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/satis-ekibi-kpi-hesaplayici/" />
+  <meta property="og:title" content="Satış Ekibi KPI Hesaplayıcı" />
+  <meta property="og:description" content="Hasta danışmanlarınızın performansını ölçün: lead başına dönüşüm, dönüş süresi ve hasta başına ciro." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://saglikturizmi.info/"},
+      {"@type":"ListItem","position":2,"name":"Araçlar","item":"https://saglikturizmi.info/araclar/"},
+      {"@type":"ListItem","position":3,"name":"Satış Ekibi KPI Hesaplayıcı","item":"https://saglikturizmi.info/araclar/satis-ekibi-kpi-hesaplayici/"}
+    ]},
+    {"@type":"WebApplication","name":"Satış Ekibi KPI Hesaplayıcı","url":"https://saglikturizmi.info/araclar/satis-ekibi-kpi-hesaplayici/","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"KPI'lar branşa göre değişir mi?","acceptedAnswer":{"@type":"Answer","text":"Evet. Saç ekimi yüksek dönüşümlü; IVF düşük dönüşümlü olur. Kendi branşınızın benchmark'ına bakmak gerekir."}}]}
+  ]}
+  </script>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="page-wrap">
+  <section class="page-hero">
+    <div class="container-sm">
+      <nav class="breadcrumb"><a href="/">Ana Sayfa</a><span>›</span><a href="/araclar/">Araçlar</a><span>›</span><span style="color:var(--text-mid)">Satış Ekibi KPI Hesaplayıcı</span></nav>
+      <span class="badge badge-purple">Reklam ve Uyum Aracı</span>
+      <h1 class="mt-12">Satış Ekibi KPI Hesaplayıcı</h1>
+      <p class="lead mt-16" style="max-width:680px"><strong>Sağlık turizmi</strong> ekibinizin sahadaki gerçek performansını ölçmek; <strong>dijital pazarlama</strong> yatırımının verimini anlamanın ön koşuludur.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container-sm">
+      <p style="font-size:15px;color:var(--text-mid);line-height:1.7;margin-bottom:24px">Bir danışman için son 30 günün verilerini girin.</p>
+      <div class="form-grid"><div class="form-group"><label class="form-label">Atanan Lead Sayısı</label><input type="number" id="lead" class="form-input" placeholder="" value="100" /></div><div class="form-group"><label class="form-label">İlk Temas Yapılan</label><input type="number" id="temas" class="form-input" placeholder="" value="80" /></div><div class="form-group"><label class="form-label">Görüşme Yapılan</label><input type="number" id="gorus" class="form-input" placeholder="" value="40" /></div><div class="form-group"><label class="form-label">Teklif Verilen</label><input type="number" id="teklif" class="form-input" placeholder="" value="25" /></div><div class="form-group"><label class="form-label">Hasta Kazanımı</label><input type="number" id="kazanim" class="form-input" placeholder="" value="6" /></div><div class="form-group"><label class="form-label">Toplam Ciro (TL)</label><input type="number" id="ciro" class="form-input" placeholder="" value="600000" /></div></div>
+      <button class="btn btn-primary btn-lg mt-24" onclick="run()">Hesapla / Oluştur</button>
+      <div id="output" style="display:none" class="mt-24"></div>
+    </div>
+  </section>
+  <article class="seo-article" style="background:var(--bg-soft);padding:80px 0">
+    <div class="container-xs">
+      <div class="aeo-box"><div class="aeo-box-label">Kısa Cevap</div><div class="aeo-box-q">Sağlık turizmi danışmanı için iyi KPI nedir?</div><div class="aeo-box-a">Temas oranı >80%, görüşme oranı >50%, kapanış oranı >30%, lead-hasta oranı >5% iyi bir başlangıç noktasıdır. Branş, pazar ve klinik konumlamasına göre değişir.</div></div>
+      <h2 class="mt-40">Sık Sorulan Sorular</h2><div class="faq-item"><button class="faq-q">KPI'lar branşa göre değişir mi? <span class="faq-icon">+</span></button><div class="faq-a">Evet. Saç ekimi yüksek dönüşümlü; IVF düşük dönüşümlü olur. Kendi branşınızın benchmark'ına bakmak gerekir.</div></div>
+      <div class="disclaimer mt-32">Bu araç bilgilendirme ve planlama amacıyla hazırlanmıştır. Profesyonel danışmanlık yerine geçmez.</div>
+    </div>
+  </article>
+</div>
+<div id="site-footer"></div>
+<script src="../../shared.js"></script>
+<script>
+function run() {
+  
+      const l = +document.getElementById('lead').value;
+      const t = +document.getElementById('temas').value;
+      const g = +document.getElementById('gorus').value;
+      const tk = +document.getElementById('teklif').value;
+      const k = +document.getElementById('kazanim').value;
+      const c = +document.getElementById('ciro').value;
+      const metrics = [
+        { name: 'Temas Oranı', val: l ? Math.round(t/l*1000)/10 + '%' : '0%', bench: 'İyi: >80%' },
+        { name: 'Görüşme Oranı', val: t ? Math.round(g/t*1000)/10 + '%' : '0%', bench: 'İyi: >50%' },
+        { name: 'Teklif Oranı', val: g ? Math.round(tk/g*1000)/10 + '%' : '0%', bench: 'İyi: >60%' },
+        { name: 'Kapanış Oranı', val: tk ? Math.round(k/tk*1000)/10 + '%' : '0%', bench: 'İyi: >30%' },
+        { name: 'Lead → Hasta', val: l ? Math.round(k/l*1000)/10 + '%' : '0%', bench: 'İyi: >5%' },
+        { name: 'Hasta Başına Ciro', val: k ? Math.round(c/k).toLocaleString('tr') + ' ₺' : '0 ₺', bench: 'Branşa göre' },
+      ];
+      document.getElementById('output').innerHTML = '<div class="card-base" style="padding:24px"><h3 style="margin-bottom:16px">Performans Metrikleri</h3>' +
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">' +
+        metrics.map(m => '<div style="padding:14px;background:var(--bg-soft);border-radius:10px"><div style="font-size:12px;color:var(--text-light);text-transform:uppercase;letter-spacing:0.05em">' + m.name + '</div><div style="font-size:24px;font-weight:900;color:var(--purple-main);margin:6px 0">' + m.val + '</div><div style="font-size:11px;color:var(--text-light)">' + m.bench + '</div></div>').join('') +
+        '</div></div>';
+    
+  document.getElementById('output').style.display = 'block';
+  document.getElementById('output').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>

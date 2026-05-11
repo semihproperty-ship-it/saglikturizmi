@@ -12,6 +12,16 @@
   function renderHeader() {
     const el = document.getElementById('site-header');
     if (!el) return;
+    const navItems = [
+      ['/rehber/', 'Sağlık Turizmi Rehberi'],
+      ['/doktorlar/', 'Doktorlar İçin'],
+      ['/klinikler/', 'Klinikler İçin'],
+      ['/dijital-pazarlama/', 'Dijital Pazarlama'],
+      ['/araclar/', 'Araçlar'],
+      ['/blog/', 'Blog'],
+      ['/sablonlar/', 'Şablonlar'],
+      ['/iletisim/', 'İletişim'],
+    ];
     el.innerHTML = `
       <header class="header">
         <div class="container header-inner">
@@ -25,25 +35,55 @@
             <span class="logo-text">saglikturizmi<span>.info</span></span>
           </a>
           <nav class="nav" aria-label="Ana navigasyon">
-            ${[
-              ['/rehber/', 'Sağlık Turizmi Rehberi'],
-              ['/doktorlar/', 'Doktorlar İçin'],
-              ['/klinikler/', 'Klinikler İçin'],
-              ['/dijital-pazarlama/', 'Dijital Pazarlama'],
-              ['/araclar/', 'Araçlar'],
-              ['/blog/', 'Blog'],
-              ['/sablonlar/', 'Şablonlar'],
-              ['/iletisim/', 'İletişim'],
-            ].map(([href, label]) =>
+            ${navItems.map(([href, label]) =>
               `<a href="${href}" class="nav-link${isActive(href) ? ' active' : ''}">${label}</a>`
             ).join('')}
           </nav>
           <div class="header-ctas">
-            <a href="/araclar/" class="btn btn-ghost btn-sm">Araçları Gör</a>
-            <a href="/araclar/klinik-saglik-turizmi-hazirlik-skoru/" class="btn btn-primary btn-sm">Klinik Analizi</a>
+            <a href="/araclar/" class="btn btn-ghost btn-sm hide-on-mobile">Araçları Gör</a>
+            <a href="/araclar/klinik-saglik-turizmi-hazirlik-skoru/" class="btn btn-primary btn-sm hide-on-xs">Klinik Analizi</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç" aria-expanded="false">
+              <span></span><span></span><span></span>
+            </button>
           </div>
         </div>
+        <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+          <nav class="mobile-nav" aria-label="Mobil navigasyon">
+            ${navItems.map(([href, label]) =>
+              `<a href="${href}" class="mobile-nav-link${isActive(href) ? ' active' : ''}">${label}</a>`
+            ).join('')}
+            <div class="mobile-menu-ctas">
+              <a href="/araclar/" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center">Araçları Gör</a>
+              <a href="/araclar/klinik-saglik-turizmi-hazirlik-skoru/" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">Klinik Analizi</a>
+              <a href="https://wa.me/${PHONE}?text=Merhaba%2C%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-sm" style="width:100%;justify-content:center;background:#25D366;color:#fff">WhatsApp ile Yaz</a>
+            </div>
+          </nav>
+        </div>
+        <div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
       </header>`;
+
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('mobileMenu');
+    const backdrop = document.getElementById('mobileMenuBackdrop');
+    const close = () => {
+      toggle.classList.remove('open');
+      menu.classList.remove('open');
+      backdrop.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.classList.toggle('open');
+      menu.classList.toggle('open', isOpen);
+      backdrop.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.setAttribute('aria-hidden', String(!isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    backdrop.addEventListener('click', close);
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
   }
 
   // ── Footer

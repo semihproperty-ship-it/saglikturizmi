@@ -289,7 +289,6 @@ strong, b { font-weight: 700; color: var(--text-dark); }
 }
 @media (max-width: 480px) {
   .hide-on-xs { display: none !important; }
-  .logo-text span { display: none; }
   .header-inner { gap: 6px; }
   .container, .container-sm, .container-xs { padding: 0 14px; }
   .mobile-menu { width: 100%; max-width: 100%; }

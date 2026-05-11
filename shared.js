@@ -20,6 +20,7 @@
       ['/araclar/', 'Araçlar'],
       ['/blog/', 'Blog'],
       ['/sablonlar/', 'Şablonlar'],
+      ['/saglik-turizmi/', 'Hizmetlerimiz', 'pulse'],
       ['/iletisim/', 'İletişim'],
     ];
     el.innerHTML = `
@@ -35,13 +36,13 @@
             <span class="logo-text">saglikturizmi<span>.info</span></span>
           </a>
           <nav class="nav" aria-label="Ana navigasyon">
-            ${navItems.map(([href, label]) =>
-              `<a href="${href}" class="nav-link${isActive(href) ? ' active' : ''}">${label}</a>`
+            ${navItems.map(([href, label, mod]) =>
+              `<a href="${href}" class="nav-link${isActive(href) ? ' active' : ''}${mod === 'pulse' ? ' nav-link-pulse' : ''}">${label}</a>`
             ).join('')}
           </nav>
           <div class="header-ctas">
             <a href="/araclar/" class="btn btn-ghost btn-sm hide-on-mobile">Araçları Gör</a>
-            <a href="/araclar/klinik-saglik-turizmi-hazirlik-skoru/" class="btn btn-primary btn-sm hide-on-xs">Klinik Analizi</a>
+            <a href="/saglik-turizmi/" class="btn btn-primary btn-sm hide-on-xs">Ücretsiz Görüşme</a>
             <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç" aria-expanded="false">
               <span></span><span></span><span></span>
             </button>
@@ -49,12 +50,12 @@
         </div>
         <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
           <nav class="mobile-nav" aria-label="Mobil navigasyon">
-            ${navItems.map(([href, label]) =>
-              `<a href="${href}" class="mobile-nav-link${isActive(href) ? ' active' : ''}">${label}</a>`
+            ${navItems.map(([href, label, mod]) =>
+              `<a href="${href}" class="mobile-nav-link${isActive(href) ? ' active' : ''}${mod === 'pulse' ? ' mobile-nav-link-pulse' : ''}">${label}</a>`
             ).join('')}
             <div class="mobile-menu-ctas">
               <a href="/araclar/" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center">Araçları Gör</a>
-              <a href="/araclar/klinik-saglik-turizmi-hazirlik-skoru/" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">Klinik Analizi</a>
+              <a href="/saglik-turizmi/" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">Ücretsiz Görüşme</a>
               <a href="https://wa.me/${PHONE}?text=Merhaba%2C%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-sm" style="width:100%;justify-content:center;background:#25D366;color:#fff">WhatsApp ile Yaz</a>
             </div>
           </nav>
@@ -130,6 +131,7 @@
             </div>
             <div>
               <div class="footer-col-title">Platform</div>
+              <a href="/saglik-turizmi/" class="footer-link" style="color:#A78BFA;font-weight:600">Hizmetlerimiz</a>
               <a href="/blog/" class="footer-link">Blog</a>
               <a href="/sablonlar/" class="footer-link">Rehberler</a>
               <a href="/hakkinda/" class="footer-link">Hakkında</a>

@@ -102,6 +102,17 @@ strong, b { font-weight: 700; color: var(--text-dark); }
 .nav { display: flex; align-items: center; gap: 2px; flex: 1; justify-content: center; }
 .nav-link { background: none; border: none; padding: 6px 11px; border-radius: 8px; font-size: 13px; font-weight: 500; color: var(--text-mid); cursor: pointer; transition: all 0.15s; white-space: nowrap; text-decoration: none; display: inline-block; }
 .nav-link:hover, .nav-link.active { background: var(--bg-lavender); color: var(--purple-main); font-weight: 600; }
+
+/* Pulse animation for highlighted nav (Hizmetlerimiz) */
+@keyframes nav-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(109,40,217,0.55); background: var(--purple-main); }
+  50% { box-shadow: 0 0 0 8px rgba(109,40,217,0); background: #7c3aed; }
+}
+.nav-link-pulse { background: var(--purple-main) !important; color: #fff !important; font-weight: 700 !important; padding: 7px 14px !important; animation: nav-pulse 1.8s infinite; position: relative; }
+.nav-link-pulse:hover { background: #4c1d95 !important; color: #fff !important; animation: none; }
+.nav-link-pulse.active { background: #4c1d95 !important; color: #fff !important; animation: none; }
+.mobile-nav-link-pulse { background: var(--purple-main) !important; color: #fff !important; font-weight: 700 !important; animation: nav-pulse 1.8s infinite; }
+.mobile-nav-link-pulse:hover, .mobile-nav-link-pulse.active { background: #4c1d95 !important; color: #fff !important; animation: none; }
 .header-ctas { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
 
 /* Mobile menu toggle (hamburger) */

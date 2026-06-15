@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Çok Dilli Landing Page Tasarım Prensipleri | saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizminde farklı ülkelere yönelik yüksek dönüşümlü landing page nasıl tasarlanır? Çok dillilik, güven öğeleri, CTA stratejisi ve dönüşüm prensipleri.">
+  <link rel="stylesheet" href="/shared.css">
+  <link rel="canonical" href="https://saglikturizmi.info/blog/cok-dilli-landing-page-tasarim-prensipleri/">
+  <style>
+    .aw{max-width:760px;margin:0 auto;padding:0 20px}
+    .ah{max-width:760px;margin:0 auto;padding:8px 20px 0}
+    .at{font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.18;color:#fff;margin:14px 0 16px;letter-spacing:-0.02em}
+    .ad{font-size:clamp(17px,2.2vw,20px);color:#c4b5fd;line-height:1.6;margin:0 0 18px}
+    .am{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:#8B7CAB;border-top:1px solid rgba(124,58,237,0.2);border-bottom:1px solid rgba(124,58,237,0.2);padding:14px 0;margin-bottom:8px}
+    .ab{font-size:17px;line-height:1.8;color:#c4b5fd}
+    .ab h2{font-size:clamp(22px,3.4vw,30px);color:#fff;font-weight:800;margin:48px 0 16px;line-height:1.25}
+    .ab h3{font-size:clamp(18px,2.6vw,22px);color:#fff;font-weight:700;margin:32px 0 12px}
+    .ab p{margin:0 0 18px;color:#c4b5fd}
+    .ab a{color:#a78bfa;text-decoration:underline;text-underline-offset:3px}
+    .ab a:hover{color:#fff}
+    .ab ul,.ab ol{padding-left:0;margin:0 0 20px}
+    .ab li{position:relative;padding-left:28px;margin-bottom:11px;color:#c4b5fd;line-height:1.7}
+    .ab ul li::before{content:"";position:absolute;left:6px;top:11px;width:7px;height:7px;border-radius:50%;background:#7C3AED}
+    .ab ol{counter-reset:li}
+    .ab ol li{counter-increment:li}
+    .ab ol li::before{content:counter(li);position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.18);color:#a78bfa;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+    .ab strong{color:#e9e3ff;font-weight:700}
+    .callout{background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,0.25);border-left:4px solid #7C3AED;border-radius:12px;padding:20px 22px;margin:28px 0}
+    .callout p{margin:0;color:#d8ccff}
+    .callout .cl{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a78bfa;margin-bottom:8px}
+    .market-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:24px 0}
+    .market-card{background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:18px}
+    .market-flag{font-size:28px;margin-bottom:8px}
+    .market-name{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px}
+    .market-notes{font-size:13px;color:#a78bfa;line-height:1.5}
+    .tp{display:flex;gap:18px;align-items:center;background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(124,58,237,.04));border:1px solid rgba(124,58,237,0.25);border-radius:16px;padding:24px;margin:32px 0;flex-wrap:wrap}
+    .tp-ic{width:52px;height:52px;border-radius:12px;background:rgba(124,58,237,.22);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+    .tp-b{flex:1;min-width:200px}
+    .tp h4{color:#fff;font-size:17px;font-weight:700;margin:0 0 4px}
+    .tp p{color:#c4b5fd;font-size:14px;margin:0;line-height:1.55}
+    .tp a.tl{flex-shrink:0;background:#7C3AED;color:#fff;padding:11px 20px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none}
+    .faq-s{max-width:760px;margin:0 auto;padding:8px 20px}
+    .fq{background:rgba(20,10,35,0.9);border:1px solid rgba(124,58,237,0.15);border-radius:12px;overflow:hidden;margin-bottom:10px}
+    .faq-q{width:100%;text-align:left;background:none;border:none;padding:18px 22px;color:#F8F7FF;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .faq-q:hover{background:rgba(124,58,237,0.06)}
+    .faq-icon{color:#7C3AED;font-size:20px;flex-shrink:0}
+    .faq-a{padding:0 22px 18px;color:#c4b5fd;font-size:14px;line-height:1.7}
+    .wa-cta{background:linear-gradient(135deg,rgba(37,211,102,0.1),rgba(37,211,102,0.03));border:1px solid rgba(37,211,102,0.25);border-radius:16px;padding:36px;text-align:center;max-width:760px;margin:40px auto 60px}
+    .wa-cta h3{font-size:22px;font-weight:700;color:#fff;margin-bottom:10px}
+    .wa-cta p{color:#c4b5fd;margin-bottom:24px}
+    .wa-btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:16px;padding:14px 32px;border-radius:10px;text-decoration:none}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Çok Dilli Landing Page Tasarım Prensipleri",
+    "description": "Sağlık turizminde farklı ülkelere yönelik yüksek dönüşümlü landing page nasıl tasarlanır?",
+    "author": {"@type": "Organization", "name": "saglikturizmi.info"},
+    "publisher": {"@type": "Organization", "name": "saglikturizmi.info", "url": "https://saglikturizmi.info/"},
+    "datePublished": "2026-05-27",
+    "dateModified": "2026-05-27",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://saglikturizmi.info/blog/cok-dilli-landing-page-tasarim-prensipleri/"}
+  }
+  </script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main style="padding-top:64px">
+  <div style="background:linear-gradient(135deg,#0F0A1A,#1a0a2e);padding:48px 20px 40px;border-bottom:1px solid rgba(124,58,237,0.2)">
+    <div class="ah">
+      <nav style="display:flex;align-items:center;gap:8px;font-size:13px;color:#a78bfa;margin-bottom:20px;flex-wrap:wrap">
+        <a href="/" style="color:#a78bfa">Ana Sayfa</a>
+        <span style="color:rgba(124,58,237,0.5)">›</span>
+        <a href="/blog/" style="color:#a78bfa">Blog</a>
+        <span style="color:rgba(124,58,237,0.5)">›</span>
+        <span style="color:#e2e8f0">Çok Dilli Landing Page</span>
+      </nav>
+      <h1 class="at">Çok Dilli Landing Page<br>Tasarım Prensipleri</h1>
+      <p class="ad">İngiltere'den gelen hasta ile Suudi Arabistan'dan gelen hasta aynı sayfada aynı şeyi arıyor mu? Hayır. Peki neden aynı sayfayı kullanıyorsunuz?</p>
+      <div class="am">
+        <span>📅 27 Mayıs 2026</span>
+        <span style="opacity:.4">·</span>
+        <span>⏱️ 8 dakika okuma</span>
+        <span style="opacity:.4">·</span>
+        <span>🏷️ Landing Page & Dönüşüm</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="aw" style="padding-top:32px">
+  <div class="ab">
+
+    <p>Türkiye'deki çoğu sağlık turizmi kliniği tüm uluslararası pazara tek bir Türkçe (veya en iyi ihtimalle tek bir İngilizce) landing page ile hitap ediyor. Bu büyük bir fırsatı masada bırakmak demek.</p>
+
+    <p>Almanya'daki 45 yaşındaki bir hasta saç ekimi araştırıyor. Google'da "Haartransplantation Türkei" yazıyor. Almanca içerik bulamazsa sayfadan çıkıyor. BAE'deki bir hasta ise Arapça içerik bekliyor ve ödeme gücü çok yüksek — ama sayfanız ona hitap etmiyorsa o da gidiyor.</p>
+
+    <h2>Neden Pazar Bazlı Ayrı Sayfalar?</h2>
+
+    <p>Tek bir genel landing page kullanmak şu sorunlara yol açıyor:</p>
+
+    <ul>
+      <li>Farklı dillerde arama yapan kullanıcılar SEO'da bulunamıyor</li>
+      <li>Güven öğeleri (hangi akreditasyon, hangi hasta yorumu) pazara göre değişiyor</li>
+      <li>CTA dili ve iletişim tarzı farklı kültürlerde farklı çalışıyor</li>
+      <li>Fiyat ve ödeme beklentileri pazara göre çok farklı</li>
+    </ul>
+
+    <p>Aynı tedavi için farklı ülkelere yönelik ayrı landing page'ler oluşturmak dönüşüm oranını ortalama %30-60 artırabiliyor.</p>
+
+    <h2>Pazar Bazlı İçerik Farkları</h2>
+
+    <div class="market-grid">
+      <div class="market-card">
+        <div class="market-flag">🇩🇪</div>
+        <div class="market-name">Almanya</div>
+        <div class="market-notes">Almanca içerik şart. JCI/ISO akreditasyonu önemli. Teknik detay beklentisi yüksek. WhatsApp ve form ikisi de kullanılıyor. Güven = sertifika + doktor uzmanlığı.</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇬🇧</div>
+        <div class="market-name">İngiltere</div>
+        <div class="market-notes">İngilizce, sade ve net dil. Hasta yorumları çok kritik (Trustpilot/Google). WhatsApp yaygın. Fiyat şeffaflığı bekleniyor. NHS ile kıyaslama yapılıyor.</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇸🇦</div>
+        <div class="market-name">Körfez (SA/UAE)</div>
+        <div class="market-notes">Arapça içerik öncelikli. Özel paket ve VIP deneyim vurgusu. Cinsiyet ayrımına dikkat (kadın/erkek cerrah tercihi). WhatsApp birincil kanal. Aile kararı sürece dahil.</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇺🇸</div>
+        <div class="market-name">ABD / Diyaspora</div>
+        <div class="market-notes">İngilizce, Türkçe veya Arapça (diaspora). Vaka çalışması ve detaylı süreç beklentisi. Video içerik çok etkili. USD fiyatlandırma tercih edilir.</div>
+      </div>
+    </div>
+
+    <h2>Yüksek Dönüşümlü Landing Page Anatomisi</h2>
+
+    <h3>1. Hero Bölümü (İlk 5 saniye kararı)</h3>
+    <p>Ziyaretçinin sayfaya geldiği andan itibaren 5 saniye içinde şu soruları cevaplamalısınız:</p>
+    <ul>
+      <li>Bu klinik ne sunuyor? (Net başlık)</li>
+      <li>Bu sayfadaki bilgi benim için mi? (Hedef dil + pazar uyumu)</li>
+      <li>Güvenebilir miyim? (İlk güven sinyali — akreditasyon, yıl, deneyim)</li>
+      <li>Sonraki adım ne? (Net CTA)</li>
+    </ul>
+    <p>Hero bölümünde karmaşıklık dönüşümü öldürür. Tek bir güçlü başlık, tek bir net CTA.</p>
+
+    <h3>2. Güven Öğeleri</h3>
+    <p>Güven sinyalleri en geç scroll'un %30'unda görünmeli:</p>
+    <ul>
+      <li><strong>Doktor bilgisi:</strong> İsim, uzmanlık, yıl sayısı, fotoğraf</li>
+      <li><strong>Akreditasyonlar:</strong> JCI, ISO, uluslararası üyelikler</li>
+      <li><strong>Vaka sayısı veya deneyim:</strong> "5.000+ uluslararası hasta"</li>
+      <li><strong>Yorumlar:</strong> Google veya Trustpilot puanı + alıntı (hedef dilde)</li>
+      <li><strong>Medyada yer alma / sertifikalar</strong></li>
+    </ul>
+
+    <h3>3. Tedavi Süreci Özeti</h3>
+    <p>Hasta adayı "buraya gelirsem ne olur?" sorusunu kafasında soruyor. 4-5 adımlık bir süreç görselleştirmesi (konsültasyon → operasyon → iyileşme → sonuç) bu belirsizliği gideriyor.</p>
+
+    <h3>4. CTA Stratejisi: Form mu, WhatsApp mı?</h3>
+    <p>Her pazarın tercihi farklı:</p>
+    <ul>
+      <li><strong>Almanya/İngiltere:</strong> Form tercih ediliyor (gizlilik bilinci yüksek)</li>
+      <li><strong>Körfez/MENA:</strong> WhatsApp birincil, form ikincil</li>
+      <li><strong>ABD diasporası:</strong> Her ikisi de işe yarıyor</li>
+    </ul>
+    <p>İdeal çözüm: Her iki seçeneği de sunun — "Formu Doldurun" ana CTA, "Hemen WhatsApp'tan Yazın" ikincil CTA olarak.</p>
+
+    <h3>5. SSS Bölümü</h3>
+    <p>Her pazarda farklı sorular öne çıkıyor:</p>
+    <ul>
+      <li>Almanya: "Almanya'da takip mümkün mü?", "Sigorta ödüyor mu?"</li>
+      <li>Körfez: "Kadın doktor mevcut mu?", "Konaklama dahil mi?"</li>
+      <li>İngiltere: "NHS ile farkı ne?", "Ne zaman ülkeme dönebilirim?"</li>
+    </ul>
+
+    <div class="callout">
+      <span class="cl">⚡ Hız Kritik</span>
+      <p>Google araştırması, mobil sayfa yüklenme süresi 3 saniyeyi geçtiğinde ziyaretçilerin %53'ünün sayfadan ayrıldığını gösteriyor. Çok dilli landing page'ler genellikle ağır görsel ve font yükleriyle yavaşlıyor. Sayfa hızını her dil versiyonu için ayrıca test edin.</p>
+    </div>
+
+    <h2>Teknik Çok Dillilik: URL Yapısı</h2>
+
+    <p>Çok dilli içerik için üç farklı URL yaklaşımı var:</p>
+
+    <ol>
+      <li><strong>Alt klasör (önerilen):</strong> alan.com/en/, alan.com/de/, alan.com/ar/ — SEO'ya en uygun</li>
+      <li><strong>Alt domain:</strong> en.alan.com, de.alan.com — yönetimi daha karmaşık</li>
+      <li><strong>Ayrı domain:</strong> Her pazar için ayrı site — en maliyetli ama bazı durumlarda mantıklı</li>
+    </ol>
+
+    <p>Her dil versiyonuna doğru hreflang etiketini eklemeyi unutmayın. Yoksa Google hangi içeriği hangi ülkeye sunacağını bilemez ve organik trafik kaybedebilirsiniz.</p>
+
+    <h2>A/B Test Öncelikleri</h2>
+
+    <p>Çok dilli bir landing page'de neyi test etmeli?</p>
+    <ul>
+      <li>Başlık metni (soru mu, iddia mı daha iyi?)</li>
+      <li>CTA metni ("Ücretsiz Konsültasyon Alın" vs "Hemen Yazın")</li>
+      <li>CTA rengi ve konumu</li>
+      <li>Form alanı sayısı (3 alan mı, 5 alan mı?)</li>
+      <li>Doktor fotoğrafı vs tesis fotoğrafı</li>
+    </ul>
+
+    <div class="tp">
+      <div class="tp-ic">✅</div>
+      <div class="tp-b">
+        <h4>Landing Page'inizi Test Edin</h4>
+        <p>Landing Page Uygunluk Testi ile mevcut sayfanızın dönüşüm engellerini skor bazlı analiz edin.</p>
+      </div>
+      <a href="/araclar/landing-page-uygunluk-testi/" class="tl">Testi Başlat →</a>
+    </div>
+
+  </div>
+  </div>
+
+  <div class="faq-s" style="margin-top:48px">
+    <h2 style="font-size:clamp(22px,3vw,28px);font-weight:800;color:#fff;margin-bottom:20px">Sık Sorulan Sorular</h2>
+    <div class="fq"><button class="faq-q">Her pazar için ayrı sayfa oluşturmak çok pahalı değil mi? <span class="faq-icon">+</span></button><div class="faq-a">Başlangıç olarak 2-3 ana pazar seçin. Örneğin İngilizce (İngiltere + ABD + Körfez İngilizce) ve Almanca başlangıç için yeterli. Arapça eklemeniz gerekirse Körfez sayfasına Arapça versiyon ekleyin. 3 sayfa → 3 pazar çözümü çoğu klinik için yeterli başlangıç.</div></div>
+    <div class="fq"><button class="faq-q">Çeviri kalitesi önemli mi, Google Translate yeter mi? <span class="faq-icon">+</span></button><div class="faq-a">Google Translate yetmez. Tıbbi içeriklerde yanlış çeviri güven sorununa, hatta yasal soruna yol açabilir. En azından ana bölümler (başlık, güven öğeleri, CTA) native speaker tarafından kontrol edilmeli. Geri kalanlar profesyonel çeviriyle halledilebilir.</div></div>
+    <div class="fq"><button class="faq-q">Sayfa hızını nasıl ölçeceğiz? <span class="faq-icon">+</span></button><div class="faq-a">Google PageSpeed Insights (ücretsiz) ile her URL'yi test edin. Mobil skorun 70 üzerinde olmasını hedefleyin. En sık sorun: büyük görsel dosyaları (WebP formata çevirin), gereksiz JavaScript yükü ve yavaş hosting.</div></div>
+  </div>
+
+  <div class="wa-cta">
+    <h3>Çok Dilli Landing Page'inizi Birlikte Kuralım</h3>
+    <p>Hedef pazarlarınıza yönelik yüksek dönüşümlü sayfalar için ücretsiz görüşme alın.</p>
+    <a href="https://wa.me/905397232292?text=Merhaba%2C%20%C3%A7ok%20dilli%20landing%20page%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum." target="_blank" rel="noopener" class="wa-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.845L.057 23.486a.5.5 0 0 0 .614.617l5.783-1.493A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.853 0-3.585-.5-5.079-1.375l-.361-.214-3.742.965.993-3.645-.236-.374A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      WhatsApp ile Yazın — +90 539 723 22 92
+    </a>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="/shared.js"></script>
+</body>
+</html>

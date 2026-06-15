@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Başlığı ve SEO Planlayıcı | saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizmi için SEO dostu blog başlıkları üretin. Tedavi, hedef ülke ve içerik niyetine göre başlık önerileri, meta açıklama, keyword kümesi ve H2 taslağı alın.">
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/blog-basligi-ve-seo-planlayici/">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0F0A1A; color: #F8F7FF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; min-height: 100vh; }
+    a { color: #C4B5FD; text-decoration: none; } a:hover { color: #F8F7FF; }
+    .bc { background: #1A1028; border-bottom: 1px solid rgba(124,58,237,0.2); padding: 12px 0; }
+    .bc-i { max-width: 980px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #C4B5FD; flex-wrap: wrap; }
+    .ph { background: linear-gradient(135deg,#1A1028,#231535); border-bottom: 1px solid rgba(124,58,237,0.25); padding: 48px 20px 40px; text-align: center; }
+    .ph h1 { font-size: clamp(22px,4vw,34px); font-weight: 700; color: #F8F7FF; margin-bottom: 12px; }
+    .ph h1 span { background: linear-gradient(90deg,#7C3AED,#C4B5FD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .ph p { color: #C4B5FD; font-size: 15px; max-width: 600px; margin: 0 auto; }
+    .badge { display: inline-block; background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4); color: #C4B5FD; font-size: 12px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
+    .con { max-width: 980px; margin: 0 auto; padding: 40px 20px 80px; }
+    .layout { display: grid; grid-template-columns: 360px 1fr; gap: 24px; align-items: start; }
+    @media(max-width:840px){.layout{grid-template-columns:1fr;}}
+    .card { background: #1A1028; border: 1px solid rgba(124,58,237,0.2); border-radius: 16px; padding: 28px; margin-bottom: 24px; }
+    .ct { font-size: 17px; font-weight: 700; color: #F8F7FF; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+    .ct .ic { width: 32px; height: 32px; background: rgba(124,58,237,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .cs { font-size: 13px; color: #C4B5FD; opacity: 0.7; margin-bottom: 24px; padding-left: 42px; }
+    .fg { margin-bottom: 18px; }
+    .fl { display: block; font-size: 13.5px; font-weight: 600; color: #C4B5FD; margin-bottom: 7px; }
+    .fi, .fs { width: 100%; background: #231535; border: 1px solid rgba(167,139,250,0.2); border-radius: 8px; padding: 11px 14px; color: #F8F7FF; font-size: 15px; outline: none; transition: border-color 0.2s; }
+    .fi:focus, .fs:focus { border-color: rgba(124,58,237,0.6); box-shadow: 0 0 0 3px rgba(124,58,237,0.15); }
+    .fh { font-size: 11.5px; color: #8B7CAB; margin-top: 4px; }
+    .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px 24px; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; border: none; transition: all 0.2s; background: linear-gradient(135deg,#7C3AED,#5B21B6); color: #fff; box-shadow: 0 4px 18px rgba(124,58,237,0.35); margin-top: 8px; }
+    .btn:hover { transform: translateY(-1px); }
+    #results { display: none; }
+    #results.vis { display: block; }
+    .section-h { font-size: 16px; font-weight: 700; color: #a78bfa; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(124,58,237,0.15); }
+    .title-item { background: #231535; border: 1px solid rgba(124,58,237,0.2); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .title-text { font-size: 15px; color: #F8F7FF; flex: 1; line-height: 1.4; }
+    .copy-btn { background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4); color: #C4B5FD; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.2s; flex-shrink: 0; }
+    .copy-btn:hover { background: rgba(124,58,237,0.35); color: #F8F7FF; }
+    .copy-btn.copied { background: rgba(5,150,105,0.2); border-color: rgba(5,150,105,0.4); color: #6EE7B7; }
+    .meta-box { background: #231535; border: 1px solid rgba(124,58,237,0.2); border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+    .meta-label { font-size: 12px; color: #8B7CAB; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+    .meta-text { font-size: 14px; color: #F8F7FF; line-height: 1.55; }
+    .kw-chip { display: inline-block; background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25); border-radius: 6px; padding: 4px 10px; font-size: 13px; color: #C4B5FD; margin: 4px 3px; }
+    .h2-item { padding: 10px 14px; border-left: 3px solid #7C3AED; background: rgba(124,58,237,0.06); border-radius: 0 8px 8px 0; margin-bottom: 8px; font-size: 14px; color: #F8F7FF; }
+    .link-item { padding: 8px 0; border-bottom: 1px solid rgba(124,58,237,0.08); font-size: 14px; }
+    .link-item:last-child { border: none; }
+    .info-sec { background: #1A1028; border: 1px solid rgba(124,58,237,0.15); border-radius: 16px; padding: 32px; margin-bottom: 24px; }
+    .info-sec h2 { font-size: 22px; font-weight: 700; color: #F8F7FF; margin-bottom: 16px; }
+    .info-sec h3 { font-size: 17px; font-weight: 700; color: #C4B5FD; margin: 18px 0 8px; }
+    .info-sec p, .info-sec li { font-size: 15px; color: #A78BFA; line-height: 1.75; margin-bottom: 10px; }
+    .info-sec ul { padding-left: 20px; }
+    .faq-card { background: #1A1028; border: 1px solid rgba(124,58,237,0.15); border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
+    .faq-q { width: 100%; text-align: left; background: none; border: none; padding: 18px 22px; color: #F8F7FF; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-q:hover { background: rgba(124,58,237,0.06); }
+    .faq-icon { color: #7C3AED; font-size: 20px; flex-shrink: 0; }
+    .faq-a { padding: 0 22px 18px; color: #C4B5FD; font-size: 14px; line-height: 1.7; }
+    .wa-wrap { background: linear-gradient(135deg,rgba(37,211,102,0.1),rgba(37,211,102,0.03)); border: 1px solid rgba(37,211,102,0.25); border-radius: 16px; padding: 36px; text-align: center; }
+    .wa-wrap h3 { font-size: 22px; font-weight: 700; color: #F8F7FF; margin-bottom: 10px; }
+    .wa-wrap p { color: #C4B5FD; margin-bottom: 24px; font-size: 15px; }
+    .wa-btn { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: #fff; font-weight: 700; font-size: 16px; padding: 14px 32px; border-radius: 10px; text-decoration: none; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Blog Başlığı ve SEO Planlayıcı",
+    "description": "Sağlık turizmi için SEO dostu blog başlıkları, meta açıklama ve içerik planı üretin.",
+    "url": "https://saglikturizmi.info/araclar/blog-basligi-ve-seo-planlayici/",
+    "applicationCategory": "BusinessApplication",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TRY"},
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://saglikturizmi.info/"},
+        {"@type": "ListItem", "position": 2, "name": "Araçlar", "item": "https://saglikturizmi.info/araclar/"},
+        {"@type": "ListItem", "position": 3, "name": "Blog Başlığı ve SEO Planlayıcı", "item": "https://saglikturizmi.info/araclar/blog-basligi-ve-seo-planlayici/"}
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="bc">
+  <div class="bc-i">
+    <a href="/">Ana Sayfa</a> <span style="color:rgba(196,181,253,0.4)">›</span>
+    <a href="/araclar/">Araçlar</a> <span style="color:rgba(196,181,253,0.4)">›</span>
+    <span style="color:#F8F7FF;font-weight:500">Blog Başlığı ve SEO Planlayıcı</span>
+  </div>
+</div>
+
+<div class="ph">
+  <div class="badge">✍️ Ücretsiz Araç</div>
+  <h1>Blog Başlığı ve <span>SEO Planlayıcı</span></h1>
+  <p>Tedavi alanı, hedef ülke ve içerik niyetine göre SEO dostu başlık önerileri, meta açıklama, keyword kümesi ve H2 taslağı üretin.</p>
+</div>
+
+<main style="padding-top:0">
+<div class="con">
+  <div class="layout">
+    <div>
+      <div class="card">
+        <div class="ct"><span class="ic">✍️</span> İçerik Parametreleri</div>
+        <div class="cs">Bilgileri girin ve anında SEO planı üretin.</div>
+
+        <div class="fg">
+          <label class="fl" for="tedavi">Tedavi / Konu</label>
+          <select id="tedavi" class="fs">
+            <option value="sac-ekimi">Saç Ekimi (Hair Transplant)</option>
+            <option value="dis-implant">Diş İmplantı</option>
+            <option value="dis-veneer">Diş Kaplama / Veneer</option>
+            <option value="rinoplasti">Rinoplasti (Burun Estetiği)</option>
+            <option value="gastrik-sleeve">Gastrik Sleeve (Obezite Cerrahisi)</option>
+            <option value="lasik">Göz Lazer (LASIK)</option>
+            <option value="meme-estetiği">Meme Estetiği</option>
+            <option value="kalça-diz">Kalça / Diz Protezi</option>
+            <option value="genel-saglik">Sağlık Turizmi (Genel)</option>
+          </select>
+        </div>
+
+        <div class="fg">
+          <label class="fl" for="ulke">Hedef Ülke / Pazar</label>
+          <select id="ulke" class="fs">
+            <option value="almanya">Almanya</option>
+            <option value="ingiltere">İngiltere</option>
+            <option value="suudi">Suudi Arabistan</option>
+            <option value="bae">BAE / Dubai</option>
+            <option value="abd">ABD / Kuzey Amerika</option>
+            <option value="turkce">Türkçe Konuşan Pazar</option>
+          </select>
+        </div>
+
+        <div class="fg">
+          <label class="fl" for="niyet">İçerik Niyeti</label>
+          <select id="niyet" class="fs">
+            <option value="bilgi">Bilgilendirme / Farkındalık</option>
+            <option value="karsilastirma">Karşılaştırma / Değerlendirme</option>
+            <option value="fiyat">Fiyat / Maliyet Odaklı</option>
+          </select>
+        </div>
+
+        <button class="btn" onclick="generatePlan()">🚀 SEO Planı Üret</button>
+      </div>
+    </div>
+
+    <div>
+      <div id="results">
+        <div class="card">
+          <div class="section-h">📝 Başlık Önerileri</div>
+          <div id="titleList"></div>
+          <div class="section-h" style="margin-top:24px">📋 Meta Açıklama</div>
+          <div class="meta-box">
+            <div class="meta-label">Önerilen meta description (155 karakter civarı)</div>
+            <div class="meta-text" id="metaDesc"></div>
+          </div>
+          <button class="copy-btn" onclick="copyText(document.getElementById('metaDesc').textContent, this)" style="margin-bottom:16px">📋 Meta Açıklamayı Kopyala</button>
+          <div class="section-h" style="margin-top:8px">🔑 Hedef Keyword Kümesi</div>
+          <div id="kwChips" style="margin-bottom:16px"></div>
+          <div class="section-h">🗂️ Önerilen H2 Yapısı</div>
+          <div id="h2List" style="margin-bottom:16px"></div>
+          <div class="section-h">🔗 İç Link Önerileri</div>
+          <div id="linkList"></div>
+        </div>
+      </div>
+      <div class="card" id="empty">
+        <div style="text-align:center;padding:40px 20px;">
+          <div style="font-size:48px;margin-bottom:16px;">✍️</div>
+          <div style="color:#C4B5FD;">Parametreleri seçip "SEO Planı Üret"e tıklayın.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-sec">
+    <h2>📚 SEO Başlığı Nasıl Yazılır?</h2>
+    <p>Sağlık turizmi SEO'su YMYL (Your Money Your Life) kategorisine girer; Google bu içeriklerde E-E-A-T (deneyim, uzmanlık, otorite, güvenilirlik) sinyallerini çok daha ağır değerlendirir.</p>
+    <h3>Başlık Yazım Kuralları</h3>
+    <ul>
+      <li><strong>50-60 karakter arasında tutun</strong> — Google başlığı kesmez</li>
+      <li><strong>Birincil keyword öne alın</strong> — "Hair Transplant Turkey Cost 2025 | Clinic Guide" gibi</li>
+      <li><strong>Rakam ve yıl ekleyin</strong> — "Top 5", "2025 Guide" gibi ifadeler CTR'yi artırır</li>
+      <li><strong>Arama niyetini karşılayın</strong> — Bilgi arayan birine "Buy Now" yazmayın</li>
+    </ul>
+    <h3>Keyword Niyeti Açıklaması</h3>
+    <ul>
+      <li><strong>Bilgilendirme:</strong> "What is hair transplant", "how does dental implant work" — farkındalık aşaması</li>
+      <li><strong>Karşılaştırma:</strong> "Hair transplant Turkey vs UK", "best clinics Istanbul" — karar aşaması</li>
+      <li><strong>Fiyat:</strong> "hair transplant Turkey price 2025", "how much does rhinoplasty cost" — yüksek niyet</li>
+    </ul>
+    <h3>İç Linkleme Önemi</h3>
+    <p>Blog'unuzda her yazı diğer ilgili sayfalara bağlanmalı. Bu hem Google'ın sitenizi daha iyi anlamasını sağlar hem de ziyaretçiyi site içinde tutar, dönüşüm şansını artırır.</p>
+  </div>
+
+  <div class="info-sec" style="padding-bottom:20px;">
+    <h2>Sık Sorulan Sorular</h2>
+    <div class="faq-card"><button class="faq-q">Kaç dilde blog yazmalıyım? <span class="faq-icon">+</span></button><div class="faq-a">Hedef pazarınıza göre İngilizce mutlak öncelik. Körfez pazarı için Arapça, Almanya için Almanca içerikler ek organik trafik getirir. Her dil için ayrı URL yapısı kullanın (/en/, /ar/) ve hreflang etiketlerini doğru tanımlayın.</div></div>
+    <div class="faq-card"><button class="faq-q">Kaç blog yazısı yeterli? <span class="faq-icon">+</span></button><div class="faq-a">Topical authority için tedavi başına en az 5-8 blog yazısı hedefleyin: 1 ana rehber sayfası + bilgi/karşılaştırma/maliyet/SSS yazıları. Düzenli yayın Google'a sitenizin aktif olduğunu sinyaller.</div></div>
+    <div class="faq-card"><button class="faq-q">YMYL siteler için içerik yazarken dikkat edilmesi gerekenler? <span class="faq-icon">+</span></button><div class="faq-a">Medikal iddialarda kaynak gösterin, doktor imzasıyla yayınlayın. "Bu bir tıbbi tavsiye değildir" uyarısını ekleyin. Google Sağlık içerik politikasına göre kişisel sağlık önerisi niteliğindeki içerikler özenle kurgulanmalı.</div></div>
+  </div>
+
+  <div class="wa-wrap">
+    <h3>İçerik Stratejinizi Birlikte Kuralım</h3>
+    <p>Hangi konularda yazı yazacağınızı, SEO potansiyelini ve yayın takvimini birlikte planlayalım.</p>
+    <a href="https://wa.me/905397232292?text=Merhaba%2C%20icerik%20stratejisi%20ve%20SEO%20planlamas%C4%B1%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum." target="_blank" rel="noopener" class="wa-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.845L.057 23.486a.5.5 0 0 0 .614.617l5.783-1.493A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.853 0-3.585-.5-5.079-1.375l-.361-.214-3.742.965.993-3.645-.236-.374A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      WhatsApp ile Yazın — +90 539 723 22 92
+    </a>
+  </div>
+</div>
+</main>
+
+<div id="site-footer"></div>
+<script src="/shared.js"></script>
+<script>
+const DATA = {
+  'sac-ekimi': {
+    tr: 'saç ekimi', en: 'hair transplant', ar: 'زراعة الشعر',
+    kws_en: ['hair transplant Turkey','hair transplant Istanbul','FUE hair transplant cost Turkey','best hair transplant clinic Istanbul','hair transplant package Turkey'],
+    kws_de: ['Haartransplantation Türkei','Haartransplantation Istanbul Kosten','FUE Haartransplantation Türkei'],
+    h2s: { bilgi: ['Hair Transplant Nedir?','FUE ve FUT Farkı','Operasyon Nasıl Yapılır?','İyileşme Süreci','Türkiye\'de Saç Ekimi: Avantajlar'], karsilastirma: ['Türkiye\'de Saç Ekimi: Neden Popüler?','İngiltere vs Türkiye: Maliyet Karşılaştırması','En İyi Klinikleri Seçmek İçin Kriterler','Hasta Deneyimleri','Hangi Teknik Size Uygun?'], fiyat: ['Türkiye\'de Saç Ekimi Fiyatları 2025','Pakete Neler Dahil?','Gizli Maliyetler','Ödeme Seçenekleri','Fiyat ile Kalite Dengesi'] },
+    meta: { bilgi:'Türkiye\'de saç ekimi nasıl yapılır? FUE ve FUT tekniklerini, operasyon sürecini ve iyileşme dönemini adım adım anlatan kapsamlı rehber.', karsilastirma:'Türkiye\'de saç ekimi kliniği seçerken nelere dikkat etmeli? İngiltere, Almanya ve Türkiye maliyet karşılaştırması ile en iyi kriterler.', fiyat:'Türkiye\'de saç ekimi fiyatları 2025: paket içerikleri, gizli maliyetler ve ödeme seçenekleri. Gerçekçi bütçe planlaması için tam rehber.' },
+    links: ['/araclar/klinik-saglik-turizmi-hazirlik-skoru/','/rehber/uluslararasi-pazar/','/dijital-pazarlama/landing-page/']
+  },
+  'dis-implant': {
+    tr: 'diş implantı', en: 'dental implant',
+    kws_en: ['dental implant Turkey','dental implant Istanbul cost','cheap dental implants Turkey','best dental clinic Istanbul','all on 4 implants Turkey'],
+    kws_de: ['Zahnimplantate Türkei','Zahnimplantat Istanbul Kosten','günstige Zahnimplantate Türkei'],
+    h2s: { bilgi: ['Diş İmplantı Nedir?','Hangi Durumlarda Uygulanır?','Operasyon Aşamaları','İyileşme Süreci','All-on-4 ve All-on-6'], karsilastirma: ['Türkiye\'de Diş İmplantı: Neden Avantajlı?','AB Ülkeleri ile Maliyet Karşılaştırması','Klinik Seçim Kriterleri','Akreditasyon ve Güven','Paket İçerikleri Neler Olmalı?'], fiyat: ['Türkiye\'de Diş İmplantı Fiyatları 2025','Kaç İmplant Gerekli?','Paket ve Paket Dışı Maliyetler','Sigorta Karşılıyor mu?','Ödeme Planları'] },
+    meta: { bilgi:'Türkiye\'de diş implantı nasıl yapılır? İşlem aşamaları, iyileşme süreci ve All-on-4 seçeneği hakkında kapsamlı bilgi.', karsilastirma:'Türkiye\'de diş implantı avantajları: Avrupa ile maliyet karşılaştırması, klinik seçim kriterleri ve paket içerikleri.', fiyat:'Türkiye diş implantı fiyatları 2025: tek implant, All-on-4, All-on-6 maliyetleri, paket içerikleri ve ödeme seçenekleri.' },
+    links: ['/araclar/landing-page-uygunluk-testi/','/dijital-pazarlama/meta-reklamlari/','/rehber/uluslararasi-pazar/']
+  },
+  'gastrik-sleeve': {
+    tr: 'gastrik sleeve', en: 'gastric sleeve',
+    kws_en: ['gastric sleeve Turkey','obesity surgery Istanbul','bariatric surgery Turkey cost','sleeve gastrectomy Turkey','weight loss surgery Turkey'],
+    kws_de: ['Magenverkleinerung Türkei','bariatrische Operation Istanbul','Schlauchmagen Türkei Kosten'],
+    h2s: { bilgi: ['Gastrik Sleeve Nedir?','Kimler Uygun Aday?','Operasyon Nasıl Yapılır?','İyileşme ve Diyet Süreci','Uzun Vadeli Sonuçlar'], karsilastirma: ['Türkiye\'de Obezite Cerrahisi Avantajları','Gastrik Sleeve vs Bypass','Klinik Seçim Kriterleri','Uluslararası Hasta Deneyimleri','Akreditasyon Önemi'], fiyat: ['Türkiye\'de Gastrik Sleeve Fiyatları 2025','Paket İçerikleri','Hastane Kalış ve Ulaşım','Gizli Maliyetler','Finansman Seçenekleri'] },
+    meta: { bilgi:'Gastrik sleeve ameliyatı nedir? Türkiye\'de obezite cerrahisi süreçleri, uygun aday kriterleri ve iyileşme dönemi rehberi.', karsilastirma:'Türkiye\'de gastrik sleeve klinik seçimi: akreditasyon, maliyet avantajları ve hasta deneyimleri ile karşılaştırmalı rehber.', fiyat:'Türkiye gastrik sleeve fiyatları 2025: paket içerikleri, gizli maliyetler ve ödeme seçenekleriyle tam maliyet rehberi.' },
+    links: ['/araclar/hedef-ulke-pazar-secim-matrisi/','/klinikler/','/dijital-pazarlama/landing-page/']
+  }
+};
+
+const FALLBACK = {
+  kws_en: ['Turkey medical tourism','health tourism Istanbul','Turkey clinic cost','best clinic Turkey'],
+  h2s: { bilgi: ['Türkiye\'de Sağlık Turizmi Nedir?','Neden Türkiye?','Tedavi Süreci Adımları','İyileşme ve Konaklama','Güvenilir Klinik Nasıl Seçilir?'], karsilastirma: ['Türkiye vs Avrupa: Neden Daha Avantajlı?','Doğru Kliniği Seçmek','Hasta Yorumları Nasıl Okunur?','Akreditasyon Belgeleri','Paket Karşılaştırma'], fiyat: ['2025 Yılı Tedavi Maliyetleri','Paket Fiyatı Neleri Kapsar?','Gizli Maliyetler','Seyahat + Konaklama','Finansman Seçenekleri'] },
+  meta: { bilgi:'Türkiye\'de sağlık turizmi: tedavi süreci, klinik seçim kriterleri ve hasta rehberi.', karsilastirma:'Türkiye\'de klinik karşılaştırması: maliyet, kalite ve hasta deneyimi.', fiyat:'Türkiye tedavi maliyetleri 2025: paket içerikleri, gizli maliyetler ve ödeme seçenekleri.' },
+  links: ['/araclar/klinik-saglik-turizmi-hazirlik-skoru/','/rehber/uluslararasi-pazar/','/dijital-pazarlama/']
+};
+
+const ULKE_LANG = {almanya:'Almanca (DE)', ingiltere:'İngilizce (EN)', suudi:'Arapça (AR)', bae:'Arapça (AR)', abd:'İngilizce (EN)', turkce:'Türkçe (TR)'};
+const ULKE_MOD = {almanya:' in der Türkei', ingiltere:' in Turkey', suudi:' في تركيا', bae:' في تركيا', abd:' in Turkey', turkce:' Türkiye\'de'};
+
+const TITLE_TEMPLATES = {
+  bilgi: [
+    '{t} Nedir? 2025 Yılı Kapsamlı Rehberi',
+    'Türkiye\'de {t}: {u} Hastalar İçin Bilmeniz Gerekenler',
+    '{t} Operasyonu Nasıl Yapılır? Adım Adım Süreç',
+    '{t} Sonrası İyileşme Süreci: Ne Beklemeli?',
+    'Türkiye\'de {t}: Neden Bu Kadar Popüler?',
+    '{t} İçin Doğru Klinik Nasıl Seçilir? 7 Kriter',
+    'Yabancı Hastalar İçin {t} Rehberi',
+    'Türkiye\'de {t}: Güvenli mi? Uzman Yanıtları'
+  ],
+  karsilastirma: [
+    'Türkiye vs {u}: {t} Karşılaştırması 2025',
+    '{t} için En İyi Türk Klinikleri: {u} Hastalar İçin Seçim Rehberi',
+    'Türkiye\'de {t}: {u}\'dan Daha İyi mi?',
+    '{t} Kliniği Seçerken Dikkat Edilecekler',
+    'Türkiye\'deki {t} Kliniklerini Nasıl Karşılaştırmalısınız?',
+    '{t} İçin Türkiye\'de Akredite Klinik Nasıl Bulunur?',
+    'Hasta Yorumlarına Göre En İyi {t} Klinikleri',
+    'Kaliteli {t} için Türkiye: {u} Deneyimleri'
+  ],
+  fiyat: [
+    'Türkiye\'de {t} Fiyatları 2025 | Kapsamlı Maliyet Rehberi',
+    '{t} Türkiye Fiyatı: Paket İçerikleri ve Gizli Maliyetler',
+    '{t} için Türkiye vs {u}: Maliyet Karşılaştırması',
+    'Türkiye\'de {t} Paketi Fiyatı Neleri Kapsar?',
+    '{t} Türkiye 2025: Gerçekçi Bütçe Nasıl Planlanır?',
+    '{t} Fiyatlarını Etkileyen Faktörler: Türkiye Rehberi',
+    'Ucuz {t} Tuzağı: Kalite ile Fiyat Dengesi Nasıl Kurulur?',
+    '{t} için Türkiye\'yi Seçmenin Maliyeti: Tam Hesaplama'
+  ]
+};
+
+function generatePlan() {
+  const tedaviKey = document.getElementById('tedavi').value;
+  const ulkeKey = document.getElementById('ulke').value;
+  const niyet = document.getElementById('niyet').value;
+  const d = DATA[tedaviKey] || FALLBACK;
+  const t = (d.tr || tedaviKey).replace(/-/g,' ');
+  const u = ULKE_LANG[ulkeKey];
+  const mod = ULKE_MOD[ulkeKey];
+  const titles = TITLE_TEMPLATES[niyet].map(tpl =>
+    tpl.replace(/\{t\}/g, t.charAt(0).toUpperCase()+t.slice(1)).replace(/\{u\}/g, u)
+  );
+
+  // Title list
+  document.getElementById('titleList').innerHTML = titles.map((ti, i) =>
+    `<div class="title-item"><div class="title-text">${i+1}. ${ti}</div><button class="copy-btn" onclick="copyText('${ti.replace(/'/g,"\\'").replace(/"/g,'&quot;')}', this)">📋 Kopyala</button></div>`
+  ).join('');
+
+  // Meta
+  const meta = (d.meta || FALLBACK.meta)[niyet];
+  document.getElementById('metaDesc').textContent = meta;
+
+  // Keywords
+  const kws = d.kws_en || FALLBACK.kws_en;
+  document.getElementById('kwChips').innerHTML = kws.map(k => `<span class="kw-chip">${k}</span>`).join('');
+
+  // H2
+  const h2s = (d.h2s || FALLBACK.h2s)[niyet];
+  document.getElementById('h2List').innerHTML = h2s.map(h => `<div class="h2-item">H2: ${h}</div>`).join('');
+
+  // Links
+  const links = d.links || FALLBACK.links;
+  document.getElementById('linkList').innerHTML = links.map(l => `<div class="link-item"><a href="${l}" style="color:#a78bfa">→ ${l}</a> — ilgili iç sayfa</div>`).join('');
+
+  document.getElementById('results').classList.add('vis');
+  document.getElementById('empty').style.display = 'none';
+}
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Kopyalandı';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Kopyala'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp ve CRM ile Hasta Adayı Yönetimi | saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizminde WhatsApp Business API ve CRM ile hasta adayı yönetimi: ilk yanıt hızının önemi, mesaj şablonları, otomatik karşılama akışları, CRM entegrasyonu, pipeline aşamaları, takip ritmi ve çok dilli iletişim rehberi.">
+  <link rel="stylesheet" href="/shared.css">
+  <link rel="canonical" href="https://saglikturizmi.info/dijital-pazarlama/whatsapp-crm/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "WhatsApp ve CRM ile Hasta Adayı Yönetimi",
+    "description": "Sağlık turizmi klinikleri için WhatsApp Business API ve CRM ile hasta adayı yönetimi rehberi.",
+    "url": "https://saglikturizmi.info/dijital-pazarlama/whatsapp-crm/",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://saglikturizmi.info/"},
+        {"@type": "ListItem", "position": 2, "name": "Dijital Pazarlama", "item": "https://saglikturizmi.info/dijital-pazarlama/"},
+        {"@type": "ListItem", "position": 3, "name": "WhatsApp ve CRM", "item": "https://saglikturizmi.info/dijital-pazarlama/whatsapp-crm/"}
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main style="padding-top:64px">
+
+    <!-- Breadcrumb -->
+    <div class="container" style="padding-top:24px;padding-bottom:0">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Ana Sayfa</a>
+        <span>›</span>
+        <a href="/dijital-pazarlama/">Dijital Pazarlama</a>
+        <span>›</span>
+        <span>WhatsApp ve CRM</span>
+      </nav>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" style="padding-top:48px">
+      <div class="container">
+        <div class="badge badge-purple" style="margin-bottom:16px">WhatsApp & CRM</div>
+        <h1 class="hero-title">WhatsApp ve CRM ile<br>Hasta Adayı Yönetimi</h1>
+        <p class="hero-subtitle">Reklam hastayı getirir, ama hastayı kazandıran şey ilk mesaja verilen yanıttır. Sağlık turizminde lead'lerin çoğu kötü reklam yüzünden değil, geç yanıt ve takipsizlik yüzünden kaybolur. WhatsApp Business API ve doğru kurulmuş bir CRM ile her hasta adayını sistematik biçimde hastaya dönüştürün.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px">
+          <a href="/araclar/lead-cevap-hizi-hesaplayici/" class="btn btn-primary btn-lg">Yanıt Hızınızı Ölçün</a>
+          <a href="https://wa.me/905397232292?text=Merhaba%2C%20WhatsApp%20ve%20CRM%20sistemi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-ghost btn-lg">WhatsApp ile İletişim</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="section" style="padding-top:32px;padding-bottom:48px">
+      <div class="container">
+        <div class="grid-3">
+          <div class="card" style="text-align:center;padding:32px 20px">
+            <div style="font-size:2.5rem;font-weight:800;color:#A78BFA;line-height:1">7x</div>
+            <div style="margin-top:12px;font-size:0.95rem;color:#C4B5FD">İlk 1 dakikada yanıt verilen lead'lerde daha yüksek dönüşüm</div>
+          </div>
+          <div class="card" style="text-align:center;padding:32px 20px">
+            <div style="font-size:2.5rem;font-weight:800;color:#A78BFA;line-height:1">%50+</div>
+            <div style="margin-top:12px;font-size:0.95rem;color:#C4B5FD">İlk yanıtı verene satış avantajı sağlayan oran</div>
+          </div>
+          <div class="card" style="text-align:center;padding:32px 20px">
+            <div style="font-size:2.5rem;font-weight:800;color:#A78BFA;line-height:1">5–7</div>
+            <div style="margin-top:12px;font-size:0.95rem;color:#C4B5FD">Bir hastayı dönüştürmek için gereken ortalama temas sayısı</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- WhatsApp Business API -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Altyapı</span>
+          <h2 class="section-title">WhatsApp Business API Nedir, Neden Gerekli?</h2>
+          <p class="section-desc">Telefonunuzdaki normal WhatsApp veya WhatsApp Business uygulaması bir noktadan sonra yetmez. Profesyonel hasta yönetimi için API katmanı şarttır.</p>
+        </div>
+        <div class="grid-2" style="gap:24px">
+          <div class="card" style="padding:32px">
+            <h3 style="font-size:1.2rem;font-weight:700;color:#F8F7FF;margin-bottom:12px">Uygulama vs. API</h3>
+            <p style="color:#C4B5FD;line-height:1.7;margin-bottom:14px">Standart uygulama tek cihaza bağlıdır, birden fazla temsilci aynı anda yanıt veremez, otomasyon kurulamaz ve CRM'e bağlanmaz. WhatsApp Business API ise:</p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+              <li style="display:flex;gap:8px;color:#C4B5FD;font-size:0.95rem"><span style="color:#34d399">✓</span> Birden fazla temsilcinin tek numaradan çalışmasını sağlar</li>
+              <li style="display:flex;gap:8px;color:#C4B5FD;font-size:0.95rem"><span style="color:#34d399">✓</span> CRM ve otomasyon araçlarına entegre olur</li>
+              <li style="display:flex;gap:8px;color:#C4B5FD;font-size:0.95rem"><span style="color:#34d399">✓</span> Onaylı şablon mesajlarla proaktif iletişim açar</li>
+              <li style="display:flex;gap:8px;color:#C4B5FD;font-size:0.95rem"><span style="color:#34d399">✓</span> Yeşil onay rozeti ve kurumsal profil sunar</li>
+            </ul>
+          </div>
+          <div class="card" style="padding:32px">
+            <h3 style="font-size:1.2rem;font-weight:700;color:#F8F7FF;margin-bottom:12px">24 Saat Penceresi ve Şablonlar</h3>
+            <p style="color:#C4B5FD;line-height:1.7;margin-bottom:14px">API'de önemli bir kural var: Hasta size yazdığında 24 saatlik bir "hizmet penceresi" açılır ve bu süre içinde serbestçe yazışabilirsiniz. 24 saat geçtikten sonra hastaya yeniden ulaşmak için yalnızca Meta tarafından <strong style="color:#A78BFA">önceden onaylanmış şablon mesajlar</strong> kullanılabilir.</p>
+            <p style="color:#C4B5FD;line-height:1.7">Bu yüzden takip mesajları için şablon kütüphanesi hazırlamak, sağlık turizmi gibi karar süreci uzun bir alanda kritik öneme sahiptir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- First Response Speed -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">İlk Yanıt</span>
+          <h2 class="section-title">İlk Yanıt Hızı Neden Her Şeyi Belirler?</h2>
+          <p class="section-desc">Uluslararası hasta adayı genellikle aynı anda 3-5 kliniğe yazar. İlk ve en iyi yanıtı veren klinik, görüşmenin çapasını eline alır.</p>
+        </div>
+        <div class="card" style="padding:36px;margin-bottom:24px">
+          <p style="color:#C4B5FD;line-height:1.8;margin-bottom:16px">Bir Alman hasta gece 23:00'te saç ekimi için mesaj attığında, sabah 09:00'da gelen "Merhaba, nasıl yardımcı olabiliriz?" yanıtı çok geçtir — hasta o zamana kadar başka bir klinikle konuşmaya başlamıştır. Yanıt hızı şu üç şeyi belirler:</p>
+          <div class="grid-3" style="margin-top:8px">
+            <div style="text-align:center;padding:16px">
+              <div style="font-size:1.8rem;margin-bottom:8px">🥇</div>
+              <h3 style="font-size:1rem;font-weight:700;color:#F8F7FF;margin-bottom:6px">İlk Olma Avantajı</h3>
+              <p style="color:#C4B5FD;font-size:0.9rem;line-height:1.6">İlk yanıt veren klinik güvenin referans noktası olur; diğerleri ona göre kıyaslanır.</p>
+            </div>
+            <div style="text-align:center;padding:16px">
+              <div style="font-size:1.8rem;margin-bottom:8px">🔥</div>
+              <h3 style="font-size:1rem;font-weight:700;color:#F8F7FF;margin-bottom:6px">Sıcaklık Penceresi</h3>
+              <p style="color:#C4B5FD;font-size:0.9rem;line-height:1.6">Hasta ilgisi dakikalar içinde soğur. Reklam gördükten sonra ne kadar geç dönerseniz dönüşüm o kadar düşer.</p>
+            </div>
+            <div style="text-align:center;padding:16px">
+              <div style="font-size:1.8rem;margin-bottom:8px">💎</div>
+              <h3 style="font-size:1rem;font-weight:700;color:#F8F7FF;margin-bottom:6px">Algılanan Kalite</h3>
+              <p style="color:#C4B5FD;font-size:0.9rem;line-height:1.6">Hızlı, profesyonel yanıt hastaya "bu klinik tedavide de aynı özeni gösterir" mesajı verir.</p>
+            </div>
+          </div>
+        </div>
+        <div class="wa-cta-block">
+          <div class="wa-cta-block-text">
+            <h2 style="font-size:1.25rem;font-weight:700;color:#F8F7FF;margin-bottom:6px">Mevcut yanıt hızınız size kaç hastaya mal oluyor?</h2>
+            <p>Lead cevap hızı hesaplayıcı ile ortalama yanıt sürenizin dönüşüm oranınıza etkisini sayısal olarak görün.</p>
+          </div>
+          <div class="wa-cta-block-action">
+            <a href="/araclar/lead-cevap-hizi-hesaplayici/" class="btn btn-primary btn-lg">Lead Cevap Hızı Hesaplayıcı →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Message Templates & Automated Greeting -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Otomasyon</span>
+          <h2 class="section-title">Mesaj Şablonları ve Otomatik Karşılama Akışları</h2>
+          <p class="section-desc">İnsan her zaman saniyeler içinde yanıt veremez — ama otomasyon verir. Doğru kurulan akış, temsilci devreye girene kadar hastayı sıcak tutar.</p>
+        </div>
+        <div class="grid-2" style="gap:24px">
+          <div class="card" style="padding:32px">
+            <h3 style="font-size:1.2rem;font-weight:700;color:#F8F7FF;margin-bottom:12px">Otomatik Karşılama Akışı</h3>
+            <p style="color:#C4B5FD;line-height:1.7;margin-bottom:14px">Hasta yazar yazmaz tetiklenen akış, hem hızlı yanıt sağlar hem ön bilgi toplar:</p>
+            <ol style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;counter-reset:flow">
+              <li style="display:flex;gap:12px;color:#C4B5FD;font-size:0.95rem;line-height:1.6"><span style="background:rgba(124,58,237,0.2);color:#A78BFA;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;font-size:0.85rem">1</span> Anında selamlama: "Mesajınız için teşekkürler, ekibimiz birazdan sizinle ilgilenecek."</li>
+              <li style="display:flex;gap:12px;color:#C4B5FD;font-size:0.95rem;line-height:1.6"><span style="background:rgba(124,58,237,0.2);color:#A78BFA;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;font-size:0.85rem">2</span> Dil/tedavi seçimi: hızlı butonlarla hangi tedavi ve hangi dil olduğu öğrenilir.</li>
+              <li style="display:flex;gap:12px;color:#C4B5FD;font-size:0.95rem;line-height:1.6"><span style="background:rgba(124,58,237,0.2);color:#A78BFA;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;font-size:0.85rem">3</span> Ön bilgi: fotoğraf/durum istenir, böylece temsilci hazır gelir.</li>
+              <li style="display:flex;gap:12px;color:#C4B5FD;font-size:0.95rem;line-height:1.6"><span style="background:rgba(124,58,237,0.2);color:#A78BFA;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;font-size:0.85rem">4</span> Devir: doğru dildeki temsilciye yönlendirme ve CRM'e otomatik kayıt.</li>
+            </ol>
+          </div>
+          <div class="card" style="padding:32px">
+            <h3 style="font-size:1.2rem;font-weight:700;color:#F8F7FF;margin-bottom:12px">Şablon Mesaj Türleri</h3>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px">
+              <li style="color:#C4B5FD;line-height:1.6"><strong style="color:#A78BFA">Karşılama:</strong> İlk temasta hızlı, sıcak ve profesyonel ilk izlenim.</li>
+              <li style="color:#C4B5FD;line-height:1.6"><strong style="color:#A78BFA">Bilgi toplama:</strong> Tedavi, beklenti ve uygunluk için yapılandırılmış sorular.</li>
+              <li style="color:#C4B5FD;line-height:1.6"><strong style="color:#A78BFA">Teklif/fiyat:</strong> Hazır ama kişiselleştirilebilir teklif iletimi.</li>
+              <li style="color:#C4B5FD;line-height:1.6"><strong style="color:#A78BFA">Takip:</strong> Yanıt vermeyen adaya 24 saat sonrası onaylı şablonla nazik hatırlatma.</li>
+              <li style="color:#C4B5FD;line-height:1.6"><strong style="color:#A78BFA">Randevu/operasyon:</strong> Tarih, transfer ve hazırlık bilgilendirmesi.</li>
+              <li style="color:#C4B5FD;line-height:1.6"><strong style="color:#A78BFA">Tedavi sonrası:</strong> İyileşme takibi, memnuniyet ve referans/yorum talebi.</li>
+            </ul>
+            <a href="/araclar/whatsapp-ilk-mesaj-olusturucu/" style="display:inline-flex;align-items:center;gap:6px;color:#A78BFA;font-weight:600;margin-top:16px">İlk mesaj şablonu oluştur →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CRM Integration -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Entegrasyon</span>
+          <h2 class="section-title">WhatsApp'ı CRM ile Entegre Etmek</h2>
+          <p class="section-desc">WhatsApp tek başına bir gelen kutusudur; hafızası ve gözü yoktur. CRM ile birleşince her hasta adayı izlenebilir, ölçülebilir bir kayda dönüşür.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card" style="padding:28px">
+            <div style="font-size:1.75rem;margin-bottom:12px">📥</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#F8F7FF;margin-bottom:8px">Otomatik Kayıt</h3>
+            <p style="color:#C4B5FD;line-height:1.65;font-size:0.95rem">Gelen her mesaj kaynağıyla (hangi reklam, hangi ülke) birlikte CRM'e kart olarak düşer. Hiçbir lead bir sohbet kalabalığında kaybolmaz.</p>
+          </div>
+          <div class="card" style="padding:28px">
+            <div style="font-size:1.75rem;margin-bottom:12px">🏷️</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#F8F7FF;margin-bottom:8px">Etiketleme ve Skor</h3>
+            <p style="color:#C4B5FD;line-height:1.65;font-size:0.95rem">Tedavi türü, ülke, bütçe ve sıcaklık etiketlenir. Her adaya bir nitelik skoru verilerek ekip en değerli leadlere öncelik verir.</p>
+          </div>
+          <div class="card" style="padding:28px">
+            <div style="font-size:1.75rem;margin-bottom:12px">🔔</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#F8F7FF;margin-bottom:8px">Hatırlatma ve Görev</h3>
+            <p style="color:#C4B5FD;line-height:1.65;font-size:0.95rem">"3 gündür yanıt yok, takip et" görevi otomatik oluşur. Sistem unutmaz; takip insana değil sürece bağlanır.</p>
+          </div>
+          <div class="card" style="padding:28px">
+            <div style="font-size:1.75rem;margin-bottom:12px">📊</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#F8F7FF;margin-bottom:8px">Kaynak Raporu</h3>
+            <p style="color:#C4B5FD;line-height:1.65;font-size:0.95rem">Hangi kanaldan kaç lead, kaç hasta geldiğini görerek reklam bütçesini kârlı kanala yönlendirirsiniz.</p>
+          </div>
+          <div class="card" style="padding:28px">
+            <div style="font-size:1.75rem;margin-bottom:12px">👥</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#F8F7FF;margin-bottom:8px">Ekip Devamlılığı</h3>
+            <p style="color:#C4B5FD;line-height:1.65;font-size:0.95rem">Bir temsilci izne çıksa bile geçmiş kayıtlı olduğundan başka temsilci sohbeti kaldığı yerden sürdürür.</p>
+          </div>
+          <div class="card" style="padding:28px">
+            <div style="font-size:1.75rem;margin-bottom:12px">📈</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#F8F7FF;margin-bottom:8px">Dönüşüm Hunisi</h3>
+            <p style="color:#C4B5FD;line-height:1.65;font-size:0.95rem">Hangi aşamada kaç hasta kaybolduğunu görerek darboğazı tespit eder ve süreci iyileştirirsiniz.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Pipeline Stages -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Pipeline</span>
+          <h2 class="section-title">Sağlık Turizmi Lead Pipeline Aşamaları</h2>
+          <p class="section-desc">Her hasta adayı net bir hat üzerinde ilerlemeli. Aşamaları tanımlamak, hiçbir adayın "arada" kaybolmamasını sağlar.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div>
+              <div class="step-title">Yeni Lead</div>
+              <div class="step-desc">İlk mesaj geldi, henüz iletişim kurulmadı. Hedef: dakikalar içinde ilk yanıt. Bu aşamada hız her şeydir.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div>
+              <div class="step-title">İletişim Kuruldu</div>
+              <div class="step-desc">Hasta yanıt verdi, diyalog başladı. Tedavi, beklenti ve ülke bilgisi toplanıyor; uygunluk değerlendiriliyor.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div>
+              <div class="step-title">Nitelikli / Değerlendirme</div>
+              <div class="step-desc">Hasta uygun, fotoğraf/bilgi alındı, doktor ön değerlendirmesi yapılıyor. Ciddi niyetli adaylar burada ayrışır.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div>
+              <div class="step-title">Teklif Gönderildi</div>
+              <div class="step-desc">Kişiselleştirilmiş tedavi planı ve fiyat iletildi. Hasta itirazları ve sorular bu aşamada yönetilir.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">5</div>
+            <div>
+              <div class="step-title">Rezervasyon</div>
+              <div class="step-desc">Hasta kararını verdi; tarih, transfer ve konaklama planlanıyor. Depozito/onay süreci yürütülür.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">6</div>
+            <div>
+              <div class="step-title">Tedavi ve Sonrası</div>
+              <div class="step-desc">Hasta geldi, tedavi tamamlandı. Tedavi sonrası takip, memnuniyet ve referans/yorum talebi ile döngü kapanır.</div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:32px">
+          <a href="/araclar/crm-pipeline-olusturucu/" class="btn btn-primary btn-lg">Kendi Pipeline'ınızı Oluşturun</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Follow-up Cadence -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Takip Ritmi</span>
+          <h2 class="section-title">Doğru Takip Kadansı</h2>
+          <p class="section-desc">Satışların çoğu ilk temasta değil, takipte kapanır. Ama takip ne ısrarcı ne de unutulmuş olmalı; doğru ritim kazandırır.</p>
+        </div>
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Zaman</th>
+                <th>Aksiyon</th>
+                <th>Amaç</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color:#F8F7FF">0–5 dakika</strong></td>
+                <td>İlk yanıt (otomatik + insan)</td>
+                <td>Sıcaklığı yakala, ilk olma avantajını al</td>
+              </tr>
+              <tr>
+                <td><strong style="color:#F8F7FF">Aynı gün</strong></td>
+                <td>Bilgi topla, ön değerlendirme</td>
+                <td>Niyeti netleştir, güven inşa et</td>
+              </tr>
+              <tr>
+                <td><strong style="color:#F8F7FF">1. gün</strong></td>
+                <td>Teklif / tedavi planı</td>
+                <td>Somut adım sun, kararı kolaylaştır</td>
+              </tr>
+              <tr>
+                <td><strong style="color:#F8F7FF">2–3. gün</strong></td>
+                <td>Nazik hatırlatma + soru</td>
+                <td>İtirazları öğren, diyaloğu sürdür</td>
+              </tr>
+              <tr>
+                <td><strong style="color:#F8F7FF">5–7. gün</strong></td>
+                <td>Değer ekleyen içerik / referans</td>
+                <td>Güveni pekiştir (yorum, vaka, garanti bilgisi)</td>
+              </tr>
+              <tr>
+                <td><strong style="color:#F8F7FF">14. gün</strong></td>
+                <td>Son hatırlatma + teşvik</td>
+                <td>Karar penceresini canlı tut, baskı yapmadan</td>
+              </tr>
+              <tr class="highlight">
+                <td><strong style="color:#F8F7FF">30+ gün</strong></td>
+                <td>Uzun vadeli besleme (nurture)</td>
+                <td>Soğuyan adayı periyodik içerikle sıcak tut</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="color:#8B7CAB;font-size:0.9rem;margin-top:16px;text-align:center">24 saatlik pencere kapandıktan sonra her proaktif takip mesajı onaylı şablonla yapılmalıdır.</p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Multilingual -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Çok Dillilik</span>
+          <h2 class="section-title">Çok Dilli İletişimi Yönetmek</h2>
+          <p class="section-desc">Dil engeli sağlık turizminin en sık görülen lead kaybı nedenidir. Sistemle çözüldüğünde, dil bilmeyen ekip bile profesyonel iletişim kurar.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card" style="padding:28px">
+            <div style="font-size:1.75rem;margin-bottom:12px">🗂️</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#F8F7FF;margin-bottom:8px">Dile Göre Şablon</h3>
+            <p style="color:#C4B5FD;line-height:1.65;font-size:0.95rem">İngilizce, Almanca ve Arapça için ayrı, kültüre uygun şablon kütüphaneleri. Temsilci doğru dildeki hazır metni seçip kişiselleştirir.</p>
+          </div>
+          <div class="card" style="padding:28px">
+            <div style="font-size:1.75rem;margin-bottom:12px">↪️</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#F8F7FF;margin-bottom:8px">Dile Göre Yönlendirme</h3>
+            <p style="color:#C4B5FD;line-height:1.65;font-size:0.95rem">Otomatik karşılamada dil tespiti yapılır ve sohbet o dili konuşan temsilciye veya ekibe yönlendirilir.</p>
+          </div>
+          <div class="card" style="padding:28px">
+            <div style="font-size:1.75rem;margin-bottom:12px">🌐</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#F8F7FF;margin-bottom:8px">Çeviri Desteği</h3>
+            <p style="color:#C4B5FD;line-height:1.65;font-size:0.95rem">Gerçek zamanlı çeviri katmanıyla, dil bilmeyen ekip bile karmaşık soruları yanıtlayabilir; tıbbi terimler doğru aktarılır.</p>
+          </div>
+          <div class="card" style="padding:28px">
+            <div style="font-size:1.75rem;margin-bottom:12px">🕐</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#F8F7FF;margin-bottom:8px">Saat Dilimi Farkı</h3>
+            <p style="color:#C4B5FD;line-height:1.65;font-size:0.95rem">Körfez, İngiltere ve Almanya farklı saat dilimlerinde. Otomasyon, gece gelen mesaja anında karşılık vererek boşluğu kapatır.</p>
+          </div>
+          <div class="card" style="padding:28px">
+            <div style="font-size:1.75rem;margin-bottom:12px">🤝</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#F8F7FF;margin-bottom:8px">Kültürel Ton</h3>
+            <p style="color:#C4B5FD;line-height:1.65;font-size:0.95rem">Arap hasta için mahremiyet ve VIP ton, Alman hasta için netlik ve şeffaflık. Mesaj dili kültüre göre ayarlanır.</p>
+          </div>
+          <div class="card" style="padding:28px">
+            <div style="font-size:1.75rem;margin-bottom:12px">📝</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#F8F7FF;margin-bottom:8px">Tutarlı Kayıt</h3>
+            <p style="color:#C4B5FD;line-height:1.65;font-size:0.95rem">Tüm yazışma CRM'de tek dilde özetlenerek saklanır; ekip değişse de bağlam korunur.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Tools -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Ücretsiz Araçlar</span>
+          <h2 class="section-title">WhatsApp ve CRM İçin Araçlar</h2>
+          <p class="section-desc">Yanıt hızınızı ölçün, ilk mesaj şablonunuzu hazırlayın ve pipeline'ınızı kurun.</p>
+        </div>
+        <div class="grid-3">
+          <div class="tool-card">
+            <div class="tool-card-icon">⚡</div>
+            <div class="tool-card-title">Lead Cevap Hızı Hesaplayıcı</div>
+            <div class="tool-card-desc">Ortalama yanıt sürenizin dönüşüm oranınıza ve kaybedilen hasta sayısına etkisini hesaplayın.</div>
+            <a href="/araclar/lead-cevap-hizi-hesaplayici/" class="tool-card-link">Aracı Kullan →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">💬</div>
+            <div class="tool-card-title">WhatsApp İlk Mesaj Oluşturucu</div>
+            <div class="tool-card-desc">Tedavi ve dile göre profesyonel, dönüşüm odaklı ilk karşılama mesajınızı saniyeler içinde üretin.</div>
+            <a href="/araclar/whatsapp-ilk-mesaj-olusturucu/" class="tool-card-link">Aracı Kullan →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">🔧</div>
+            <div class="tool-card-title">CRM Pipeline Oluşturucu</div>
+            <div class="tool-card-desc">Kliniğinize özel hasta adayı pipeline aşamalarını ve takip görevlerini yapılandırın.</div>
+            <a href="/araclar/crm-pipeline-olusturucu/" class="tool-card-link">Aracı Kullan →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp CTA -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="wa-cta-block">
+          <div class="wa-cta-block-text">
+            <h2 style="font-size:1.5rem;font-weight:800;color:#F8F7FF;margin-bottom:8px">WhatsApp + CRM Sisteminizi Kuralım</h2>
+            <p>WhatsApp Business API kurulumundan otomatik karşılama akışlarına, CRM entegrasyonundan çok dilli şablonlara kadar tüm hasta adayı yönetim sistemini birlikte hayata geçirelim. İlk görüşme ücretsizdir.</p>
+          </div>
+          <div class="wa-cta-block-action">
+            <a href="https://wa.me/905397232292?text=Merhaba%2C%20klini%C4%9Fim%20i%C3%A7in%20WhatsApp%20ve%20CRM%20sistemi%20kurmak%20istiyorum.%20Bilgi%20alabilir%20miyim%3F" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+              💬 WhatsApp'tan Yazın — +90 539 723 22 92
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <div id="site-footer"></div>
+  <script src="/shared.js"></script>
+</body>
+</html>

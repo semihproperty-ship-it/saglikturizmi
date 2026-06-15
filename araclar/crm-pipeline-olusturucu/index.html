@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM Pipeline Oluşturucu | saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizmi kliniğiniz için tedavi alanına, satış döngüsüne ve ekip büyüklüğüne göre önerilen satış pipeline'ını oluşturun. Her aşama için aksiyonlar, SLA ve çıkış kriterleri.">
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/crm-pipeline-olusturucu/">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0F0A1A;
+      color: #F8F7FF;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    #site-header:empty, #site-footer:empty { display: none; }
+
+    a { color: #C4B5FD; text-decoration: none; }
+    a:hover { color: #F8F7FF; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      background: #1A1028;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+      padding: 12px 0;
+    }
+    .breadcrumb-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #C4B5FD;
+      flex-wrap: wrap;
+    }
+    .breadcrumb-sep {
+      color: rgba(196, 181, 253, 0.4);
+      font-size: 11px;
+    }
+    .breadcrumb-current {
+      color: #F8F7FF;
+      font-weight: 500;
+    }
+
+    /* Page header */
+    .page-header {
+      background: linear-gradient(135deg, #1A1028 0%, #231535 100%);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.25);
+      padding: 48px 20px 40px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+    .page-header h1 span {
+      background: linear-gradient(90deg, #7C3AED, #C4B5FD);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-header p {
+      color: #C4B5FD;
+      font-size: 15px;
+      max-width: 580px;
+      margin: 0 auto;
+      opacity: 0.85;
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(124, 58, 237, 0.2);
+      border: 1px solid rgba(124, 58, 237, 0.4);
+      color: #C4B5FD;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    /* Main container */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* Card */
+    .card {
+      background: #1A1028;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-title .icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(124, 58, 237, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .card-subtitle {
+      font-size: 13px;
+      color: #C4B5FD;
+      opacity: 0.7;
+      margin-bottom: 24px;
+      padding-left: 42px;
+    }
+
+    /* Form */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .field-group label {
+      font-size: 12px;
+      color: #C4B5FD;
+      font-weight: 600;
+      opacity: 0.85;
+      letter-spacing: 0.3px;
+    }
+    .field-group select {
+      background: #0F0A1A;
+      border: 1px solid rgba(124, 58, 237, 0.25);
+      border-radius: 8px;
+      padding: 11px 14px;
+      color: #F8F7FF;
+      font-size: 14px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23A78BFA' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    .field-group select:focus {
+      border-color: #7C3AED;
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+    }
+
+    /* Checkbox */
+    .check-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 10px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      margin-top: 24px;
+    }
+    .check-wrap:hover { border-color: rgba(124, 58, 237, 0.4); }
+    .check-wrap input {
+      width: 20px;
+      height: 20px;
+      accent-color: #7C3AED;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .check-wrap .check-text strong {
+      display: block;
+      font-size: 14px;
+      color: #F8F7FF;
+      font-weight: 600;
+    }
+    .check-wrap .check-text span {
+      font-size: 12px;
+      color: #C4B5FD;
+      opacity: 0.7;
+    }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #7C3AED, #6D28D9);
+      color: #F8F7FF;
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-secondary {
+      background: rgba(124, 58, 237, 0.15);
+      color: #C4B5FD;
+      border: 1px solid rgba(124, 58, 237, 0.35);
+    }
+    .btn-secondary:hover {
+      background: rgba(124, 58, 237, 0.25);
+      color: #F8F7FF;
+    }
+    .btn-reset {
+      background: transparent;
+      color: rgba(196, 181, 253, 0.5);
+      border: 1px solid rgba(196, 181, 253, 0.15);
+      font-size: 13px;
+      padding: 10px 18px;
+    }
+    .btn-reset:hover {
+      color: #C4B5FD;
+      border-color: rgba(196, 181, 253, 0.35);
+      background: rgba(196, 181, 253, 0.05);
+    }
+
+    /* Results section */
+    #results { display: none; }
+    #results.visible { display: block; }
+
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .results-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #F8F7FF;
+    }
+
+    /* Summary chips */
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .chip {
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 20px;
+      padding: 7px 16px;
+      font-size: 12.5px;
+      color: #C4B5FD;
+    }
+    .chip strong { color: #F8F7FF; }
+
+    /* Pipeline */
+    .pipeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .stage {
+      position: relative;
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-left: 3px solid #7C3AED;
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .stage::after {
+      content: "";
+      position: absolute;
+      left: 31px;
+      bottom: -14px;
+      width: 2px;
+      height: 14px;
+      background: linear-gradient(180deg, rgba(124,58,237,0.6), rgba(124,58,237,0.1));
+      z-index: 0;
+    }
+    .stage:last-child::after { display: none; }
+    .stage-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .stage-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7C3AED, #6D28D9);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4);
+    }
+    .stage-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #F8F7FF;
+      flex: 1;
+    }
+    .stage-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 12px;
+      background: rgba(167, 139, 250, 0.15);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      color: #C4B5FD;
+      flex-shrink: 0;
+    }
+    .stage-tag.added {
+      background: rgba(37, 211, 102, 0.12);
+      border-color: rgba(37, 211, 102, 0.3);
+      color: #4ade80;
+    }
+    .stage-body {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .stage-block .sb-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: #A78BFA;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .stage-actions { list-style: none; }
+    .stage-actions li {
+      font-size: 13.5px;
+      color: #F8F7FF;
+      padding: 4px 0 4px 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .stage-actions li::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 11px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #7C3AED;
+    }
+    .stage-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .meta-box {
+      background: #1A1028;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .meta-box .sb-label { margin-bottom: 6px; }
+    .meta-box .sla-val {
+      font-size: 15px;
+      font-weight: 700;
+      color: #F8F7FF;
+    }
+    .meta-box .exit-val {
+      font-size: 13px;
+      color: #C4B5FD;
+      line-height: 1.5;
+    }
+
+    /* WhatsApp CTA */
+    .wa-cta {
+      background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(37, 211, 102, 0.05));
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .wa-cta-text h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 6px;
+    }
+    .wa-cta-text p {
+      font-size: 13px;
+      color: #C4B5FD;
+      opacity: 0.8;
+    }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 13px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+    }
+    .btn-wa:hover {
+      background: #20c05a;
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+    }
+    .wa-icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* Info tip */
+    .info-tip {
+      background: rgba(124, 58, 237, 0.07);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: #C4B5FD;
+      opacity: 0.85;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin-top: 14px;
+    }
+    .info-tip .tip-icon { flex-shrink: 0; margin-top: 1px; }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #25D366;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 10px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s;
+      z-index: 9999;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(124, 58, 237, 0.15);
+      margin: 28px 0;
+    }
+
+    /* How-to list */
+    .howto-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .howto-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .howto-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(124, 58, 237, 0.2);
+      color: #C4B5FD;
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .howto-list li strong { color: #F8F7FF; display: block; margin-bottom: 2px; font-size: 14px; }
+    .howto-list li p { font-size: 13.5px; color: #C4B5FD; opacity: 0.85; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-card {
+      border: 1px solid rgba(124, 58, 237, 0.25);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 18px 14px; }
+      .stage { padding: 16px 14px; }
+      .stage-meta { grid-template-columns: 1fr; }
+      .wa-cta { flex-direction: column; text-align: center; }
+      .btn-wa { width: 100%; justify-content: center; }
+      .stage-name { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main style="padding-top:64px">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="/">Ana Sayfa</a>
+        <span class="breadcrumb-sep">&#9656;</span>
+        <a href="/araclar/">Araçlar</a>
+        <span class="breadcrumb-sep">&#9656;</span>
+        <span class="breadcrumb-current">CRM Pipeline Oluşturucu</span>
+      </div>
+    </nav>
+
+    <!-- Page header -->
+    <div class="page-header">
+      <div class="header-badge">Ücretsiz Satış Aracı</div>
+      <h1>CRM <span>Pipeline</span> Oluşturucu</h1>
+      <p>Tedavi alanınıza, satış döngünüze ve ekibinize göre önerilen satış hattını oluşturun. Her aşama için somut aksiyonlar, yanıt süresi (SLA) ve bir sonraki adıma geçiş kriterleri.</p>
+    </div>
+
+    <div class="container">
+
+      <!-- Form Card -->
+      <div class="card">
+        <div class="card-title">
+          <div class="icon">&#9881;</div>
+          Kliniğinizi Tanımlayın
+        </div>
+        <div class="card-subtitle">Aşağıdaki seçimleri yapın; aracımız size uygun satış pipeline'ını ve aşama kurallarını üretsin.</div>
+
+        <div class="form-grid">
+          <div class="field-group">
+            <label for="sel-treatment">İşletme türü / tedavi alanı</label>
+            <select id="sel-treatment">
+              <option value="sac">Saç Ekimi</option>
+              <option value="dis">Diş / Ağız Sağlığı</option>
+              <option value="estetik">Estetik Cerrahi</option>
+              <option value="goz">Göz / Lazik</option>
+              <option value="ivf">Tüp Bebek / IVF</option>
+              <option value="obezite">Obezite / Bariatrik</option>
+              <option value="genel">Genel</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="sel-cycle">Satış döngüsü uzunluğu</label>
+            <select id="sel-cycle">
+              <option value="kisa">Kısa (hızlı karar)</option>
+              <option value="orta" selected>Orta</option>
+              <option value="uzun">Uzun (uzun değerlendirme)</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="sel-team">Ekip büyüklüğü</label>
+            <select id="sel-team">
+              <option value="solo">Solo (tek kişi)</option>
+              <option value="kucuk" selected>Küçük ekip</option>
+              <option value="buyuk">Büyük ekip</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="check-wrap" for="chk-intl">
+          <input type="checkbox" id="chk-intl" checked>
+          <span class="check-text">
+            <strong>Uluslararası hasta kabul ediyorum</strong>
+            <span>Vize & seyahat planı ve tercüman aşamalarını ekler</span>
+          </span>
+        </label>
+
+        <hr class="divider">
+
+        <div class="btn-row">
+          <button class="btn btn-primary" id="btn-build" type="button">
+            &#9654;&#65039; Pipeline Oluştur
+          </button>
+          <button class="btn btn-reset" id="btn-reset" type="button">
+            &#8635; Sıfırla
+          </button>
+        </div>
+
+        <div class="info-tip">
+          <span class="tip-icon">&#128161;</span>
+          SLA (yanıt süresi hedefi) ve takip sayısı, seçtiğiniz satış döngüsü uzunluğuna göre otomatik ayarlanır. Kısa döngü daha agresif takip, uzun döngü daha sabırlı bir besleme süreci önerir.
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div id="results">
+        <div class="results-header">
+          <div class="results-title">&#128203; Önerilen Satış Pipeline'ınız</div>
+          <button class="btn btn-secondary" id="btn-copy" type="button">
+            &#128203; Metin Olarak Kopyala
+          </button>
+        </div>
+
+        <div class="chip-row" id="chip-row"></div>
+
+        <div class="pipeline" id="pipeline"></div>
+
+        <!-- WhatsApp CTA -->
+        <div class="wa-cta" style="margin-top:28px">
+          <div class="wa-cta-text">
+            <h3>Pipeline'ı CRM'inize kuralım</h3>
+            <p>Bu aşamaları WhatsApp tabanlı bir CRM'e otomasyon ve hatırlatıcılarla kurmak için bizimle konuşun.</p>
+          </div>
+          <a href="https://wa.me/905397232292?text=Merhaba%2C%20CRM%20pipeline%20kurulumu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn-wa">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            WhatsApp'tan Yazın
+          </a>
+        </div>
+      </div>
+      <!-- /results -->
+
+      <!-- How to read -->
+      <div class="card">
+        <div class="card-title"><div class="icon">&#128214;</div> Pipeline Nasıl Okunur?</div>
+        <div class="card-subtitle">Üretilen satış hattını günlük operasyonunuza nasıl uygulayacağınız.</div>
+        <ul class="howto-list">
+          <li>
+            <span class="howto-num">1</span>
+            <div>
+              <strong>Aşamalar lead'in yolculuğudur</strong>
+              <p>Her hasta adayı soldan sağa (yukarıdan aşağıya) bu aşamalardan geçer. CRM'inizde her aşamayı bir "kolon" veya "durum" olarak tanımlayın. Bir lead aynı anda yalnızca tek bir aşamada bulunur.</p>
+            </div>
+          </li>
+          <li>
+            <span class="howto-num">2</span>
+            <div>
+              <strong>Aksiyonlar yapılacaklar listesidir</strong>
+              <p>Her aşamadaki aksiyonlar, o aşamada lead'e yönelik atılması gereken somut adımlardır. Bunları görev/checklist olarak ekibinize atayın. Aksiyonlar tamamlanmadan lead'i ilerletmeyin.</p>
+            </div>
+          </li>
+          <li>
+            <span class="howto-num">3</span>
+            <div>
+              <strong>SLA disiplini dönüşümü belirler</strong>
+              <p>SLA, o aşamada lead'e en geç ne kadar sürede yanıt/aksiyon vermeniz gerektiğidir. Sağlık turizminde ilk yanıt hızı dönüşümün en güçlü belirleyicisidir; SLA aşılan lead'ler için otomatik hatırlatıcı kurun.</p>
+            </div>
+          </li>
+          <li>
+            <span class="howto-num">4</span>
+            <div>
+              <strong>Çıkış kriteri "ne zaman ilerler"in cevabıdır</strong>
+              <p>Çıkış kriteri karşılanmadan lead bir sonraki aşamaya taşınmamalıdır. Bu kural, pipeline'ın şişmesini ve "sahte ilerleme"yi önler. Kriter karşılanmazsa lead ya aynı aşamada takipte kalır ya da kaybedildi olarak işaretlenir.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- FAQ -->
+      <div class="card">
+        <div class="card-title"><div class="icon">&#10067;</div> Sıkça Sorulan Sorular</div>
+        <div class="card-subtitle">CRM pipeline kurulumu hakkında en çok merak edilenler.</div>
+        <div class="faq-list">
+
+          <div class="faq-card">
+            <button class="faq-q" style="width:100%;background:rgba(124,58,237,0.08);border:none;padding:18px 20px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;color:#fff;font-family:inherit;gap:16px;">
+              Pipeline aşamalarını kendi kliniğime göre değiştirebilir miyim?
+              <span class="faq-icon" style="color:#7C3AED;font-size:22px;font-weight:400;flex-shrink:0;">+</span>
+            </button>
+            <div class="faq-a" style="background:rgba(124,58,237,0.04);padding:0 20px 18px;font-size:14px;color:#c4b5fd;line-height:1.7;">
+              Kesinlikle. Bu araç sağlam bir başlangıç şablonu üretir. Aşama adlarını, aksiyonları ve SLA'ları kendi sürecinize göre uyarlayabilirsiniz. Önerimiz: önce üretilen yapıyı 2-4 hafta uygulayın, sonra darboğaz yaşadığınız aşamaları bölün veya birleştirin.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <button class="faq-q" style="width:100%;background:rgba(124,58,237,0.08);border:none;padding:18px 20px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;color:#fff;font-family:inherit;gap:16px;">
+              SLA süreleri neye göre belirleniyor?
+              <span class="faq-icon" style="color:#7C3AED;font-size:22px;font-weight:400;flex-shrink:0;">+</span>
+            </button>
+            <div class="faq-a" style="background:rgba(124,58,237,0.04);padding:0 20px 18px;font-size:14px;color:#c4b5fd;line-height:1.7;">
+              SLA hedefleri seçtiğiniz satış döngüsü uzunluğuna göre ayarlanır. Kısa döngüde (örneğin saç ekimi gibi hızlı karar verilen tedaviler) ilk yanıt dakikalar içinde hedeflenir; uzun döngüde (IVF gibi) daha sabırlı ama düzenli bir takip ritmi önerilir. Tüm hedefler sektör pratiğine dayalı başlangıç değerleridir; kendi verinizle kalibre edin.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <button class="faq-q" style="width:100%;background:rgba(124,58,237,0.08);border:none;padding:18px 20px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;color:#fff;font-family:inherit;gap:16px;">
+              Uluslararası hasta seçeneği ne ekliyor?
+              <span class="faq-icon" style="color:#7C3AED;font-size:22px;font-weight:400;flex-shrink:0;">+</span>
+            </button>
+            <div class="faq-a" style="background:rgba(124,58,237,0.04);padding:0 20px 18px;font-size:14px;color:#c4b5fd;line-height:1.7;">
+              Uluslararası hasta kutucuğunu işaretlediğinizde pipeline'a "Tercüman Ataması" ve "Vize & Seyahat Planı" gibi aşamalar ile dil/uçuş/transfer koordinasyonuna yönelik ek aksiyonlar eklenir. Bu aşamalar yurt dışı hastalarda en sık yaşanan operasyonel kopmaları önlemek için kritiktir.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <button class="faq-q" style="width:100%;background:rgba(124,58,237,0.08);border:none;padding:18px 20px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;color:#fff;font-family:inherit;gap:16px;">
+              Solo çalışıyorum, yine de bu pipeline'ı kullanabilir miyim?
+              <span class="faq-icon" style="color:#7C3AED;font-size:22px;font-weight:400;flex-shrink:0;">+</span>
+            </button>
+            <div class="faq-a" style="background:rgba(124,58,237,0.04);padding:0 20px 18px;font-size:14px;color:#c4b5fd;line-height:1.7;">
+              Evet. Ekip büyüklüğünü "Solo" seçtiğinizde araç, tek kişinin yönetebileceği daha sade bir pipeline üretir ve aksiyonları otomasyona/şablona devretmeyi önerir. Büyük ekip seçildiğinde ise rol ataması ve devir (handoff) içeren daha ayrıntılı aşamalar gelir.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <button class="faq-q" style="width:100%;background:rgba(124,58,237,0.08);border:none;padding:18px 20px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;color:#fff;font-family:inherit;gap:16px;">
+              Oluşturduğum pipeline'ı dışa aktarabilir miyim?
+              <span class="faq-icon" style="color:#7C3AED;font-size:22px;font-weight:400;flex-shrink:0;">+</span>
+            </button>
+            <div class="faq-a" style="background:rgba(124,58,237,0.04);padding:0 20px 18px;font-size:14px;color:#c4b5fd;line-height:1.7;">
+              "Metin Olarak Kopyala" düğmesiyle tüm pipeline'ı düz metin olarak panoya kopyalayabilirsiniz. Bu metni Notion, Trello, Google Docs veya CRM yapılandırma notlarınıza yapıştırarak ekibinizle paylaşabilirsiniz.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <div id="site-footer"></div>
+
+  <div class="toast" id="toast">Kopyalandı!</div>
+
+  <script src="/shared.js"></script>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CRM Pipeline Oluşturucu",
+    "url": "https://saglikturizmi.info/araclar/crm-pipeline-olusturucu/",
+    "description": "Sağlık turizmi klinikleri için tedavi alanı, satış döngüsü ve ekip büyüklüğüne göre önerilen satış pipeline'ını aşama aksiyonları, SLA ve çıkış kriterleriyle oluşturan ücretsiz araç.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "tr",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY" },
+    "publisher": { "@type": "Organization", "name": "saglikturizmi.info", "url": "https://saglikturizmi.info/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://saglikturizmi.info/" },
+      { "@type": "ListItem", "position": 2, "name": "Araçlar", "item": "https://saglikturizmi.info/araclar/" },
+      { "@type": "ListItem", "position": 3, "name": "CRM Pipeline Oluşturucu", "item": "https://saglikturizmi.info/araclar/crm-pipeline-olusturucu/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Pipeline aşamalarını kendi kliniğime göre değiştirebilir miyim?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Kesinlikle. Bu araç sağlam bir başlangıç şablonu üretir. Aşama adlarını, aksiyonları ve SLA'ları kendi sürecinize göre uyarlayabilirsiniz. Önerimiz: önce üretilen yapıyı 2-4 hafta uygulayın, sonra darboğaz yaşadığınız aşamaları bölün veya birleştirin." }
+      },
+      {
+        "@type": "Question",
+        "name": "SLA süreleri neye göre belirleniyor?",
+        "acceptedAnswer": { "@type": "Answer", "text": "SLA hedefleri seçtiğiniz satış döngüsü uzunluğuna göre ayarlanır. Kısa döngüde ilk yanıt dakikalar içinde hedeflenir; uzun döngüde daha sabırlı ama düzenli bir takip ritmi önerilir. Tüm hedefler sektör pratiğine dayalı başlangıç değerleridir; kendi verinizle kalibre edin." }
+      },
+      {
+        "@type": "Question",
+        "name": "Uluslararası hasta seçeneği ne ekliyor?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Uluslararası hasta kutucuğunu işaretlediğinizde pipeline'a Tercüman Ataması ve Vize & Seyahat Planı gibi aşamalar ile dil, uçuş ve transfer koordinasyonuna yönelik ek aksiyonlar eklenir. Bu aşamalar yurt dışı hastalarda en sık yaşanan operasyonel kopmaları önlemek için kritiktir." }
+      },
+      {
+        "@type": "Question",
+        "name": "Solo çalışıyorum, yine de bu pipeline'ı kullanabilir miyim?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Evet. Ekip büyüklüğünü Solo seçtiğinizde araç, tek kişinin yönetebileceği daha sade bir pipeline üretir ve aksiyonları otomasyona devretmeyi önerir. Büyük ekip seçildiğinde ise rol ataması ve devir içeren daha ayrıntılı aşamalar gelir." }
+      },
+      {
+        "@type": "Question",
+        "name": "Oluşturduğum pipeline'ı dışa aktarabilir miyim?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Metin Olarak Kopyala düğmesiyle tüm pipeline'ı düz metin olarak panoya kopyalayabilirsiniz. Bu metni Notion, Trello, Google Docs veya CRM yapılandırma notlarınıza yapıştırarak ekibinizle paylaşabilirsiniz." }
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    /* ===== CRM PIPELINE OLUŞTURUCU ===== */
+
+    const selTreatment = document.getElementById('sel-treatment');
+    const selCycle = document.getElementById('sel-cycle');
+    const selTeam = document.getElementById('sel-team');
+    const chkIntl = document.getElementById('chk-intl');
+    const btnBuild = document.getElementById('btn-build');
+    const btnReset = document.getElementById('btn-reset');
+    const btnCopy = document.getElementById('btn-copy');
+    const resultsSection = document.getElementById('results');
+    const pipelineEl = document.getElementById('pipeline');
+    const chipRow = document.getElementById('chip-row');
+    const toast = document.getElementById('toast');
+
+    const treatmentLabels = {
+      sac: 'Saç Ekimi',
+      dis: 'Diş / Ağız Sağlığı',
+      estetik: 'Estetik Cerrahi',
+      goz: 'Göz / Lazik',
+      ivf: 'Tüp Bebek / IVF',
+      obezite: 'Obezite / Bariatrik',
+      genel: 'Genel'
+    };
+    const cycleLabels = { kisa: 'Kısa', orta: 'Orta', uzun: 'Uzun' };
+    const teamLabels = { solo: 'Solo', kucuk: 'Küçük ekip', buyuk: 'Büyük ekip' };
+
+    // SLA matrix keyed by cycle length. Each stage references one of these keys.
+    function slaFor(key, cycle) {
+      const M = {
+        firstResponse: { kisa: '5 dakika içinde', orta: '15-30 dakika içinde', uzun: '1 saat içinde' },
+        contact:       { kisa: 'Aynı gün',        orta: '24 saat içinde',     uzun: '48 saat içinde' },
+        quote:         { kisa: '2 saat içinde',   orta: 'Aynı gün',           uzun: '24 saat içinde' },
+        consult:       { kisa: '24 saat içinde',  orta: '2-3 gün içinde',     uzun: '5-7 gün içinde' },
+        followup:      { kisa: 'Günde 1, 3 gün',  orta: '2 günde 1, 1 hafta', uzun: 'Haftada 1, 4-6 hafta' },
+        translator:    { kisa: 'Aynı gün',        orta: '24 saat içinde',     uzun: '48 saat içinde' },
+        travel:        { kisa: 'Rezervasyondan sonra 24 saat', orta: 'Rezervasyondan sonra 2 gün', uzun: 'Rezervasyondan sonra 3-5 gün' },
+        booking:       { kisa: 'Onaydan sonra 1 saat', orta: 'Onaydan sonra aynı gün', uzun: 'Onaydan sonra 24 saat' },
+        treatment:     { kisa: 'Plana göre',      orta: 'Plana göre',         uzun: 'Plana göre' },
+        aftercare:     { kisa: 'Tedaviden 24-48 saat sonra', orta: 'Tedaviden 3 gün sonra', uzun: 'Tedaviden 1 hafta sonra' },
+        review:        { kisa: 'Tedaviden 1 hafta sonra', orta: 'Tedaviden 2 hafta sonra', uzun: 'Tedaviden 3-4 hafta sonra' }
+      };
+      return (M[key] && M[key][cycle]) || '—';
+    }
+
+    // Follow-up touch count by cycle
+    function followupCount(cycle) {
+      return cycle === 'kisa' ? 3 : cycle === 'orta' ? 5 : 7;
+    }
+
+    // Treatment-specific action snippets
+    function treatmentDetail(treatment) {
+      const D = {
+        sac: { unit: 'greft sayısı ve ekim tekniği (FUE/DHI)', proof: 'önceki saç ekimi öncesi/sonrası fotoğrafları', consult: 'donör alan ve çizgi planı için fotoğraf isteyin' },
+        dis: { unit: 'tedavi planı (implant/kaplama/All-on-X) ve diş sayısı', proof: 'gülüş tasarımı örnekleri ve hasta yorumları', consult: 'panoramik röntgen veya ağız içi fotoğraf isteyin' },
+        estetik: { unit: 'prosedür kapsamı (rinoplasti/liposuction vb.)', proof: 'öncesi/sonrası galerisi ve cerrah portföyü', consult: 'ilgili bölge fotoğrafı ve beklenti formu isteyin' },
+        goz: { unit: 'uygun yöntem (LASIK/SMILE/lens) ve numara', proof: 'başarı oranları ve hasta deneyimleri', consult: 'mevcut reçete/numara bilgisini isteyin' },
+        ivf: { unit: 'tedavi protokolü ve tahmini siklus sayısı', proof: 'başarı oranları ve referans hasta hikayeleri', consult: 'önceki tetkik/raporları ve yaş bilgisini isteyin' },
+        obezite: { unit: 'uygun yöntem (tüp mide/bypass) ve BMI', proof: 'kilo verme grafikleri ve hasta takip sonuçları', consult: 'boy/kilo (BMI) ve sağlık geçmişini isteyin' },
+        genel: { unit: 'tedavi kapsamı ve süre', proof: 'klinik referansları ve hasta yorumları', consult: 'ilgili tıbbi bilgileri ve belgeleri isteyin' }
+      };
+      return D[treatment] || D.genel;
+    }
+
+    function buildPipeline(opts) {
+      const { treatment, cycle, team, intl } = opts;
+      const det = treatmentDetail(treatment);
+      const fuCount = followupCount(cycle);
+      const stages = [];
+
+      // 1. Yeni Lead
+      const leadActions = [
+        'Lead kaynağını ve ilk talebi CRM\'e kaydedin',
+        'Otomatik karşılama mesajı gönderin (WhatsApp/SMS)',
+        team === 'solo' ? 'Tek noktadan takip için hatırlatıcı kurun' : 'Lead\'i uygun danışmana atayın'
+      ];
+      stages.push({
+        name: 'Yeni Lead',
+        actions: leadActions,
+        sla: slaFor('firstResponse', cycle),
+        exit: 'Lead\'e ilk temas mesajı iletildi ve iletişim bilgisi doğrulandı.'
+      });
+
+      // 2. İletişim Kuruldu
+      const contactActions = [
+        'Hastanın beklentisini ve aciliyetini netleştirin',
+        det.consult.charAt(0).toUpperCase() + det.consult.slice(1),
+        'Tercih edilen iletişim kanalını ve dilini kaydedin'
+      ];
+      if (intl) contactActions.push('Hastanın ülkesini ve saat dilimini not edin');
+      stages.push({
+        name: 'İletişim Kuruldu',
+        actions: contactActions,
+        sla: slaFor('contact', cycle),
+        exit: 'Karşılıklı diyalog kuruldu; hastanın ihtiyacı ve uygunluğu anlaşıldı.'
+      });
+
+      // 2.5 Tercüman Ataması (international)
+      if (intl) {
+        stages.push({
+          name: 'Tercüman Ataması',
+          added: true,
+          actions: [
+            'Hastanın diline uygun tercüman/danışman atayın',
+            'İletişim şablonlarını ilgili dile çevirin',
+            'Tüm yazışmaların kayıt altına alındığından emin olun'
+          ],
+          sla: slaFor('translator', cycle),
+          exit: 'Hastayla ana dilinde iletişim kurabilecek bir sorumlu atandı.'
+        });
+      }
+
+      // 3. Konsültasyon / Online Görüşme (added for complex treatments or long cycle or big team)
+      const needsConsult = ['ivf', 'estetik', 'obezite', 'dis'].includes(treatment) || cycle === 'uzun' || team === 'buyuk';
+      if (needsConsult) {
+        stages.push({
+          name: 'Konsültasyon / Online Görüşme',
+          added: true,
+          actions: [
+            'Video görüşme veya online konsültasyon planlayın',
+            'Hekim/uzman ön değerlendirmesini alın',
+            'Görüşme notlarını ve tıbbi uygunluğu CRM\'e işleyin'
+          ],
+          sla: slaFor('consult', cycle),
+          exit: 'Tıbbi uygunluk teyit edildi ve hastaya kişiselleştirilmiş yön belirlendi.'
+        });
+      }
+
+      // 4. Bilgi / Fiyat Gönderildi
+      const quoteActions = [
+        'Kişiye özel ' + det.unit + ' içeren teklif hazırlayın',
+        'Şeffaf fiyat ve paket içeriğini yazılı gönderin',
+        'Güven için ' + det.proof + ' paylaşın'
+      ];
+      if (intl) quoteActions.push('Konaklama, transfer ve toplam paket fiyatını netleştirin');
+      stages.push({
+        name: 'Bilgi / Fiyat Gönderildi',
+        actions: quoteActions,
+        sla: slaFor('quote', cycle),
+        exit: 'Hasta fiyat ve tedavi planını aldı; ilk sorularına yanıt verildi.'
+      });
+
+      // 5. Takip
+      const followActions = [
+        'Planlı takip dizisi kurun: toplam ' + fuCount + ' temas',
+        'Her temasta yeni bir değer/yanıt sunun (itme değil)',
+        'İtiraz ve tereddütleri kaydedip yanıtlayın'
+      ];
+      if (team !== 'solo') followActions.push('Sıcak lead\'leri kıdemli danışmana yönlendirin');
+      else followActions.push('Otomatik hatırlatıcı ve hazır şablonlarla zaman kazanın');
+      stages.push({
+        name: 'Takip',
+        actions: followActions,
+        sla: slaFor('followup', cycle),
+        exit: 'Hasta net bir karar sinyali verdi (rezervasyon/ret/erteleme).'
+      });
+
+      // 6. Rezervasyon
+      const bookActions = [
+        'Tedavi tarihini netleştirin ve takvime alın',
+        'Depozito/ön ödeme ve sözleşmeyi tamamlayın',
+        'Onay ve hazırlık talimatlarını yazılı gönderin'
+      ];
+      stages.push({
+        name: 'Rezervasyon',
+        actions: bookActions,
+        sla: slaFor('booking', cycle),
+        exit: 'Tarih ve ödeme onaylandı; hasta rezervasyon teyidi aldı.'
+      });
+
+      // 6.5 Vize & Seyahat Planı (international)
+      if (intl) {
+        stages.push({
+          name: 'Vize & Seyahat Planı',
+          added: true,
+          actions: [
+            'Gerekli davet/onay belgelerini hazırlayın',
+            'Uçuş, havalimanı transferi ve konaklamayı koordine edin',
+            'Varış günü programını ve iletişim kişisini paylaşın'
+          ],
+          sla: slaFor('travel', cycle),
+          exit: 'Seyahat ve konaklama planı kesinleşti; hasta varış detaylarını aldı.'
+        });
+      }
+
+      // 7. Tedavi
+      stages.push({
+        name: 'Tedavi',
+        actions: [
+          'Hasta karşılama ve klinik içi süreci yönetin',
+          'Tedavi adımlarını ve onam belgelerini tamamlayın',
+          team === 'buyuk' ? 'Operasyon ekibiyle devir (handoff) yapın' : 'Süreç boyunca tek temas noktası kalın'
+        ],
+        sla: slaFor('treatment', cycle),
+        exit: 'Tedavi tamamlandı ve hasta taburcu/uğurlama süreci başladı.'
+      });
+
+      // 8. Tedavi Sonrası
+      const afterActions = [
+        'Taburcu sonrası bakım talimatlarını gönderin',
+        'Planlı kontrol/iyileşme takibini yapın',
+        'Memnuniyeti ölçün ve sorunları hızla çözün'
+      ];
+      if (intl) afterActions.push('Hasta ülkesine döndükten sonra uzaktan takip planlayın');
+      stages.push({
+        name: 'Tedavi Sonrası',
+        actions: afterActions,
+        sla: slaFor('aftercare', cycle),
+        exit: 'İyileşme sürecinde sorun yok; hasta memnuniyeti teyit edildi.'
+      });
+
+      // 9. Yorum & Referans İsteği (added for most, especially marketing-heavy treatments)
+      const wantsReview = intl || ['sac', 'dis', 'estetik', 'goz'].includes(treatment) || team !== 'solo';
+      if (wantsReview) {
+        stages.push({
+          name: 'Yorum & Referans İsteği',
+          added: true,
+          actions: [
+            'Doğru zamanlamada yorum/değerlendirme isteyin',
+            'İzinli öncesi/sonrası içerik veya video talep edin',
+            'Memnun hastayı referans programına davet edin'
+          ],
+          sla: slaFor('review', cycle),
+          exit: 'Yorum, içerik veya referans alındı; hasta sadakat döngüsüne eklendi.'
+        });
+      }
+
+      return stages;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    let lastStages = [];
+    let lastOpts = null;
+
+    function readOpts() {
+      return {
+        treatment: selTreatment.value,
+        cycle: selCycle.value,
+        team: selTeam.value,
+        intl: chkIntl.checked
+      };
+    }
+
+    function render() {
+      const opts = readOpts();
+      const stages = buildPipeline(opts);
+      lastStages = stages;
+      lastOpts = opts;
+
+      // Chips
+      const baseCount = 7;
+      const addedCount = stages.filter(s => s.added).length;
+      chipRow.innerHTML = [
+        `<span class="chip">Tedavi: <strong>${escapeHtml(treatmentLabels[opts.treatment])}</strong></span>`,
+        `<span class="chip">Döngü: <strong>${escapeHtml(cycleLabels[opts.cycle])}</strong></span>`,
+        `<span class="chip">Ekip: <strong>${escapeHtml(teamLabels[opts.team])}</strong></span>`,
+        `<span class="chip">${opts.intl ? 'Uluslararası hasta: <strong>Evet</strong>' : 'Uluslararası hasta: <strong>Hayır</strong>'}</span>`,
+        `<span class="chip"><strong>${stages.length}</strong> aşama (${addedCount} ek aşama)</span>`,
+        `<span class="chip">Takip teması: <strong>${followupCount(opts.cycle)}</strong></span>`
+      ].join('');
+
+      // Pipeline
+      pipelineEl.innerHTML = stages.map((s, i) => {
+        const actionsHtml = s.actions.map(a => `<li>${escapeHtml(a)}</li>`).join('');
+        const tag = s.added
+          ? '<span class="stage-tag added">+ Ek Aşama</span>'
+          : '<span class="stage-tag">Temel</span>';
+        return `
+          <div class="stage">
+            <div class="stage-head">
+              <div class="stage-num">${i + 1}</div>
+              <div class="stage-name">${escapeHtml(s.name)}</div>
+              ${tag}
+            </div>
+            <div class="stage-body">
+              <div class="stage-block">
+                <div class="sb-label">&#9654; Önerilen Aksiyonlar</div>
+                <ul class="stage-actions">${actionsHtml}</ul>
+              </div>
+              <div class="stage-meta">
+                <div class="meta-box">
+                  <div class="sb-label">&#9201; SLA / Hedef Süre</div>
+                  <div class="sla-val">${escapeHtml(s.sla)}</div>
+                </div>
+                <div class="meta-box">
+                  <div class="sb-label">&#10140; Çıkış Kriteri</div>
+                  <div class="exit-val">${escapeHtml(s.exit)}</div>
+                </div>
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+
+      resultsSection.classList.add('visible');
+      setTimeout(() => {
+        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+    }
+
+    function buildText() {
+      if (!lastStages.length || !lastOpts) return '';
+      const o = lastOpts;
+      const lines = [];
+      lines.push('ÖNERİLEN CRM SATIŞ PIPELINE\'I');
+      lines.push('saglikturizmi.info — CRM Pipeline Oluşturucu');
+      lines.push('');
+      lines.push('Tedavi alanı : ' + treatmentLabels[o.treatment]);
+      lines.push('Satış döngüsü: ' + cycleLabels[o.cycle]);
+      lines.push('Ekip         : ' + teamLabels[o.team]);
+      lines.push('Uluslararası : ' + (o.intl ? 'Evet' : 'Hayır'));
+      lines.push('Toplam aşama : ' + lastStages.length);
+      lines.push('Takip teması : ' + followupCount(o.cycle));
+      lines.push('');
+      lines.push('========================================');
+      lastStages.forEach((s, i) => {
+        lines.push('');
+        lines.push((i + 1) + '. ' + s.name + (s.added ? '  [EK AŞAMA]' : ''));
+        lines.push('----------------------------------------');
+        lines.push('Aksiyonlar:');
+        s.actions.forEach(a => lines.push('  - ' + a));
+        lines.push('SLA / Hedef Süre: ' + s.sla);
+        lines.push('Çıkış Kriteri   : ' + s.exit);
+      });
+      lines.push('');
+      lines.push('========================================');
+      lines.push('Kurulum desteği: WhatsApp +90 539 723 22 92');
+      return lines.join('\n');
+    }
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    btnBuild.addEventListener('click', render);
+
+    btnReset.addEventListener('click', function () {
+      selTreatment.value = 'sac';
+      selCycle.value = 'orta';
+      selTeam.value = 'kucuk';
+      chkIntl.checked = true;
+      resultsSection.classList.remove('visible');
+      lastStages = [];
+      lastOpts = null;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    btnCopy.addEventListener('click', function () {
+      const text = buildText();
+      if (!text) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          () => showToast('Kopyalandı!'),
+          () => fallbackCopy(text)
+        );
+      } else {
+        fallbackCopy(text);
+      }
+    });
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('Kopyalandı!');
+      } catch (e) {
+        showToast('Kopyalanamadı, metni elle seçin');
+      }
+      document.body.removeChild(ta);
+    }
+  </script>
+</body>
+</html>

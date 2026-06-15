@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Uygunluk Testi | saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizmi landing page'inizi 7 kategoride test edin: hız, mobil uyum, güven öğeleri, CTA netliği, çok dillilik, form/WhatsApp ve yasal uyum. Kategori ve genel skorunuzu öğrenin, önceliklendirilmiş iyileştirme önerileri alın.">
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/landing-page-uygunluk-testi/">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0F0A1A;
+      color: #F8F7FF;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    #site-header:empty, #site-footer:empty { display: none; }
+
+    a { color: #C4B5FD; text-decoration: none; }
+    a:hover { color: #F8F7FF; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      background: #1A1028;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+      padding: 12px 0;
+    }
+    .breadcrumb-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #C4B5FD;
+      flex-wrap: wrap;
+    }
+    .breadcrumb-sep {
+      color: rgba(196, 181, 253, 0.4);
+      font-size: 11px;
+    }
+    .breadcrumb-current {
+      color: #F8F7FF;
+      font-weight: 500;
+    }
+
+    /* Page header */
+    .page-header {
+      background: linear-gradient(135deg, #1A1028 0%, #231535 100%);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.25);
+      padding: 48px 20px 40px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+    .page-header h1 span {
+      background: linear-gradient(90deg, #7C3AED, #C4B5FD);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-header p {
+      color: #C4B5FD;
+      font-size: 15px;
+      max-width: 580px;
+      margin: 0 auto;
+      opacity: 0.85;
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(124, 58, 237, 0.2);
+      border: 1px solid rgba(124, 58, 237, 0.4);
+      color: #C4B5FD;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    /* Main container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* Card */
+    .card {
+      background: #1A1028;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-title .icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(124, 58, 237, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .card-subtitle {
+      font-size: 13px;
+      color: #C4B5FD;
+      opacity: 0.7;
+      margin-bottom: 24px;
+      padding-left: 42px;
+    }
+
+    /* Category blocks (checklist) */
+    .cat-block {
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      transition: border-color 0.2s;
+    }
+    .cat-block:focus-within {
+      border-color: rgba(124, 58, 237, 0.5);
+    }
+    .cat-block-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 12px;
+    }
+    .cat-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #F8F7FF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cat-emoji { font-size: 16px; }
+    .cat-count-badge {
+      background: rgba(124, 58, 237, 0.25);
+      border: 1px solid rgba(124, 58, 237, 0.4);
+      color: #C4B5FD;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* Checkbox items */
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 9px 0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .check-item + .check-item {
+      border-top: 1px solid rgba(124, 58, 237, 0.08);
+    }
+    .check-item input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      border: 2px solid rgba(124, 58, 237, 0.45);
+      border-radius: 6px;
+      background: #0F0A1A;
+      cursor: pointer;
+      position: relative;
+      margin-top: 1px;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+    .check-item input[type="checkbox"]:hover {
+      border-color: #7C3AED;
+    }
+    .check-item input[type="checkbox"]:checked {
+      background: linear-gradient(135deg, #7C3AED, #6D28D9);
+      border-color: #7C3AED;
+    }
+    .check-item input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 6px;
+      height: 11px;
+      border: solid #fff;
+      border-width: 0 2.5px 2.5px 0;
+      transform: rotate(45deg);
+    }
+    .check-item input[type="checkbox"]:focus-visible {
+      outline: 2px solid #A78BFA;
+      outline-offset: 2px;
+    }
+    .check-label {
+      font-size: 13.5px;
+      color: #E9E5FF;
+      line-height: 1.5;
+      padding-top: 1px;
+    }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #7C3AED, #6D28D9);
+      color: #F8F7FF;
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-reset {
+      background: transparent;
+      color: rgba(196, 181, 253, 0.5);
+      border: 1px solid rgba(196, 181, 253, 0.15);
+      font-size: 13px;
+      padding: 10px 18px;
+    }
+    .btn-reset:hover {
+      color: #C4B5FD;
+      border-color: rgba(196, 181, 253, 0.35);
+      background: rgba(196, 181, 253, 0.05);
+    }
+
+    /* Results section */
+    #results { display: none; }
+    #results.visible { display: block; }
+
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .results-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #F8F7FF;
+    }
+
+    /* Gauge wrapper (renderScoreGauge target) */
+    .gauge-card { text-align: center; }
+    /* shared.css supplies .score-display, .progress-bar, .progress-fill, .caption */
+    .score-display {
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .progress-bar {
+      height: 12px;
+      background: rgba(124, 58, 237, 0.12);
+      border-radius: 9999px;
+      overflow: hidden;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 9999px;
+      transition: width 0.8s cubic-bezier(.4,0,.2,1);
+    }
+    .caption {
+      font-size: 12px;
+      color: #C4B5FD;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .mt-8 { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .gauge-verdict {
+      font-size: 13px;
+      color: #C4B5FD;
+      max-width: 480px;
+      margin: 14px auto 0;
+      opacity: 0.9;
+    }
+
+    /* Summary stats */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .stat-box {
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-box .stat-val {
+      font-size: 26px;
+      font-weight: 800;
+      color: #F8F7FF;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-box .stat-val.purple { color: #C4B5FD; }
+    .stat-box .stat-val.green { color: #4ade80; }
+    .stat-box .stat-val.red { color: #f87171; }
+    .stat-box .stat-label {
+      font-size: 11px;
+      color: #C4B5FD;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Category bars */
+    .chart-section { margin-bottom: 8px; }
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .bar-name {
+      font-size: 12.5px;
+      color: #C4B5FD;
+      width: 150px;
+      flex-shrink: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: right;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+    .bar-track {
+      flex: 1;
+      background: rgba(124, 58, 237, 0.1);
+      border-radius: 6px;
+      height: 26px;
+      overflow: hidden;
+      position: relative;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      transition: width 0.8s cubic-bezier(.4,0,.2,1);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      min-width: 38px;
+    }
+    .bar-fill.lvl-high { background: linear-gradient(90deg, #047857, #10B981, #34D399); }
+    .bar-fill.lvl-good { background: linear-gradient(90deg, #5B21B6, #7C3AED, #C4B5FD); }
+    .bar-fill.lvl-mid  { background: linear-gradient(90deg, #92400E, #D97706, #FBBF24); }
+    .bar-fill.lvl-low  { background: linear-gradient(90deg, #991B1B, #DC2626, #F87171); }
+
+    /* Recommendations */
+    .reco-items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .reco-item {
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.12);
+      border-radius: 10px;
+      padding: 15px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .reco-rank {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 1px;
+      background: #7C3AED;
+      color: #fff;
+    }
+    .reco-item.sev-low .reco-rank { background: #DC2626; }
+    .reco-item.sev-mid .reco-rank { background: #D97706; }
+    .reco-item.sev-good .reco-rank { background: #7C3AED; }
+    .reco-item.sev-high .reco-rank { background: #059669; }
+    .reco-body { flex: 1; }
+    .reco-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .reco-cat-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #F8F7FF;
+    }
+    .reco-score-pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 20px;
+      background: rgba(124, 58, 237, 0.18);
+      color: #C4B5FD;
+      border: 1px solid rgba(124, 58, 237, 0.3);
+    }
+    .reco-item.sev-low .reco-score-pill { background: rgba(220,38,38,0.15); color: #f87171; border-color: rgba(220,38,38,0.3); }
+    .reco-item.sev-mid .reco-score-pill { background: rgba(245,158,11,0.15); color: #fbbf24; border-color: rgba(245,158,11,0.3); }
+    .reco-item.sev-high .reco-score-pill { background: rgba(5,150,105,0.15); color: #4ade80; border-color: rgba(5,150,105,0.3); }
+    .reco-note {
+      font-size: 13px;
+      color: #C4B5FD;
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+    .reco-missing {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .reco-missing li {
+      font-size: 12.5px;
+      color: #E9E5FF;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      opacity: 0.92;
+    }
+    .reco-missing li::before {
+      content: '\2192';
+      color: #A78BFA;
+      flex-shrink: 0;
+    }
+    .reco-done {
+      font-size: 12.5px;
+      color: #4ade80;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /* Info tip */
+    .info-tip {
+      background: rgba(124, 58, 237, 0.07);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: #C4B5FD;
+      opacity: 0.85;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin-top: 16px;
+    }
+    .info-tip .tip-icon { flex-shrink: 0; margin-top: 1px; }
+
+    /* Explanation grid */
+    .legend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 6px;
+    }
+    .legend-item {
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.12);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .legend-band {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .legend-item p {
+      font-size: 12.5px;
+      color: #C4B5FD;
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+    .prose p {
+      font-size: 14px;
+      color: #C4B5FD;
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { color: #F8F7FF; }
+
+    /* FAQ (shared.css supplies .faq-q/.faq-a/.faq-icon; light overrides for dark surface) */
+    .faq-item {
+      border-bottom: 1px solid rgba(124, 58, 237, 0.15);
+      padding: 16px 0;
+    }
+    .faq-item:first-child { border-top: 1px solid rgba(124, 58, 237, 0.15); }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: #F8F7FF;
+      text-align: left;
+      line-height: 1.4;
+    }
+    .faq-q:hover { color: #C4B5FD; }
+    .faq-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(124, 58, 237, 0.15);
+      color: #C4B5FD;
+      font-size: 20px;
+      font-weight: 300;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .faq-a {
+      color: #C4B5FD;
+      padding-top: 10px;
+      line-height: 1.7;
+      font-size: 13.5px;
+      display: none;
+    }
+
+    /* WhatsApp CTA */
+    .wa-cta {
+      background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(37, 211, 102, 0.05));
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .wa-cta-text h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 6px;
+    }
+    .wa-cta-text p {
+      font-size: 13px;
+      color: #C4B5FD;
+      opacity: 0.8;
+    }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 13px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+    }
+    .btn-wa:hover {
+      background: #20c05a;
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+    }
+    .wa-icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(124, 58, 237, 0.15);
+      margin: 24px 0;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 18px 14px; }
+      .bar-name { width: 96px; }
+      .wa-cta { flex-direction: column; text-align: center; }
+      .btn-wa { width: 100%; justify-content: center; }
+      .summary-grid { grid-template-columns: 1fr 1fr; }
+      .score-display { font-size: 52px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main style="padding-top:64px">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="/">Ana Sayfa</a>
+        <span class="breadcrumb-sep">&#9656;</span>
+        <a href="/araclar/">Araçlar</a>
+        <span class="breadcrumb-sep">&#9656;</span>
+        <span class="breadcrumb-current">Landing Page Uygunluk Testi</span>
+      </div>
+    </nav>
+
+    <!-- Page header -->
+    <div class="page-header">
+      <div class="header-badge">Ücretsiz Test Aracı</div>
+      <h1>Landing Page <span>Uygunluk Testi</span></h1>
+      <p>Sağlık turizmi landing page'inizi 7 kritik kategoride değerlendirin. Her kategori için skorunuzu, genel uygunluk puanınızı ve önceliklendirilmiş iyileştirme önerilerini anında görün.</p>
+    </div>
+
+    <div class="container">
+
+      <!-- Checklist Card -->
+      <div class="card">
+        <div class="card-title">
+          <div class="icon">&#9745;</div>
+          Kontrol Listesi
+        </div>
+        <div class="card-subtitle">Landing page'inizde mevcut olan maddeleri işaretleyin. İşaretlemediğiniz maddeler iyileştirme önerisi olarak listelenir.</div>
+
+        <div id="categories-container">
+          <!-- Category blocks injected by JS -->
+        </div>
+
+        <hr class="divider">
+
+        <div class="btn-row">
+          <button class="btn btn-primary" id="btn-run" type="button">
+            &#9654;&#65039; Testi Çalıştır
+          </button>
+          <button class="btn btn-reset" id="btn-reset" type="button">
+            &#8635; Sıfırla
+          </button>
+        </div>
+
+        <div class="info-tip">
+          <span class="tip-icon">&#128161;</span>
+          Genel skor, tüm kategori skorlarının ağırlıklı ortalamasıdır. Güven Öğeleri, CTA Netliği ve Form/WhatsApp kategorileri dönüşüm üzerindeki etkileri nedeniyle daha yüksek ağırlık taşır.
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div id="results">
+
+        <div class="results-header">
+          <div class="results-title">&#128202; Test Sonuçları</div>
+        </div>
+
+        <!-- Overall gauge -->
+        <div class="card gauge-card">
+          <div class="card-title" style="justify-content:center">
+            <div class="icon">&#127919;</div>
+            Genel Uygunluk Skoru
+          </div>
+          <div id="overall-gauge"></div>
+          <p class="gauge-verdict" id="gauge-verdict"></p>
+        </div>
+
+        <!-- Summary stats -->
+        <div class="summary-grid" id="summary-grid"></div>
+
+        <!-- Per-category bars -->
+        <div class="card">
+          <div class="card-title"><div class="icon">&#9644;</div> Kategori Skorları</div>
+          <div class="card-subtitle">Her kategoride işaretlenen maddelerin yüzdesi. Renk; skor seviyesini gösterir (yeşil = güçlü, kırmızı = zayıf).</div>
+          <div class="chart-section" id="bar-chart"></div>
+        </div>
+
+        <!-- Prioritized recommendations -->
+        <div class="card">
+          <div class="card-title"><div class="icon">&#128203;</div> Önceliklendirilmiş Öneriler</div>
+          <div class="card-subtitle">En zayıf kategoriden başlayarak sıralanmıştır. Önce 1 numaralı maddeye odaklanın.</div>
+          <div class="reco-items" id="reco-items"></div>
+        </div>
+
+        <!-- WhatsApp CTA -->
+        <div class="wa-cta">
+          <div class="wa-cta-text">
+            <h3>Landing page'inizi birlikte optimize edelim</h3>
+            <p>Test sonuçlarınızı paylaşın; sağlık turizmi dönüşümünü artıran landing page kurulumu için ücretsiz danışmanlık alın.</p>
+          </div>
+          <a href="https://wa.me/905397232292?text=Merhaba%2C%20Landing%20Page%20Uygunluk%20Testi%27ni%20kulland%C4%B1m.%20Landing%20page%27imi%20optimize%20etmek%20i%C3%A7in%20destek%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn-wa">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            WhatsApp'tan Yazın
+          </a>
+        </div>
+
+      </div>
+      <!-- /results -->
+
+      <!-- How to read -->
+      <div class="card">
+        <div class="card-title"><div class="icon">&#128214;</div> Sonuçları Nasıl Okumalısınız?</div>
+        <div class="card-subtitle">Skor bantları ve kategorilerin önceliklendirilmesi.</div>
+        <div class="prose">
+          <p>Her kategori, içerdiği maddelerin <strong>işaretlenme yüzdesine</strong> göre 0-100 arası puanlanır. Genel skor ise kategorilerin <strong>ağırlıklı ortalamasıdır</strong>: dönüşüme doğrudan etki eden Güven Öğeleri, CTA Netliği ve Form/WhatsApp kategorileri daha fazla ağırlık taşır.</p>
+          <p>Öneriler listesi, <strong>en düşük skorlu kategoriden</strong> başlayarak sıralanır. Sınırlı zamanınız varsa listenin en üstündeki maddeye odaklanmak, dönüşüm oranınızı en hızlı artıracak hamledir.</p>
+        </div>
+        <div class="legend-grid">
+          <div class="legend-item">
+            <div class="legend-band" style="color:#4ade80"><span class="legend-dot" style="background:#10B981"></span> 81-100 — Güçlü</div>
+            <p>Kategori sağlık turizmi standartlarını karşılıyor. Mevcut durumu koruyun ve ölçümleyin.</p>
+          </div>
+          <div class="legend-item">
+            <div class="legend-band" style="color:#C4B5FD"><span class="legend-dot" style="background:#7C3AED"></span> 61-80 — İyi</div>
+            <p>Temel hazır; birkaç eksik madde tamamlanırsa kategori güçlü seviyeye taşınır.</p>
+          </div>
+          <div class="legend-item">
+            <div class="legend-band" style="color:#fbbf24"><span class="legend-dot" style="background:#D97706"></span> 36-60 — Geliştirilmeli</div>
+            <p>Önemli boşluklar var. Bu kategori dönüşüm kaybına yol açıyor olabilir.</p>
+          </div>
+          <div class="legend-item">
+            <div class="legend-band" style="color:#f87171"><span class="legend-dot" style="background:#DC2626"></span> 0-35 — Kritik</div>
+            <p>Acil müdahale gerekir. Reklam bütçesi harcamadan önce bu kategoriyi düzeltin.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="card">
+        <div class="card-title"><div class="icon">&#10067;</div> Sıkça Sorulan Sorular</div>
+        <div class="card-subtitle">Landing page uygunluk testi hakkında merak edilenler.</div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q">Bu test landing page'imi gerçekten tarıyor mu?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Hayır. Bu araç sayfanıza otomatik erişmez; sizin işaretlediğiniz maddelere göre çalışan bir öz-değerlendirme kontrol listesidir. Maddeleri dürüst işaretlediğinizde, sağlık turizmi landing page'lerinde en sık görülen eksikleri yapılandırılmış biçimde ortaya koyar. Hiçbir veri kaydedilmez veya sunucuya gönderilmez.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Genel skor nasıl hesaplanıyor?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Her kategori, içindeki işaretli maddelerin yüzdesi olarak puanlanır. Genel skor bu kategori skorlarının ağırlıklı ortalamasıdır. Güven Öğeleri, CTA Netliği ve Form/WhatsApp kategorileri dönüşüme doğrudan etkileri nedeniyle daha yüksek ağırlık taşır; Çok Dillilik ve Yasal kategorileri ise nispeten daha düşük ağırlıkla hesaba katılır.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Hangi kategoriye önce odaklanmalıyım?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Önceliklendirilmiş öneriler listesinin en üstündeki kategoriye, yani en düşük skorlu olana. Genellikle Güven Öğeleri ve CTA Netliğindeki eksikler, dönüşüm oranını en hızlı düşüren faktörlerdir; bu nedenle benzer skorlarda bu kategorilere öncelik vermek mantıklıdır.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Yüksek skor reklam başarısını garanti eder mi?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Hayır. Yüksek skor, landing page'inizin teknik ve içerik açısından sağlam bir temele sahip olduğunu gösterir; ancak trafik kalitesi, teklif (offer) gücü, fiyatlandırma ve takip süreci de dönüşümü belirler. Bu test, kontrol edilebilir sayfa içi faktörleri kapsar.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Yasal kategorisi neden önemli?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Sağlık turizminde KVKK uyumu, çerez bildirimi, açık izin onay kutusu ve sorumluluk reddi metinleri hem yasal zorunluluk hem de güven unsurudur. Eksik yasal metinler reklam platformlarında onay sorunlarına ve hasta adaylarında güvensizliğe yol açabilir; bu nedenle düşük ağırlıkta da olsa skora dahil edilir.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final WhatsApp CTA -->
+      <div class="wa-cta">
+        <div class="wa-cta-text">
+          <h3>Test sonuçlarınızı uzmanla değerlendirin</h3>
+          <p>Hangi kategoriden başlamanız gerektiğini ve dönüşümü artıracak somut adımları birlikte planlayalım. İlk görüşme ücretsiz.</p>
+        </div>
+        <a href="https://wa.me/905397232292?text=Merhaba%2C%20Landing%20Page%20Uygunluk%20Testi%20sonu%C3%A7lar%C4%B1m%C4%B1%20de%C4%9Ferlendirmek%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn-wa">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp'tan Yazın
+        </a>
+      </div>
+
+    </div>
+  </main>
+  <div id="site-footer"></div>
+
+  <!-- JSON-LD: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Landing Page Uygunluk Testi",
+    "url": "https://saglikturizmi.info/araclar/landing-page-uygunluk-testi/",
+    "description": "Sağlık turizmi landing page'lerini hız, mobil uyum, güven öğeleri, CTA netliği, çok dillilik, form/WhatsApp ve yasal uyum kategorilerinde test eden, kategori ve genel skor ile önceliklendirilmiş öneriler üreten ücretsiz öz-değerlendirme aracı.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "tr",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TRY"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "saglikturizmi.info",
+      "url": "https://saglikturizmi.info/"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://saglikturizmi.info/" },
+      { "@type": "ListItem", "position": 2, "name": "Araçlar", "item": "https://saglikturizmi.info/araclar/" },
+      { "@type": "ListItem", "position": 3, "name": "Landing Page Uygunluk Testi", "item": "https://saglikturizmi.info/araclar/landing-page-uygunluk-testi/" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Bu test landing page'imi gerçekten tarıyor mu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hayır. Bu araç sayfanıza otomatik erişmez; sizin işaretlediğiniz maddelere göre çalışan bir öz-değerlendirme kontrol listesidir. Maddeleri dürüst işaretlediğinizde, sağlık turizmi landing page'lerinde en sık görülen eksikleri yapılandırılmış biçimde ortaya koyar. Hiçbir veri kaydedilmez veya sunucuya gönderilmez."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Genel skor nasıl hesaplanıyor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Her kategori, içindeki işaretli maddelerin yüzdesi olarak puanlanır. Genel skor bu kategori skorlarının ağırlıklı ortalamasıdır. Güven Öğeleri, CTA Netliği ve Form/WhatsApp kategorileri dönüşüme doğrudan etkileri nedeniyle daha yüksek ağırlık taşır; Çok Dillilik ve Yasal kategorileri ise nispeten daha düşük ağırlıkla hesaba katılır."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hangi kategoriye önce odaklanmalıyım?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Önceliklendirilmiş öneriler listesinin en üstündeki kategoriye, yani en düşük skorlu olana. Genellikle Güven Öğeleri ve CTA Netliğindeki eksikler, dönüşüm oranını en hızlı düşüren faktörlerdir; bu nedenle benzer skorlarda bu kategorilere öncelik vermek mantıklıdır."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Yüksek skor reklam başarısını garanti eder mi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hayır. Yüksek skor, landing page'inizin teknik ve içerik açısından sağlam bir temele sahip olduğunu gösterir; ancak trafik kalitesi, teklif gücü, fiyatlandırma ve takip süreci de dönüşümü belirler. Bu test, kontrol edilebilir sayfa içi faktörleri kapsar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Yasal kategorisi neden önemli?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sağlık turizminde KVKK uyumu, çerez bildirimi, açık izin onay kutusu ve sorumluluk reddi metinleri hem yasal zorunluluk hem de güven unsurudur. Eksik yasal metinler reklam platformlarında onay sorunlarına ve hasta adaylarında güvensizliğe yol açabilir; bu nedenle düşük ağırlıkta da olsa skora dahil edilir."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script src="/shared.js"></script>
+  <script>
+    /* ===== LANDING PAGE UYGUNLUK TESTİ ===== */
+    (function () {
+      // Category model: id, emoji, name, weight, items[]
+      var CATEGORIES = [
+        {
+          id: 'hiz',
+          emoji: '⚡',
+          name: 'Hız (Performans)',
+          weight: 1.0,
+          items: [
+            'Sayfa hızlı yükleniyor (3 saniyenin altında)',
+            'Görseller optimize ve sıkıştırılmış (WebP / uygun boyut)',
+            'Gereksiz script veya ağır eklenti yok',
+            'Önbellekleme / CDN kullanılıyor'
+          ]
+        },
+        {
+          id: 'mobil',
+          emoji: '📱',
+          name: 'Mobil Uyum',
+          weight: 1.1,
+          items: [
+            'Tasarım responsive (tüm ekranlara uyum sağlıyor)',
+            'Dokunmatik butonlar yeterli boyutta (parmakla rahat basılıyor)',
+            'Mobilde form doldurmak kolay ve kısa',
+            'Yazı boyutu mobilde okunaklı, yatay kaydırma yok'
+          ]
+        },
+        {
+          id: 'guven',
+          emoji: '🛡️',
+          name: 'Güven Öğeleri',
+          weight: 1.4,
+          items: [
+            'Hasta yorumları veya öncesi-sonrası görselleri var',
+            'Hekim / klinik bilgisi ve fotoğrafları yer alıyor',
+            'Sertifika / akreditasyon (JCI, Sağlık Bakanlığı vb.) gösteriliyor',
+            'Gerçek iletişim adresi ve harita mevcut'
+          ]
+        },
+        {
+          id: 'cta',
+          emoji: '🎯',
+          name: 'CTA Netliği',
+          weight: 1.3,
+          items: [
+            'Tek ve net bir birincil CTA var',
+            'CTA sayfanın üst kısmında (kaydırmadan) görünüyor',
+            'Buton metni eylem odaklı ("Ücretsiz Görüşme Al" vb.)'
+          ]
+        },
+        {
+          id: 'dil',
+          emoji: '🌐',
+          name: 'Çok Dillilik',
+          weight: 0.9,
+          items: [
+            'İçerik hedef pazarın dilinde sunuluyor',
+            'Görünür ve kolay bir dil seçici var',
+            'Çeviriler doğru ve doğal (makine çevirisi değil)'
+          ]
+        },
+        {
+          id: 'form',
+          emoji: '💬',
+          name: 'Form / WhatsApp',
+          weight: 1.3,
+          items: [
+            'Form kısa (yalnızca gerekli alanlar isteniyor)',
+            'Görünür bir WhatsApp butonu var',
+            'Anlık yanıt veya otomasyon kurulu (hızlı geri dönüş)'
+          ]
+        },
+        {
+          id: 'yasal',
+          emoji: '⚖️',
+          name: 'Yasal',
+          weight: 0.8,
+          items: [
+            'KVKK / gizlilik politikası metni var',
+            'Çerez bildirimi gösteriliyor',
+            'Sorumluluk reddi (tıbbi içerik uyarısı) mevcut',
+            'Açık izin onay kutusu (formda) bulunuyor'
+          ]
+        }
+      ];
+
+      // Per-category improvement intro notes by severity band
+      function bandFor(score) {
+        if (score >= 81) return 'high';
+        if (score >= 61) return 'good';
+        if (score >= 36) return 'mid';
+        return 'low';
+      }
+
+      function noteFor(cat, band) {
+        var notes = {
+          hiz: {
+            low: 'Sayfa hızı kritik seviyede. Yavaş açılan sayfalar reklamdan gelen ziyaretçilerin büyük bölümünü daha sayfa yüklenmeden kaybettirir.',
+            mid: 'Performans geliştirilmeli. Hız sorunları hem dönüşümü hem de reklam kalite puanınızı düşürür.',
+            good: 'Hız iyi durumda; kalan birkaç madde tamamlanırsa mobil deneyim daha da hızlanır.',
+            high: 'Performans güçlü. Düzenli olarak hız testleriyle bu seviyeyi koruyun.'
+          },
+          mobil: {
+            low: 'Mobil deneyim kritik. Sağlık turizmi trafiğinin büyük çoğunluğu mobilden gelir; bu eksikler doğrudan dönüşüm kaybıdır.',
+            mid: 'Mobil uyum geliştirilmeli. Küçük butonlar ve uzun formlar mobil kullanıcıyı yorar.',
+            good: 'Mobil uyum iyi; kalan maddeler tamamlanırsa mobil dönüşüm artar.',
+            high: 'Mobil deneyim güçlü. Gerçek cihazlarda periyodik test yapmaya devam edin.'
+          },
+          guven: {
+            low: 'Güven öğeleri kritik düzeyde eksik. Uluslararası hasta, kanıt görmeden iletişime geçmez; bu kategori dönüşümün belkemiğidir.',
+            mid: 'Güven öğeleri yetersiz. Yorum, hekim bilgisi ve akreditasyon eklemek dönüşümü en çok artıran hamledir.',
+            good: 'Güven temeli sağlam; eksik kanıt unsurlarını tamamlayarak inandırıcılığı zirveye taşıyın.',
+            high: 'Güven öğeleri güçlü. Yorumları ve sonuç görsellerini güncel tutun.'
+          },
+          cta: {
+            low: 'CTA netliği kritik. Ziyaretçi ne yapacağını anlamıyorsa hiçbir trafik kaynağı işe yaramaz.',
+            mid: 'CTA geliştirilmeli. Tek, net ve üstte görünen bir çağrı dönüşümü belirgin artırır.',
+            good: 'CTA iyi konumlanmış; metni daha eylem odaklı hale getirerek tıklamayı artırabilirsiniz.',
+            high: 'CTA güçlü ve net. Farklı metinlerle A/B testi yaparak daha da iyileştirebilirsiniz.'
+          },
+          dil: {
+            low: 'Çok dillilik kritik eksik. Hedef pazarın diline hitap etmeyen sayfa, o pazardan dönüşüm üretemez.',
+            mid: 'Çok dillilik geliştirilmeli. Doğru ve doğal çeviri, güven ve dönüşüm için belirleyicidir.',
+            good: 'Dil desteği iyi; çeviri kalitesini ve dil seçicinin görünürlüğünü gözden geçirin.',
+            high: 'Çok dillilik güçlü. İçerik güncellemelerinde tüm dillerin senkron kalmasına dikkat edin.'
+          },
+          form: {
+            low: 'Form/WhatsApp akışı kritik. Hızlı ve kolay iletişim olmadan ilgilenen aday bile elinizden kaçar.',
+            mid: 'İletişim akışı geliştirilmeli. Kısa form, görünür WhatsApp ve hızlı yanıt dönüşümü doğrudan artırır.',
+            good: 'İletişim akışı iyi; otomasyon veya anlık yanıt ekleyerek dönüşümü tamamlayın.',
+            high: 'Form/WhatsApp akışı güçlü. Yanıt sürelerinizi ölçümleyip kısa tutmaya devam edin.'
+          },
+          yasal: {
+            low: 'Yasal uyum kritik düzeyde eksik. KVKK ve izin metinleri olmadan hem yasal risk hem de güven sorunu doğar.',
+            mid: 'Yasal uyum geliştirilmeli. Eksik metinler reklam onaylarını ve aday güvenini olumsuz etkiler.',
+            good: 'Yasal temel büyük ölçüde hazır; kalan metinleri tamamlayarak tam uyumu sağlayın.',
+            high: 'Yasal uyum güçlü. Mevzuat değişikliklerini düzenli takip edin.'
+          }
+        };
+        return notes[cat.id][band];
+      }
+
+      var container = document.getElementById('categories-container');
+      var btnRun = document.getElementById('btn-run');
+      var btnReset = document.getElementById('btn-reset');
+      var resultsSection = document.getElementById('results');
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      // Build checklist UI
+      function buildChecklist() {
+        var html = '';
+        CATEGORIES.forEach(function (cat, ci) {
+          var itemsHtml = cat.items.map(function (item, ii) {
+            var id = 'chk-' + cat.id + '-' + ii;
+            return '<label class="check-item" for="' + id + '">' +
+              '<input type="checkbox" id="' + id + '" data-cat="' + cat.id + '">' +
+              '<span class="check-label">' + escapeHtml(item) + '</span>' +
+              '</label>';
+          }).join('');
+          html += '<div class="cat-block" id="catblock-' + cat.id + '">' +
+            '<div class="cat-block-header">' +
+              '<span class="cat-name"><span class="cat-emoji">' + cat.emoji + '</span>' + escapeHtml(cat.name) + '</span>' +
+              '<span class="cat-count-badge">' + cat.items.length + ' madde</span>' +
+            '</div>' +
+            itemsHtml +
+          '</div>';
+        });
+        container.innerHTML = html;
+      }
+
+      // Compute scores from current checkbox state
+      function computeScores() {
+        var perCat = [];
+        var weightedSum = 0;
+        var weightTotal = 0;
+        var totalItems = 0;
+        var totalChecked = 0;
+
+        CATEGORIES.forEach(function (cat) {
+          var checkedCount = 0;
+          cat.items.forEach(function (item, ii) {
+            var el = document.getElementById('chk-' + cat.id + '-' + ii);
+            if (el && el.checked) checkedCount++;
+          });
+          var n = cat.items.length;
+          var score = n > 0 ? Math.round((checkedCount / n) * 100) : 0;
+          var missing = [];
+          cat.items.forEach(function (item, ii) {
+            var el = document.getElementById('chk-' + cat.id + '-' + ii);
+            if (!(el && el.checked)) missing.push(item);
+          });
+
+          totalItems += n;
+          totalChecked += checkedCount;
+
+          weightedSum += score * cat.weight;
+          weightTotal += cat.weight;
+
+          perCat.push({
+            id: cat.id,
+            name: cat.name,
+            emoji: cat.emoji,
+            weight: cat.weight,
+            total: n,
+            checked: checkedCount,
+            score: score,
+            missing: missing,
+            cat: cat
+          });
+        });
+
+        var overall = weightTotal > 0 ? Math.round(weightedSum / weightTotal) : 0;
+        return {
+          perCat: perCat,
+          overall: overall,
+          totalItems: totalItems,
+          totalChecked: totalChecked
+        };
+      }
+
+      function levelClass(score) {
+        var b = bandFor(score);
+        if (b === 'high') return 'lvl-high';
+        if (b === 'good') return 'lvl-good';
+        if (b === 'mid') return 'lvl-mid';
+        return 'lvl-low';
+      }
+
+      function overallVerdict(score) {
+        if (score >= 81) return 'Landing page’iniz sağlık turizmi standartlarını büyük ölçüde karşılıyor. Güçlü temeli koruyun ve sonuçları ölçümleyerek ince ayar yapın.';
+        if (score >= 61) return 'İyi bir temeliniz var. Aşağıdaki öncelikli kategorilerdeki eksikleri tamamlayarak dönüşümünüzü belirgin biçimde artırabilirsiniz.';
+        if (score >= 36) return 'Sayfanızda dönüşümü düşüren önemli boşluklar var. Önceliklendirilmiş listenin en üstündeki kategorilerden başlayın.';
+        return 'Landing page’iniz kritik eksikler taşıyor. Reklam bütçesi harcamadan önce en zayıf kategorileri düzeltmek ROI’nizi korur.';
+      }
+
+      function render(data) {
+        // Overall gauge via shared.js
+        if (typeof window.renderScoreGauge === 'function') {
+          var label = data.overall >= 81 ? 'Güçlü' : data.overall >= 61 ? 'İyi' : data.overall >= 36 ? 'Geliştirilmeli' : 'Kritik';
+          window.renderScoreGauge('overall-gauge', data.overall, 100, label);
+        } else {
+          document.getElementById('overall-gauge').innerHTML =
+            '<div class="score-display">' + data.overall + '</div><div class="caption mt-8">100 üzerinden</div>';
+        }
+        document.getElementById('gauge-verdict').textContent = overallVerdict(data.overall);
+
+        // Summary stats
+        var strongCount = data.perCat.filter(function (c) { return c.score >= 81; }).length;
+        var weakCount = data.perCat.filter(function (c) { return c.score < 36; }).length;
+        var summaryGrid = document.getElementById('summary-grid');
+        summaryGrid.innerHTML =
+          '<div class="stat-box"><div class="stat-val purple">' + data.overall + '</div><div class="stat-label">Genel Skor</div></div>' +
+          '<div class="stat-box"><div class="stat-val">' + data.totalChecked + ' / ' + data.totalItems + '</div><div class="stat-label">İşaretli Madde</div></div>' +
+          '<div class="stat-box"><div class="stat-val green">' + strongCount + '</div><div class="stat-label">Güçlü Kategori</div></div>' +
+          '<div class="stat-box"><div class="stat-val red">' + weakCount + '</div><div class="stat-label">Kritik Kategori</div></div>';
+
+        // Per-category bars (display in defined order)
+        var chart = document.getElementById('bar-chart');
+        chart.innerHTML = '';
+        data.perCat.forEach(function (c) {
+          var pct = Math.max(c.score, 2);
+          var row = document.createElement('div');
+          row.className = 'bar-row';
+          row.innerHTML =
+            '<div class="bar-name" title="' + escapeHtml(c.name) + '"><span>' + c.emoji + '</span><span style="overflow:hidden;text-overflow:ellipsis">' + escapeHtml(c.name) + '</span></div>' +
+            '<div class="bar-track"><div class="bar-fill ' + levelClass(c.score) + '" style="width:0%">' + c.score + '</div></div>';
+          chart.appendChild(row);
+          // animate width on next frame
+          var fill = row.querySelector('.bar-fill');
+          requestAnimationFrame(function () { fill.style.width = pct + '%'; });
+        });
+
+        // Prioritized recommendations: ascending by score, tie-break by higher weight first
+        var sorted = data.perCat.slice().sort(function (a, b) {
+          if (a.score !== b.score) return a.score - b.score;
+          return b.weight - a.weight;
+        });
+
+        var recoItems = document.getElementById('reco-items');
+        recoItems.innerHTML = '';
+        sorted.forEach(function (c, idx) {
+          var band = bandFor(c.score);
+          var sevClass = band === 'low' ? 'sev-low' : band === 'mid' ? 'sev-mid' : band === 'good' ? 'sev-good' : 'sev-high';
+          var note = noteFor(c.cat, band);
+
+          var missingHtml;
+          if (c.missing.length === 0) {
+            missingHtml = '<div class="reco-done">✔ Bu kategorideki tüm maddeler tamamlanmış.</div>';
+          } else {
+            missingHtml = '<ul class="reco-missing">' +
+              c.missing.map(function (m) { return '<li>' + escapeHtml(m) + '</li>'; }).join('') +
+              '</ul>';
+          }
+
+          var item = document.createElement('div');
+          item.className = 'reco-item ' + sevClass;
+          item.innerHTML =
+            '<div class="reco-rank">' + (idx + 1) + '</div>' +
+            '<div class="reco-body">' +
+              '<div class="reco-head">' +
+                '<span class="reco-cat-name">' + c.emoji + ' ' + escapeHtml(c.name) + '</span>' +
+                '<span class="reco-score-pill">' + c.score + '/100 · ' + c.checked + '/' + c.total + ' madde</span>' +
+              '</div>' +
+              '<div class="reco-note">' + escapeHtml(note) + '</div>' +
+              missingHtml +
+            '</div>';
+          recoItems.appendChild(item);
+        });
+
+        resultsSection.classList.add('visible');
+        setTimeout(function () {
+          resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+
+      btnRun.addEventListener('click', function () {
+        render(computeScores());
+      });
+
+      btnReset.addEventListener('click', function () {
+        var boxes = container.querySelectorAll('input[type="checkbox"]');
+        boxes.forEach(function (b) { b.checked = false; });
+        resultsSection.classList.remove('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Init
+      buildChecklist();
+    })();
+  </script>
+</body>
+</html>

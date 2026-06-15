@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fiyat İtirazı Cevap Oluşturucu — saglikturizmi.info</title>
+  <meta name="description" content="Hastaların 'çok pahalı', 'başka klinik daha ucuz', 'düşüneceğim' gibi fiyat itirazlarına empatik ve değer odaklı satış cevaplarını TR / EN / AR dilinde saniyeler içinde oluşturun." />
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/fiyat-itirazi-cevap-olusturucu/" />
+  <link rel="stylesheet" href="/shared.css" />
+  <style>
+    .hero-section { padding: 56px 0 40px; background: linear-gradient(180deg, rgba(124,58,237,0.08) 0%, transparent 100%); border-bottom: 1px solid rgba(167,139,250,0.1); }
+    .hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(124,58,237,0.15); border:1px solid rgba(124,58,237,0.35); border-radius:9999px; padding:6px 14px; font-size:0.8rem; font-weight:600; color:#A78BFA; margin-bottom:20px; text-transform:uppercase; letter-spacing:0.05em; }
+    .hero-badge span { width:7px; height:7px; background:#7C3AED; border-radius:50%; display:inline-block; animation:pulse-dot 2s infinite; }
+    .hero-title { font-size:clamp(1.75rem,4vw,2.5rem); font-weight:800; color:#F8F7FF; line-height:1.2; margin-bottom:16px; }
+    .hero-title em { font-style:normal; background:linear-gradient(135deg,#A78BFA,#7C3AED); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .hero-desc { color:#C4B5FD; font-size:1.05rem; line-height:1.7; max-width:640px; }
+    .info-strip { display:flex; flex-wrap:wrap; gap:20px; margin-top:28px; }
+    .info-pill { display:flex; align-items:center; gap:8px; background:rgba(167,139,250,0.07); border:1px solid rgba(167,139,250,0.12); border-radius:9999px; padding:6px 14px; font-size:0.8rem; color:#C4B5FD; font-weight:500; }
+    .info-pill svg { flex-shrink:0; opacity:0.7; }
+    .breadcrumb { display:flex; align-items:center; flex-wrap:wrap; gap:6px; font-size:0.8rem; color:#8B7CAB; margin-bottom:32px; }
+    .breadcrumb a { color:#8B7CAB; text-decoration:none; transition:color 0.2s; }
+    .breadcrumb a:hover { color:#C4B5FD; }
+    .breadcrumb span { color:#8B7CAB; }
+    .calc-layout { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin:48px 0; align-items:start; }
+    @media (max-width:880px){ .calc-layout{ grid-template-columns:1fr; } }
+    .card { background:#1A1028; border:1px solid rgba(167,139,250,0.15); border-radius:16px; padding:28px; }
+    .card-title { font-size:1.1rem; font-weight:700; color:#F8F7FF; margin-bottom:24px; display:flex; align-items:center; gap:10px; }
+    .card-title-icon { width:36px; height:36px; background:rgba(124,58,237,0.2); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:18px; }
+    .form-group { margin-bottom:20px; }
+    .form-group:last-child { margin-bottom:0; }
+    .form-label { display:block; font-size:0.875rem; font-weight:600; color:#C4B5FD; margin-bottom:8px; }
+    .form-hint { font-size:0.75rem; color:#8B7CAB; margin-top:4px; }
+    .form-input, .form-select { width:100%; background:#231535; border:1px solid rgba(167,139,250,0.2); border-radius:8px; padding:12px 14px; color:#F8F7FF; font-size:0.95rem; font-family:system-ui,sans-serif; transition:border-color 0.2s,box-shadow 0.2s; outline:none; appearance:none; -webkit-appearance:none; }
+    .form-select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23A78BFA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:40px; cursor:pointer; }
+    .form-input:focus, .form-select:focus { border-color:rgba(124,58,237,0.6); box-shadow:0 0 0 3px rgba(124,58,237,0.15); }
+    .form-input::placeholder { color:#8B7CAB; }
+    .form-select option { background:#231535; color:#F8F7FF; }
+    .seg-group { display:flex; gap:8px; flex-wrap:wrap; }
+    .seg-btn { flex:1; min-width:90px; background:#231535; border:1px solid rgba(167,139,250,0.2); border-radius:8px; padding:10px 12px; color:#C4B5FD; font-size:0.85rem; font-weight:600; cursor:pointer; transition:all 0.15s; text-align:center; }
+    .seg-btn.active { background:rgba(124,58,237,0.25); border-color:rgba(124,58,237,0.6); color:#F8F7FF; }
+    .btn-calculate { width:100%; background:linear-gradient(135deg,#7C3AED,#5B21B6); color:#fff; border:none; border-radius:10px; padding:15px 24px; font-size:1rem; font-weight:700; cursor:pointer; margin-top:24px; transition:transform 0.15s,box-shadow 0.15s; box-shadow:0 4px 20px rgba(124,58,237,0.35); }
+    .btn-calculate:hover { transform:translateY(-1px); box-shadow:0 6px 28px rgba(124,58,237,0.45); }
+    #results-panel { display:none; }
+    #results-panel.visible { display:block; }
+    .msg-variant { background:#231535; border:1px solid rgba(167,139,250,0.15); border-radius:12px; padding:18px; margin-bottom:16px; }
+    .msg-variant-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; gap:10px; }
+    .msg-variant-label { font-size:0.72rem; font-weight:700; color:#A78BFA; text-transform:uppercase; letter-spacing:0.06em; }
+    .msg-body { white-space:pre-wrap; color:#F8F7FF; font-size:0.92rem; line-height:1.65; background:#0F0A1A; border:1px solid rgba(167,139,250,0.1); border-radius:8px; padding:14px; }
+    .msg-body[dir="rtl"] { text-align:right; }
+    .copy-btn { display:inline-flex; align-items:center; gap:6px; background:rgba(124,58,237,0.18); border:1px solid rgba(124,58,237,0.4); color:#C4B5FD; font-size:0.78rem; font-weight:700; padding:7px 14px; border-radius:8px; cursor:pointer; transition:all 0.15s; white-space:nowrap; }
+    .copy-btn:hover { background:rgba(124,58,237,0.3); color:#F8F7FF; }
+    .copy-btn.copied { background:rgba(5,150,105,0.2); border-color:rgba(5,150,105,0.5); color:#34D399; }
+    .research-note { background:rgba(124,58,237,0.08); border:1px solid rgba(124,58,237,0.2); border-radius:10px; padding:16px 18px; font-size:0.875rem; color:#C4B5FD; line-height:1.65; display:flex; gap:12px; margin-bottom:20px; }
+    .research-note-icon { font-size:1.2rem; flex-shrink:0; margin-top:1px; }
+    #results-placeholder { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:16px; min-height:320px; border-style:dashed; border-color:rgba(167,139,250,0.2); }
+    .wa-result-cta { background:linear-gradient(135deg,rgba(37,211,102,0.1),rgba(37,211,102,0.05)); border:1px solid rgba(37,211,102,0.3); border-radius:14px; padding:24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px; margin-top:4px; }
+    .wa-result-cta h3 { font-size:1.1rem; font-weight:700; color:#F8F7FF; }
+    .wa-result-cta p { font-size:0.875rem; color:#C4B5FD; max-width:420px; margin:0; }
+    .wa-btn { display:inline-flex; align-items:center; gap:10px; background:#25D366; color:#fff; text-decoration:none; font-weight:700; font-size:0.95rem; padding:13px 24px; border-radius:9999px; transition:background 0.2s,transform 0.15s; box-shadow:0 4px 16px rgba(37,211,102,0.3); }
+    .wa-btn:hover { background:#1da851; color:#fff; transform:translateY(-1px); }
+    .section { padding:64px 0; border-top:1px solid rgba(167,139,250,0.1); }
+    .section h2 { font-size:clamp(1.5rem,3vw,2rem); font-weight:800; color:#F8F7FF; margin-bottom:16px; }
+    .section p.lead { color:#C4B5FD; font-size:1rem; line-height:1.7; max-width:760px; margin-bottom:24px; }
+    .tip-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:8px; }
+    .tip-card { background:#1A1028; border:1px solid rgba(167,139,250,0.15); border-radius:12px; padding:20px; }
+    .tip-card h4 { color:#F8F7FF; font-size:1rem; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+    .tip-card p { color:#C4B5FD; font-size:0.875rem; line-height:1.6; }
+    .faq-item { border-bottom:1px solid rgba(167,139,250,0.12); padding:18px 0; }
+    .faq-q { display:flex; align-items:center; justify-content:space-between; gap:16px; width:100%; background:none; border:none; cursor:pointer; padding:0; font-size:1rem; font-weight:600; color:#F8F7FF; text-align:left; }
+    .faq-icon { display:flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; background:rgba(124,58,237,0.15); color:#A78BFA; font-size:20px; flex-shrink:0; }
+    .faq-a { color:#C4B5FD; padding-top:12px; line-height:1.7; font-size:0.9375rem; }
+  </style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main style="padding-top:64px">
+
+  <section class="hero-section">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Ana Sayfa</a><span>›</span>
+        <a href="/araclar/">Araçlar</a><span>›</span>
+        <span style="color:#C4B5FD">Fiyat İtirazı Cevap Oluşturucu</span>
+      </nav>
+      <div class="hero-badge"><span></span> Ücretsiz Satış Aracı</div>
+      <h1 class="hero-title">Fiyat İtirazı <em>Cevap</em> Oluşturucu</h1>
+      <p class="hero-desc">
+        "Çok pahalı", "başka klinik daha ucuz", "düşüneceğim"… Hastaların en sık fiyat itirazlarına empatik, değer odaklı ve
+        ikna edici satış cevaplarını saniyeler içinde hazırlayın. İtiraz türü, tedavi, dil ve tonunuza göre TR / EN / AR
+        dilinde hazır senaryolar üretir — her biri arkasındaki satış tekniğiyle birlikte.
+      </p>
+      <div class="info-strip">
+        <div class="info-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 2-3 hazır senaryo</div>
+        <div class="info-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Satış psikolojisine dayalı</div>
+        <div class="info-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14M5 12h14M5 16h10"/></svg> TR / EN / AR dil desteği</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:48px 0 16px">
+    <div class="container">
+      <div class="calc-layout">
+
+        <div class="card">
+          <div class="card-title"><div class="card-title-icon">💸</div> İtiraz Bilgilerini Girin</div>
+
+          <div class="form-group">
+            <label class="form-label" for="in-objection">İtiraz Türü</label>
+            <select id="in-objection" class="form-select">
+              <option value="cok-pahali">Çok pahalı</option>
+              <option value="rakip-ucuz">Başka klinik daha ucuz</option>
+              <option value="dusunecegim">Düşüneceğim</option>
+              <option value="garanti">Garanti var mı?</option>
+              <option value="butce-yok">Şu an bütçem yok</option>
+              <option value="neden-pahali">Neden bu kadar pahalı?</option>
+            </select>
+            <div class="form-hint">Hastanın dile getirdiği itirazı seçin</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="in-service">Tedavi / Hizmet</label>
+            <input type="text" id="in-service" class="form-input" placeholder="örn. saç ekimi, diş implantı, burun estetiği" />
+            <div class="form-hint">Cevaplarda tedavi adı geçer</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Dil</label>
+            <div class="seg-group" id="seg-lang">
+              <button type="button" class="seg-btn active" data-val="tr">🇹🇷 Türkçe</button>
+              <button type="button" class="seg-btn" data-val="en">🇬🇧 English</button>
+              <button type="button" class="seg-btn" data-val="ar">🇸🇦 العربية</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Ton</label>
+            <div class="seg-group" id="seg-tone">
+              <button type="button" class="seg-btn active" data-val="pro">Profesyonel</button>
+              <button type="button" class="seg-btn" data-val="warm">Samimi</button>
+            </div>
+          </div>
+
+          <button class="btn-calculate" onclick="generate()">Cevapları Oluştur →</button>
+        </div>
+
+        <div>
+          <div id="results-panel">
+            <div class="research-note">
+              <div class="research-note-icon">🧠</div>
+              <div><strong style="color:#F8F7FF">İpucu:</strong> Fiyat itirazına asla savunmayla başlamayın. Önce <strong style="color:#A78BFA">empati kurun</strong>, sonra değeri çerçeveleyin. İndirim teklif etmeden değeri yeniden konumlandırmak, kâr marjınızı korurken dönüşümü artırır.</div>
+            </div>
+            <div id="variants"></div>
+
+            <div class="wa-result-cta">
+              <h3>Kliniğiniz için tam satış scripti ister misiniz?</h3>
+              <p>Tüm itiraz senaryoları, fiyat sunum scriptleri ve danışman eğitimi için bizimle konuşun.</p>
+              <a href="https://wa.me/905397232292?text=Merhaba%2C%20fiyat%20itiraz%C4%B1%20cevap%20olu%C5%9Fturucusunu%20kulland%C4%B1m.%20Klini%C4%9Fim%20i%C3%A7in%20sat%C4%B1%C5%9F%20scriptleri%20haz%C4%B1rlamak%20istiyorum." target="_blank" rel="noopener noreferrer" class="wa-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.418A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="1.5" fill="none"/><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="white"/></svg>
+                WhatsApp'tan Yazın — +90 539 723 22 92
+              </a>
+            </div>
+          </div>
+
+          <div id="results-placeholder" class="card">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(167,139,250,0.35)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <div style="color:#8B7CAB;font-size:0.9rem;max-width:280px;line-height:1.6">İtiraz türünü ve tedaviyi girin, <strong style="color:#C4B5FD">"Cevapları Oluştur"</strong> butonuna tıklayın. Farklı açılardan satış senaryoları görünecek.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Fiyat İtirazına Nasıl Cevap Verilir?</h2>
+      <p class="lead">Fiyat itirazı bir "hayır" değil, çoğu zaman bir "beni ikna et" çağrısıdır. Aşağıdaki dört ilke, indirim yapmadan değeri savunmanın temelidir ve tüm senaryolarda otomatik uygulanır.</p>
+      <div class="tip-grid">
+        <div class="tip-card"><h4>🤝 Önce empati</h4><p>İtirazı asla doğrudan çürütmeyin. "Anlıyorum, fiyat önemli bir konu" demek savunma refleksini düşürür ve hastanın dinlemeye açık kalmasını sağlar.</p></div>
+        <div class="tip-card"><h4>🎯 Değeri çerçeveleyin</h4><p>Tartışmayı fiyattan değere kaydırın: deneyim, sonuç, güvenlik, takip. Hasta neye para ödediğini gördüğünde fiyat tek başına anlamını yitirir.</p></div>
+        <div class="tip-card"><h4>➗ Fiyatı bölün / karşılaştırın</h4><p>Toplam tutarı günlük maliyete bölmek veya ucuz alternatifin gizli risklerini göstermek, "pahalı" algısını mantıklı bir yatırıma dönüştürür.</p></div>
+        <div class="tip-card"><h4>➡️ Net sonraki adım</h4><p>Her cevabı tek ve kolay bir eylemle bitirin: ücretsiz değerlendirme, fotoğraf paylaşımı, görüntülü görüşme. Kararı küçük ve risksiz hale getirin.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Sık Sorulan Sorular</h2>
+      <div style="max-width:780px;margin-top:8px">
+        <div class="faq-item"><button class="faq-q">Fiyat itirazına indirim vermeden cevap verebilir miyim? <span class="faq-icon">+</span></button><div class="faq-a">Evet, ve çoğu durumda vermemelisiniz. İlk itirazda indirim yapmak değeri ucuzlatır ve hastayı daha fazla pazarlık etmeye davet eder. Bu araç, fiyatı değerle, sonuçla ve güvenle çerçeveleyen cevaplar üretir; indirim yalnızca son ve bilinçli bir hamle olmalıdır.</div></div>
+        <div class="faq-item"><button class="faq-q">"Başka klinik daha ucuz" diyen hastaya nasıl yaklaşmalıyım? <span class="faq-icon">+</span></button><div class="faq-a">Rakibi kötülemeden, ucuz fiyatın neyi içermediğini (deneyim, kullanılan malzeme, takip, revizyon güvencesi) sakince göstermek en etkili yöntemdir. Araç bu itiraz için karşılaştırma ve risk-tersine-çevirme açılı senaryolar üretir.</div></div>
+        <div class="faq-item"><button class="faq-q">Senaryoları olduğu gibi mi göndermeliyim? <span class="faq-icon">+</span></button><div class="faq-a">Senaryolar kopyala-yapıştır göndermeye hazırdır, ancak hastanın adını veya somut durumunu eklemek dönüşümü artırır. "Neden işe yarıyor" notu, her senaryonun arkasındaki tekniği açıklar; böylece danışmanlarınız sadece kopyalamaz, mantığı da öğrenir.</div></div>
+        <div class="faq-item"><button class="faq-q">Arapça cevaplar doğru yönde mi görünür? <span class="faq-icon">+</span></button><div class="faq-a">Evet. Arapça seçildiğinde metin sağdan sola (RTL) hizalanır ve WhatsApp'a yapıştırdığınızda da doğru görünür. Yine de göndermeden önce kontrol etmenizi öneririz.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" style="padding-bottom:64px">
+    <div id="wa-final" data-wa-block="Merhaba, kliniğim için fiyat itirazı cevap senaryoları ve satış scriptleri hazırlamak istiyorum."></div>
+  </div>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/shared.js"></script>
+<script>
+(function () {
+  var state = { lang: 'tr', tone: 'pro' };
+
+  function bindSeg(groupId, key) {
+    var group = document.getElementById(groupId);
+    group.querySelectorAll('.seg-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        group.querySelectorAll('.seg-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        state[key] = btn.dataset.val;
+        if (document.getElementById('results-panel').classList.contains('visible')) generate();
+      });
+    });
+  }
+  bindSeg('seg-lang', 'lang');
+  bindSeg('seg-tone', 'tone');
+
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  // ── Build objection-response variants per language & tone ──
+  // Each variant: { label, text, why }
+  function buildVariants(objection, service, lang, tone) {
+    var warm = tone === 'warm';
+
+    // Localized service fallback handled by caller. Tone tweaks: opener softness.
+    var TR = {
+      'cok-pahali': [
+        {
+          label: 'Senaryo 1 — Empati + Değer Çerçeveleme',
+          text: (warm ? 'Sizi çok iyi anlıyorum 🙏 ' : 'Bu konudaki hassasiyetinizi gayet iyi anlıyorum. ') +
+            service + ' önemli bir karar ve fiyatı dikkatle değerlendirmeniz çok doğal. ' +
+            'Aslında ödediğiniz tutarın karşılığında sadece işlemi değil; deneyimli ekibimizi, kullandığımız kaliteli malzemeleri, ' +
+            'tüm sürecin planlamasını ve işlem sonrası takibi de alıyorsunuz. ' +
+            'İsterseniz size durumunuza özel, kalem kalem neyin dahil olduğunu gösteren bir değerlendirme hazırlayayım; ' +
+            'böylece bedelin tam olarak neye karşılık geldiğini net görürsünüz. Uygun mudur?',
+          why: 'Önce empatiyle savunma refleksini düşürür, ardından tartışmayı fiyattan değere kaydırır (value reframing). Hasta "ne kadar" yerine "ne aldığını" düşünmeye başlar.'
+        },
+        {
+          label: 'Senaryo 2 — Maliyeti Bölme',
+          text: (warm ? 'Haklısınız, ilk bakışta yüklü bir rakam gibi görünebilir. ' : 'İlk bakışta yüksek görünebileceğini anlıyorum. ') +
+            service + ' aslında yıllarca, çoğu zaman ömür boyu sizinle kalacak bir yatırım. ' +
+            'Toplam tutarı bu süreye böldüğünüzde, günlük bir kahve bedelinin bile altına denk geldiğini görürsünüz. ' +
+            'Yani bu bir gider değil, uzun vadede kendinize yaptığınız kalıcı bir yatırım. ' +
+            'Dilerseniz ödeme seçeneklerimizi de paylaşıp size en uygun planı birlikte oluşturalım.',
+          why: 'Fiyatı yararlanma süresine bölerek (price-per-day tekniği) büyük tutarı küçük ve mantıklı bir günlük değere indirger; algılanan maliyeti düşürür.'
+        },
+        {
+          label: 'Senaryo 3 — Risk Tersine Çevirme',
+          text: (warm ? 'Endişenizi gayet iyi anlıyorum. ' : 'Bu çekincenizi tamamen anlıyorum. ') +
+            'En kötü senaryo, ucuz bir seçeneğe yönelip sonucu beğenmemek ve düzeltmek için en baştan daha fazla ödemek olur. ' +
+            service + ' işleminde biz bu riski sizden alıyoruz: şeffaf süreç, net beklenti yönetimi ve işlem sonrası takip güvencesiyle. ' +
+            'Önce hiçbir ücret ödemeden ücretsiz bir ön değerlendirme yapalım; sonucu görün, sorularınızı sorun, ' +
+            'kararı ondan sonra rahatça verin. Bu şekilde başlamak ister misiniz?',
+          why: 'Algılanan riski hastadan klinige aktarır (risk reversal) ve düşük taahhütlü, ücretsiz bir ilk adım sunarak kararı kolaylaştırır.'
+        }
+      ],
+      'rakip-ucuz': [
+        {
+          label: 'Senaryo 1 — Empati + Karşılaştırma',
+          text: (warm ? 'Araştırma yapmanız çok akıllıca, takdir ediyorum 🙏 ' : 'Farklı klinikleri karşılaştırmanız çok yerinde. ') +
+            'Doğru soru "hangisi daha ucuz" değil, "aynı fiyata ne dahil" sorusudur. ' +
+            'Daha düşük fiyatların çoğunda kullanılan malzeme, ekibin deneyimi, takip süreci veya revizyon güvencesi farklı olabiliyor. ' +
+            service + ' kalıcı bir sonuç olduğu için bu detaylar fiyattan çok daha önemli. ' +
+            'İsterseniz size kalem kalem neyin dahil olduğunu gösteren bir liste hazırlayayım; karşılaştırırken elinizi güçlendirir.',
+          why: 'Rakibi kötülemeden kıyaslama kriterini fiyattan kapsama kaydırır (reframe the comparison). Hasta "elma ile elmayı" karşılaştırmaya yönlendirilir.'
+        },
+        {
+          label: 'Senaryo 2 — Gizli Maliyet / Risk',
+          text: (warm ? 'Çok ucuz tekliflerde dikkatli olmanızı içtenlikle öneririm. ' : 'Belirgin şekilde düşük fiyatlarda dikkatli olmakta fayda var. ') +
+            'Sağlıkta düşük fiyat çoğu zaman gizli maliyetler taşır: beklenmedik ek ücretler, yetersiz sonuç ve onu düzeltmek için ikinci bir işlem. ' +
+            'Sonuçtan memnun kalmadığında "ucuz", en pahalı seçeneğe dönüşebilir. ' +
+            'Biz baştan net fiyat, net süreç ve sonuç güvencesi sunuyoruz, böylece sürpriz yaşamazsınız. ' +
+            'Dilerseniz bizdeki sürecin neleri kapsadığını birebir göstereyim.',
+          why: 'Ucuz alternatifin görünmeyen risklerini ve "iki kere ödeme" senaryosunu öne çıkarır (cost of cheap / loss aversion); düşük fiyatı bir tehdide dönüştürür.'
+        }
+      ],
+      'dusunecegim': [
+        {
+          label: 'Senaryo 1 — Empati + Engeli Bulma',
+          text: (warm ? 'Tabii ki, böyle bir kararı acele etmemeniz çok doğal 🙏 ' : 'Elbette, bu kararı düşünerek vermeniz çok doğal. ') +
+            'Genelde "düşüneceğim" derken aklın bir köşesinde tek bir net soru kalır. ' +
+            'Size yardımcı olabilmem için merak ediyorum: sizi en çok düşündüren şey fiyat mı, sürecin kendisi mi, yoksa sonucun nasıl olacağı mı? ' +
+            'Hangisi olursa olsun, ' + service + ' konusunda netleşmenize seve seve yardımcı olurum.',
+          why: 'Belirsiz "düşüneceğim" itirazının ardındaki gerçek engeli açık bir soruyla yüzeye çıkarır (uncover the real objection); muğlak erteleme yerine somut bir konu konuşulur.'
+        },
+        {
+          label: 'Senaryo 2 — Düşük Taahhütlü Sonraki Adım',
+          text: (warm ? 'Hiç sorun değil, acele etmenize gerek yok. ' : 'Acele etmenize gerek yok, kararınızı rahatça verin. ') +
+            'Sadece şunu önereyim: düşünürken elinizde somut bir bilgi olsun. ' +
+            'Hiçbir ücret veya zorunluluk olmadan size özel bir ön değerlendirme yapalım; ' +
+            service + ' için size uygun sonuç, süreç ve fiyatı net görün. ' +
+            'Kararınızı bu bilgiyle vermek çok daha kolay olur. Birkaç fotoğraf paylaşmanız yeterli, başlayalım mı?',
+          why: 'Erteleme kararını boşa çıkarmadan, bedava ve risksiz bir mikro-adım sunar (low-commitment next step). Hasta "düşünmeyi" sürdürürken bile ilişki ilerler.'
+        },
+        {
+          label: 'Senaryo 3 — Nazik Aciliyet',
+          text: (warm ? 'Tabii, düşünün; yanınızdayım. ' : 'Elbette düşünebilirsiniz. ') +
+            'Sadece bir hatırlatma: ' + service + ' için uygun tarih ve kontenjanlar dönemsel olarak hızla doluyor ve fiyatlarımız zaman zaman güncelleniyor. ' +
+            'Sizi sıkıştırmak istemem; ama dilerseniz bugünkü koşulları sizin için kısa bir süre opsiyonlu tutabilirim. ' +
+            'Böylece acele etmeden, ama fırsatı da kaçırmadan karar verirsiniz. İster misiniz?',
+          why: 'Baskı kurmadan gerçek kıtlık ve zamanlama unsuru ekler (gentle urgency / scarcity); süresiz ertelemenin maliyetini hatırlatarak kararı öne çeker.'
+        }
+      ],
+      'garanti': [
+        {
+          label: 'Senaryo 1 — Güvence + Şeffaflık',
+          text: (warm ? 'Çok önemli ve haklı bir soru, sorduğunuza sevindim 🙏 ' : 'Çok yerinde bir soru. ') +
+            service + ' sürecinde size net bir güvence sunuyoruz: süreci baştan sona şeffaf yürütür, beklentinizi gerçekçi şekilde yönetir ' +
+            've işlem sonrası takibinizi sürdürürüz. Beklenen sonuca ulaşılmasıyla ilgili koşullarımızı yazılı olarak da paylaşırız. ' +
+            'İsterseniz garanti ve takip kapsamımızın detaylarını size madde madde göndereyim; böylece her şey baştan nettir.',
+          why: 'Güvence talebini şeffaflık ve yazılı netlikle karşılar; belirsizliği gidererek güven inşa eder (trust building). Soruyu bir satın alma sinyali olarak değerlendirir.'
+        },
+        {
+          label: 'Senaryo 2 — Sosyal Kanıt + Risk Tersine Çevirme',
+          text: (warm ? 'Bu güveni hissetmek istemeniz çok doğal. ' : 'Bu konuda güvence istemeniz çok doğal. ') +
+            'En büyük güvencemiz, ' + service + ' konusunda hizmet verdiğimiz memnun hastalarımız ve onların sonuçları. ' +
+            'Dilerseniz benzer vakaların öncesi-sonrası örneklerini ve hasta yorumlarını sizinle paylaşayım. ' +
+            'Ayrıca süreci ücretsiz bir ön değerlendirmeyle başlatıyoruz; hiçbir taahhüt vermeden önce sonucun sizin için uygun olduğundan emin oluyoruz. ' +
+            'Örnekleri görmek ister misiniz?',
+          why: 'Soyut "garanti" sorusunu somut sosyal kanıtla (önce-sonra, yorumlar) destekler ve ücretsiz ilk adımla riski kliniğe aktarır; güveni kanıtla pekiştirir.'
+        }
+      ],
+      'butce-yok': [
+        {
+          label: 'Senaryo 1 — Empati + Ödeme Esnekliği',
+          text: (warm ? 'Bunu paylaştığınız için teşekkür ederim, çok anlıyorum 🙏 ' : 'Bu durumu paylaştığınız için teşekkürler, gayet anlıyorum. ') +
+            'İyi haber şu: ' + service + ' için tek seferde tüm bütçeyi ayırmanız şart değil. ' +
+            'Size uygun, taksitli ve esnek ödeme seçeneklerimiz var; böylece sürece bütçenizi zorlamadan başlayabilirsiniz. ' +
+            'Dilerseniz size en rahat ödeme planını birlikte çıkaralım. Aylık ne kadarlık bir ödeme sizin için rahat olur?',
+          why: 'İtirazı reddetmeden ödeme yapısını değiştirerek engeli kaldırır (payment reframing). "Param yok" itirazını "nasıl ödeyebilirim" sorusuna dönüştürür.'
+        },
+        {
+          label: 'Senaryo 2 — Yeri Koruma + İlişkiyi Sürdürme',
+          text: (warm ? 'Hiç sorun değil, zamanlama her zaman önemli. ' : 'Zamanlamanın uygun olması önemli, anlıyorum. ') +
+            'Şu an hazır olmamanız tamamen normal. Ben sizi kaybetmek istemem; ' +
+            'isterseniz bugünkü değerlendirmenizi ve fiyat koşullarınızı sizin için kayıt altına alayım, ' +
+            'hazır olduğunuzda ' + service + ' için aynı koşullarla kaldığımız yerden devam edelim. ' +
+            'Bu arada aklınıza takılan her soruda buradayım. Sizin için uygun olur mu?',
+          why: 'Anlık satışı zorlamak yerine ilişkiyi ve koşulları gelecekteki bir satış için saklar (keep the door open); hastayı kaybetmeden uzun vadeli dönüşüm sağlar.'
+        }
+      ],
+      'neden-pahali': [
+        {
+          label: 'Senaryo 1 — Şeffaf Değer Dökümü',
+          text: (warm ? 'Çok güzel bir soru, açıkça konuşalım 🙏 ' : 'Çok yerinde bir soru; açıklayayım. ') +
+            service + ' fiyatı tek bir işlemin değil, bir bütünün karşılığıdır: alanında deneyimli ekip, ' +
+            'kaliteli ve sertifikalı malzemeler, hijyen ve güvenlik standartları, sürecin titiz planlaması ve işlem sonrası takip. ' +
+            'Yani aslında ödediğiniz bedel, sonucun kalıcı ve güvenli olması içindir. ' +
+            'İsterseniz bu bedelin kalem kalem neye karşılık geldiğini şeffafça göstereyim; gördüğünüzde "pahalı" değil "yerinde" diyeceksiniz.',
+          why: 'Fiyatı bileşenlerine ayırarak şeffaflıkla gerekçelendirir (price justification / itemized value). Görünmeyen değeri görünür kılarak yüksek fiyatı meşrulaştırır.'
+        },
+        {
+          label: 'Senaryo 2 — Kalite-Sonuç Bağlantısı',
+          text: (warm ? 'Açık olayım: fiyatımız bir tesadüf değil. ' : 'Net konuşmak gerekirse fiyatımız bir tercihtir. ') +
+            'Sağlıkta sonuç doğrudan kaliteye bağlıdır; biz ' + service + ' konusunda ortalama bir sonuç değil, güvenebileceğiniz bir sonuç için çalışıyoruz. ' +
+            'Maliyetten kısmak çoğu zaman sonuçtan kısmak demektir ve bunu sizin için riske atmıyoruz. ' +
+            'Ödediğiniz fark, tam olarak içiniz rahat ederek aynaya bakabilmenizin bedeli. ' +
+            'İsterseniz bu kaliteyi somut örneklerle göstereyim.',
+          why: 'Yüksek fiyatı kaliteyle ve sonuçla doğrudan ilişkilendirir (price-quality anchoring). Hastayı "ucuz = risk, pahalı = güvenli sonuç" çerçevesine taşır.'
+        }
+      ]
+    };
+
+    var EN = {
+      'cok-pahali': [
+        {
+          label: 'Scenario 1 — Empathy + Value Reframe',
+          text: (warm ? 'I completely understand 🙏 ' : 'I completely understand your concern. ') +
+            service + ' is an important decision, and it is only natural to weigh the price carefully. ' +
+            'What you are paying for is not just the procedure itself — it includes our experienced team, high-quality materials, ' +
+            'careful planning of the whole process and full post-treatment follow-up. ' +
+            'If you like, I can prepare a personalised breakdown showing exactly what is included, ' +
+            'so you can see precisely what the price covers. Would that help?',
+          why: 'Lowers the defensive reflex with empathy first, then shifts the conversation from price to value (value reframing) so the patient thinks about what they receive, not just the cost.'
+        },
+        {
+          label: 'Scenario 2 — Cost Breakdown',
+          text: (warm ? 'You are right, at first glance it can look like a large sum. ' : 'I understand it may look high at first glance. ') +
+            service + ' is an investment that stays with you for years, often a lifetime. ' +
+            'When you divide the total over that time, it works out to less than the price of a daily coffee. ' +
+            'So it is not really an expense — it is a lasting investment in yourself. ' +
+            'If you wish, we can also go over our payment options and build the most comfortable plan together.',
+          why: 'Divides the price across the benefit period (price-per-day technique), reducing a large figure to a small, reasonable daily value and lowering perceived cost.'
+        },
+        {
+          label: 'Scenario 3 — Risk Reversal',
+          text: (warm ? 'I fully understand your hesitation. ' : 'I completely understand this concern. ') +
+            'The worst case is choosing a cheaper option, being unhappy with the result, and paying more to fix it from scratch. ' +
+            'With ' + service + ', we take that risk off your shoulders: a transparent process, clear expectations and a follow-up guarantee. ' +
+            'Let us start with a free assessment at no cost — see the outcome, ask your questions, ' +
+            'and only then decide with peace of mind. Shall we begin this way?',
+          why: 'Transfers perceived risk from the patient to the clinic (risk reversal) and offers a low-commitment, free first step to make the decision easy.'
+        }
+      ],
+      'rakip-ucuz': [
+        {
+          label: 'Scenario 1 — Empathy + Comparison',
+          text: (warm ? 'It is very smart of you to do your research 🙏 ' : 'It is very wise to compare different clinics. ') +
+            'The right question is not "which is cheaper" but "what is included for that price". ' +
+            'Lower prices often differ in the materials used, the team\'s experience, the follow-up or any revision guarantee. ' +
+            'Because ' + service + ' is a lasting result, these details matter far more than the price alone. ' +
+            'If you like, I can prepare an itemised list of what is included so you can compare on equal terms.',
+          why: 'Reframes the comparison criterion from price to scope without disparaging the competitor, guiding the patient to compare like for like.'
+        },
+        {
+          label: 'Scenario 2 — Hidden Cost / Risk',
+          text: (warm ? 'I sincerely advise caution with very cheap offers. ' : 'It is worth being careful with notably low prices. ') +
+            'In healthcare, a low price often carries hidden costs: unexpected add-ons, a poor outcome, and a second procedure to correct it. ' +
+            'When you are unhappy with the result, "cheap" can become the most expensive option. ' +
+            'We offer a clear price, a clear process and a guaranteed outcome from the start, so there are no surprises. ' +
+            'I would be glad to show you exactly what our process covers.',
+          why: 'Highlights the hidden risks and "paying twice" scenario of the cheap alternative (cost of cheap / loss aversion), turning a low price into a perceived threat.'
+        }
+      ],
+      'dusunecegim': [
+        {
+          label: 'Scenario 1 — Empathy + Find the Blocker',
+          text: (warm ? 'Of course, it is only natural not to rush such a decision 🙏 ' : 'Of course, it is natural to think this through. ') +
+            'Usually when someone says "I will think about it", there is one specific question left in the back of their mind. ' +
+            'So that I can help: is it mainly the price, the process itself, or how the result will turn out that gives you pause? ' +
+            'Whatever it is, I would be happy to bring clarity on ' + service + ' for you.',
+          why: 'Surfaces the real blocker behind a vague "I will think about it" with an open question, replacing a fuzzy delay with a concrete topic to address.'
+        },
+        {
+          label: 'Scenario 2 — Low-Commitment Next Step',
+          text: (warm ? 'No problem at all, there is no rush. ' : 'There is no rush; take your time to decide. ') +
+            'Let me just suggest this: have something concrete in hand while you think. ' +
+            'With no cost or obligation, let us do a personalised assessment so you can clearly see the result, process and price for ' + service + '. ' +
+            'Deciding with that information is far easier. Just share a few photos and we can begin — shall we?',
+          why: 'Offers a free, risk-free micro-step without invalidating the delay (low-commitment next step), so the relationship advances even while the patient keeps thinking.'
+        },
+        {
+          label: 'Scenario 3 — Gentle Urgency',
+          text: (warm ? 'Of course, take your time; I am here. ' : 'Of course you can think it over. ') +
+            'Just a reminder: suitable dates and slots for ' + service + ' fill up quickly in seasons, and our prices are updated from time to time. ' +
+            'I do not want to pressure you, but if you like I can hold today\'s terms for you on option for a short while. ' +
+            'That way you decide without rushing, but without missing the opportunity. Would you like that?',
+          why: 'Adds genuine scarcity and timing without pressure (gentle urgency / scarcity), reminding the patient of the cost of indefinite delay to bring the decision forward.'
+        }
+      ],
+      'garanti': [
+        {
+          label: 'Scenario 1 — Assurance + Transparency',
+          text: (warm ? 'A very important and fair question — I am glad you asked 🙏 ' : 'A very valid question. ') +
+            'With ' + service + ', we offer you a clear assurance: we run the process transparently from start to finish, ' +
+            'manage expectations realistically and continue your post-treatment follow-up. ' +
+            'We also provide our terms regarding the expected outcome in writing. ' +
+            'If you like, I can send you the details of our guarantee and follow-up scope point by point, so everything is clear from the start.',
+          why: 'Meets the assurance request with transparency and written clarity, building trust by removing uncertainty and treating the question as a buying signal.'
+        },
+        {
+          label: 'Scenario 2 — Social Proof + Risk Reversal',
+          text: (warm ? 'It is natural to want to feel confident. ' : 'It is natural to want assurance here. ') +
+            'Our greatest guarantee is the satisfied patients we have served for ' + service + ' and their results. ' +
+            'If you like, I can share before-and-after examples of similar cases and patient reviews. ' +
+            'We also start the process with a free assessment, making sure the result is right for you before any commitment. ' +
+            'Would you like to see the examples?',
+          why: 'Backs the abstract "guarantee" question with concrete social proof (before/after, reviews) and transfers risk via a free first step, reinforcing trust with evidence.'
+        }
+      ],
+      'butce-yok': [
+        {
+          label: 'Scenario 1 — Empathy + Payment Flexibility',
+          text: (warm ? 'Thank you for sharing that, I really understand 🙏 ' : 'Thank you for sharing that; I completely understand. ') +
+            'The good news is: you do not need to set aside the full budget at once for ' + service + '. ' +
+            'We have flexible, instalment-based payment options that suit you, so you can start without straining your budget. ' +
+            'If you like, let us build the most comfortable plan together. What monthly amount would feel comfortable for you?',
+          why: 'Removes the barrier by changing the payment structure rather than rejecting the objection (payment reframing), turning "I have no budget" into "how can I pay".'
+        },
+        {
+          label: 'Scenario 2 — Hold the Spot + Stay in Touch',
+          text: (warm ? 'No problem at all, timing always matters. ' : 'It is important that the timing is right, I understand. ') +
+            'It is completely normal not to be ready right now. I do not want to lose touch with you; ' +
+            'if you like, let me record your current assessment and price terms, ' +
+            'so that when you are ready we can continue with ' + service + ' on the same terms from where we left off. ' +
+            'In the meantime I am here for any questions. Would that work for you?',
+          why: 'Instead of forcing an immediate sale, it preserves the relationship and the terms for a future sale (keep the door open), converting later without losing the patient.'
+        }
+      ],
+      'neden-pahali': [
+        {
+          label: 'Scenario 1 — Transparent Value Breakdown',
+          text: (warm ? 'A great question, let us talk openly 🙏 ' : 'A very fair question; let me explain. ') +
+            'The price of ' + service + ' is the cost of a whole, not a single step: an experienced team, ' +
+            'quality certified materials, hygiene and safety standards, meticulous planning and post-treatment follow-up. ' +
+            'So what you pay is for a result that is lasting and safe. ' +
+            'If you like, I can transparently show what each part of the price covers — once you see it, you will say "fair", not "expensive".',
+          why: 'Justifies the price by breaking it into its components (price justification / itemized value), making invisible value visible to legitimise the higher price.'
+        },
+        {
+          label: 'Scenario 2 — Quality-Result Link',
+          text: (warm ? 'Let me be candid: our price is not by chance. ' : 'To be candid, our price is a deliberate choice. ') +
+            'In healthcare, the result depends directly on quality; for ' + service + ' we work not for an average result but one you can trust. ' +
+            'Cutting cost usually means cutting the result, and we will not put that at risk for you. ' +
+            'The difference you pay is exactly the cost of looking in the mirror with complete peace of mind. ' +
+            'If you like, I can show this quality with concrete examples.',
+          why: 'Anchors the high price directly to quality and outcome (price-quality anchoring), framing "cheap = risk, premium = safe result".'
+        }
+      ]
+    };
+
+    var AR = {
+      'cok-pahali': [
+        {
+          label: 'السيناريو ١ — التعاطف + إعادة تأطير القيمة',
+          text: (warm ? 'أتفهّم شعورك تماماً 🙏 ' : 'أتفهّم تماماً ما يقلقك بخصوص السعر. ') +
+            service + ' قرار مهم، ومن الطبيعي تماماً أن تدرس سعره بعناية. ' +
+            'ما تدفعه ليس مقابل الإجراء فقط، بل يشمل فريقنا ذا الخبرة، والمواد عالية الجودة، ' +
+            'وتخطيط العملية بالكامل، والمتابعة بعد العلاج. ' +
+            'إن أردت، أُعدّ لك تفصيلاً خاصاً بحالتك يوضّح بالضبط ما المشمول، لترى تماماً مقابل ماذا تدفع. هل يناسبك ذلك؟',
+          why: 'يخفض ردّ الفعل الدفاعي بالتعاطف أولاً، ثم ينقل الحديث من السعر إلى القيمة (إعادة تأطير القيمة)، فيفكّر المريض فيما يحصل عليه لا في المبلغ فقط.'
+        },
+        {
+          label: 'السيناريو ٢ — تقسيم التكلفة',
+          text: (warm ? 'معك حق، قد يبدو مبلغاً كبيراً للوهلة الأولى. ' : 'أتفهّم أنه قد يبدو مرتفعاً للوهلة الأولى. ') +
+            service + ' في الحقيقة استثمار يبقى معك سنوات، وغالباً مدى الحياة. ' +
+            'عندما تقسّم المبلغ على هذه المدة، ستجد أنه أقل من ثمن فنجان قهوة يومي. ' +
+            'فهو ليس مصروفاً، بل استثمار دائم في نفسك. ' +
+            'وإن رغبت، نستعرض معاً خيارات الدفع لنضع الخطة الأنسب لك.',
+          why: 'يقسّم السعر على مدة الاستفادة (أسلوب السعر اليومي)، فيحوّل المبلغ الكبير إلى قيمة يومية صغيرة معقولة ويخفض التكلفة المُدرَكة.'
+        },
+        {
+          label: 'السيناريو ٣ — عكس المخاطرة',
+          text: (warm ? 'أتفهّم ترددك تماماً. ' : 'أتفهّم هذا التحفّظ تماماً. ') +
+            'أسوأ احتمال هو اختيار خيار رخيص ثم عدم الرضا عن النتيجة ودفع مبلغ أكبر لإصلاحها من جديد. ' +
+            'في ' + service + ' نتحمّل عنك هذه المخاطرة: عملية شفّافة، وإدارة توقّعات واضحة، وضمان متابعة بعد العلاج. ' +
+            'لنبدأ بتقييم أوّلي مجاني دون أي رسوم؛ شاهد النتيجة، واطرح أسئلتك، ثم قرّر براحة بال. هل نبدأ بهذه الطريقة؟',
+          why: 'ينقل المخاطرة المُدرَكة من المريض إلى العيادة (عكس المخاطرة) ويقدّم خطوة أولى مجانية منخفضة الالتزام لتسهيل القرار.'
+        }
+      ],
+      'rakip-ucuz': [
+        {
+          label: 'السيناريو ١ — التعاطف + المقارنة',
+          text: (warm ? 'من الذكاء أن تبحث وتقارن، وأقدّر ذلك 🙏 ' : 'من الحكمة أن تقارن بين العيادات المختلفة. ') +
+            'السؤال الصحيح ليس "أيّهما أرخص" بل "ما المشمول مقابل هذا السعر". ' +
+            'الأسعار الأقل تختلف غالباً في المواد المستخدمة، وخبرة الفريق، والمتابعة، أو ضمان التصحيح. ' +
+            'ولأن ' + service + ' نتيجة دائمة، فإن هذه التفاصيل أهم بكثير من السعر وحده. ' +
+            'إن أردت، أُعدّ لك قائمة مفصّلة بما هو مشمول لتقارن على أساس متكافئ.',
+          why: 'يعيد تأطير معيار المقارنة من السعر إلى المحتوى دون التقليل من المنافس، فيوجّه المريض لمقارنة المتكافئ بالمتكافئ.'
+        },
+        {
+          label: 'السيناريو ٢ — التكلفة الخفية / المخاطرة',
+          text: (warm ? 'أنصحك بصدق بالحذر من العروض الرخيصة جداً. ' : 'من المفيد الحذر من الأسعار المنخفضة بشكل لافت. ') +
+            'في الرعاية الصحية، السعر المنخفض غالباً يحمل تكاليف خفية: رسوماً إضافية غير متوقعة، ونتيجة غير كافية، وإجراءً ثانياً لتصحيحها. ' +
+            'عندما لا ترضى عن النتيجة، قد يصبح "الرخيص" أغلى الخيارات. ' +
+            'نحن نقدّم سعراً واضحاً، وعملية واضحة، وضمان نتيجة من البداية، فلا مفاجآت. ' +
+            'يسعدني أن أوضّح لك بالضبط ما تشمله عمليتنا.',
+          why: 'يبرز المخاطر الخفية وسيناريو "الدفع مرتين" في البديل الرخيص (تكلفة الرخيص / تجنّب الخسارة)، فيحوّل السعر المنخفض إلى تهديد مُدرَك.'
+        }
+      ],
+      'dusunecegim': [
+        {
+          label: 'السيناريو ١ — التعاطف + كشف العائق',
+          text: (warm ? 'بالطبع، من الطبيعي ألا تتسرّع في قرار كهذا 🙏 ' : 'بالطبع، من الطبيعي أن تفكّر في الأمر. ') +
+            'عادةً عندما يقول أحدهم "سأفكّر"، يبقى في ذهنه سؤال واحد محدّد. ' +
+            'لأساعدك: ما الذي يشغلك أكثر، السعر، أم العملية نفسها، أم كيف ستكون النتيجة؟ ' +
+            'مهما كان، يسعدني أن أوضّح لك كل ما يخص ' + service + '.',
+          why: 'يكشف العائق الحقيقي خلف "سأفكّر" الغامضة بسؤال مفتوح، فيستبدل التأجيل المبهم بموضوع ملموس للحديث عنه.'
+        },
+        {
+          label: 'السيناريو ٢ — خطوة تالية منخفضة الالتزام',
+          text: (warm ? 'لا مشكلة إطلاقاً، لا داعي للعجلة. ' : 'لا داعي للعجلة؛ خذ وقتك في القرار. ') +
+            'اسمح لي فقط باقتراح: ليكن بين يديك شيء ملموس وأنت تفكّر. ' +
+            'دون أي تكلفة أو التزام، لنُجرِ تقييماً خاصاً بك لترى بوضوح النتيجة والعملية والسعر لـ ' + service + '. ' +
+            'القرار بهذه المعلومات أسهل بكثير. تكفي مشاركة بضع صور لنبدأ — هل نبدأ؟',
+          why: 'يقدّم خطوة صغيرة مجانية بلا مخاطرة دون إبطال التأجيل (خطوة منخفضة الالتزام)، فتتقدّم العلاقة حتى وهو ما زال يفكّر.'
+        },
+        {
+          label: 'السيناريو ٣ — إلحاح لطيف',
+          text: (warm ? 'بالطبع، فكّر؛ أنا معك. ' : 'بالطبع يمكنك التفكير في الأمر. ') +
+            'تذكير فقط: المواعيد والأماكن المناسبة لـ ' + service + ' تمتلئ بسرعة في المواسم، وأسعارنا تُحدَّث من حين لآخر. ' +
+            'لا أريد الضغط عليك، لكن إن رغبت يمكنني حجز شروط اليوم لك كخيار لفترة قصيرة. ' +
+            'هكذا تقرّر دون تسرّع، ودون أن تفوّت الفرصة. هل ترغب بذلك؟',
+          why: 'يضيف ندرة وتوقيتاً حقيقيين دون ضغط (إلحاح لطيف / ندرة)، فيذكّر بتكلفة التأجيل غير المحدود ويقرّب القرار.'
+        }
+      ],
+      'garanti': [
+        {
+          label: 'السيناريو ١ — الطمأنة + الشفافية',
+          text: (warm ? 'سؤال مهم ووجيه، يسعدني أنك سألت 🙏 ' : 'سؤال وجيه جداً. ') +
+            'في ' + service + ' نقدّم لك ضماناً واضحاً: ندير العملية بشفافية من البداية للنهاية، ' +
+            'وندير التوقّعات بواقعية، ونواصل متابعتك بعد العلاج. ' +
+            'كما نقدّم شروطنا المتعلقة بالنتيجة المتوقّعة كتابياً. ' +
+            'إن أردت، أرسل لك تفاصيل نطاق الضمان والمتابعة بنداً بنداً، ليكون كل شيء واضحاً من البداية.',
+          why: 'يلبّي طلب الضمان بالشفافية والوضوح المكتوب، فيبني الثقة بإزالة الغموض ويتعامل مع السؤال كإشارة شراء.'
+        },
+        {
+          label: 'السيناريو ٢ — الدليل الاجتماعي + عكس المخاطرة',
+          text: (warm ? 'من الطبيعي أن ترغب بالشعور بالاطمئنان. ' : 'من الطبيعي أن ترغب بضمان هنا. ') +
+            'أكبر ضماننا هو مرضانا الراضون الذين خدمناهم في ' + service + ' ونتائجهم. ' +
+            'إن أردت، أشارك معك أمثلة قبل وبعد لحالات مشابهة وآراء المرضى. ' +
+            'كما نبدأ العملية بتقييم مجاني، لنتأكد أن النتيجة مناسبة لك قبل أي التزام. ' +
+            'هل ترغب برؤية الأمثلة؟',
+          why: 'يدعم سؤال "الضمان" المجرّد بدليل اجتماعي ملموس (قبل/بعد، آراء) وينقل المخاطرة عبر خطوة أولى مجانية، فيعزّز الثقة بالأدلة.'
+        }
+      ],
+      'butce-yok': [
+        {
+          label: 'السيناريو ١ — التعاطف + مرونة الدفع',
+          text: (warm ? 'شكراً لمشاركتك هذا، أتفهّمك جيداً 🙏 ' : 'شكراً لمشاركتك هذا؛ أتفهّمك تماماً. ') +
+            'الخبر الجيد: لست مضطراً لتخصيص الميزانية كاملة دفعة واحدة لـ ' + service + '. ' +
+            'لدينا خيارات دفع مرنة وبالتقسيط تناسبك، لتبدأ دون إرهاق ميزانيتك. ' +
+            'إن أردت، نضع معاً الخطة الأكثر راحة لك. ما المبلغ الشهري الذي يكون مريحاً لك؟',
+          why: 'يزيل العائق بتغيير بنية الدفع بدل رفض الاعتراض (إعادة تأطير الدفع)، فيحوّل "لا أملك ميزانية" إلى "كيف يمكنني الدفع".'
+        },
+        {
+          label: 'السيناريو ٢ — حجز المكان + استمرار التواصل',
+          text: (warm ? 'لا مشكلة إطلاقاً، التوقيت مهم دائماً. ' : 'من المهم أن يكون التوقيت مناسباً، أتفهّم ذلك. ') +
+            'من الطبيعي تماماً ألا تكون جاهزاً الآن. لا أريد أن أفقد التواصل معك؛ ' +
+            'إن أردت، أُسجّل تقييمك الحالي وشروط سعرك، ' +
+            'لنكمل عند جاهزيتك ' + service + ' بالشروط نفسها من حيث توقّفنا. ' +
+            'وأنا في خدمتك لأي سؤال في هذه الأثناء. هل يناسبك ذلك؟',
+          why: 'بدل فرض بيع فوري، يحفظ العلاقة والشروط لبيع مستقبلي (إبقاء الباب مفتوحاً)، فيتحقق التحويل لاحقاً دون فقدان المريض.'
+        }
+      ],
+      'neden-pahali': [
+        {
+          label: 'السيناريو ١ — تفصيل القيمة بشفافية',
+          text: (warm ? 'سؤال رائع، لنتحدّث بصراحة 🙏 ' : 'سؤال وجيه جداً؛ دعني أوضّح. ') +
+            'سعر ' + service + ' هو مقابل منظومة كاملة، لا خطوة واحدة: فريق ذو خبرة، ' +
+            'ومواد عالية الجودة ومعتمدة، ومعايير نظافة وسلامة، وتخطيط دقيق، ومتابعة بعد العلاج. ' +
+            'فما تدفعه هو مقابل نتيجة دائمة وآمنة. ' +
+            'إن أردت، أوضّح لك بشفافية مقابل ماذا يذهب كل جزء من السعر — حين ترى ذلك، ستقول "مناسب" لا "غالٍ".',
+          why: 'يبرّر السعر بتفكيكه إلى مكوّناته (تبرير السعر / تفصيل القيمة)، فيُظهر القيمة غير المرئية لإضفاء الشرعية على السعر الأعلى.'
+        },
+        {
+          label: 'السيناريو ٢ — ربط الجودة بالنتيجة',
+          text: (warm ? 'لأكن صريحاً: سعرنا ليس صدفة. ' : 'بصراحة، سعرنا خيار مقصود. ') +
+            'في الرعاية الصحية، النتيجة تعتمد مباشرة على الجودة؛ في ' + service + ' نعمل لا من أجل نتيجة عادية بل نتيجة تثق بها. ' +
+            'تقليل التكلفة يعني غالباً تقليل النتيجة، ولن نخاطر بذلك من أجلك. ' +
+            'الفرق الذي تدفعه هو بالضبط ثمن أن تنظر في المرآة براحة بال تامة. ' +
+            'إن أردت، أُظهر لك هذه الجودة بأمثلة ملموسة.',
+          why: 'يربط السعر المرتفع مباشرة بالجودة والنتيجة (تثبيت السعر-الجودة)، فيؤطّر "الرخيص = مخاطرة، المتميّز = نتيجة آمنة".'
+        }
+      ]
+    };
+
+    var packs = { tr: TR, en: EN, ar: AR };
+    var pack = packs[lang] || TR;
+    return pack[objection] || pack['cok-pahali'];
+  }
+
+  window.generate = function () {
+    var objection = document.getElementById('in-objection').value;
+    var serviceRaw = document.getElementById('in-service').value.trim();
+    var service = serviceRaw || (state.lang === 'tr' ? 'tedaviniz' : state.lang === 'en' ? 'your treatment' : 'علاجك');
+
+    var variants = buildVariants(objection, service, state.lang, state.tone);
+    var rtl = state.lang === 'ar';
+    var copyLabel = state.lang === 'en' ? 'Copy' : state.lang === 'ar' ? 'نسخ' : 'Kopyala';
+    var whyLabel = state.lang === 'en' ? 'Why it works:' : state.lang === 'ar' ? 'لماذا ينجح:' : 'Neden işe yarıyor:';
+
+    var html = '';
+    variants.forEach(function (v, i) {
+      html += '<div class="msg-variant">' +
+        '<div class="msg-variant-head">' +
+          '<span class="msg-variant-label">' + esc(v.label) + '</span>' +
+          '<button class="copy-btn" data-copy="' + i + '">📋 ' + copyLabel + '</button>' +
+        '</div>' +
+        '<div class="msg-body"' + (rtl ? ' dir="rtl"' : '') + ' id="msg-' + i + '">' + esc(v.text) + '</div>' +
+        '<div style="margin-top:10px;font-size:0.8rem;color:#8B7CAB"' + (rtl ? ' dir="rtl"' : '') + '>' +
+          '<strong style="color:#A78BFA">' + whyLabel + '</strong> ' + esc(v.why) +
+        '</div>' +
+      '</div>';
+    });
+    document.getElementById('variants').innerHTML = html;
+
+    document.querySelectorAll('.copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = btn.dataset.copy;
+        var text = document.getElementById('msg-' + idx).textContent;
+        var done = function () {
+          var orig = btn.innerHTML;
+          btn.classList.add('copied');
+          btn.innerHTML = '✓ ' + (state.lang === 'en' ? 'Copied' : state.lang === 'ar' ? 'تم النسخ' : 'Kopyalandı');
+          setTimeout(function () { btn.classList.remove('copied'); btn.innerHTML = orig; }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(function () { fallbackCopy(text); done(); });
+        } else { fallbackCopy(text); done(); }
+      });
+    });
+
+    document.getElementById('results-panel').classList.add('visible');
+    document.getElementById('results-placeholder').style.display = 'none';
+  };
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Fiyat İtirazı Cevap Oluşturucu",
+      "url": "https://saglikturizmi.info/araclar/fiyat-itirazi-cevap-olusturucu/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY" },
+      "description": "Hastaların 'çok pahalı', 'başka klinik daha ucuz', 'düşüneceğim' gibi fiyat itirazlarına empatik ve değer odaklı satış cevaplarını TR/EN/AR dilinde, profesyonel veya samimi tonda oluşturan ücretsiz araç."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://saglikturizmi.info/" },
+        { "@type": "ListItem", "position": 2, "name": "Araçlar", "item": "https://saglikturizmi.info/araclar/" },
+        { "@type": "ListItem", "position": 3, "name": "Fiyat İtirazı Cevap Oluşturucu", "item": "https://saglikturizmi.info/araclar/fiyat-itirazi-cevap-olusturucu/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Fiyat itirazına indirim vermeden cevap verebilir miyim?", "acceptedAnswer": { "@type": "Answer", "text": "Evet ve çoğu durumda vermemelisiniz. İlk itirazda indirim yapmak değeri ucuzlatır ve daha fazla pazarlığa davet eder. Bu araç fiyatı değerle, sonuçla ve güvenle çerçeveleyen cevaplar üretir; indirim yalnızca son ve bilinçli bir hamle olmalıdır." } },
+        { "@type": "Question", "name": "'Başka klinik daha ucuz' diyen hastaya nasıl yaklaşmalıyım?", "acceptedAnswer": { "@type": "Answer", "text": "Rakibi kötülemeden, ucuz fiyatın neyi içermediğini (deneyim, malzeme, takip, revizyon güvencesi) sakince göstermek en etkili yöntemdir. Araç bu itiraz için karşılaştırma ve risk-tersine-çevirme açılı senaryolar üretir." } },
+        { "@type": "Question", "name": "Senaryoları olduğu gibi mi göndermeliyim?", "acceptedAnswer": { "@type": "Answer", "text": "Senaryolar göndermeye hazırdır, ancak hastanın adını veya somut durumunu eklemek dönüşümü artırır. 'Neden işe yarıyor' notu her senaryonun arkasındaki satış tekniğini açıklar." } },
+        { "@type": "Question", "name": "Arapça cevaplar doğru yönde mi görünür?", "acceptedAnswer": { "@type": "Answer", "text": "Evet, Arapça seçildiğinde metin sağdan sola (RTL) hizalanır ve WhatsApp'a yapıştırdığınızda da doğru görünür." } }
+      ]
+    }
+  ]
+}
+</script>
+
+</body>
+</html>

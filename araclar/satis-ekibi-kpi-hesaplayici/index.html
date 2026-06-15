@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satış Ekibi KPI Hesaplayıcı | saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizmi satış ekibinizin huni dönüşüm oranlarını, kişi başı lead ve gelir verimliliğini hesaplayın. Hangi aşamada lead kaybettiğinizi (darboğaz) tespit edin ve benchmark yorumları alın.">
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/satis-ekibi-kpi-hesaplayici/">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0F0A1A; color: #F8F7FF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; min-height: 100vh; }
+    #site-header:empty, #site-footer:empty { display: none; }
+    a { color: #C4B5FD; text-decoration: none; }
+    a:hover { color: #F8F7FF; }
+
+    .breadcrumb { background: #1A1028; border-bottom: 1px solid rgba(124,58,237,0.2); padding: 12px 0; }
+    .breadcrumb-inner { max-width: 980px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #C4B5FD; flex-wrap: wrap; }
+    .breadcrumb-sep { color: rgba(196,181,253,0.4); font-size: 11px; }
+    .breadcrumb-current { color: #F8F7FF; font-weight: 500; }
+
+    .page-header { background: linear-gradient(135deg, #1A1028 0%, #231535 100%); border-bottom: 1px solid rgba(124,58,237,0.25); padding: 48px 20px 40px; text-align: center; }
+    .page-header h1 { font-size: clamp(22px,4vw,34px); font-weight: 700; color: #F8F7FF; margin-bottom: 12px; letter-spacing: -0.3px; }
+    .page-header h1 span { background: linear-gradient(90deg,#7C3AED,#C4B5FD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-header p { color: #C4B5FD; font-size: 15px; max-width: 600px; margin: 0 auto; opacity: 0.85; }
+    .header-badge { display: inline-block; background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4); color: #C4B5FD; font-size: 12px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
+
+    .container { max-width: 980px; margin: 0 auto; padding: 40px 20px 80px; }
+    .calc-layout { display: grid; grid-template-columns: 380px 1fr; gap: 24px; align-items: start; }
+    @media (max-width: 860px) { .calc-layout { grid-template-columns: 1fr; } }
+
+    .card { background: #1A1028; border: 1px solid rgba(124,58,237,0.2); border-radius: 16px; padding: 28px; margin-bottom: 24px; }
+    .card-title { font-size: 17px; font-weight: 700; color: #F8F7FF; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+    .card-title .icon { width: 32px; height: 32px; background: rgba(124,58,237,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .card-subtitle { font-size: 13px; color: #C4B5FD; opacity: 0.7; margin-bottom: 24px; padding-left: 42px; }
+
+    .form-group { margin-bottom: 18px; }
+    .form-label { display: block; font-size: 13.5px; font-weight: 600; color: #C4B5FD; margin-bottom: 7px; }
+    .form-input { width: 100%; background: #231535; border: 1px solid rgba(167,139,250,0.2); border-radius: 8px; padding: 11px 14px; color: #F8F7FF; font-size: 15px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    .form-input:focus { border-color: rgba(124,58,237,0.6); box-shadow: 0 0 0 3px rgba(124,58,237,0.15); }
+    .form-hint { font-size: 11.5px; color: #8B7CAB; margin-top: 4px; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px 24px; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; border: none; transition: all 0.2s; margin-top: 8px; }
+    .btn-primary { background: linear-gradient(135deg,#7C3AED,#5B21B6); color: #fff; box-shadow: 0 4px 18px rgba(124,58,237,0.35); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(124,58,237,0.45); }
+
+    /* Results */
+    #results { display: none; }
+    #results.visible { display: block; }
+    .results-title { font-size: 20px; font-weight: 700; color: #F8F7FF; margin-bottom: 18px; }
+
+    .metric-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 14px; margin-bottom: 22px; }
+    .metric-box { background: #231535; border: 1px solid rgba(124,58,237,0.15); border-radius: 12px; padding: 16px; text-align: center; }
+    .metric-box .mv { font-size: 24px; font-weight: 800; color: #F8F7FF; line-height: 1; margin-bottom: 5px; }
+    .metric-box .mv.purple { color: #A78BFA; }
+    .metric-box .ml { font-size: 11px; color: #8B7CAB; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Funnel */
+    .funnel { margin-bottom: 8px; }
+    .funnel-stage { margin-bottom: 14px; }
+    .funnel-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+    .funnel-name { font-size: 13.5px; font-weight: 600; color: #F8F7FF; }
+    .funnel-count { font-size: 13px; color: #C4B5FD; font-weight: 700; }
+    .funnel-bar-wrap { background: rgba(167,139,250,0.08); border-radius: 8px; height: 30px; overflow: hidden; position: relative; }
+    .funnel-bar { height: 100%; border-radius: 8px; background: linear-gradient(90deg,#7C3AED,#A78BFA); display: flex; align-items: center; transition: width 0.7s cubic-bezier(.4,0,.2,1); min-width: 2px; }
+    .conv-chip { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-left: 8px; }
+    .conv-good { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .conv-mid { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .conv-bad { background: rgba(239,68,68,0.15); color: #f87171; }
+
+    .bottleneck { border-radius: 12px; padding: 18px 20px; margin-bottom: 14px; border-left: 4px solid; display: flex; gap: 14px; align-items: flex-start; }
+    .bottleneck.sev-bad { background: rgba(239,68,68,0.08); border-left-color: #f87171; }
+    .bottleneck.sev-mid { background: rgba(245,158,11,0.08); border-left-color: #fbbf24; }
+    .bottleneck.sev-good { background: rgba(34,197,94,0.08); border-left-color: #4ade80; }
+    .bn-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .bn-text .bn-title { font-size: 14px; font-weight: 700; color: #F8F7FF; margin-bottom: 4px; }
+    .bn-text .bn-body { font-size: 13px; color: #C4B5FD; line-height: 1.6; }
+
+    .info-tip { background: rgba(124,58,237,0.07); border: 1px solid rgba(124,58,237,0.2); border-radius: 10px; padding: 12px 16px; font-size: 12px; color: #C4B5FD; opacity: 0.85; display: flex; gap: 8px; align-items: flex-start; margin-top: 14px; }
+    .divider { border: none; border-top: 1px solid rgba(124,58,237,0.15); margin: 24px 0; }
+
+    .info-block { margin-bottom: 20px; }
+    .info-block:last-child { margin-bottom: 0; }
+    .info-block h4 { font-size: 14px; font-weight: 700; color: #F8F7FF; margin-bottom: 6px; }
+    .info-block p { font-size: 13.5px; color: #C4B5FD; line-height: 1.7; opacity: 0.9; }
+
+    .faq-list { list-style: none; }
+    .faq-item { border-bottom: 1px solid rgba(124,58,237,0.15); padding: 16px 0; }
+    .faq-item:first-child { border-top: 1px solid rgba(124,58,237,0.15); }
+    .faq-q { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; background: none; border: none; cursor: pointer; padding: 0; font-size: 15px; font-weight: 600; color: #F8F7FF; text-align: left; line-height: 1.4; }
+    .faq-q:hover { color: #C4B5FD; }
+    .faq-icon { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(124,58,237,0.15); color: #C4B5FD; font-size: 20px; font-weight: 300; flex-shrink: 0; line-height: 1; }
+    .faq-a { color: #C4B5FD; padding-top: 8px; line-height: 1.7; font-size: 13.5px; display: none; }
+
+    .wa-cta { background: linear-gradient(135deg, rgba(37,211,102,0.1), rgba(37,211,102,0.05)); border: 1px solid rgba(37,211,102,0.3); border-radius: 16px; padding: 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .wa-cta-text h3 { font-size: 17px; font-weight: 700; color: #F8F7FF; margin-bottom: 6px; }
+    .wa-cta-text p { font-size: 13px; color: #C4B5FD; opacity: 0.8; }
+    .btn-wa { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: #fff; font-weight: 700; font-size: 14px; padding: 13px 24px; border-radius: 10px; text-decoration: none; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; box-shadow: 0 4px 16px rgba(37,211,102,0.3); }
+    .btn-wa:hover { background: #20c05a; color: #fff; transform: translateY(-1px); }
+    .wa-icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+    .placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; min-height: 320px; border: 1px dashed rgba(167,139,250,0.25); border-radius: 16px; color: #8B7CAB; font-size: 14px; padding: 28px; }
+
+    @media (max-width: 600px) {
+      .card { padding: 18px 14px; }
+      .wa-cta { flex-direction: column; text-align: center; }
+      .btn-wa { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main style="padding-top:64px">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="/">Ana Sayfa</a>
+        <span class="breadcrumb-sep">&#9656;</span>
+        <a href="/araclar/">Araçlar</a>
+        <span class="breadcrumb-sep">&#9656;</span>
+        <span class="breadcrumb-current">Satış Ekibi KPI Hesaplayıcı</span>
+      </div>
+    </nav>
+
+    <div class="page-header">
+      <div class="header-badge">Ücretsiz Analiz Aracı</div>
+      <h1>Satış Ekibi <span>KPI Hesaplayıcı</span></h1>
+      <p>Sağlık turizmi satış huninizin her aşamasındaki dönüşüm oranlarını, kişi başı verimliliği ve geliri hesaplayın. Lead'leri nerede kaybettiğinizi (darboğaz) tespit edin ve benchmark yorumları alın.</p>
+    </div>
+
+    <div class="container">
+      <div class="calc-layout">
+
+        <!-- Inputs -->
+        <div>
+          <div class="card">
+            <div class="card-title"><div class="icon">&#128202;</div> Ekip Verileri</div>
+            <div class="card-subtitle">Son 1 aylık (veya tipik bir ayın) rakamlarını girin.</div>
+
+            <div class="form-group">
+              <label class="form-label" for="in-leads">Aylık gelen lead</label>
+              <input type="number" id="in-leads" class="form-input" min="0" value="400">
+              <div class="form-hint">Tüm kanallardan gelen toplam talep</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="in-answered">Yanıtlanan lead</label>
+              <input type="number" id="in-answered" class="form-input" min="0" value="320">
+              <div class="form-hint">İlk dönüş yapılan lead sayısı</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="in-meetings">Görüşmeye dönen</label>
+              <input type="number" id="in-meetings" class="form-input" min="0" value="120">
+              <div class="form-hint">Detaylı görüşme/konsültasyona geçen</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="in-booked">Rezervasyon</label>
+              <input type="number" id="in-booked" class="form-input" min="0" value="48">
+              <div class="form-hint">Tarih/depozito alınan hasta</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="in-treated">Gelen / tedavi olan</label>
+              <input type="number" id="in-treated" class="form-input" min="0" value="36">
+              <div class="form-hint">Gerçekten tedaviye gelen hasta</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="in-revenue">Ortalama tedavi geliri (₺)</label>
+              <input type="number" id="in-revenue" class="form-input" min="0" value="45000">
+              <div class="form-hint">Hasta başına ortalama ciro</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="in-reps">Ekip kişi sayısı</label>
+              <input type="number" id="in-reps" class="form-input" min="1" value="3">
+              <div class="form-hint">Lead ile ilgilenen satış temsilcisi</div>
+            </div>
+
+            <button class="btn btn-primary" id="btn-calc" type="button">&#128202; KPI'ları Hesapla</button>
+          </div>
+        </div>
+
+        <!-- Output -->
+        <div>
+          <div id="placeholder" class="placeholder">
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="rgba(167,139,250,0.35)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 2 4-5"/></svg>
+            <div style="max-width:260px;line-height:1.6">Soldaki verileri girin ve <strong style="color:#C4B5FD">"KPI'ları Hesapla"</strong> butonuna tıklayın.</div>
+          </div>
+
+          <div id="results">
+            <div class="card">
+              <div class="results-title">&#128200; Verimlilik Metrikleri</div>
+              <div class="metric-grid" id="metric-grid"></div>
+            </div>
+
+            <div class="card">
+              <div class="card-title"><div class="icon">&#129529;</div> Satış Hunisi</div>
+              <div class="card-subtitle">Her aşamadaki hacim ve bir önceki aşamaya göre dönüşüm oranı.</div>
+              <div class="funnel" id="funnel"></div>
+            </div>
+
+            <div class="card">
+              <div class="card-title"><div class="icon">&#128270;</div> Darboğaz Tespiti & Yorum</div>
+              <div class="card-subtitle">En zayıf aşama ve benchmark karşılaştırması.</div>
+              <div id="bottlenecks"></div>
+            </div>
+
+            <div class="wa-cta">
+              <div class="wa-cta-text">
+                <h3>Darboğazınızı birlikte çözelim</h3>
+                <p>Lead karşılama, görüşme senaryosu ve rezervasyon kapatma akışını optimize ederek aynı lead ile daha fazla hasta kazanın.</p>
+              </div>
+              <a href="https://wa.me/905397232292?text=Merhaba%2C%20sat%C4%B1%C5%9F%20ekibi%20KPI%20hesaplay%C4%B1c%C4%B1s%C4%B1n%C4%B1%20kulland%C4%B1m.%20Hunimdeki%20darbo%C4%9Faz%C4%B1%20%C3%A7%C3%B6zmek%20istiyorum." target="_blank" rel="noopener" class="btn-wa">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp'tan Yazın
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Explanation -->
+      <div class="card">
+        <div class="card-title"><div class="icon">&#128218;</div> Metrikleri Nasıl Yorumlamalısınız?</div>
+        <div class="card-subtitle">KPI'lar ve sağlık turizminde tipik benchmark aralıkları.</div>
+        <div class="info-block">
+          <h4>Aşama dönüşüm oranları</h4>
+          <p>Her oran, bir aşamadan diğerine geçiş yüzdesidir. <strong>Yanıt oranı</strong> (yanıtlanan ÷ lead) idealde %90+ olmalıdır — yanıtlanmayan her lead doğrudan kayıptır. <strong>Görüşme oranı</strong> (görüşme ÷ yanıtlanan) genellikle %30–50, <strong>rezervasyon oranı</strong> (rezervasyon ÷ görüşme) %30–45, <strong>gelme oranı</strong> (gelen ÷ rezervasyon) %70–85 bandındadır. Lead'den tedaviye toplam dönüşüm sağlık turizminde sıklıkla %5–12 aralığındadır.</p>
+        </div>
+        <div class="info-block">
+          <h4>Kişi başı verimlilik</h4>
+          <p>Kişi başına düşen lead, ekibinizin kapasite üstü yüklenip yüklenmediğini gösterir. Bir temsilci ayda yüzlerce lead'i kaliteli takip edemez; çok yüksek bir lead/kişi oranı, yanıt oranının düşmesinin gizli sebebidir. Kişi başı gelir ise ekibinizin ürettiği değeri ölçer ve maaş/komisyon planlamasında referans olur.</p>
+        </div>
+        <div class="info-block">
+          <h4>Darboğaz mantığı</h4>
+          <p>Araç, benchmark'a göre en geride kalan aşamayı "darboğaz" olarak işaretler. En düşük dönüşüm oranı her zaman sorun değildir (örneğin gelme oranı doğal olarak yüksektir); önemli olan, beklenen bandın ne kadar altında olduğunuzdur. Önce darboğazı düzeltmek, huninin tamamını büyütmenin en hızlı yoludur.</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="card">
+        <div class="card-title"><div class="icon">&#10067;</div> Sıkça Sorulan Sorular</div>
+        <div class="card-subtitle">Satış KPI'ları hakkında en çok sorulanlar.</div>
+        <ul class="faq-list">
+          <li class="faq-item">
+            <button class="faq-q" type="button">İyi bir lead-tedavi dönüşüm oranı nedir? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Sağlık turizminde kanal kalitesine göre değişmekle birlikte, soğuk reklam lead'lerinde %5–12 toplam dönüşüm (lead'den tedaviye) genellikle sağlıklı kabul edilir. Referans ve organik lead'lerde bu oran çok daha yüksek olabilir. Tek bir sayıya takılmak yerine her aşamayı ayrı ayrı izlemek daha doğrudur.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-q" type="button">Yanıt oranım neden bu kadar önemli? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Yanıtlanmayan lead, reklam bütçenizin doğrudan çöpe gitmesidir. Üstelik geç yanıt, dönüşümü ciddi biçimde düşürür. Yanıt oranı huninin en tepesindeki sızıntıdır; buradaki kayıp, alttaki tüm aşamaları orantılı olarak küçültür. Bu yüzden ilk düzeltilmesi gereken metrik çoğu zaman budur.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-q" type="button">Kişi başı lead sayısı kaç olmalı? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Net bir kural yoktur; lead kalitesine, görüşme süresine ve kullanılan otomasyona bağlıdır. Ancak bir temsilci başına aylık 150+ lead düşüyorsa, kaliteli ve hızlı takip genellikle zorlaşır. Bu durumda ya ekip büyütmek ya da CRM/otomasyon ile süreci hafifletmek gerekir.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-q" type="button">Rezervasyon var ama hasta gelmiyorsa? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Düşük "gelme oranı" (no-show), genellikle zayıf depozito politikası, rezervasyon sonrası iletişim kopukluğu veya beklenti yönetimi eksikliğinden kaynaklanır. Depozito, net seyahat planı ve rezervasyon-öncesi düzenli temas bu oranı belirgin biçimde yükseltir.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-q" type="button">Verilerim kaydediliyor mu? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Hayır. Tüm hesaplama tarayıcınızda yerel olarak yapılır; girdiğiniz rakamlar hiçbir sunucuya gönderilmez veya saklanmaz.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Final CTA -->
+      <div class="wa-cta">
+        <div class="wa-cta-text">
+          <h3>Satış sisteminizi profesyonelce kuralım</h3>
+          <p>CRM kurulumu, satış senaryoları ve ekip eğitimi ile aynı lead hacminden daha fazla hasta kazanın. Ücretsiz ön değerlendirme alın.</p>
+        </div>
+        <a href="https://wa.me/905397232292?text=Merhaba%2C%20KPI%20hesaplay%C4%B1c%C4%B1s%C4%B1n%C4%B1%20kulland%C4%B1m.%20Sat%C4%B1%C5%9F%20sistemi%20deste%C4%9Fi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn-wa">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp'tan Yazın
+        </a>
+      </div>
+
+    </div>
+  </main>
+  <div id="site-footer"></div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Satış Ekibi KPI Hesaplayıcı",
+        "url": "https://saglikturizmi.info/araclar/satis-ekibi-kpi-hesaplayici/",
+        "description": "Sağlık turizmi satış ekibi için huni dönüşüm oranları, kişi başı lead ve gelir, darboğaz tespiti ve benchmark yorumları hesaplayan ücretsiz araç.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "tr",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY" },
+        "publisher": { "@type": "Organization", "name": "saglikturizmi.info", "url": "https://saglikturizmi.info/" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://saglikturizmi.info/" },
+          { "@type": "ListItem", "position": 2, "name": "Araçlar", "item": "https://saglikturizmi.info/araclar/" },
+          { "@type": "ListItem", "position": 3, "name": "Satış Ekibi KPI Hesaplayıcı", "item": "https://saglikturizmi.info/araclar/satis-ekibi-kpi-hesaplayici/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "İyi bir lead-tedavi dönüşüm oranı nedir?", "acceptedAnswer": { "@type": "Answer", "text": "Soğuk reklam lead'lerinde %5-12 toplam dönüşüm genellikle sağlıklı kabul edilir. Referans ve organik lead'lerde bu oran çok daha yüksek olabilir. Her aşamayı ayrı izlemek daha doğrudur." } },
+          { "@type": "Question", "name": "Yanıt oranım neden bu kadar önemli?", "acceptedAnswer": { "@type": "Answer", "text": "Yanıtlanmayan lead reklam bütçenizin çöpe gitmesidir ve geç yanıt dönüşümü ciddi düşürür. Yanıt oranı huninin tepesindeki sızıntıdır; buradaki kayıp alttaki tüm aşamaları küçültür." } },
+          { "@type": "Question", "name": "Kişi başı lead sayısı kaç olmalı?", "acceptedAnswer": { "@type": "Answer", "text": "Net kural yoktur; lead kalitesine ve otomasyona bağlıdır. Temsilci başına aylık 150+ lead düşüyorsa kaliteli takip zorlaşır; ekip büyütmek veya CRM/otomasyon kullanmak gerekir." } },
+          { "@type": "Question", "name": "Rezervasyon var ama hasta gelmiyorsa?", "acceptedAnswer": { "@type": "Answer", "text": "Düşük gelme oranı genellikle zayıf depozito politikası, rezervasyon sonrası iletişim kopukluğu veya beklenti yönetimi eksikliğinden kaynaklanır. Depozito ve düzenli temas bu oranı yükseltir." } },
+          { "@type": "Question", "name": "Verilerim kaydediliyor mu?", "acceptedAnswer": { "@type": "Answer", "text": "Hayır. Tüm hesaplama tarayıcınızda yerel olarak yapılır; girdiğiniz rakamlar hiçbir sunucuya gönderilmez veya saklanmaz." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script src="/shared.js"></script>
+  <script>
+  /* ===== SATIŞ EKİBİ KPI HESAPLAYICI ===== */
+  (function () {
+    function val(id) { var n = parseFloat(document.getElementById(id).value); return isNaN(n) || n < 0 ? 0 : n; }
+    function fmtInt(n) { return Math.round(n).toLocaleString('tr-TR'); }
+    function fmtTL(n) { return '₺' + Math.round(n).toLocaleString('tr-TR'); }
+    function pct(num, den) { return den > 0 ? (num / den) * 100 : 0; }
+    function fmtPct(n) { return (Math.round(n * 10) / 10).toLocaleString('tr-TR') + '%'; }
+
+    // benchmark bands [min good, ideal]: stage conversion expectations
+    var BANDS = {
+      answer:  { min: 90, label: 'Yanıt oranı', target: '%90+' },
+      meeting: { min: 35, label: 'Görüşme oranı', target: '%30–50' },
+      booking: { min: 32, label: 'Rezervasyon oranı', target: '%30–45' },
+      show:    { min: 70, label: 'Gelme oranı', target: '%70–85' }
+    };
+
+    function convClass(v, min) {
+      if (v >= min) return 'conv-good';
+      if (v >= min * 0.7) return 'conv-mid';
+      return 'conv-bad';
+    }
+
+    var resultsEl = document.getElementById('results');
+    var placeholderEl = document.getElementById('placeholder');
+
+    function calc() {
+      var leads = val('in-leads'), answered = val('in-answered'), meetings = val('in-meetings'),
+          booked = val('in-booked'), treated = val('in-treated'),
+          revenue = val('in-revenue'), reps = Math.max(1, val('in-reps'));
+
+      var rAnswer = pct(answered, leads);
+      var rMeeting = pct(meetings, answered);
+      var rBooking = pct(booked, meetings);
+      var rShow = pct(treated, booked);
+      var rTotal = pct(treated, leads);
+
+      var totalRev = treated * revenue;
+      var leadPerRep = leads / reps;
+      var revPerRep = totalRev / reps;
+
+      // Metrics
+      document.getElementById('metric-grid').innerHTML =
+        '<div class="metric-box"><div class="mv purple">' + fmtPct(rTotal) + '</div><div class="ml">Lead→Tedavi</div></div>' +
+        '<div class="metric-box"><div class="mv">' + fmtInt(leadPerRep) + '</div><div class="ml">Kişi başı lead</div></div>' +
+        '<div class="metric-box"><div class="mv">' + fmtTL(totalRev) + '</div><div class="ml">Aylık ciro</div></div>' +
+        '<div class="metric-box"><div class="mv">' + fmtTL(revPerRep) + '</div><div class="ml">Kişi başı gelir</div></div>';
+
+      // Funnel
+      var stages = [
+        { name: 'Gelen lead', count: leads, conv: null, key: null },
+        { name: 'Yanıtlanan', count: answered, conv: rAnswer, key: 'answer' },
+        { name: 'Görüşme', count: meetings, conv: rMeeting, key: 'meeting' },
+        { name: 'Rezervasyon', count: booked, conv: rBooking, key: 'booking' },
+        { name: 'Tedavi olan', count: treated, conv: rShow, key: 'show' }
+      ];
+      var maxCount = leads || 1;
+      var fhtml = '';
+      stages.forEach(function (s) {
+        var chip = '';
+        if (s.conv !== null) {
+          chip = '<span class="conv-chip ' + convClass(s.conv, BANDS[s.key].min) + '">' + fmtPct(s.conv) + '</span>';
+        }
+        var w = Math.max(2, (s.count / maxCount) * 100);
+        fhtml += '<div class="funnel-stage">' +
+          '<div class="funnel-top"><span class="funnel-name">' + s.name + chip + '</span>' +
+          '<span class="funnel-count">' + fmtInt(s.count) + '</span></div>' +
+          '<div class="funnel-bar-wrap"><div class="funnel-bar" style="width:' + w + '%"></div></div>' +
+        '</div>';
+      });
+      document.getElementById('funnel').innerHTML = fhtml;
+
+      // Bottleneck detection: which stage is furthest below its benchmark min (as ratio)
+      var checks = [
+        { key: 'answer', v: rAnswer },
+        { key: 'meeting', v: rMeeting },
+        { key: 'booking', v: rBooking },
+        { key: 'show', v: rShow }
+      ];
+      var fixHints = {
+        answer: 'Lead\'lerin önemli kısmına dönüş yapılmıyor. İlk yanıt süresini kısaltın, WhatsApp otomasyonu ve nöbet/dağıtım sistemi kurun. Yanıtlanmayan her lead doğrudan kayıptır.',
+        meeting: 'Yanıt veriyorsunuz ama görüşmeye geçemiyorsunuz. İlk mesaj kalitesini, hızlı bilgi/fiyat verme dengesini ve takip (follow-up) ritmini gözden geçirin.',
+        booking: 'Görüşme oluyor ama rezervasyona dönüşmüyor. Teklif sunumu, fiyat itirazı yönetimi ve net bir kapanış (depozito/tarih) adımı ekleyin.',
+        show: 'Rezervasyon var ama hasta gelmiyor (no-show). Depozito politikası, seyahat planlaması ve rezervasyon sonrası düzenli iletişimi güçlendirin.'
+      };
+
+      // worst = lowest ratio v/min
+      var worst = null;
+      checks.forEach(function (c) {
+        var ratio = c.v / BANDS[c.key].min;
+        if (worst === null || ratio < worst.ratio) worst = { key: c.key, v: c.v, ratio: ratio };
+      });
+
+      var bn = '';
+      // Primary bottleneck
+      var b = BANDS[worst.key];
+      var sev = worst.v >= b.min ? 'sev-good' : worst.v >= b.min * 0.7 ? 'sev-mid' : 'sev-bad';
+      var icon = sev === 'sev-good' ? '✅' : sev === 'sev-mid' ? '🟠' : '🔴';
+      if (worst.v >= b.min) {
+        bn += '<div class="bottleneck sev-good"><div class="bn-icon">✅</div><div class="bn-text">' +
+          '<div class="bn-title">Belirgin bir darboğaz yok</div>' +
+          '<div class="bn-body">Tüm aşamalarınız benchmark bandının üzerinde görünüyor. En zayıf nokta ' + b.label.toLowerCase() + ' (' + fmtPct(worst.v) + ', hedef ' + b.target + '). Hacmi büyütmek için lead sayısını artırmaya odaklanabilirsiniz.</div>' +
+        '</div></div>';
+      } else {
+        bn += '<div class="bottleneck ' + sev + '"><div class="bn-icon">' + icon + '</div><div class="bn-text">' +
+          '<div class="bn-title">Birincil darboğaz: ' + b.label + ' — ' + fmtPct(worst.v) + ' (hedef ' + b.target + ')</div>' +
+          '<div class="bn-body">' + fixHints[worst.key] + '</div>' +
+        '</div></div>';
+      }
+
+      // Secondary commentary: lead/rep load
+      if (leadPerRep > 150) {
+        bn += '<div class="bottleneck sev-mid"><div class="bn-icon">🟠</div><div class="bn-text">' +
+          '<div class="bn-title">Ekip yükü yüksek: kişi başı ' + fmtInt(leadPerRep) + ' lead</div>' +
+          '<div class="bn-body">Bu yoğunlukta her lead\'i hızlı ve kaliteli takip etmek zorlaşır; bu durum yanıt ve görüşme oranını gizlice düşürür. Ekip büyütmeyi veya CRM/otomasyon ile yükü azaltmayı değerlendirin.</div>' +
+        '</div></div>';
+      } else {
+        bn += '<div class="bottleneck sev-good"><div class="bn-icon">✅</div><div class="bn-text">' +
+          '<div class="bn-title">Ekip kapasitesi makul: kişi başı ' + fmtInt(leadPerRep) + ' lead</div>' +
+          '<div class="bn-body">Mevcut lead hacmi ekip büyüklüğünüzle dengeli görünüyor. Hızlı takip için yine de süreçlerinizi standartlaştırmanız önerilir.</div>' +
+        '</div></div>';
+      }
+
+      document.getElementById('bottlenecks').innerHTML = bn;
+
+      placeholderEl.style.display = 'none';
+      resultsEl.classList.add('visible');
+      if (window.innerWidth < 861) {
+        setTimeout(function () { resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+      }
+    }
+
+    document.getElementById('btn-calc').addEventListener('click', calc);
+    ['in-leads','in-answered','in-meetings','in-booked','in-treated','in-revenue','in-reps'].forEach(function (id) {
+      document.getElementById(id).addEventListener('input', function () {
+        if (resultsEl.classList.contains('visible')) calc();
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

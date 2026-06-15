@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasta Yorumları ve Referans Yönetimi | saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizminde hasta yorumları ve testimonial yönetimi. Yorumları yasal ve etik şekilde toplama, Google/Trustpilot optimizasyonu, video testimonial ve referans sistemi kurma.">
+  <link rel="stylesheet" href="/shared.css">
+  <link rel="canonical" href="https://saglikturizmi.info/blog/hasta-yorumlari-ve-referans-yonetimi/">
+  <style>
+    .aw{max-width:760px;margin:0 auto;padding:0 20px}
+    .ah{max-width:760px;margin:0 auto;padding:8px 20px 0}
+    .at{font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.18;color:#fff;margin:14px 0 16px;letter-spacing:-0.02em}
+    .ad{font-size:clamp(17px,2.2vw,20px);color:#c4b5fd;line-height:1.6;margin:0 0 18px}
+    .am{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:#8B7CAB;border-top:1px solid rgba(124,58,237,0.2);border-bottom:1px solid rgba(124,58,237,0.2);padding:14px 0;margin-bottom:8px}
+    .ab{font-size:17px;line-height:1.8;color:#c4b5fd}
+    .ab h2{font-size:clamp(22px,3.4vw,30px);color:#fff;font-weight:800;margin:48px 0 16px;line-height:1.25}
+    .ab h3{font-size:clamp(18px,2.6vw,22px);color:#fff;font-weight:700;margin:32px 0 12px}
+    .ab p{margin:0 0 18px;color:#c4b5fd}
+    .ab a{color:#a78bfa;text-decoration:underline;text-underline-offset:3px}
+    .ab a:hover{color:#fff}
+    .ab ul,.ab ol{padding-left:0;margin:0 0 20px}
+    .ab li{position:relative;padding-left:28px;margin-bottom:11px;color:#c4b5fd;line-height:1.7}
+    .ab ul li::before{content:"";position:absolute;left:6px;top:11px;width:7px;height:7px;border-radius:50%;background:#7C3AED}
+    .ab ol{counter-reset:li}
+    .ab ol li{counter-increment:li}
+    .ab ol li::before{content:counter(li);position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.18);color:#a78bfa;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+    .ab strong{color:#e9e3ff;font-weight:700}
+    .callout{background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,0.25);border-left:4px solid #7C3AED;border-radius:12px;padding:20px 22px;margin:28px 0}
+    .callout p{margin:0;color:#d8ccff}
+    .callout .cl{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a78bfa;margin-bottom:8px}
+    .timeline{display:flex;flex-direction:column;gap:0;margin:24px 0}
+    .tl-item{display:flex;gap:20px;padding-bottom:24px;position:relative}
+    .tl-item:not(:last-child)::before{content:'';position:absolute;left:16px;top:36px;bottom:0;width:2px;background:rgba(124,58,237,0.25)}
+    .tl-dot{width:34px;height:34px;background:rgba(124,58,237,0.2);border:2px solid rgba(124,58,237,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#a78bfa;flex-shrink:0;position:relative;z-index:1}
+    .tl-body{flex:1;padding-top:4px}
+    .tl-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px}
+    .tl-desc{font-size:14px;color:#a78bfa;line-height:1.6}
+    .platform-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:20px 0}
+    .platform-card{background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:10px;padding:16px}
+    .platform-icon{font-size:24px;margin-bottom:8px}
+    .platform-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
+    .platform-note{font-size:13px;color:#a78bfa;line-height:1.45}
+    .tp{display:flex;gap:18px;align-items:center;background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(124,58,237,.04));border:1px solid rgba(124,58,237,0.25);border-radius:16px;padding:24px;margin:32px 0;flex-wrap:wrap}
+    .tp-ic{width:52px;height:52px;border-radius:12px;background:rgba(124,58,237,.22);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+    .tp-b{flex:1;min-width:200px}
+    .tp h4{color:#fff;font-size:17px;font-weight:700;margin:0 0 4px}
+    .tp p{color:#c4b5fd;font-size:14px;margin:0;line-height:1.55}
+    .tp a.tl{flex-shrink:0;background:#7C3AED;color:#fff;padding:11px 20px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none}
+    .faq-s{max-width:760px;margin:0 auto;padding:8px 20px}
+    .fq{background:rgba(20,10,35,0.9);border:1px solid rgba(124,58,237,0.15);border-radius:12px;overflow:hidden;margin-bottom:10px}
+    .faq-q{width:100%;text-align:left;background:none;border:none;padding:18px 22px;color:#F8F7FF;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .faq-q:hover{background:rgba(124,58,237,0.06)}
+    .faq-icon{color:#7C3AED;font-size:20px;flex-shrink:0}
+    .faq-a{padding:0 22px 18px;color:#c4b5fd;font-size:14px;line-height:1.7}
+    .wa-cta{background:linear-gradient(135deg,rgba(37,211,102,0.1),rgba(37,211,102,0.03));border:1px solid rgba(37,211,102,0.25);border-radius:16px;padding:36px;text-align:center;max-width:760px;margin:40px auto 60px}
+    .wa-cta h3{font-size:22px;font-weight:700;color:#fff;margin-bottom:10px}
+    .wa-cta p{color:#c4b5fd;margin-bottom:24px}
+    .wa-btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:16px;padding:14px 32px;border-radius:10px;text-decoration:none}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Hasta Yorumları ve Referans Yönetimi",
+    "description": "Sağlık turizminde hasta yorumları ve testimonial yönetimi: toplama, yayınlama ve referans sistemi kurma.",
+    "author": {"@type": "Organization", "name": "saglikturizmi.info"},
+    "publisher": {"@type": "Organization", "name": "saglikturizmi.info", "url": "https://saglikturizmi.info/"},
+    "datePublished": "2026-05-27",
+    "dateModified": "2026-05-27",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://saglikturizmi.info/blog/hasta-yorumlari-ve-referans-yonetimi/"}
+  }
+  </script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main style="padding-top:64px">
+  <div style="background:linear-gradient(135deg,#0F0A1A,#1a0a2e);padding:48px 20px 40px;border-bottom:1px solid rgba(124,58,237,0.2)">
+    <div class="ah">
+      <nav style="display:flex;align-items:center;gap:8px;font-size:13px;color:#a78bfa;margin-bottom:20px;flex-wrap:wrap">
+        <a href="/" style="color:#a78bfa">Ana Sayfa</a>
+        <span style="color:rgba(124,58,237,0.5)">›</span>
+        <a href="/blog/" style="color:#a78bfa">Blog</a>
+        <span style="color:rgba(124,58,237,0.5)">›</span>
+        <span style="color:#e2e8f0">Hasta Yorumları ve Referans</span>
+      </nav>
+      <h1 class="at">Hasta Yorumları ve<br>Referans Yönetimi</h1>
+      <p class="ad">Memnun hastayı sadık elçiye dönüştürmek için sistematik bir yaklaşım. Yasal, etik, etkili yorum toplama ve referans sistemi kurma rehberi.</p>
+      <div class="am">
+        <span>📅 27 Mayıs 2026</span>
+        <span style="opacity:.4">·</span>
+        <span>⏱️ 7 dakika okuma</span>
+        <span style="opacity:.4">·</span>
+        <span>🏷️ Güven & Referans</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="aw" style="padding-top:32px">
+  <div class="ab">
+
+    <p>Uluslararası hasta adayları bir kliniği araştırırken ortalama 7-12 farklı kaynak kontrol ediyor. Bunların başında hasta yorumları geliyor. Bir araştırmaya göre uluslararası sağlık turizmi hastalarının %89'u online yorumları "çok önemli" veya "belirleyici" buluyor.</p>
+
+    <p>Peki kliniğinizde kaç tane dil bazlı yorum var? Google puanınız kaç? Yorum toplamak için sistematik bir süreciniz var mı?</p>
+
+    <h2>Yorum Kanalları: Hangisini Önceliklendirmelisiniz?</h2>
+
+    <div class="platform-grid">
+      <div class="platform-card">
+        <div class="platform-icon">⭐</div>
+        <div class="platform-name">Google Reviews</div>
+        <div class="platform-note">En önemli platform. Google'da arama yapan hasta önce puanı görür. 4.5+ puan kritik eşik. Tüm dillerde yorum yönetimi yapılabilir.</div>
+      </div>
+      <div class="platform-card">
+        <div class="platform-icon">🛡️</div>
+        <div class="platform-name">Trustpilot</div>
+        <div class="platform-note">İngiltere ve Avrupa pazarında Google'dan bile güçlü. Yabancı hasta için "bağımsız platform" güven sinyali. Özellikle Almanya ve İngiltere için şart.</div>
+      </div>
+      <div class="platform-card">
+        <div class="platform-icon">📱</div>
+        <div class="platform-name">Instagram/Facebook</div>
+        <div class="platform-note">Testimonial videoları ve paylaşımlar organik güven oluşturur. Fotoğraf eşliğinde yorum sosyal kanıt. Hasta izni ile paylaşım şart.</div>
+      </div>
+      <div class="platform-card">
+        <div class="platform-icon">🎬</div>
+        <div class="platform-name">YouTube / Reels</div>
+        <div class="platform-note">Video testimonial en güçlü güven sinyali. Kısa (60-90 saniye) ülke dilinde hasta videosu dönüşümü dramatik artırır.</div>
+      </div>
+    </div>
+
+    <h2>Yorum Toplama Süreci: Sistematik Yaklaşım</h2>
+
+    <p>Yorum toplamak "dileme" değil, "sistem" işidir. Hastaya yorum linkini mesai bitiminde WhatsApp'tan atmak işe yaramaz. Aşağıdaki timeline hasta tedaviden ayrıldıktan sonraki süreci gösteriyor:</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">1</div>
+        <div class="tl-body">
+          <div class="tl-title">Taburcu anı — Sözlü teşekkür ve link</div>
+          <div class="tl-desc">Hastanın memnun olduğu an değerlendirme fırsatıdır. Koordinatör nazikçe "Google'da birkaç cümle bırakır mısınız?" diye sorar ve QR kodu veya kısa link verir.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2</div>
+        <div class="tl-body">
+          <div class="tl-title">3. Gün — WhatsApp takip mesajı</div>
+          <div class="tl-desc">"Nasılsınız, iyileşme süreciniz nasıl gidiyor?" sorusuyla başlayan sıcak bir mesaj. Yanıt pozitifse yorum linki paylaşılır.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">3</div>
+        <div class="tl-body">
+          <div class="tl-title">10. Gün — Yorum hatırlatması</div>
+          <div class="tl-desc">Henüz yorum yazmamışsa tek bir hatırlatma. "Deneyiminizi paylaşırsanız çok anlamlı olur, böylece başkaları da doğru kararı verebilir."</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">4</div>
+        <div class="tl-body">
+          <div class="tl-title">30. Gün — Uzun dönem değerlendirme</div>
+          <div class="tl-desc">Bir aylık sonuçlar hakkında kısa bir mesaj. Bu aynı zamanda referans için ideal andır: "Benzer bir prosedür düşünen tanıdığınız varsa bize yönlendirebilirsiniz."</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">5</div>
+        <div class="tl-body">
+          <div class="tl-title">3. Ay — Video testimonial daveti</div>
+          <div class="tl-desc">Uzun vadeli memnuniyet doğrulandıktan sonra video testimonial için davet. Kısa, informal bir video yeterli. Dil bazlı (EN/DE/AR) hazırlanırsa pazarlaması çok daha güçlü.</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Yasal ve Etik Çerçeve</h2>
+
+    <p>Türkiye'de hasta verilerinin ve görsellerinin kullanımı KVKK kapsamında açık rıza gerektiriyor. Bunun ötesinde tıbbi etik açısından da dikkat edilmesi gereken noktalar var:</p>
+
+    <ul>
+      <li><strong>Yazılı rıza belgesi:</strong> Her yorum veya görsel kullanımı için imzalı rıza alın</li>
+      <li><strong>Kimlik gizliliği:</strong> Hasta ismi kullanmak istiyorsanız açık onay şart; isim baş harfi + ülke alternatifleri de kabul görür</li>
+      <li><strong>Before-after:</strong> Sağlık Bakanlığı ve tıbbi etik kuralları açısından; yüz gösteren görsel için hem KVKK hem ilgili meslek kuralları değerlendirilmeli</li>
+      <li><strong>Yanıltıcı olmama:</strong> Örnek olmayan veya atipik sonuçları "tipik" gibi sunan içerik ticari kanun ve rekabet hukuku açısından risk taşır</li>
+    </ul>
+
+    <div class="callout">
+      <span class="cl">⚖️ Pratik Kural</span>
+      <p>Her hasta için "Medya Kullanım İzin Formu" oluşturun. Bu form; hangi platformlarda, hangi içeriklerin (fotoğraf, video, yazılı yorum) ne amaçla kullanılabileceğini açıkça belirtsin. Dijital imza veya fiziksel imza ile saklayın.</p>
+    </div>
+
+    <h2>Olumsuz Yorumlara Doğru Yanıt</h2>
+
+    <p>Olumsuz yorum korkulacak değil, yönetilecek bir durumdur. Hatta <strong>doğru yanıt verilen olumsuz yorum, güveni artırabilir.</strong></p>
+
+    <ul>
+      <li><strong>24 saat içinde yanıt verin</strong> — Geç yanıt verilen yorum "umursamıyorlar" mesajı gönderir</li>
+      <li><strong>Empatiyle başlayın:</strong> "Yaşadığınız deneyim için üzgünüz ve hayal kırıklığınızı anlıyoruz"</li>
+      <li><strong>Sorunu kabul edin veya açıklayın:</strong> Yanıltıcı bir yorum ise nazikçe gerçeği aktarın</li>
+      <li><strong>Çözüm önerinizi paylaşın:</strong> "Sizi aramak isteriz" veya "Lütfen bize doğrudan ulaşın"</li>
+      <li><strong>Kamuoyu önünde tartışmaya girmeyin</strong> — Detayları her zaman özel mesaja taşıyın</li>
+    </ul>
+
+    <h2>Referans Sistemi: Hasta Elçi Programı</h2>
+
+    <p>Memnun hasta en güçlü pazarlama aracınızdır. Ancak bunu tesadüfe bırakmak yerine sistematize etmek gerekiyor.</p>
+
+    <h3>Basit Referans Programı</h3>
+    <ul>
+      <li>Her hastaya taburcu sırasında "referans kodu" verin</li>
+      <li>Bu kod ile gelen yeni hasta için hem referans hastaya hem yeni hastaya küçük bir teşvik (indirim, ek hizmet) sunun</li>
+      <li>WhatsApp üzerinden kolay paylaşılabilir bir tanıtım metni hazırlayın</li>
+      <li>Referans takibini CRM'de kaydedin — hangi hasta kaç referans getirdi?</li>
+    </ul>
+
+    <p>Sağlık turizminde referans oranı yüksek bir klinik, reklam bütçesini daha verimli kullanıyor demektir. %20-30 referans oranı ideal bir hedeftir.</p>
+
+    <div class="tp">
+      <div class="tp-ic">🗺️</div>
+      <div class="tp-b">
+        <h4>Hasta Yolculuğunuzu Haritalayın</h4>
+        <p>Hasta Yolculuğu Haritası Oluşturucu ile her aşamada hangi güven öğelerini devreye sokmanız gerektiğini görün.</p>
+      </div>
+      <a href="/araclar/hasta-yolculugu-haritasi-olusturucu/" class="tl">Haritayı Oluştur →</a>
+    </div>
+
+  </div>
+  </div>
+
+  <div class="faq-s" style="margin-top:48px">
+    <h2 style="font-size:clamp(22px,3vw,28px);font-weight:800;color:#fff;margin-bottom:20px">Sık Sorulan Sorular</h2>
+    <div class="fq"><button class="faq-q">Yorum karşılığında indirim teklif edebilir miyiz? <span class="faq-icon">+</span></button><div class="faq-a">Yorum yazmak "karşılığında" indirim vermek birçok platformun kullanım koşullarını (Google, Trustpilot) ihlal eder. Bunun yerine indirim veya teşviki yorum öncesinde değil, genel teşekkür jesti olarak sunabilirsiniz. Yorumu teşvik etmek ile satın almak arasındaki çizgiye dikkat edin.</div></div>
+    <div class="fq"><button class="faq-q">Yabancı dilde yorum yanıtları yazmalı mıyız? <span class="faq-icon">+</span></button><div class="faq-a">Kesinlikle evet. Almanca yorum Türkçe yanıtlandığında o pazardaki potansiyel hastalar "bu klinik beni anlamıyor" düşünür. Her yorum hedef dilde yanıtlanmalı. Yapay zeka araçları (ChatGPT vb.) taslak yazabilir, native speaker kontrolü yapabilir.</div></div>
+    <div class="fq"><button class="faq-q">Google'da kaç yorum olmalı? <span class="faq-icon">+</span></button><div class="faq-a">Rakip ortalaması ile kıyaslanmalı. Minimum hedef: 50+ yorum ve 4.5+ puan. İdeal: 100+ yorum, 4.7+. Yorum sayısı kadar yorum kalitesi (uzun, ayrıntılı, dil bazlı) da kritik. Tek cümlelik yorumlar 5 yıldız da olsa çok ikna edici değil.</div></div>
+  </div>
+
+  <div class="wa-cta">
+    <h3>Referans Sisteminizi Birlikte Kuralım</h3>
+    <p>Hasta yolculuğu, yorum toplama süreci ve referans programı için ücretsiz görüşme alın.</p>
+    <a href="https://wa.me/905397232292?text=Merhaba%2C%20hasta%20yorumlar%C4%B1%20ve%20referans%20sistemi%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum." target="_blank" rel="noopener" class="wa-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.298.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.845L.057 23.486a.5.5 0 0 0 .614.617l5.783-1.493A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.853 0-3.585-.5-5.079-1.375l-.361-.214-3.742.965.993-3.645-.236-.374A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      WhatsApp ile Yazın — +90 539 723 22 92
+    </a>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="/shared.js"></script>
+</body>
+</html>

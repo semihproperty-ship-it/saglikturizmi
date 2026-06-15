@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hedef Ülke / Pazar Seçim Matrisi | saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizmi için hangi ülkeye odaklanmalısınız? Talep, rekabet, dil, ödeme gücü ve mevzuat kriterlerini ağırlıklandırın, aday ülkeleri puanlayın ve ağırlıklı skora göre sıralı bir pazar seçim matrisi elde edin.">
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/hedef-ulke-pazar-secim-matrisi/">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0F0A1A; color: #F8F7FF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; min-height: 100vh; }
+    #site-header:empty, #site-footer:empty { display: none; }
+    a { color: #C4B5FD; text-decoration: none; }
+    a:hover { color: #F8F7FF; }
+
+    .breadcrumb { background: #1A1028; border-bottom: 1px solid rgba(124,58,237,0.2); padding: 12px 0; }
+    .breadcrumb-inner { max-width: 1040px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #C4B5FD; flex-wrap: wrap; }
+    .breadcrumb-sep { color: rgba(196,181,253,0.4); font-size: 11px; }
+    .breadcrumb-current { color: #F8F7FF; font-weight: 500; }
+
+    .page-header { background: linear-gradient(135deg, #1A1028 0%, #231535 100%); border-bottom: 1px solid rgba(124,58,237,0.25); padding: 48px 20px 40px; text-align: center; }
+    .page-header h1 { font-size: clamp(22px,4vw,34px); font-weight: 700; color: #F8F7FF; margin-bottom: 12px; letter-spacing: -0.3px; }
+    .page-header h1 span { background: linear-gradient(90deg,#7C3AED,#C4B5FD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-header p { color: #C4B5FD; font-size: 15px; max-width: 620px; margin: 0 auto; opacity: 0.85; }
+    .header-badge { display: inline-block; background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4); color: #C4B5FD; font-size: 12px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
+
+    .container { max-width: 1040px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    .card { background: #1A1028; border: 1px solid rgba(124,58,237,0.2); border-radius: 16px; padding: 28px; margin-bottom: 24px; }
+    .card-title { font-size: 17px; font-weight: 700; color: #F8F7FF; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+    .card-title .icon { width: 32px; height: 32px; background: rgba(124,58,237,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .card-subtitle { font-size: 13px; color: #C4B5FD; opacity: 0.7; margin-bottom: 24px; padding-left: 42px; }
+
+    /* Slider rows */
+    .slider-row { background: #231535; border: 1px solid rgba(124,58,237,0.15); border-radius: 12px; padding: 16px 18px; margin-bottom: 12px; }
+    .slider-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 4px; }
+    .slider-name { font-size: 14px; font-weight: 600; color: #F8F7FF; }
+    .slider-val { font-size: 13px; font-weight: 700; color: #C4B5FD; background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.35); border-radius: 20px; padding: 2px 12px; min-width: 48px; text-align: center; }
+    .slider-desc { font-size: 12px; color: #C4B5FD; opacity: 0.65; margin-bottom: 10px; }
+    input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 999px; background: linear-gradient(90deg,#7C3AED,#A78BFA); outline: none; cursor: pointer; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #F8F7FF; border: 3px solid #7C3AED; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+    input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #F8F7FF; border: 3px solid #7C3AED; cursor: pointer; }
+
+    /* Country editor */
+    .country-block { background: #231535; border: 1px solid rgba(124,58,237,0.15); border-radius: 12px; padding: 16px 18px; margin-bottom: 14px; }
+    .country-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+    .country-name-input { background: #0F0A1A; border: 1px solid rgba(124,58,237,0.3); border-radius: 8px; padding: 8px 12px; color: #F8F7FF; font-size: 14px; font-weight: 700; width: 60%; max-width: 240px; }
+    .country-name-input:focus { outline: none; border-color: #7C3AED; }
+    .country-remove { background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3); color: #f87171; border-radius: 8px; padding: 6px 12px; font-size: 12px; font-weight: 600; cursor: pointer; }
+    .country-remove:hover { background: rgba(239,68,68,0.2); }
+    .crit-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 12px; }
+    .crit-mini { background: #0F0A1A; border: 1px solid rgba(124,58,237,0.12); border-radius: 10px; padding: 10px 12px; }
+    .crit-mini-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .crit-mini-label { font-size: 11.5px; color: #C4B5FD; font-weight: 600; }
+    .crit-mini-val { font-size: 12px; font-weight: 700; color: #A78BFA; }
+    .crit-mini input[type=range] { height: 5px; }
+
+    .btn-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; white-space: nowrap; }
+    .btn-primary { background: linear-gradient(135deg,#7C3AED,#6D28D9); color: #F8F7FF; box-shadow: 0 4px 16px rgba(124,58,237,0.35); }
+    .btn-primary:hover { background: linear-gradient(135deg,#8B5CF6,#7C3AED); box-shadow: 0 6px 20px rgba(124,58,237,0.5); transform: translateY(-1px); }
+    .btn-reset { background: transparent; color: rgba(196,181,253,0.5); border: 1px solid rgba(196,181,253,0.15); font-size: 13px; padding: 10px 18px; }
+    .btn-reset:hover { color: #C4B5FD; border-color: rgba(196,181,253,0.35); }
+    .link-btn { background: none; border: none; color: #C4B5FD; font-size: 12.5px; font-weight: 600; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
+    .link-btn:hover { color: #F8F7FF; }
+
+    .info-tip { background: rgba(124,58,237,0.07); border: 1px solid rgba(124,58,237,0.2); border-radius: 10px; padding: 12px 16px; font-size: 12px; color: #C4B5FD; opacity: 0.85; display: flex; gap: 8px; align-items: flex-start; margin-top: 14px; }
+    .divider { border: none; border-top: 1px solid rgba(124,58,237,0.15); margin: 24px 0; }
+
+    /* Results */
+    #results { display: none; }
+    #results.visible { display: block; }
+    .results-title { font-size: 20px; font-weight: 700; color: #F8F7FF; margin-bottom: 18px; }
+
+    .winner-banner { background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(124,58,237,0.05)); border: 2px solid rgba(124,58,237,0.5); border-radius: 14px; padding: 22px; text-align: center; margin-bottom: 24px; }
+    .winner-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #A78BFA; margin-bottom: 6px; }
+    .winner-name { font-size: clamp(24px,5vw,32px); font-weight: 900; color: #F8F7FF; line-height: 1.1; }
+    .winner-score { font-size: 14px; color: #C4B5FD; margin-top: 6px; }
+
+    .rank-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid rgba(124,58,237,0.15); }
+    table.rank-table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 560px; }
+    .rank-table th, .rank-table td { padding: 12px 14px; text-align: center; border-bottom: 1px solid rgba(124,58,237,0.12); }
+    .rank-table th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #8B7CAB; background: #231535; font-weight: 700; cursor: pointer; user-select: none; white-space: nowrap; }
+    .rank-table th:hover { color: #C4B5FD; }
+    .rank-table th.sort-active { color: #A78BFA; }
+    .rank-table td:first-child, .rank-table th:first-child { text-align: left; }
+    .rank-table tbody tr:hover td { background: rgba(124,58,237,0.05); }
+    .rank-table tbody tr.top-row td { background: rgba(124,58,237,0.1); }
+    .rank-name { font-weight: 700; color: #F8F7FF; }
+    .rank-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; font-size: 12px; font-weight: 800; margin-right: 8px; }
+    .rank-1 { background: #7C3AED; color: #fff; }
+    .rank-2 { background: rgba(167,139,250,0.3); color: #C4B5FD; }
+    .rank-3 { background: rgba(167,139,250,0.18); color: #C4B5FD; }
+    .rank-n { background: rgba(255,255,255,0.06); color: #8B7CAB; }
+    .score-cell { font-weight: 800; color: #A78BFA; }
+    .score-bar-mini { height: 5px; border-radius: 999px; background: linear-gradient(90deg,#7C3AED,#A78BFA); margin-top: 5px; }
+
+    .info-block { margin-bottom: 20px; }
+    .info-block:last-child { margin-bottom: 0; }
+    .info-block h4 { font-size: 14px; font-weight: 700; color: #F8F7FF; margin-bottom: 6px; }
+    .info-block p { font-size: 13.5px; color: #C4B5FD; line-height: 1.7; opacity: 0.9; }
+
+    .faq-list { list-style: none; }
+    .faq-item { border-bottom: 1px solid rgba(124,58,237,0.15); padding: 16px 0; }
+    .faq-item:first-child { border-top: 1px solid rgba(124,58,237,0.15); }
+    .faq-q { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; background: none; border: none; cursor: pointer; padding: 0; font-size: 15px; font-weight: 600; color: #F8F7FF; text-align: left; line-height: 1.4; }
+    .faq-q:hover { color: #C4B5FD; }
+    .faq-icon { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(124,58,237,0.15); color: #C4B5FD; font-size: 20px; font-weight: 300; flex-shrink: 0; line-height: 1; }
+    .faq-a { color: #C4B5FD; padding-top: 8px; line-height: 1.7; font-size: 13.5px; display: none; }
+
+    .wa-cta { background: linear-gradient(135deg, rgba(37,211,102,0.1), rgba(37,211,102,0.05)); border: 1px solid rgba(37,211,102,0.3); border-radius: 16px; padding: 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .wa-cta-text h3 { font-size: 17px; font-weight: 700; color: #F8F7FF; margin-bottom: 6px; }
+    .wa-cta-text p { font-size: 13px; color: #C4B5FD; opacity: 0.8; }
+    .btn-wa { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: #fff; font-weight: 700; font-size: 14px; padding: 13px 24px; border-radius: 10px; text-decoration: none; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; box-shadow: 0 4px 16px rgba(37,211,102,0.3); }
+    .btn-wa:hover { background: #20c05a; color: #fff; transform: translateY(-1px); }
+    .wa-icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+    @media (max-width: 600px) {
+      .card { padding: 18px 14px; }
+      .wa-cta { flex-direction: column; text-align: center; }
+      .btn-wa { width: 100%; justify-content: center; }
+      .country-name-input { width: 100%; max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main style="padding-top:64px">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="/">Ana Sayfa</a>
+        <span class="breadcrumb-sep">&#9656;</span>
+        <a href="/araclar/">Araçlar</a>
+        <span class="breadcrumb-sep">&#9656;</span>
+        <span class="breadcrumb-current">Hedef Ülke / Pazar Seçim Matrisi</span>
+      </div>
+    </nav>
+
+    <div class="page-header">
+      <div class="header-badge">Ücretsiz Karar Aracı</div>
+      <h1>Hedef Ülke / <span>Pazar Seçim</span> Matrisi</h1>
+      <p>Sağlık turizminde sınırlı bütçeyi doğru pazara yönlendirin. Kriterleri kendi önceliğinize göre ağırlıklandırın, aday ülkeleri puanlayın; araç ağırlıklı skoru hesaplayıp ülkeleri sıralı bir matris halinde önünüze koysun.</p>
+    </div>
+
+    <div class="container">
+
+      <!-- Step 1: Weights -->
+      <div class="card">
+        <div class="card-title"><div class="icon">&#9878;</div> 1. Kriter Ağırlıkları</div>
+        <div class="card-subtitle">Her kriterin sizin için ne kadar önemli olduğunu 0–10 arası belirleyin. Ağırlıklar otomatik normalize edilir.</div>
+        <div id="weights"></div>
+        <div class="info-tip"><span>&#128161;</span> Ağırlık 0 verirseniz o kriter skoru hiç etkilemez. Toplam ağırlık önemli değildir; oranlar otomatik hesaplanır.</div>
+      </div>
+
+      <!-- Step 2: Countries -->
+      <div class="card">
+        <div class="card-title"><div class="icon">&#127757;</div> 2. Aday Ülkeleri Puanlayın</div>
+        <div class="card-subtitle">Her ülke için kriterleri 0–10 arası puanlayın (0 = çok zayıf, 10 = mükemmel). Ülke adını düzenleyebilir, ekleyebilir veya çıkarabilirsiniz.</div>
+        <div id="countries"></div>
+        <div class="btn-row" style="margin-top:14px">
+          <button class="link-btn" id="btn-add-country" type="button">+ Ülke ekle</button>
+        </div>
+        <hr class="divider">
+        <div class="btn-row">
+          <button class="btn btn-primary" id="btn-calc" type="button">&#128202; Matrisi Hesapla</button>
+          <button class="btn btn-reset" id="btn-reset" type="button">&#8635; Varsayılana Dön</button>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="results">
+        <div class="card">
+          <div class="results-title">&#127942; Pazar Seçim Sonucu</div>
+          <div id="winner-banner"></div>
+          <div class="rank-table-wrap">
+            <table class="rank-table" id="rank-table">
+              <thead id="rank-head"></thead>
+              <tbody id="rank-body"></tbody>
+            </table>
+          </div>
+          <div class="info-tip"><span>&#128161;</span> Sütun başlıklarına tıklayarak tabloyu o kritere göre sıralayabilirsiniz. "Skor" sütunu, kriter puanlarının ağırlıklı ortalamasıdır (0–100 ölçeğine getirilmiştir).</div>
+        </div>
+
+        <div class="wa-cta">
+          <div class="wa-cta-text">
+            <h3>Seçtiğiniz pazara giriş stratejisi kuralım</h3>
+            <p>Hedef ülkeye uygun reklam, dil, mevzuat ve lead karşılama akışını birlikte planlayalım. Ücretsiz ön değerlendirme alın.</p>
+          </div>
+          <a href="https://wa.me/905397232292?text=Merhaba%2C%20hedef%20%C3%BClke%20pazar%20se%C3%A7im%20matrisini%20kulland%C4%B1m.%20Se%C3%A7ti%C4%9Fim%20pazara%20giri%C5%9F%20stratejisi%20kurmak%20istiyorum." target="_blank" rel="noopener" class="btn-wa">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp'tan Yazın
+          </a>
+        </div>
+      </div>
+
+      <!-- Explanation -->
+      <div class="card">
+        <div class="card-title"><div class="icon">&#128218;</div> Matris Nasıl Çalışır?</div>
+        <div class="card-subtitle">Ağırlıklı puanlama (weighted scoring) yöntemiyle pazar önceliklendirme.</div>
+        <div class="info-block">
+          <h4>Ağırlıklı skor nasıl hesaplanır?</h4>
+          <p>Her ülke için, kriter puanı (0–10) ile o kriterin normalize edilmiş ağırlığı çarpılır ve tüm kriterler için toplanır. Sonuç 0–100 ölçeğine getirilir. Böylece "talep büyük ama rekabet de yüksek" gibi çok boyutlu kararları tek bir karşılaştırılabilir sayıya indirgersiniz.</p>
+        </div>
+        <div class="info-block">
+          <h4>Neden ağırlıklandırma şart?</h4>
+          <p>Bir saç ekimi kliniği için dil kolaylığı ve ödeme gücü kritik olabilirken, bir diş kliniği için talep büyüklüğü ve mevzuat erişimi öne çıkabilir. Sabit bir "en iyi ülke" listesi yoktur; doğru pazar, sizin iş modelinize ve kapasitenize bağlıdır. Bu yüzden ağırlıkları kendiniz belirlersiniz.</p>
+        </div>
+        <div class="info-block">
+          <h4>Kriterlerin anlamı</h4>
+          <p><strong>Talep büyüklüğü:</strong> O ülkeden gelen hasta hacmi potansiyeli. <strong>Rekabet:</strong> Yüksek puan = düşük rekabet (sizin için avantaj). <strong>Dil kolaylığı:</strong> İletişim ve içerik üretiminin kolaylığı. <strong>Ödeme gücü:</strong> Hedef kitlenin bütçesi ve ödeme alışkanlığı. <strong>Mevzuat/erişim:</strong> Vize, uçuş bağlantısı ve yasal tanıtım kolaylığı.</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="card">
+        <div class="card-title"><div class="icon">&#10067;</div> Sıkça Sorulan Sorular</div>
+        <div class="card-subtitle">Pazar seçimi hakkında en çok sorulanlar.</div>
+        <ul class="faq-list">
+          <li class="faq-item">
+            <button class="faq-q" type="button">Birden fazla ülkeye aynı anda odaklanmalı mıyım? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Başlangıçta hayır. Sınırlı bütçe ve ekip ile en yüksek skorlu 1–2 pazara odaklanmak, çok pazara dağılmaktan çok daha verimlidir. Bu matris, ilk hangi pazara yatırım yapacağınızı netleştirmek için tasarlanmıştır. Bir pazarda akış oturduktan sonra ikinci pazarı eklersiniz.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-q" type="button">Rekabet kriterini neden ters puanlamalıyım? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Tüm kriterlerde "yüksek = iyi" mantığı geçerlidir; matris bunu basit tutar. Rekabet için, rekabetin düşük olduğu (sizin lehinize) bir ülkeye yüksek puan verin. Yani "burada işimiz kolay" diye düşündüğünüz ülke yüksek puan alır.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-q" type="button">Önceden girilen puanlar nereden geliyor? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Varsayılan puanlar; sağlık turizminde sık hedeflenen pazarlar için genel pazar gözlemlerine dayalı başlangıç tahminleridir. Bunlar yalnızca bir başlangıç noktasıdır — kendi verileriniz, geçmiş lead kaliteniz ve tecrübenizle güncellemeniz beklenir.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-q" type="button">Skorlar yakınsa ne yapmalıyım? <span class="faq-icon">+</span></button>
+            <div class="faq-a">İki pazarın skoru çok yakınsa, en yüksek ağırlık verdiğiniz kriterde hangisinin önde olduğuna bakın. Ayrıca operasyonel uygunluğu (hangi pazarda hâlihazırda referansınız, ekibiniz veya dil yetkinliğiniz var) belirleyici olarak kullanın. Matris kararı kolaylaştırır, sezgi ve saha bilgisinin yerini almaz.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-q" type="button">Verilerim kaydediliyor mu? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Hayır. Tüm hesaplama tarayıcınızda yerel olarak çalışır; girdileriniz hiçbir sunucuya gönderilmez veya kaydedilmez. Sayfayı yenilediğinizde varsayılan değerler geri yüklenir.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Final CTA -->
+      <div class="wa-cta">
+        <div class="wa-cta-text">
+          <h3>Doğru pazarı seçtiniz, sıra büyümede</h3>
+          <p>Sağlık turizmi pazarınıza uygun dijital pazarlama, lead yönetimi ve dönüşüm sistemini kuralım. Uzmanlarımızla ücretsiz konuşun.</p>
+        </div>
+        <a href="https://wa.me/905397232292?text=Merhaba%2C%20pazar%20se%C3%A7im%20matrisini%20kulland%C4%B1m.%20Sa%C4%9Fl%C4%B1k%20turizmi%20b%C3%BCy%C3%BCme%20deste%C4%9Fi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn-wa">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp'tan Yazın
+        </a>
+      </div>
+
+    </div>
+  </main>
+  <div id="site-footer"></div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Hedef Ülke / Pazar Seçim Matrisi",
+        "url": "https://saglikturizmi.info/araclar/hedef-ulke-pazar-secim-matrisi/",
+        "description": "Sağlık turizmi için hedef pazar önceliklendirme aracı. Kriterleri ağırlıklandırın, aday ülkeleri puanlayın ve ağırlıklı skora göre sıralı pazar seçim matrisi elde edin.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "tr",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY" },
+        "publisher": { "@type": "Organization", "name": "saglikturizmi.info", "url": "https://saglikturizmi.info/" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://saglikturizmi.info/" },
+          { "@type": "ListItem", "position": 2, "name": "Araçlar", "item": "https://saglikturizmi.info/araclar/" },
+          { "@type": "ListItem", "position": 3, "name": "Hedef Ülke / Pazar Seçim Matrisi", "item": "https://saglikturizmi.info/araclar/hedef-ulke-pazar-secim-matrisi/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Birden fazla ülkeye aynı anda odaklanmalı mıyım?", "acceptedAnswer": { "@type": "Answer", "text": "Başlangıçta hayır. Sınırlı bütçe ve ekip ile en yüksek skorlu 1-2 pazara odaklanmak çok pazara dağılmaktan daha verimlidir. Bir pazarda akış oturduktan sonra ikinci pazarı eklersiniz." } },
+          { "@type": "Question", "name": "Rekabet kriterini neden ters puanlamalıyım?", "acceptedAnswer": { "@type": "Answer", "text": "Tüm kriterlerde yüksek = iyi mantığı geçerlidir. Rekabet için, rekabetin düşük olduğu yani sizin lehinize olan ülkeye yüksek puan verin." } },
+          { "@type": "Question", "name": "Önceden girilen puanlar nereden geliyor?", "acceptedAnswer": { "@type": "Answer", "text": "Varsayılan puanlar sağlık turizminde sık hedeflenen pazarlar için genel gözlemlere dayalı başlangıç tahminleridir. Kendi verileriniz ve tecrübenizle güncellemeniz beklenir." } },
+          { "@type": "Question", "name": "Skorlar yakınsa ne yapmalıyım?", "acceptedAnswer": { "@type": "Answer", "text": "En yüksek ağırlık verdiğiniz kriterde hangisinin önde olduğuna ve operasyonel uygunluğa (referans, ekip, dil yetkinliği) bakın. Matris kararı kolaylaştırır, sezginin yerini almaz." } },
+          { "@type": "Question", "name": "Verilerim kaydediliyor mu?", "acceptedAnswer": { "@type": "Answer", "text": "Hayır. Tüm hesaplama tarayıcınızda yerel olarak çalışır; girdileriniz hiçbir sunucuya gönderilmez veya kaydedilmez." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script src="/shared.js"></script>
+  <script>
+  /* ===== HEDEF ÜLKE / PAZAR SEÇİM MATRİSİ ===== */
+  (function () {
+    var CRITERIA = [
+      { id: 'demand',  name: 'Talep büyüklüğü', desc: 'O ülkeden gelen hasta hacmi potansiyeli', defW: 8 },
+      { id: 'comp',    name: 'Rekabet (düşük=iyi)', desc: 'Yüksek puan = sizin için rekabet daha rahat', defW: 6 },
+      { id: 'lang',    name: 'Dil kolaylığı', desc: 'İletişim ve içerik üretiminin kolaylığı', defW: 5 },
+      { id: 'pay',     name: 'Ödeme gücü', desc: 'Hedef kitlenin bütçesi ve ödeme alışkanlığı', defW: 7 },
+      { id: 'access',  name: 'Mevzuat / erişim', desc: 'Vize, uçuş bağlantısı ve yasal tanıtım kolaylığı', defW: 6 }
+    ];
+
+    // Preset countries with starting scores per criterion (0-10)
+    var DEFAULT_COUNTRIES = [
+      { name: 'Almanya',          scores: { demand: 9, comp: 4, lang: 6, pay: 9, access: 8 } },
+      { name: 'İngiltere',        scores: { demand: 8, comp: 5, lang: 7, pay: 8, access: 7 } },
+      { name: 'Suudi Arabistan',  scores: { demand: 7, comp: 6, lang: 4, pay: 9, access: 6 } },
+      { name: 'BAE',              scores: { demand: 6, comp: 6, lang: 5, pay: 10, access: 7 } },
+      { name: 'ABD',              scores: { demand: 7, comp: 3, lang: 7, pay: 9, access: 4 } }
+    ];
+
+    var weights = {};
+    var countries = [];
+    var sortKey = 'score';
+    var sortDir = -1; // -1 desc
+    var lastResults = [];
+
+    function clone(arr) { return JSON.parse(JSON.stringify(arr)); }
+
+    function initDefaults() {
+      weights = {};
+      CRITERIA.forEach(function (c) { weights[c.id] = c.defW; });
+      countries = clone(DEFAULT_COUNTRIES);
+    }
+
+    var weightsEl = document.getElementById('weights');
+    var countriesEl = document.getElementById('countries');
+    var resultsEl = document.getElementById('results');
+
+    function escapeHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+    function renderWeights() {
+      var html = '';
+      CRITERIA.forEach(function (c) {
+        html += '<div class="slider-row">' +
+          '<div class="slider-head"><div class="slider-name">' + escapeHtml(c.name) + '</div>' +
+          '<div class="slider-val" id="wval-' + c.id + '">' + weights[c.id] + '</div></div>' +
+          '<div class="slider-desc">' + escapeHtml(c.desc) + '</div>' +
+          '<input type="range" min="0" max="10" step="1" value="' + weights[c.id] + '" data-w="' + c.id + '">' +
+        '</div>';
+      });
+      weightsEl.innerHTML = html;
+      weightsEl.querySelectorAll('input[type=range]').forEach(function (inp) {
+        inp.addEventListener('input', function () {
+          var id = inp.dataset.w;
+          weights[id] = parseInt(inp.value, 10);
+          document.getElementById('wval-' + id).textContent = weights[id];
+        });
+      });
+    }
+
+    function renderCountries() {
+      var html = '';
+      countries.forEach(function (co, idx) {
+        var mini = '';
+        CRITERIA.forEach(function (c) {
+          var v = co.scores[c.id];
+          if (typeof v !== 'number') v = 5;
+          mini += '<div class="crit-mini">' +
+            '<div class="crit-mini-head"><span class="crit-mini-label">' + escapeHtml(c.name) + '</span>' +
+            '<span class="crit-mini-val" id="sval-' + idx + '-' + c.id + '">' + v + '</span></div>' +
+            '<input type="range" min="0" max="10" step="1" value="' + v + '" data-c="' + idx + '" data-crit="' + c.id + '">' +
+          '</div>';
+        });
+        html += '<div class="country-block">' +
+          '<div class="country-head">' +
+            '<input class="country-name-input" type="text" value="' + escapeHtml(co.name) + '" data-name="' + idx + '" placeholder="Ülke adı">' +
+            '<button class="country-remove" type="button" data-remove="' + idx + '">Çıkar</button>' +
+          '</div>' +
+          '<div class="crit-grid">' + mini + '</div>' +
+        '</div>';
+      });
+      countriesEl.innerHTML = html;
+
+      countriesEl.querySelectorAll('input[data-crit]').forEach(function (inp) {
+        inp.addEventListener('input', function () {
+          var ci = parseInt(inp.dataset.c, 10);
+          var crit = inp.dataset.crit;
+          countries[ci].scores[crit] = parseInt(inp.value, 10);
+          document.getElementById('sval-' + ci + '-' + crit).textContent = inp.value;
+        });
+      });
+      countriesEl.querySelectorAll('input[data-name]').forEach(function (inp) {
+        inp.addEventListener('input', function () {
+          countries[parseInt(inp.dataset.name, 10)].name = inp.value;
+        });
+      });
+      countriesEl.querySelectorAll('button[data-remove]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (countries.length <= 2) { alert('En az 2 ülke gereklidir.'); return; }
+          countries.splice(parseInt(btn.dataset.remove, 10), 1);
+          renderCountries();
+        });
+      });
+    }
+
+    function compute() {
+      var totalW = 0;
+      CRITERIA.forEach(function (c) { totalW += weights[c.id]; });
+      if (totalW === 0) totalW = 1;
+
+      return countries.map(function (co) {
+        var weighted = 0;
+        var detail = {};
+        CRITERIA.forEach(function (c) {
+          var s = typeof co.scores[c.id] === 'number' ? co.scores[c.id] : 0;
+          detail[c.id] = s;
+          weighted += s * (weights[c.id] / totalW);
+        });
+        // weighted is on 0-10 scale; convert to 0-100
+        return { name: co.name || '(isimsiz)', score: Math.round(weighted * 10 * 10) / 10, detail: detail };
+      });
+    }
+
+    function renderResults() {
+      lastResults = compute();
+      sortKey = 'score'; sortDir = -1;
+      drawTable();
+      var sorted = getSorted();
+      var top = sorted[0];
+      document.getElementById('winner-banner').innerHTML =
+        '<div class="winner-banner">' +
+          '<div class="winner-label">Önerilen Öncelikli Pazar</div>' +
+          '<div class="winner-name">' + escapeHtml(top.name) + '</div>' +
+          '<div class="winner-score">Ağırlıklı skor: <strong style="color:#A78BFA">' + top.score.toFixed(1) + ' / 100</strong></div>' +
+        '</div>';
+      resultsEl.classList.add('visible');
+      setTimeout(function () { resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+    }
+
+    function getSorted() {
+      var arr = lastResults.slice();
+      arr.sort(function (a, b) {
+        var av, bv;
+        if (sortKey === 'score') { av = a.score; bv = b.score; }
+        else if (sortKey === 'name') { return sortDir * a.name.localeCompare(b.name, 'tr'); }
+        else { av = a.detail[sortKey]; bv = b.detail[sortKey]; }
+        return (av - bv) * sortDir;
+      });
+      return arr;
+    }
+
+    function drawTable() {
+      var head = '<tr><th data-sort="name" class="' + (sortKey==='name'?'sort-active':'') + '">Ülke</th>';
+      CRITERIA.forEach(function (c) {
+        head += '<th data-sort="' + c.id + '" class="' + (sortKey===c.id?'sort-active':'') + '">' + escapeHtml(c.name) + '</th>';
+      });
+      head += '<th data-sort="score" class="' + (sortKey==='score'?'sort-active':'') + '">Skor</th></tr>';
+      document.getElementById('rank-head').innerHTML = head;
+
+      var sorted = getSorted();
+      var maxScore = Math.max.apply(null, sorted.map(function (r) { return r.score; })) || 1;
+      var body = '';
+      sorted.forEach(function (r, i) {
+        var rankCls = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-n';
+        var rowCls = i === 0 && sortKey === 'score' && sortDir === -1 ? 'top-row' : '';
+        var crit = '';
+        CRITERIA.forEach(function (c) { crit += '<td>' + r.detail[c.id] + '</td>'; });
+        body += '<tr class="' + rowCls + '">' +
+          '<td><span class="rank-badge ' + rankCls + '">' + (i+1) + '</span><span class="rank-name">' + escapeHtml(r.name) + '</span></td>' +
+          crit +
+          '<td><span class="score-cell">' + r.score.toFixed(1) + '</span>' +
+            '<div class="score-bar-mini" style="width:' + Math.round((r.score/maxScore)*100) + '%"></div></td>' +
+        '</tr>';
+      });
+      document.getElementById('rank-body').innerHTML = body;
+
+      document.getElementById('rank-head').querySelectorAll('th').forEach(function (th) {
+        th.addEventListener('click', function () {
+          var k = th.dataset.sort;
+          if (sortKey === k) { sortDir *= -1; } else { sortKey = k; sortDir = (k === 'name') ? 1 : -1; }
+          drawTable();
+        });
+      });
+    }
+
+    document.getElementById('btn-calc').addEventListener('click', renderResults);
+    document.getElementById('btn-reset').addEventListener('click', function () {
+      initDefaults();
+      renderWeights();
+      renderCountries();
+      resultsEl.classList.remove('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    document.getElementById('btn-add-country').addEventListener('click', function () {
+      var blank = { demand:5, comp:5, lang:5, pay:5, access:5 };
+      countries.push({ name: 'Yeni Ülke', scores: blank });
+      renderCountries();
+    });
+
+    initDefaults();
+    renderWeights();
+    renderCountries();
+  })();
+  </script>
+</body>
+</html>

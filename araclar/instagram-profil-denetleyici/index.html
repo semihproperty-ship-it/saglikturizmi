@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Profil Denetleyici | Sağlık Turizmi | saglikturizmi.info</title>
+  <meta name="description" content="Sağlık turizmi kliniğinizin Instagram profilini denetleyin. Bio, iletişim butonu, öne çıkanlar, çok dillilik, içerik sıklığı ve daha fazlasını kontrol edin.">
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/instagram-profil-denetleyici/">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0F0A1A; color: #F8F7FF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; min-height: 100vh; }
+    a { color: #C4B5FD; text-decoration: none; }
+    a:hover { color: #F8F7FF; }
+    .bc { background: #1A1028; border-bottom: 1px solid rgba(124,58,237,0.2); padding: 12px 0; }
+    .bc-i { max-width: 900px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #C4B5FD; flex-wrap: wrap; }
+    .ph { background: linear-gradient(135deg,#1A1028,#231535); border-bottom: 1px solid rgba(124,58,237,0.25); padding: 48px 20px 40px; text-align: center; }
+    .ph h1 { font-size: clamp(22px,4vw,34px); font-weight: 700; color: #F8F7FF; margin-bottom: 12px; }
+    .ph h1 span { background: linear-gradient(90deg,#7C3AED,#C4B5FD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .ph p { color: #C4B5FD; font-size: 15px; max-width: 600px; margin: 0 auto; }
+    .badge { display: inline-block; background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4); color: #C4B5FD; font-size: 12px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
+    .con { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
+    .card { background: #1A1028; border: 1px solid rgba(124,58,237,0.2); border-radius: 16px; padding: 28px; margin-bottom: 24px; }
+    .sec-title { font-size: 15px; font-weight: 700; color: #a78bfa; text-transform: uppercase; letter-spacing: 0.06em; margin: 28px 0 14px; padding-bottom: 8px; border-bottom: 1px solid rgba(124,58,237,0.15); }
+    .sec-title:first-child { margin-top: 0; }
+    .item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(124,58,237,0.08); cursor: pointer; }
+    .item:last-child { border-bottom: none; }
+    .item input[type=checkbox] { width: 20px; height: 20px; accent-color: #7C3AED; cursor: pointer; margin-top: 2px; flex-shrink: 0; }
+    .item-body { flex: 1; }
+    .item-label { font-size: 15px; font-weight: 600; color: #F8F7FF; margin-bottom: 3px; }
+    .item-desc { font-size: 13px; color: #8B7CAB; line-height: 1.55; }
+    .item.checked .item-label { color: #6EE7B7; }
+    .impact { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
+    .high { background: rgba(220,38,38,0.15); color: #FCA5A5; }
+    .med { background: rgba(217,119,6,0.15); color: #FBD38D; }
+    .low { background: rgba(5,150,105,0.15); color: #6EE7B7; }
+    .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px 24px; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; border: none; transition: all 0.2s; background: linear-gradient(135deg,#7C3AED,#5B21B6); color: #fff; box-shadow: 0 4px 18px rgba(124,58,237,0.35); margin-top: 8px; }
+    .btn:hover { transform: translateY(-1px); }
+    #results { display: none; }
+    #results.vis { display: block; }
+    .gauge-wrap { text-align: center; padding: 28px 20px; }
+    .score-big { font-size: 72px; font-weight: 800; line-height: 1; }
+    .score-label { font-size: 20px; font-weight: 700; margin-top: 10px; }
+    .prog-bar { background: rgba(124,58,237,0.15); border-radius: 999px; height: 10px; margin: 16px auto; max-width: 400px; overflow: hidden; }
+    .prog-fill { height: 100%; border-radius: 999px; transition: width 0.6s ease; }
+    .rec-item { display: flex; gap: 12px; padding: 14px 18px; background: rgba(220,38,38,0.07); border: 1px solid rgba(220,38,38,0.2); border-radius: 10px; margin-bottom: 10px; }
+    .rec-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+    .rec-body { flex: 1; }
+    .rec-title { font-size: 14px; font-weight: 700; color: #F8F7FF; margin-bottom: 3px; }
+    .rec-desc { font-size: 13px; color: #C4B5FD; line-height: 1.5; }
+    .info-sec { background: #1A1028; border: 1px solid rgba(124,58,237,0.15); border-radius: 16px; padding: 32px; margin-bottom: 24px; }
+    .info-sec h2 { font-size: 22px; font-weight: 700; color: #F8F7FF; margin-bottom: 16px; }
+    .info-sec h3 { font-size: 17px; font-weight: 700; color: #C4B5FD; margin: 18px 0 8px; }
+    .info-sec p, .info-sec li { font-size: 15px; color: #A78BFA; line-height: 1.75; margin-bottom: 10px; }
+    .info-sec ul { padding-left: 20px; }
+    .faq-card { background: #1A1028; border: 1px solid rgba(124,58,237,0.15); border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
+    .faq-q { width: 100%; text-align: left; background: none; border: none; padding: 18px 22px; color: #F8F7FF; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-q:hover { background: rgba(124,58,237,0.06); }
+    .faq-icon { color: #7C3AED; font-size: 20px; flex-shrink: 0; }
+    .faq-a { padding: 0 22px 18px; color: #C4B5FD; font-size: 14px; line-height: 1.7; }
+    .wa-wrap { background: linear-gradient(135deg,rgba(37,211,102,0.1),rgba(37,211,102,0.03)); border: 1px solid rgba(37,211,102,0.25); border-radius: 16px; padding: 36px; text-align: center; }
+    .wa-wrap h3 { font-size: 22px; font-weight: 700; color: #F8F7FF; margin-bottom: 10px; }
+    .wa-wrap p { color: #C4B5FD; margin-bottom: 24px; font-size: 15px; }
+    .wa-btn { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: #fff; font-weight: 700; font-size: 16px; padding: 14px 32px; border-radius: 10px; text-decoration: none; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Instagram Profil Denetleyici",
+    "description": "Sağlık turizmi kliniğinizin Instagram profilini ücretsiz denetleyin.",
+    "url": "https://saglikturizmi.info/araclar/instagram-profil-denetleyici/",
+    "applicationCategory": "BusinessApplication",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TRY"},
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://saglikturizmi.info/"},
+        {"@type": "ListItem", "position": 2, "name": "Araçlar", "item": "https://saglikturizmi.info/araclar/"},
+        {"@type": "ListItem", "position": 3, "name": "Instagram Profil Denetleyici", "item": "https://saglikturizmi.info/araclar/instagram-profil-denetleyici/"}
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="bc">
+  <div class="bc-i">
+    <a href="/">Ana Sayfa</a> <span style="color:rgba(196,181,253,0.4)">›</span>
+    <a href="/araclar/">Araçlar</a> <span style="color:rgba(196,181,253,0.4)">›</span>
+    <span style="color:#F8F7FF;font-weight:500">Instagram Profil Denetleyici</span>
+  </div>
+</div>
+
+<div class="ph">
+  <div class="badge">📸 Ücretsiz Araç</div>
+  <h1>Instagram Profil <span>Denetleyici</span></h1>
+  <p>Kliniğinizin Instagram hesabı uluslararası hasta çekmeye hazır mı? 14 kritik noktayı kontrol edin, skor alın, gelişim planınızı görün.</p>
+</div>
+
+<main style="padding-top:0">
+<div class="con">
+  <div class="card">
+    <div class="sec-title">📋 Profil Temeli</div>
+
+    <label class="item" id="lbl1">
+      <input type="checkbox" id="c1" data-impact="high" data-label="Bio net ve açıklayıcı" data-fix="Bionuza tedavi alanı, şehir ve en az 1 anahtar kelime ekleyin (ör. 'Hair Transplant Clinic | Istanbul'). İngilizce bio yabancı ziyaretçileri yakalar.">
+      <div class="item-body">
+        <div class="item-label">Bio açık ve açıklayıcı mı? <span class="impact high">Yüksek Etki</span></div>
+        <div class="item-desc">Bionuzda tedavi alanı, şehir ve en az bir İngilizce anahtar kelime var mı?</div>
+      </div>
+    </label>
+
+    <label class="item" id="lbl2">
+      <input type="checkbox" id="c2" data-impact="high" data-label="WhatsApp / İletişim Butonu" data-fix="'İletişim' butonunu aktif edin ve WhatsApp numaranızı Business hesabınıza tanımlayın. Bu tek adım potansiyel müşteri kaybını dramatik biçimde azaltır.">
+      <div class="item-body">
+        <div class="item-label">WhatsApp / iletişim butonu aktif mi? <span class="impact high">Yüksek Etki</span></div>
+        <div class="item-desc">Instagram Business hesabında WhatsApp veya telefon butonu görünür mü?</div>
+      </div>
+    </label>
+
+    <label class="item" id="lbl3">
+      <input type="checkbox" id="c3" data-impact="high" data-label="Link in Bio dolu" data-fix="Link in bio'ya landing page'inizi veya WhatsApp'a yönlendiren bir link koyun. Linktree veya benzeri araçlarla birden fazla link sunabilirsiniz.">
+      <div class="item-body">
+        <div class="item-label">Link in bio dolu mu? <span class="impact high">Yüksek Etki</span></div>
+        <div class="item-desc">Bio'da bir website veya WhatsApp linki var mı?</div>
+      </div>
+    </label>
+
+    <div class="sec-title">🌟 Öne Çıkanlar (Highlights)</div>
+
+    <label class="item" id="lbl4">
+      <input type="checkbox" id="c4" data-impact="high" data-label="Öne Çıkanlar düzenlenmiş" data-fix="Öne Çıkanlar bölümünüzde en az şu kategoriler olmalı: Tedaviler, Sonuçlar (before-after), Ekip/Doktor, SSS, İletişim. Özelleştirilmiş kapak görselleri profesyonellik katar.">
+      <div class="item-body">
+        <div class="item-label">Öne Çıkanlar düzenlenmiş mi? <span class="impact high">Yüksek Etki</span></div>
+        <div class="item-desc">Öne Çıkanlar bölümünde tedaviler, before-after ve ekip kategorileri var mı?</div>
+      </div>
+    </label>
+
+    <label class="item" id="lbl5">
+      <input type="checkbox" id="c5" data-impact="med" data-label="Before-After Highlight mevcut" data-fix="Bir 'Sonuçlar' veya 'Before & After' Highlight oluşturun. İzin alınan, yüzü göstermeden veya tam onay ile paylaşılan sonuç görselleri dönüşüm oranını artırır. Meta politikasına uygun olduğundan emin olun.">
+      <div class="item-body">
+        <div class="item-label">Before-After Highlight var mı? <span class="impact med">Orta Etki</span></div>
+        <div class="item-desc">Hasta onayıyla hazırlanmış, uyumlu before-after içerikler öne çıkanlarda yer alıyor mu?</div>
+      </div>
+    </label>
+
+    <div class="sec-title">🌍 Çok Dillilik & İçerik</div>
+
+    <label class="item" id="lbl6">
+      <input type="checkbox" id="c6" data-impact="high" data-label="Çok dilli içerik paylaşılıyor" data-fix="Gönderilerinize İngilizce açıklama ekleyin. Körfez pazarı için Arapça bir Highlight oluşturun. Her gönderinin en az İngilizce versiyonu olmalı.">
+      <div class="item-body">
+        <div class="item-label">Çok dilli içerik var mı? (TR + EN/AR) <span class="impact high">Yüksek Etki</span></div>
+        <div class="item-desc">Gönderi açıklamalarında İngilizce ve/veya Arapça kullanılıyor mu?</div>
+      </div>
+    </label>
+
+    <label class="item" id="lbl7">
+      <input type="checkbox" id="c7" data-impact="med" data-label="Düzenli gönderi sıklığı (haftada 3+)" data-fix="Haftada en az 3 gönderi ve 5 Story hedefleyin. Düşük sıklık algoritmanın sizi öne çıkarmamasına yol açar. Bir ay önceden hazırladığınız içerik takvimi tutarlılığı kolaylaştırır.">
+      <div class="item-body">
+        <div class="item-label">Gönderi sıklığı haftada 3+ mü? <span class="impact med">Orta Etki</span></div>
+        <div class="item-desc">Son 30 günde en az 12 gönderi veya Reel paylaşıldı mı?</div>
+      </div>
+    </label>
+
+    <label class="item" id="lbl8">
+      <input type="checkbox" id="c8" data-impact="med" data-label="Reels / Video içerik üretiliyor" data-fix="Aylık en az 4-6 Reel hedefleyin. Klinik turu, operasyon sonrası hasta yorumu (sözlü), doktor tanıtımı gibi içerikler yüksek erişim getirir. Prodüksiyon basit olabilir, akıllı telefon yeterli.">
+      <div class="item-body">
+        <div class="item-label">Reels / video içerik üretiliyor mu? <span class="impact med">Orta Etki</span></div>
+        <div class="item-desc">Son 30 günde en az 2 Reel yayınlandı mı?</div>
+      </div>
+    </label>
+
+    <div class="sec-title">🤝 Güven & Otorite</div>
+
+    <label class="item" id="lbl9">
+      <input type="checkbox" id="c9" data-impact="high" data-label="Doktor / ekip tanıtımı yapılmış" data-fix="Doktoru ve ekibi tanıtan düzenli gönderiler ve bir Highlight oluşturun. İsim, uzmanlık, deneyim yılı ve sertifika bilgileri içeren bir 'Ekibimiz' Highlight'ı güveni dramatik biçimde artırır.">
+      <div class="item-body">
+        <div class="item-label">Doktor / ekip tanıtımı yapılmış mı? <span class="impact high">Yüksek Etki</span></div>
+        <div class="item-desc">Hesapta doktor veya ekip üyelerini tanıtan gönderi / Highlight var mı?</div>
+      </div>
+    </label>
+
+    <label class="item" id="lbl10">
+      <input type="checkbox" id="c10" data-impact="med" data-label="Hasta yorumu / testimonial paylaşılıyor" data-fix="Yazılı yorumları ekran görüntüsü olarak veya video testimonial olarak paylaşın. Onay alarak gerçek hasta deneyimlerini öne çıkarın. Google/Trustpilot yorum ekran görüntüleri sosyal kanıt oluşturur.">
+      <div class="item-body">
+        <div class="item-label">Hasta yorumu / testimonial paylaşılıyor mu? <span class="impact med">Orta Etki</span></div>
+        <div class="item-desc">Son 30 günde en az 1 hasta yorumu veya testimonial paylaşıldı mı?</div>
+      </div>
+    </label>
+
+    <label class="item" id="lbl11">
+      <input type="checkbox" id="c11" data-impact="low" data-label="Sertifika / akreditasyon görünür" data-fix="Klinik akreditasyonlarını, doktor sertifikalarını veya uluslararası üyelikleri bir Highlight veya gönderide paylaşın. Bu özellikle Almanya ve İngiltere gibi piyasalarda güveni artırır.">
+      <div class="item-body">
+        <div class="item-label">Sertifika / akreditasyon görünür mü? <span class="impact low">Düşük Etki</span></div>
+        <div class="item-desc">JCI, ISO, doktor sertifikaları veya uluslararası üyelikler paylaşılıyor mu?</div>
+      </div>
+    </label>
+
+    <div class="sec-title">📣 Aksiyon & Etkileşim</div>
+
+    <label class="item" id="lbl12">
+      <input type="checkbox" id="c12" data-impact="med" data-label="CTA gönderilerde kullanılıyor" data-fix="Her gönderinin sonuna net bir CTA ekleyin: 'WhatsApp'tan fiyat alın', 'Linkteki formu doldurun', 'DM atın'. CTA olmayan gönderiler pasif izleyici yaratır, müşteri değil.">
+      <div class="item-body">
+        <div class="item-label">CTA (call-to-action) gönderi açıklamalarında var mı? <span class="impact med">Orta Etki</span></div>
+        <div class="item-desc">Gönderilerin sonunda net bir eylem çağrısı yer alıyor mu?</div>
+      </div>
+    </label>
+
+    <label class="item" id="lbl13">
+      <input type="checkbox" id="c13" data-impact="low" data-label="Stories aktif ve düzenli" data-fix="Günlük veya gün aşırı Story paylaşımı hedefleyin. Story sonuna soruşturmacı anket, soru kutusu veya WhatsApp sticker ekleyin. Stories etkileşimi DM dönüşümünü artırır.">
+      <div class="item-body">
+        <div class="item-label">Stories aktif mi? <span class="impact low">Düşük Etki</span></div>
+        <div class="item-desc">Haftada en az 3-4 Story paylaşılıyor mu?</div>
+      </div>
+    </label>
+
+    <label class="item" id="lbl14">
+      <input type="checkbox" id="c14" data-impact="low" data-label="Hashtag stratejisi var" data-fix="Her gönderide 5-15 hedef hashtag kullanın: genel (#hairtransplant), lokasyon (#istanbul), özel (#hairtransplantturkey). Dil bazlı hashtag kullanımı farklı pazarlara erişim sağlar.">
+      <div class="item-body">
+        <div class="item-label">Hashtag stratejisi var mı? <span class="impact low">Düşük Etki</span></div>
+        <div class="item-desc">Gönderilerde hedef kitleye yönelik çok dilli hashtag'ler kullanılıyor mu?</div>
+      </div>
+    </label>
+
+    <button class="btn" onclick="calcScore()" style="margin-top:20px">📊 Skoru Hesapla</button>
+  </div>
+
+  <div id="results">
+    <div class="card">
+      <div class="gauge-wrap" id="gaugeArea"></div>
+      <div id="recList"></div>
+    </div>
+  </div>
+
+  <div class="info-sec">
+    <h2>📚 Neden Bu 14 Kriter?</h2>
+    <p>Uluslararası hasta arayan bir kişi Instagram'da kliniğinizi bulduğunda ortalama 45 saniye içinde güven kararı verir. Bu sürede bio, öne çıkanlar, en son gönderiler ve iletişim kolaylığı değerlendirilir.</p>
+    <h3>En Yüksek Etkili 3 Kriter</h3>
+    <ul>
+      <li><strong>WhatsApp butonu:</strong> İletişime geçme sürtüşmesini %60+ azaltır</li>
+      <li><strong>Çok dilli içerik:</strong> Türkçe bilmeyen hasta için varlığınız yok hükmündedir</li>
+      <li><strong>Doktor tanıtımı:</strong> Yabancı hasta kime güveneceğini görmek ister</li>
+    </ul>
+    <h3>Skor Yorumu</h3>
+    <ul>
+      <li><strong>11–14 puan:</strong> Mükemmel — profil uluslararası hasta çekmeye hazır</li>
+      <li><strong>8–10 puan:</strong> İyi — kritik eksikler giderilebilir</li>
+      <li><strong>5–7 puan:</strong> Orta — acil iyileştirme alanları var</li>
+      <li><strong>0–4 puan:</strong> Kritik — profil yeniden yapılandırılmalı</li>
+    </ul>
+  </div>
+
+  <div class="info-sec" style="padding-bottom:20px;">
+    <h2>Sık Sorulan Sorular</h2>
+    <div class="faq-card"><button class="faq-q">Before-after paylaşımı yasal mı? <span class="faq-icon">+</span></button><div class="faq-a">Türkiye'de hasta onayı alınarak, kimliği belli etmeden paylaşım yapılabilir. Ancak Meta'nın reklam politikaları before-after içerikleri reklam olarak yayınlamayı yasaklar — organik paylaşım serbest. Her hasta için yazılı onay belgesi saklayın.</div></div>
+    <div class="faq-card"><button class="faq-q">Kaç takipçi gerekli? <span class="faq-icon">+</span></button><div class="faq-a">Takipçi sayısı değil, profil kalitesi dönüşümü belirler. 2.000 takipçiyle iyi kurgulanmış bir profil, 50.000 takipçiyle ama dağınık profilli rakibinizden daha fazla hasta getirebilir.</div></div>
+    <div class="faq-card"><button class="faq-q">Instagram DM'leri CRM'ye aktarabilir miyiz? <span class="faq-icon">+</span></button><div class="faq-a">Evet. Make (eski Integromat), Zapier veya yerel CRM entegrasyonlarıyla Instagram DM'lerini otomatik olarak CRM'e aktarabilirsiniz. Bu sayede hiçbir mesaj kaybolmaz.</div></div>
+  </div>
+
+  <div class="wa-wrap">
+    <h3>Instagram Stratejinizi Birlikte Geliştirелим</h3>
+    <p>Hangi içeriklerin hastaya dönüştüğünü, çok dilli bir içerik takvimi nasıl kurulacağını birlikte planlayalım.</p>
+    <a href="https://wa.me/905397232292?text=Merhaba%2C%20Instagram%20profilimizi%20geli%C5%9Ftirmek%20istiyorum%2C%20g%C3%B6r%C3%BC%C5%9Fme%20alabilir%20miyim%3F" target="_blank" rel="noopener" class="wa-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.845L.057 23.486a.5.5 0 0 0 .614.617l5.783-1.493A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.853 0-3.585-.5-5.079-1.375l-.361-.214-3.742.965.993-3.645-.236-.374A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      WhatsApp ile Yazın — +90 539 723 22 92
+    </a>
+  </div>
+</div>
+</main>
+
+<div id="site-footer"></div>
+<script src="/shared.js"></script>
+<script>
+function calcScore() {
+  const items = [
+    {id:'c1',impact:'high'},{id:'c2',impact:'high'},{id:'c3',impact:'high'},
+    {id:'c4',impact:'high'},{id:'c5',impact:'med'},{id:'c6',impact:'high'},
+    {id:'c7',impact:'med'},{id:'c8',impact:'med'},{id:'c9',impact:'high'},
+    {id:'c10',impact:'med'},{id:'c11',impact:'low'},{id:'c12',impact:'med'},
+    {id:'c13',impact:'low'},{id:'c14',impact:'low'}
+  ];
+  let score = 0;
+  let missing = [];
+  items.forEach((it,i) => {
+    const cb = document.getElementById(it.id);
+    const lbl = document.getElementById('lbl'+(i+1));
+    if (cb.checked) { score++; lbl.classList.add('checked'); }
+    else {
+      lbl.classList.remove('checked');
+      const inp = cb;
+      missing.push({ impact: it.impact, label: inp.dataset.label, fix: inp.dataset.fix });
+    }
+  });
+  const pct = Math.round((score / 14) * 100);
+  const color = pct >= 80 ? '#7C3AED' : pct >= 57 ? '#059669' : pct >= 36 ? '#D97706' : '#DC2626';
+  const lvl = pct >= 80 ? 'Mükemmel' : pct >= 57 ? 'İyi Seviye' : pct >= 36 ? 'Gelişim Gerekli' : 'Kritik Eksikler';
+  document.getElementById('gaugeArea').innerHTML = `
+    <div class="score-big" style="color:${color}">${score}<span style="font-size:32px;color:#8B7CAB">/14</span></div>
+    <div class="score-label" style="color:${color}">${lvl}</div>
+    <div class="prog-bar"><div class="prog-fill" style="width:${pct}%;background:${color}"></div></div>
+    <div style="color:#8B7CAB;font-size:13px;margin-top:8px;">14 kriterden ${score} tamamlandı (${pct}%)</div>
+  `;
+  // Sort missing by impact
+  const order = {high:0, med:1, low:2};
+  missing.sort((a,b)=>order[a.impact]-order[b.impact]);
+  let html = missing.length ? '<div style="font-size:17px;font-weight:700;color:#F8F7FF;margin:20px 0 14px;">📋 Öncelikli Gelişim Alanları</div>' : '<div style="color:#6EE7B7;font-size:15px;text-align:center;padding:16px">🎉 Tüm kriterleri geçtiniz!</div>';
+  missing.forEach(m => {
+    const imp = m.impact === 'high' ? 'Yüksek Etki' : m.impact === 'med' ? 'Orta Etki' : 'Düşük Etki';
+    const col = m.impact === 'high' ? '#FCA5A5' : m.impact === 'med' ? '#FBD38D' : '#6EE7B7';
+    const bg = m.impact === 'high' ? 'rgba(220,38,38,0.07)' : m.impact === 'med' ? 'rgba(217,119,6,0.07)' : 'rgba(5,150,105,0.07)';
+    const bc = m.impact === 'high' ? 'rgba(220,38,38,0.2)' : m.impact === 'med' ? 'rgba(217,119,6,0.2)' : 'rgba(5,150,105,0.2)';
+    html += `<div class="rec-item" style="background:${bg};border-color:${bc}">
+      <div class="rec-icon">⚠️</div>
+      <div class="rec-body">
+        <div class="rec-title">${m.label} <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;background:${bg};color:${col};border:1px solid ${bc}">${imp}</span></div>
+        <div class="rec-desc">${m.fix}</div>
+      </div>
+    </div>`;
+  });
+  document.getElementById('recList').innerHTML = html;
+  document.getElementById('results').classList.add('vis');
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>

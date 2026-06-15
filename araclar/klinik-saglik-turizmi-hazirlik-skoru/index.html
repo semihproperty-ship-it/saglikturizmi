@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kliniğinizin sağlık turizmine ne kadar hazır olduğunu 20 soruluk kapsamlı testimizle ölçün. Dijital varlık, lead yönetimi, ekip hazırlığı ve pazarlama alanlarında puanınızı öğrenin." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Klinik Sağlık Turizmi Hazırlık Skoru | Ücretsiz Değerlendirme Aracı" />
+  <meta property="og:description" content="Kliniğinizin sağlık turizmine hazırlık düzeyini 20 soruda ölçün. Anında sonuç ve kişisel öneriler alın." />
+  <meta property="og:type" content="website" />
+  <title>Klinik Sağlık Turizmi Hazırlık Skoru | Ücretsiz Değerlendirme Aracı</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0F0A1A;
+      color: #F8F7FF;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    a { color: #C4B5FD; text-decoration: none; }
+    a:hover { color: #F8F7FF; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      padding: 16px 24px;
+      font-size: 13px;
+      color: #C4B5FD;
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .breadcrumb span { color: #6B5B95; }
+
+    /* Hero */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 24px 40px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.35);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: #C4B5FD;
+      margin-bottom: 20px;
+    }
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #7C3AED;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #F8F7FF 0%, #C4B5FD 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 17px;
+      color: #C4B5FD;
+      max-width: 600px;
+      margin: 0 auto 28px;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat-val {
+      font-size: 22px;
+      font-weight: 700;
+      color: #7C3AED;
+    }
+    .hero-stat-lbl {
+      font-size: 12px;
+      color: #C4B5FD;
+      margin-top: 2px;
+    }
+
+    /* Quiz container */
+    .quiz-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    /* Progress bar */
+    .progress-wrap {
+      background: #1A1028;
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .progress-label {
+      font-size: 13px;
+      color: #C4B5FD;
+      white-space: nowrap;
+      min-width: 120px;
+    }
+    .progress-bar-track {
+      flex: 1;
+      height: 8px;
+      background: rgba(124,58,237,0.15);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #7C3AED, #A78BFA);
+      border-radius: 100px;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+    .progress-count {
+      font-size: 13px;
+      color: #C4B5FD;
+      white-space: nowrap;
+      min-width: 50px;
+      text-align: right;
+    }
+
+    /* Category section */
+    .category-section {
+      margin-bottom: 36px;
+    }
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .category-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .category-icon-1 { background: rgba(124,58,237,0.2); }
+    .category-icon-2 { background: rgba(16,185,129,0.15); }
+    .category-icon-3 { background: rgba(245,158,11,0.15); }
+    .category-icon-4 { background: rgba(239,68,68,0.15); }
+    .category-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #F8F7FF;
+    }
+    .category-subtitle {
+      font-size: 13px;
+      color: #C4B5FD;
+      margin-top: 2px;
+    }
+    .category-num {
+      margin-left: auto;
+      font-size: 12px;
+      color: #6B5B95;
+      background: rgba(124,58,237,0.1);
+      border: 1px solid rgba(124,58,237,0.2);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    /* Question card */
+    .q-card {
+      background: #1A1028;
+      border: 1px solid rgba(124,58,237,0.15);
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+      cursor: default;
+    }
+    .q-card:hover {
+      border-color: rgba(124,58,237,0.4);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 24px rgba(124,58,237,0.08);
+    }
+    .q-card.answered {
+      border-color: rgba(124,58,237,0.35);
+      background: linear-gradient(135deg, #1A1028, #1E1230);
+    }
+    .q-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .q-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(124,58,237,0.2);
+      border: 1px solid rgba(124,58,237,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #A78BFA;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .q-text {
+      font-size: 15px;
+      color: #F8F7FF;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .q-options {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-left: 42px;
+    }
+    .q-option {
+      position: relative;
+    }
+    .q-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .q-option label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(124,58,237,0.25);
+      background: rgba(124,58,237,0.05);
+      color: #C4B5FD;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.18s;
+      user-select: none;
+    }
+    .q-option label:hover {
+      border-color: rgba(124,58,237,0.55);
+      background: rgba(124,58,237,0.12);
+      color: #F8F7FF;
+    }
+    .q-option input[type="radio"]:checked + label {
+      border-color: #7C3AED;
+      background: rgba(124,58,237,0.22);
+      color: #F8F7FF;
+      font-weight: 600;
+    }
+    .q-option input[type="radio"]:checked + label .opt-dot {
+      background: #7C3AED;
+    }
+    .opt-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 2px solid rgba(124,58,237,0.5);
+      background: transparent;
+      transition: background 0.18s;
+      flex-shrink: 0;
+    }
+
+    /* Option colors */
+    .q-option.opt-no input[type="radio"]:checked + label {
+      border-color: #ef4444;
+      background: rgba(239,68,68,0.12);
+    }
+    .q-option.opt-no input[type="radio"]:checked + label .opt-dot { background: #ef4444; }
+    .q-option.opt-partial input[type="radio"]:checked + label {
+      border-color: #f59e0b;
+      background: rgba(245,158,11,0.12);
+    }
+    .q-option.opt-partial input[type="radio"]:checked + label .opt-dot { background: #f59e0b; }
+    .q-option.opt-yes input[type="radio"]:checked + label {
+      border-color: #10b981;
+      background: rgba(16,185,129,0.12);
+    }
+    .q-option.opt-yes input[type="radio"]:checked + label .opt-dot { background: #10b981; }
+
+    /* Submit button */
+    .btn-submit-wrap {
+      text-align: center;
+      margin-top: 36px;
+    }
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #7C3AED, #6D28D9);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 16px 40px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(124,58,237,0.35);
+      letter-spacing: 0.01em;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(124,58,237,0.5);
+      background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+    }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .btn-hint {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #6B5B95;
+    }
+
+    /* Validation error */
+    .validation-msg {
+      display: none;
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #FCA5A5;
+      text-align: center;
+    }
+
+    /* RESULTS */
+    .results-section {
+      display: none;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .results-header {
+      text-align: center;
+      padding: 40px 0 32px;
+    }
+    .results-header h2 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #F8F7FF;
+      margin-bottom: 8px;
+    }
+    .results-header p {
+      color: #C4B5FD;
+      font-size: 16px;
+    }
+
+    /* Score circle */
+    .score-circle-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .score-circle {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 6px solid;
+      position: relative;
+    }
+    .score-circle-val {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .score-circle-max {
+      font-size: 14px;
+      color: #C4B5FD;
+      margin-top: 4px;
+    }
+    .score-circle-pct {
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    /* Badge */
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-size: 17px;
+      font-weight: 700;
+      margin: 0 auto 12px;
+    }
+    .result-badge-wrap { text-align: center; margin-bottom: 40px; }
+    .result-desc {
+      font-size: 15px;
+      color: #C4B5FD;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Category breakdown */
+    .breakdown-card {
+      background: #1A1028;
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .breakdown-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .breakdown-card h3::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 20px;
+      border-radius: 2px;
+      background: #7C3AED;
+    }
+    .cat-bar-item {
+      margin-bottom: 18px;
+    }
+    .cat-bar-item:last-child { margin-bottom: 0; }
+    .cat-bar-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .cat-bar-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #F8F7FF;
+      font-weight: 500;
+    }
+    .cat-bar-icon { font-size: 16px; }
+    .cat-bar-pct {
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .cat-bar-track {
+      height: 10px;
+      background: rgba(124,58,237,0.12);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .cat-bar-fill {
+      height: 100%;
+      border-radius: 100px;
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Recommendations */
+    .rec-card {
+      background: #1A1028;
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .rec-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .rec-card h3::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 20px;
+      border-radius: 2px;
+      background: #7C3AED;
+    }
+    .rec-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      background: rgba(124,58,237,0.06);
+      border: 1px solid rgba(124,58,237,0.12);
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .rec-item:last-child { margin-bottom: 0; }
+    .rec-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .rec-text { font-size: 14px; color: #C4B5FD; line-height: 1.5; }
+    .rec-text strong { color: #F8F7FF; font-weight: 600; }
+
+    /* WhatsApp CTA */
+    .wa-cta-card {
+      background: linear-gradient(135deg, #1A1028, #231535);
+      border: 1px solid rgba(124,58,237,0.3);
+      border-radius: 16px;
+      padding: 36px 28px;
+      text-align: center;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .wa-cta-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(124,58,237,0.07);
+    }
+    .wa-cta-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #F8F7FF;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .wa-cta-card p {
+      font-size: 15px;
+      color: #C4B5FD;
+      margin-bottom: 28px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+      position: relative;
+    }
+    .btn-wa:hover {
+      background: #1ebe5a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(37,211,102,0.45);
+      color: #fff;
+    }
+    .btn-wa svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* Retake button */
+    .btn-retake {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid rgba(124,58,237,0.4);
+      color: #C4B5FD;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 12px;
+    }
+    .btn-retake:hover {
+      border-color: #7C3AED;
+      color: #F8F7FF;
+      background: rgba(124,58,237,0.08);
+    }
+
+    /* Divider */
+    .section-divider {
+      border: none;
+      border-top: 1px solid rgba(124,58,237,0.12);
+      margin: 48px 0;
+    }
+
+    @media (max-width: 600px) {
+      .q-options { margin-left: 0; margin-top: 4px; }
+      .hero-stats { gap: 20px; }
+      .progress-wrap { flex-wrap: wrap; gap: 8px; }
+      .progress-label { min-width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main style="padding-top: 64px;">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Ana Sayfa</a>
+      <span>›</span>
+      <a href="/araclar/">Araçlar</a>
+      <span>›</span>
+      <span style="color:#C4B5FD;">Klinik Hazırlık Skoru</span>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Ücretsiz Değerlendirme Aracı
+      </div>
+      <h1>Klinik Sağlık Turizmi<br>Hazırlık Skoru</h1>
+      <p>20 soruluk kapsamlı testimizle kliniğinizin uluslararası hasta kabulüne ne kadar hazır olduğunu ölçün. Anında sonuç ve kişiselleştirilmiş öneriler alın.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-val">20</div>
+          <div class="hero-stat-lbl">Soru</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">4</div>
+          <div class="hero-stat-lbl">Kategori</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">~3 dk</div>
+          <div class="hero-stat-lbl">Süre</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">Ücretsiz</div>
+          <div class="hero-stat-lbl">Maliyet</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz Form -->
+    <div class="quiz-wrap" id="quiz-section">
+
+      <!-- Progress -->
+      <div class="progress-wrap">
+        <div class="progress-label">İlerleme Durumu</div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-count" id="progress-count">0 / 20</div>
+      </div>
+
+      <form id="quiz-form" novalidate>
+
+        <!-- CATEGORY 1 -->
+        <div class="category-section">
+          <div class="category-header">
+            <div class="category-icon category-icon-1">🌐</div>
+            <div>
+              <div class="category-title">Dijital Varlık</div>
+              <div class="category-subtitle">Çevrimiçi görünürlük ve dijital altyapı</div>
+            </div>
+            <div class="category-num">1–5</div>
+          </div>
+
+          <div class="q-card" id="qcard-1">
+            <div class="q-top">
+              <div class="q-num">1</div>
+              <div class="q-text">Kliniğinizin profesyonel bir web siteniz var mı?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q1" id="q1-0" value="0" />
+                <label for="q1-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q1" id="q1-1" value="1" />
+                <label for="q1-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q1" id="q1-2" value="2" />
+                <label for="q1-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-2">
+            <div class="q-top">
+              <div class="q-num">2</div>
+              <div class="q-text">Web siteniz en az 2 yabancı dilde içerik sunuyor mu?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q2" id="q2-0" value="0" />
+                <label for="q2-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q2" id="q2-1" value="1" />
+                <label for="q2-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q2" id="q2-2" value="2" />
+                <label for="q2-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-3">
+            <div class="q-top">
+              <div class="q-num">3</div>
+              <div class="q-text">Sosyal medya hesaplarınız aktif ve düzenli paylaşım yapılıyor mu?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q3" id="q3-0" value="0" />
+                <label for="q3-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q3" id="q3-1" value="1" />
+                <label for="q3-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q3" id="q3-2" value="2" />
+                <label for="q3-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-4">
+            <div class="q-top">
+              <div class="q-num">4</div>
+              <div class="q-text">Web sitenizde çevrimiçi randevu sistemi mevcut mu?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q4" id="q4-0" value="0" />
+                <label for="q4-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q4" id="q4-1" value="1" />
+                <label for="q4-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q4" id="q4-2" value="2" />
+                <label for="q4-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-5">
+            <div class="q-top">
+              <div class="q-num">5</div>
+              <div class="q-text">Google My Business veya benzeri rehber listelemeleri yapıldı mı?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q5" id="q5-0" value="0" />
+                <label for="q5-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q5" id="q5-1" value="1" />
+                <label for="q5-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q5" id="q5-2" value="2" />
+                <label for="q5-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CATEGORY 2 -->
+        <div class="category-section">
+          <div class="category-header">
+            <div class="category-icon category-icon-2">📬</div>
+            <div>
+              <div class="category-title">Lead Yönetimi</div>
+              <div class="category-subtitle">Gelen hasta taleplerini işleme ve takip</div>
+            </div>
+            <div class="category-num">6–10</div>
+          </div>
+
+          <div class="q-card" id="qcard-6">
+            <div class="q-top">
+              <div class="q-num">6</div>
+              <div class="q-text">Gelen leads'lere 30 dakika içinde yanıt veriyor musunuz?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q6" id="q6-0" value="0" />
+                <label for="q6-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q6" id="q6-1" value="1" />
+                <label for="q6-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q6" id="q6-2" value="2" />
+                <label for="q6-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-7">
+            <div class="q-top">
+              <div class="q-num">7</div>
+              <div class="q-text">WhatsApp Business hesabınız aktif ve profesyonel mi?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q7" id="q7-0" value="0" />
+                <label for="q7-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q7" id="q7-1" value="1" />
+                <label for="q7-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q7" id="q7-2" value="2" />
+                <label for="q7-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-8">
+            <div class="q-top">
+              <div class="q-num">8</div>
+              <div class="q-text">CRM sistemi kullanıyor musunuz?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q8" id="q8-0" value="0" />
+                <label for="q8-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q8" id="q8-1" value="1" />
+                <label for="q8-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q8" id="q8-2" value="2" />
+                <label for="q8-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-9">
+            <div class="q-top">
+              <div class="q-num">9</div>
+              <div class="q-text">Lead'leri kategorize edip takip ediyor musunuz?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q9" id="q9-0" value="0" />
+                <label for="q9-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q9" id="q9-1" value="1" />
+                <label for="q9-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q9" id="q9-2" value="2" />
+                <label for="q9-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-10">
+            <div class="q-top">
+              <div class="q-num">10</div>
+              <div class="q-text">Otomatik yanıt mesajlarınız var mı?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q10" id="q10-0" value="0" />
+                <label for="q10-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q10" id="q10-1" value="1" />
+                <label for="q10-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q10" id="q10-2" value="2" />
+                <label for="q10-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CATEGORY 3 -->
+        <div class="category-section">
+          <div class="category-header">
+            <div class="category-icon category-icon-3">👥</div>
+            <div>
+              <div class="category-title">Ekip Hazırlığı</div>
+              <div class="category-subtitle">İnsan kaynakları ve operasyonel altyapı</div>
+            </div>
+            <div class="category-num">11–15</div>
+          </div>
+
+          <div class="q-card" id="qcard-11">
+            <div class="q-top">
+              <div class="q-num">11</div>
+              <div class="q-text">Ekibinizde en az bir yabancı dil bilen çalışan var mı?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q11" id="q11-0" value="0" />
+                <label for="q11-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q11" id="q11-1" value="1" />
+                <label for="q11-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q11" id="q11-2" value="2" />
+                <label for="q11-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-12">
+            <div class="q-top">
+              <div class="q-num">12</div>
+              <div class="q-text">Uluslararası hasta koordinatörünüz var mı?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q12" id="q12-0" value="0" />
+                <label for="q12-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q12" id="q12-1" value="1" />
+                <label for="q12-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q12" id="q12-2" value="2" />
+                <label for="q12-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-13">
+            <div class="q-top">
+              <div class="q-num">13</div>
+              <div class="q-text">Ekibiniz sağlık turizmi konusunda eğitim aldı mı?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q13" id="q13-0" value="0" />
+                <label for="q13-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q13" id="q13-1" value="1" />
+                <label for="q13-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q13" id="q13-2" value="2" />
+                <label for="q13-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-14">
+            <div class="q-top">
+              <div class="q-num">14</div>
+              <div class="q-text">Kültürel farkındalık eğitimi verildi mi?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q14" id="q14-0" value="0" />
+                <label for="q14-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q14" id="q14-1" value="1" />
+                <label for="q14-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q14" id="q14-2" value="2" />
+                <label for="q14-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-15">
+            <div class="q-top">
+              <div class="q-num">15</div>
+              <div class="q-text">Hasta karşılama ve transfer hizmetiniz var mı?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q15" id="q15-0" value="0" />
+                <label for="q15-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q15" id="q15-1" value="1" />
+                <label for="q15-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q15" id="q15-2" value="2" />
+                <label for="q15-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CATEGORY 4 -->
+        <div class="category-section">
+          <div class="category-header">
+            <div class="category-icon category-icon-4">📣</div>
+            <div>
+              <div class="category-title">Pazarlama</div>
+              <div class="category-subtitle">Uluslararası hasta çekme stratejileri</div>
+            </div>
+            <div class="category-num">16–20</div>
+          </div>
+
+          <div class="q-card" id="qcard-16">
+            <div class="q-top">
+              <div class="q-num">16</div>
+              <div class="q-text">Uluslararası hastalara yönelik reklam kampanyalarınız var mı?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q16" id="q16-0" value="0" />
+                <label for="q16-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q16" id="q16-1" value="1" />
+                <label for="q16-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q16" id="q16-2" value="2" />
+                <label for="q16-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-17">
+            <div class="q-top">
+              <div class="q-num">17</div>
+              <div class="q-text">İçerik pazarlaması (blog, video, vaka çalışmaları) yapıyor musunuz?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q17" id="q17-0" value="0" />
+                <label for="q17-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q17" id="q17-1" value="1" />
+                <label for="q17-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q17" id="q17-2" value="2" />
+                <label for="q17-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-18">
+            <div class="q-top">
+              <div class="q-num">18</div>
+              <div class="q-text">Aylık pazarlama bütçeniz belirlenmiş mi?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q18" id="q18-0" value="0" />
+                <label for="q18-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q18" id="q18-1" value="1" />
+                <label for="q18-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q18" id="q18-2" value="2" />
+                <label for="q18-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-19">
+            <div class="q-top">
+              <div class="q-num">19</div>
+              <div class="q-text">Hasta yorumları ve referanslarınızı aktif olarak toplayıp paylaşıyor musunuz?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q19" id="q19-0" value="0" />
+                <label for="q19-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q19" id="q19-1" value="1" />
+                <label for="q19-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q19" id="q19-2" value="2" />
+                <label for="q19-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-card" id="qcard-20">
+            <div class="q-top">
+              <div class="q-num">20</div>
+              <div class="q-text">Rakip analizi ve pazar araştırması yapıyor musunuz?</div>
+            </div>
+            <div class="q-options">
+              <div class="q-option opt-no">
+                <input type="radio" name="q20" id="q20-0" value="0" />
+                <label for="q20-0"><span class="opt-dot"></span>Hayır</label>
+              </div>
+              <div class="q-option opt-partial">
+                <input type="radio" name="q20" id="q20-1" value="1" />
+                <label for="q20-1"><span class="opt-dot"></span>Kısmen</label>
+              </div>
+              <div class="q-option opt-yes">
+                <input type="radio" name="q20" id="q20-2" value="2" />
+                <label for="q20-2"><span class="opt-dot"></span>Evet</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Validation message -->
+        <div class="validation-msg" id="validation-msg">
+          Lütfen tüm 20 soruyu yanıtlayın. Yanıtsız sorular kırmızı ile işaretlenecektir.
+        </div>
+
+        <!-- Submit -->
+        <div class="btn-submit-wrap">
+          <button type="button" class="btn-submit" id="btn-calc" onclick="calculateScore()">
+            <span>Sonuçları Hesapla</span>
+            <span style="font-size:18px;">→</span>
+          </button>
+          <div class="btn-hint" id="btn-hint">Tüm 20 soruyu yanıtlayarak devam edin</div>
+        </div>
+
+      </form>
+    </div><!-- end quiz-wrap -->
+
+    <!-- RESULTS SECTION -->
+    <div class="results-section" id="results-section">
+
+      <div class="results-header">
+        <h2>Değerlendirme Sonuçlarınız</h2>
+        <p>Kliniğinizin sağlık turizmine hazırlık düzeyi aşağıda özetlenmiştir.</p>
+      </div>
+
+      <!-- Score circle -->
+      <div class="score-circle-wrap">
+        <div class="score-circle" id="score-circle">
+          <div class="score-circle-val" id="score-val">0</div>
+          <div class="score-circle-max">/ 40 puan</div>
+          <div class="score-circle-pct" id="score-pct">0%</div>
+        </div>
+      </div>
+
+      <!-- Badge -->
+      <div class="result-badge-wrap">
+        <div class="result-badge" id="result-badge"></div>
+        <p class="result-desc" id="result-desc"></p>
+      </div>
+
+      <!-- Category breakdown -->
+      <div class="breakdown-card">
+        <h3>Kategori Bazlı Performans</h3>
+        <div class="cat-bar-item">
+          <div class="cat-bar-top">
+            <div class="cat-bar-name"><span class="cat-bar-icon">🌐</span> Dijital Varlık</div>
+            <div class="cat-bar-pct" id="pct-cat1">0%</div>
+          </div>
+          <div class="cat-bar-track">
+            <div class="cat-bar-fill" id="bar-cat1" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="cat-bar-item">
+          <div class="cat-bar-top">
+            <div class="cat-bar-name"><span class="cat-bar-icon">📬</span> Lead Yönetimi</div>
+            <div class="cat-bar-pct" id="pct-cat2">0%</div>
+          </div>
+          <div class="cat-bar-track">
+            <div class="cat-bar-fill" id="bar-cat2" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="cat-bar-item">
+          <div class="cat-bar-top">
+            <div class="cat-bar-name"><span class="cat-bar-icon">👥</span> Ekip Hazırlığı</div>
+            <div class="cat-bar-pct" id="pct-cat3">0%</div>
+          </div>
+          <div class="cat-bar-track">
+            <div class="cat-bar-fill" id="bar-cat3" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="cat-bar-item">
+          <div class="cat-bar-top">
+            <div class="cat-bar-name"><span class="cat-bar-icon">📣</span> Pazarlama</div>
+            <div class="cat-bar-pct" id="pct-cat4">0%</div>
+          </div>
+          <div class="cat-bar-track">
+            <div class="cat-bar-fill" id="bar-cat4" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendations -->
+      <div class="rec-card" id="rec-card">
+        <h3>Öncelikli Geliştirme Alanları</h3>
+        <div id="rec-list"></div>
+      </div>
+
+      <!-- WhatsApp CTA -->
+      <div class="wa-cta-card">
+        <h3>Uzman Desteği Alın</h3>
+        <p>Kliniğinizi uluslararası hasta kabulüne hazırlamak için uzman ekibimizle ücretsiz strateji görüşmesi yapın. Sonuçlarınızı birlikte değerlendirelim.</p>
+        <a href="https://wa.me/905397232292?text=Merhaba%2C%20Klinik%20Sa%C4%9Fl%C4%B1k%20Turizmi%20Haz%C4%B1rl%C4%B1k%20Skoru%20testini%20tamamlad%C4%B1m.%20Klini%C4%9Fimi%20uluslararas%C4%B1%20hasta%20kabulüne%20haz%C4%B1rlamak%20için%20destek%20almak%20istiyorum." class="btn-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp'tan Yazın
+        </a>
+      </div>
+
+      <!-- Retake -->
+      <div style="text-align:center;">
+        <button class="btn-retake" onclick="retakeQuiz()">
+          <span>↺</span> Testi Yeniden Başlat
+        </button>
+      </div>
+
+    </div><!-- end results-section -->
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/shared.js"></script>
+  <script>
+    // ── Configuration ────────────────────────────────────────────────
+    var TOTAL_QUESTIONS = 20;
+    var MAX_SCORE = 40;
+
+    var CATEGORIES = [
+      {
+        id: 'cat1',
+        name: 'Dijital Varlık',
+        icon: '🌐',
+        questions: [1, 2, 3, 4, 5],
+        recommendations: [
+          { icon: '🖥️', text: '<strong>Profesyonel web sitesi kurun:</strong> En az 3 yabancı dil desteği olan, mobil uyumlu, hızlı yüklenen bir web sitesi kurun. SEO optimizasyonu kritik öneme sahiptir.' },
+          { icon: '🌍', text: '<strong>Çok dilli içerik oluşturun:</strong> Hedef pazarlarınıza göre İngilizce, Arapça, Rusça veya Almanca içerik hazırlayın. Profesyonel çeviri kullanın.' },
+          { icon: '📱', text: '<strong>Sosyal medya stratejisi geliştirin:</strong> Instagram, Facebook ve YouTube\'da düzenli, kaliteli içerik paylaşın. Uluslararası hastalara yönelik içerikler oluşturun.' },
+          { icon: '📅', text: '<strong>Çevrimiçi randevu sistemi ekleyin:</strong> 7/24 otomatik randevu alınabilmesini sağlayan bir sistem entegre edin. Bu dönüşüm oranını önemli ölçüde artırır.' },
+          { icon: '📍', text: '<strong>Dizin listelemelerini tamamlayın:</strong> Google My Business, Bing Places ve sağlık turizmi platformlarına kaydolun. Yorumları aktif olarak yönetin.' }
+        ]
+      },
+      {
+        id: 'cat2',
+        name: 'Lead Yönetimi',
+        icon: '📬',
+        questions: [6, 7, 8, 9, 10],
+        recommendations: [
+          { icon: '⚡', text: '<strong>Yanıt sürenizi kısaltın:</strong> Uluslararası hastalarda ilk 5 dakikada yanıt verme, dönüşüm oranını %400 artırır. 30 dakikayı asla geçmeyin.' },
+          { icon: '💬', text: '<strong>WhatsApp Business\'ı profesyonelleştirin:</strong> Katalog, hızlı yanıtlar ve işletme profilini eksiksiz doldurun. Birden fazla dilde karşılama mesajı oluşturun.' },
+          { icon: '🗂️', text: '<strong>CRM sistemi edinin:</strong> HubSpot, Zoho veya sağlık sektörüne özel bir CRM kullanın. Tüm hasta iletişimini tek platformda yönetin.' },
+          { icon: '🏷️', text: '<strong>Lead segmentasyonu yapın:</strong> Ülke, işlem türü, bütçe ve sıcaklık seviyesine göre lead\'leri kategorize edin. Kişiselleştirilmiş takip mesajları hazırlayın.' },
+          { icon: '🤖', text: '<strong>Otomasyon kurun:</strong> İlk temas, hatırlatma ve takip mesajlarını otomatikleştirin. Mesai saatleri dışında bile profesyonel yanıt verin.' }
+        ]
+      },
+      {
+        id: 'cat3',
+        name: 'Ekip Hazırlığı',
+        icon: '👥',
+        questions: [11, 12, 13, 14, 15],
+        recommendations: [
+          { icon: '🗣️', text: '<strong>Yabancı dil kapasitesini artırın:</strong> En az 2 dil bilen hasta iletişim ekibi oluşturun. İngilizce, Arapça veya hedef pazarınızdaki dili konuşan personel istihdam edin.' },
+          { icon: '🎯', text: '<strong>Uluslararası hasta koordinatörü atayın:</strong> Bu rol, hastanın ilk temastan taburculuğuna kadar tüm süreçlerini yönetir. Deneyimli bir koordinatör gelir artışını doğrudan etkiler.' },
+          { icon: '📚', text: '<strong>Sağlık turizmi eğitimi verin:</strong> Ekibinize sertifikalı sağlık turizmi eğitimi aldırın. JCI akreditasyonu ve uluslararası standartlar hakkında bilgi edinin.' },
+          { icon: '🤝', text: '<strong>Kültürel farkındalık programı başlatın:</strong> Farklı kültürlerden hastaların beklentilerini anlayan bir ekip oluşturun. Yanlış anlaşılmalar hasta memnuniyetini ciddi şekilde olumsuz etkiler.' },
+          { icon: '🚗', text: '<strong>Transfer ve karşılama hizmeti kurun:</strong> Havalimanı transferi, otel yönlendirmesi ve refakatçi hizmetleri uluslararası hastalar için zorunludur. Bu hizmet rekabet avantajı sağlar.' }
+        ]
+      },
+      {
+        id: 'cat4',
+        name: 'Pazarlama',
+        icon: '📣',
+        questions: [16, 17, 18, 19, 20],
+        recommendations: [
+          { icon: '🎯', text: '<strong>Uluslararası reklam kampanyaları başlatın:</strong> Google Ads, Meta Ads ve LinkedIn\'de hedef ülkelere yönelik kampanyalar oluşturun. Dil ve kültüre özel mesajlar kullanın.' },
+          { icon: '✍️', text: '<strong>İçerik pazarlamasına yatırım yapın:</strong> Hasta başarı hikayeleri, tedavi süreçleri ve kliniğinizi tanıtan videolar üretin. YouTube ve blog içerikleri organik büyüme sağlar.' },
+          { icon: '💰', text: '<strong>Pazarlama bütçesi belirleyin:</strong> Aylık sabit bir pazarlama bütçesi oluşturun. Sağlık turizmi için ciro\'nun en az %10-15\'ini pazarlamaya ayırmanız önerilir.' },
+          { icon: '⭐', text: '<strong>Referans sistemi kurun:</strong> Memnun hastalardan yorum ve video referans toplayın. Google, Trustpilot ve sağlık platformlarındaki değerlendirmelerinizi aktif yönetin.' },
+          { icon: '🔍', text: '<strong>Pazar araştırması yapın:</strong> Hedef ülkeler, rakipler ve fiyatlandırma stratejileri hakkında düzenli araştırma yapın. Veriye dayalı kararlar daha yüksek ROI sağlar.' }
+        ]
+      }
+    ];
+
+    // ── Progress tracking ─────────────────────────────────────────────
+    function updateProgress() {
+      var answered = 0;
+      for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
+        var radios = document.querySelectorAll('input[name="q' + i + '"]');
+        for (var r = 0; r < radios.length; r++) {
+          if (radios[r].checked) { answered++; break; }
+        }
+      }
+      var pct = Math.round((answered / TOTAL_QUESTIONS) * 100);
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('progress-count').textContent = answered + ' / ' + TOTAL_QUESTIONS;
+
+      var hint = document.getElementById('btn-hint');
+      if (answered === TOTAL_QUESTIONS) {
+        hint.textContent = 'Harika! Tüm sorular yanıtlandı. Hesaplamak için tıklayın.';
+        hint.style.color = '#10b981';
+      } else {
+        hint.textContent = (TOTAL_QUESTIONS - answered) + ' soru kaldı';
+        hint.style.color = '#6B5B95';
+      }
+    }
+
+    // Mark answered cards
+    function markAnswered(name) {
+      var qNum = parseInt(name.replace('q', ''));
+      var card = document.getElementById('qcard-' + qNum);
+      if (card) {
+        card.classList.add('answered');
+        card.style.borderColor = '';
+      }
+    }
+
+    // Attach change listeners
+    for (var qi = 1; qi <= TOTAL_QUESTIONS; qi++) {
+      (function(n) {
+        var radios = document.querySelectorAll('input[name="q' + n + '"]');
+        for (var ri = 0; ri < radios.length; ri++) {
+          radios[ri].addEventListener('change', function() {
+            updateProgress();
+            markAnswered(this.name);
+            // Clear validation styling on this card
+            var num = parseInt(this.name.replace('q', ''));
+            var c = document.getElementById('qcard-' + num);
+            if (c) c.style.borderColor = '';
+          });
+        }
+      })(qi);
+    }
+
+    // ── Score calculation ─────────────────────────────────────────────
+    function getQuestionValue(num) {
+      var radios = document.querySelectorAll('input[name="q' + num + '"]:checked');
+      if (radios.length === 0) return null;
+      return parseInt(radios[0].value);
+    }
+
+    function getCategoryScore(cat) {
+      var total = 0;
+      for (var i = 0; i < cat.questions.length; i++) {
+        var val = getQuestionValue(cat.questions[i]);
+        if (val !== null) total += val;
+      }
+      return total;
+    }
+
+    function calculateScore() {
+      // Validate all questions answered
+      var unanswered = [];
+      for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
+        if (getQuestionValue(i) === null) unanswered.push(i);
+      }
+
+      // Clear previous validation styles
+      for (var j = 1; j <= TOTAL_QUESTIONS; j++) {
+        var c = document.getElementById('qcard-' + j);
+        if (c) c.style.borderColor = '';
+      }
+
+      if (unanswered.length > 0) {
+        // Highlight unanswered
+        for (var u = 0; u < unanswered.length; u++) {
+          var card = document.getElementById('qcard-' + unanswered[u]);
+          if (card) card.style.borderColor = 'rgba(239,68,68,0.6)';
+        }
+        var msg = document.getElementById('validation-msg');
+        msg.style.display = 'block';
+        // Scroll to first unanswered
+        var firstCard = document.getElementById('qcard-' + unanswered[0]);
+        if (firstCard) firstCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      document.getElementById('validation-msg').style.display = 'none';
+
+      // Calculate totals
+      var catScores = [];
+      var totalScore = 0;
+      for (var ci = 0; ci < CATEGORIES.length; ci++) {
+        var cs = getCategoryScore(CATEGORIES[ci]);
+        catScores.push(cs);
+        totalScore += cs;
+      }
+
+      var percentage = Math.round((totalScore / MAX_SCORE) * 100);
+
+      // Determine level
+      var level;
+      if (percentage <= 35) {
+        level = { label: 'Hazır Değil', color: '#ef4444', bg: 'rgba(239,68,68,0.15)', border: '#ef4444', desc: 'Kliniğinizin sağlık turizmine hazırlığı henüz başlangıç aşamasında. Temel altyapıyı oluşturmak için kapsamlı bir yol haritasına ihtiyacınız var.' };
+      } else if (percentage <= 60) {
+        level = { label: 'Gelişim Gerekiyor', color: '#f59e0b', bg: 'rgba(245,158,11,0.15)', border: '#f59e0b', desc: 'Bazı alanlarda ilerlemeler mevcut ancak uluslararası hasta çekebilmek için kritik eksiklikler giderilmelidir.' };
+      } else if (percentage <= 80) {
+        level = { label: 'İyi Düzeyde', color: '#10b981', bg: 'rgba(16,185,129,0.15)', border: '#10b981', desc: 'Kliniğiniz sağlık turizminde iyi bir noktada. Odaklanmanız gereken birkaç kilit alan ile daha fazla uluslararası hasta çekebilirsiniz.' };
+      } else {
+        level = { label: 'Mükemmel - Hazır!', color: '#7C3AED', bg: 'rgba(124,58,237,0.18)', border: '#7C3AED', desc: 'Tebrikler! Kliniğiniz uluslararası sağlık turizminde rekabet edebilecek mükemmel bir hazırlık seviyesinde.' };
+      }
+
+      // Render score circle
+      var circle = document.getElementById('score-circle');
+      circle.style.borderColor = level.color;
+      document.getElementById('score-val').style.color = level.color;
+      document.getElementById('score-val').textContent = totalScore;
+      document.getElementById('score-pct').textContent = percentage + '%';
+      document.getElementById('score-pct').style.color = level.color;
+
+      // Render badge
+      var badge = document.getElementById('result-badge');
+      badge.style.background = level.bg;
+      badge.style.border = '1px solid ' + level.border;
+      badge.style.color = level.color;
+      badge.innerHTML = '<span style="font-size:20px;">' + getLevelEmoji(percentage) + '</span> ' + level.label;
+
+      document.getElementById('result-desc').textContent = level.desc;
+
+      // Render category bars
+      var barIds = ['bar-cat1', 'bar-cat2', 'bar-cat3', 'bar-cat4'];
+      var pctIds = ['pct-cat1', 'pct-cat2', 'pct-cat3', 'pct-cat4'];
+      for (var bi = 0; bi < 4; bi++) {
+        var catPct = Math.round((catScores[bi] / 10) * 100);
+        var barColor = getBarColor(catPct);
+        var fillEl = document.getElementById(barIds[bi]);
+        var pctEl = document.getElementById(pctIds[bi]);
+        fillEl.style.background = barColor;
+        pctEl.style.color = barColor;
+        pctEl.textContent = catPct + '%';
+        // Animate after a tick
+        (function(el, w) {
+          setTimeout(function() { el.style.width = w + '%'; }, 150);
+        })(fillEl, catPct);
+      }
+
+      // Build recommendations
+      var recList = document.getElementById('rec-list');
+      recList.innerHTML = '';
+      var hasRecs = false;
+      for (var ri = 0; ri < CATEGORIES.length; ri++) {
+        var catPctR = Math.round((catScores[ri] / 10) * 100);
+        if (catPctR < 60) {
+          hasRecs = true;
+          // Category header in recs
+          var catHeader = document.createElement('div');
+          catHeader.style.cssText = 'font-size:13px;font-weight:700;color:#7C3AED;text-transform:uppercase;letter-spacing:0.08em;margin:' + (ri === 0 ? '0' : '20px') + ' 0 10px;display:flex;align-items:center;gap:6px;';
+          catHeader.innerHTML = '<span>' + CATEGORIES[ri].icon + '</span> ' + CATEGORIES[ri].name;
+          recList.appendChild(catHeader);
+
+          // Show relevant recs based on score (lower score = show more recs)
+          var numRecs = catPctR <= 20 ? 3 : (catPctR <= 40 ? 2 : 1);
+          for (var rri = 0; rri < numRecs && rri < CATEGORIES[ri].recommendations.length; rri++) {
+            var rec = CATEGORIES[ri].recommendations[rri];
+            var item = document.createElement('div');
+            item.className = 'rec-item';
+            item.innerHTML = '<div class="rec-icon">' + rec.icon + '</div><div class="rec-text">' + rec.text + '</div>';
+            recList.appendChild(item);
+          }
+        }
+      }
+
+      if (!hasRecs) {
+        recList.innerHTML = '<div class="rec-item"><div class="rec-icon">🌟</div><div class="rec-text"><strong>Mükemmel performans!</strong> Tüm kategorilerde yüksek puan aldınız. Uluslararası hasta kabulüne tam anlamıyla hazırsınız. Bir uzmanla büyüme stratejinizi konuşmak için bizimle iletişime geçin.</div></div>';
+      }
+
+      // Hide quiz, show results
+      document.getElementById('quiz-section').style.display = 'none';
+      var resultsEl = document.getElementById('results-section');
+      resultsEl.style.display = 'block';
+      resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function getLevelEmoji(pct) {
+      if (pct <= 35) return '🔴';
+      if (pct <= 60) return '🟠';
+      if (pct <= 80) return '🟢';
+      return '🟣';
+    }
+
+    function getBarColor(pct) {
+      if (pct < 40) return '#ef4444';
+      if (pct < 60) return '#f59e0b';
+      if (pct < 80) return '#10b981';
+      return '#7C3AED';
+    }
+
+    function retakeQuiz() {
+      // Reset all radios
+      var form = document.getElementById('quiz-form');
+      form.reset();
+
+      // Remove answered classes
+      for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
+        var card = document.getElementById('qcard-' + i);
+        if (card) {
+          card.classList.remove('answered');
+          card.style.borderColor = '';
+        }
+      }
+
+      // Reset bars (no animation delay needed)
+      var barIds = ['bar-cat1', 'bar-cat2', 'bar-cat3', 'bar-cat4'];
+      for (var b = 0; b < barIds.length; b++) {
+        document.getElementById(barIds[b]).style.width = '0%';
+      }
+
+      // Reset progress
+      document.getElementById('progress-fill').style.width = '0%';
+      document.getElementById('progress-count').textContent = '0 / 20';
+
+      // Show quiz, hide results
+      document.getElementById('results-section').style.display = 'none';
+      var quizEl = document.getElementById('quiz-section');
+      quizEl.style.display = 'block';
+      quizEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Reset hint
+      var hint = document.getElementById('btn-hint');
+      hint.textContent = 'Tüm 20 soruyu yanıtlayarak devam edin';
+      hint.style.color = '#6B5B95';
+    }
+  </script>
+
+</body>
+</html>

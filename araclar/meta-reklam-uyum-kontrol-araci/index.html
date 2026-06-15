@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta Reklam Uyum Kontrol Aracı | saglikturizmi.info</title>
+  <meta name="description" content="Sağlık reklamlarınızın Meta (Facebook/Instagram) reklam politikalarına uyumunu ücretsiz denetleyin. 12 maddelik kontrol listesini doldurun, uyum skorunuzu ve risk seviyenizi anında öğrenin.">
+  <link rel="canonical" href="https://saglikturizmi.info/araclar/meta-reklam-uyum-kontrol-araci/">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0F0A1A;
+      color: #F8F7FF;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    #site-header:empty, #site-footer:empty { display: none; }
+
+    a { color: #C4B5FD; text-decoration: none; }
+    a:hover { color: #F8F7FF; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      background: #1A1028;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+      padding: 12px 0;
+    }
+    .breadcrumb-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #C4B5FD;
+      flex-wrap: wrap;
+    }
+    .breadcrumb-sep {
+      color: rgba(196, 181, 253, 0.4);
+      font-size: 11px;
+    }
+    .breadcrumb-current {
+      color: #F8F7FF;
+      font-weight: 500;
+    }
+
+    /* Page header */
+    .page-header {
+      background: linear-gradient(135deg, #1A1028 0%, #231535 100%);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.25);
+      padding: 48px 20px 40px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+    .page-header h1 span {
+      background: linear-gradient(90deg, #7C3AED, #C4B5FD);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-header p {
+      color: #C4B5FD;
+      font-size: 15px;
+      max-width: 580px;
+      margin: 0 auto;
+      opacity: 0.85;
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(124, 58, 237, 0.2);
+      border: 1px solid rgba(124, 58, 237, 0.4);
+      color: #C4B5FD;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    /* Main container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* Card */
+    .card {
+      background: #1A1028;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-title .icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(124, 58, 237, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .card-subtitle {
+      font-size: 13px;
+      color: #C4B5FD;
+      opacity: 0.7;
+      margin-bottom: 24px;
+      padding-left: 42px;
+    }
+
+    /* Checklist */
+    .check-item {
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .check-item:hover {
+      border-color: rgba(124, 58, 237, 0.45);
+      background: #28173d;
+    }
+    .check-item.checked {
+      border-color: rgba(34, 197, 94, 0.4);
+      background: rgba(34, 197, 94, 0.06);
+    }
+    .check-box {
+      width: 24px;
+      height: 24px;
+      border-radius: 7px;
+      border: 2px solid rgba(124, 58, 237, 0.5);
+      background: #0F0A1A;
+      flex-shrink: 0;
+      margin-top: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .check-item.checked .check-box {
+      background: #22C55E;
+      border-color: #22C55E;
+    }
+    .check-box svg {
+      opacity: 0;
+      transform: scale(0.6);
+      transition: all 0.15s;
+    }
+    .check-item.checked .check-box svg { opacity: 1; transform: scale(1); }
+    .check-body { flex: 1; min-width: 0; }
+    .check-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #F8F7FF;
+      line-height: 1.45;
+    }
+    .check-desc {
+      font-size: 12.5px;
+      color: #C4B5FD;
+      opacity: 0.75;
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+    .check-weight {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+    .w-high { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+    .w-med  { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+    .w-low  { background: rgba(124, 58, 237, 0.18); color: #C4B5FD; border: 1px solid rgba(124,58,237,0.35); }
+
+    .check-top {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #7C3AED, #6D28D9);
+      color: #F8F7FF;
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-reset {
+      background: transparent;
+      color: rgba(196, 181, 253, 0.5);
+      border: 1px solid rgba(196, 181, 253, 0.15);
+      font-size: 13px;
+      padding: 10px 18px;
+    }
+    .btn-reset:hover {
+      color: #C4B5FD;
+      border-color: rgba(196, 181, 253, 0.35);
+      background: rgba(196, 181, 253, 0.05);
+    }
+    .check-tools {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .link-btn {
+      background: none;
+      border: none;
+      color: #C4B5FD;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .link-btn:hover { color: #F8F7FF; }
+
+    /* Results */
+    #results { display: none; }
+    #results.visible { display: block; }
+
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .results-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #F8F7FF;
+    }
+
+    /* Gauge wrapper */
+    .gauge-card {
+      background: #1A1028;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 16px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .score-display {
+      font-size: 72px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .caption {
+      font-size: 0.9375rem;
+      color: rgba(196,181,253,0.7);
+    }
+    .mt-8 { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .progress-bar {
+      height: 8px;
+      background-color: #231535;
+      border-radius: 999px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Risk banner */
+    .risk-banner {
+      border-radius: 14px;
+      padding: 20px 22px;
+      text-align: center;
+      margin-bottom: 24px;
+      border: 2px solid;
+    }
+    .risk-banner .risk-name {
+      font-size: clamp(20px, 4vw, 26px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .risk-banner .risk-sub {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    /* Summary stats */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .stat-box {
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-box .stat-val {
+      font-size: 26px;
+      font-weight: 800;
+      color: #F8F7FF;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-box .stat-val.purple { color: #C4B5FD; }
+    .stat-box .stat-label {
+      font-size: 11px;
+      color: #C4B5FD;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Fixes */
+    .fix-section { margin-bottom: 28px; }
+    .fix-item {
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.12);
+      border-left-width: 4px;
+      border-radius: 10px;
+      padding: 15px 18px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .fix-item.sev-high { border-left-color: #f87171; }
+    .fix-item.sev-med  { border-left-color: #fbbf24; }
+    .fix-item.sev-low  { border-left-color: #A78BFA; }
+    .fix-icon {
+      font-size: 18px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .fix-text { flex: 1; min-width: 0; }
+    .fix-text .fix-issue {
+      font-size: 14px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 4px;
+    }
+    .fix-text .fix-how {
+      font-size: 13px;
+      color: #C4B5FD;
+      line-height: 1.55;
+    }
+    .fix-sev-tag {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .sev-high .fix-sev-tag { background: rgba(239,68,68,0.15); color: #f87171; }
+    .sev-med  .fix-sev-tag { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .sev-low  .fix-sev-tag { background: rgba(124,58,237,0.18); color: #C4B5FD; }
+
+    .all-clear {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 12px;
+      padding: 22px;
+      text-align: center;
+      color: #4ade80;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .all-clear span { font-size: 28px; display: block; margin-bottom: 8px; }
+
+    /* Explanation / how-to */
+    .info-block { margin-bottom: 20px; }
+    .info-block:last-child { margin-bottom: 0; }
+    .info-block h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 6px;
+    }
+    .info-block p {
+      font-size: 13.5px;
+      color: #C4B5FD;
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+    .level-legend {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .legend-row {
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.12);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .legend-row .lg-name {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .legend-row .lg-range {
+      font-size: 11.5px;
+      color: #C4B5FD;
+      opacity: 0.75;
+    }
+
+    /* FAQ wrapper */
+    .faq-list { list-style: none; }
+    .faq-item {
+      border-bottom: 1px solid rgba(124, 58, 237, 0.15);
+      padding: 16px 0;
+    }
+    .faq-item:first-child { border-top: 1px solid rgba(124, 58, 237, 0.15); }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: #F8F7FF;
+      text-align: left;
+      line-height: 1.4;
+    }
+    .faq-q:hover { color: #C4B5FD; }
+    .faq-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: rgba(124, 58, 237, 0.15);
+      color: #C4B5FD;
+      font-size: 20px;
+      font-weight: 300;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .faq-a {
+      color: #C4B5FD;
+      padding-top: 8px;
+      line-height: 1.7;
+      font-size: 13.5px;
+      display: none;
+    }
+
+    /* WhatsApp CTA */
+    .wa-cta {
+      background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(37, 211, 102, 0.05));
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .wa-cta-text h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 6px;
+    }
+    .wa-cta-text p {
+      font-size: 13px;
+      color: #C4B5FD;
+      opacity: 0.8;
+    }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 13px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+    }
+    .btn-wa:hover {
+      background: #20c05a;
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+    }
+    .wa-icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* Info tip */
+    .info-tip {
+      background: rgba(124, 58, 237, 0.07);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: #C4B5FD;
+      opacity: 0.85;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin-top: 14px;
+    }
+    .info-tip .tip-icon { flex-shrink: 0; margin-top: 1px; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(124, 58, 237, 0.15);
+      margin: 24px 0;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 18px 14px; }
+      .wa-cta { flex-direction: column; text-align: center; }
+      .btn-wa { width: 100%; justify-content: center; }
+      .summary-grid { grid-template-columns: 1fr 1fr; }
+      .check-weight { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main style="padding-top:64px">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="/">Ana Sayfa</a>
+        <span class="breadcrumb-sep">&#9656;</span>
+        <a href="/araclar/">Araçlar</a>
+        <span class="breadcrumb-sep">&#9656;</span>
+        <span class="breadcrumb-current">Meta Reklam Uyum Kontrol Aracı</span>
+      </div>
+    </nav>
+
+    <!-- Page header -->
+    <div class="page-header">
+      <div class="header-badge">Ücretsiz Denetim Aracı</div>
+      <h1>Meta Reklam <span>Uyum Kontrol</span> Aracı</h1>
+      <p>Sağlık reklamlarınızın Meta (Facebook &amp; Instagram) reklam politikalarına uyumunu denetleyin. 12 maddelik kontrol listesini işaretleyin; uyum skorunuzu, risk seviyenizi ve eksik maddeler için somut düzeltmeleri anında görün.</p>
+    </div>
+
+    <div class="container">
+
+      <!-- Checklist Card -->
+      <div class="card">
+        <div class="card-title">
+          <div class="icon">&#9989;</div>
+          Reklam Uyum Kontrol Listesi
+        </div>
+        <div class="card-subtitle">Reklamınız için doğru olan maddeleri işaretleyin. İşaretlemediğiniz her madde, risk olarak değerlendirilir.</div>
+
+        <div class="check-tools">
+          <button class="link-btn" id="btn-check-all" type="button">Tümünü işaretle</button>
+          <button class="link-btn" id="btn-uncheck-all" type="button">Tümünü temizle</button>
+        </div>
+
+        <div id="checklist"></div>
+
+        <hr class="divider">
+
+        <div class="btn-row">
+          <button class="btn btn-primary" id="btn-audit" type="button">
+            &#128269; Hesapla / Denetle
+          </button>
+          <button class="btn btn-reset" id="btn-reset" type="button">
+            &#8635; Sıfırla
+          </button>
+        </div>
+
+        <div class="info-tip">
+          <span class="tip-icon">&#128161;</span>
+          Uyum skoru, işaretlediğiniz maddelerin risk ağırlıkları toplamının, tüm maddelerin ağırlık toplamına oranıdır. Yüksek riskli maddeler skoru daha çok etkiler. Bu araç bilgilendirme amaçlıdır; nihai sorumluluk reklam verene aittir.
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="results">
+
+        <div class="results-header">
+          <div class="results-title">&#128202; Denetim Sonucu</div>
+        </div>
+
+        <!-- Gauge -->
+        <div class="gauge-card">
+          <div id="score-gauge"></div>
+        </div>
+
+        <!-- Risk banner -->
+        <div id="risk-banner"></div>
+
+        <!-- Summary stats -->
+        <div class="summary-grid" id="summary-grid"></div>
+
+        <!-- Fixes -->
+        <div class="card">
+          <div class="card-title"><div class="icon">&#128295;</div> Önerilen Düzeltmeler</div>
+          <div class="card-subtitle">İşaretlemediğiniz her riskli madde için somut aksiyon adımları.</div>
+          <div class="fix-section" id="fix-list"></div>
+        </div>
+
+        <!-- WhatsApp CTA (results) -->
+        <div class="wa-cta">
+          <div class="wa-cta-text">
+            <h3>Reklamınızı politikaya uygun hale getirelim</h3>
+            <p>Reddedilen veya kısıtlanan sağlık reklamları için uzman desteği alın. Uyumlu kreatif, doğru kategori ve KVKK uyumlu landing page kurgusu.</p>
+          </div>
+          <a href="https://wa.me/905397232292?text=Merhaba%2C%20Meta%20reklam%20uyum%20kontrol%20arac%C4%B1n%C4%B1%20kulland%C4%B1m.%20Reklamlar%C4%B1m%C4%B1%20politikaya%20uygun%20hale%20getirmek%20istiyorum." target="_blank" rel="noopener" class="btn-wa">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            WhatsApp'tan Yazın
+          </a>
+        </div>
+
+      </div>
+      <!-- /results -->
+
+      <!-- How to read -->
+      <div class="card">
+        <div class="card-title"><div class="icon">&#128218;</div> Skoru Nasıl Yorumlamalısınız?</div>
+        <div class="card-subtitle">Uyum skorunuzun ve Meta sağlık reklam politikalarının temelleri.</div>
+
+        <div class="info-block">
+          <h4>Uyum skoru ne anlama gelir?</h4>
+          <p>Skor 0–100 arasıdır ve işaretlediğiniz maddelerin ağırlıklı toplamına dayanır. Yüksek skor, reklamınızın Meta politikalarına yakın olduğunu; düşük skor, reklamın reddedilme veya hesabınızın kısıtlanma riskinin yüksek olduğunu gösterir. Her madde aynı ağırlıkta değildir: öncesi-sonrası görseller ve kişisel sağlık iddiaları gibi maddeler en yüksek risk taşır.</p>
+        </div>
+
+        <div class="info-block">
+          <h4>Risk seviyeleri</h4>
+          <div class="level-legend">
+            <div class="legend-row">
+              <div class="lg-name" style="color:#4ade80">Uyumlu</div>
+              <div class="lg-range">85–100 puan</div>
+            </div>
+            <div class="legend-row">
+              <div class="lg-name" style="color:#C4B5FD">Düşük Risk</div>
+              <div class="lg-range">65–84 puan</div>
+            </div>
+            <div class="legend-row">
+              <div class="lg-name" style="color:#fbbf24">Orta Risk</div>
+              <div class="lg-range">40–64 puan</div>
+            </div>
+            <div class="legend-row">
+              <div class="lg-name" style="color:#f87171">Yüksek Risk</div>
+              <div class="lg-range">0–39 puan</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <h4>Meta sağlık reklam politikasının temelleri</h4>
+          <p>Meta, sağlık ve estetik sektöründe; kişiyi olumsuz hissettiren ifadeleri ("Sen", "senin vücudun" gibi kişisel niteliklere atıf), kesin sonuç vaatlerini, abartılı öncesi-sonrası görselleri ve yanıltıcı fiyat/indirim iddialarını yasaklar. Ayrıca sağlıkla ilgili reklamlarda hassas hedeflemeyi sınırlar ve bazı durumlarda işletme/sayfa doğrulaması ile özel reklam kategorisi ayarı ister. Landing page'in reklamla tutarlı, yasal bilgilendirmeleri (KVKK, gizlilik, sorumluluk reddi) içeren ve şeffaf olması beklenir.</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="card">
+        <div class="card-title"><div class="icon">&#10067;</div> Sıkça Sorulan Sorular</div>
+        <div class="card-subtitle">Meta reklam uyumu hakkında en çok sorulanlar.</div>
+        <ul class="faq-list">
+          <li class="faq-item">
+            <button class="faq-q" type="button">Meta neden sağlık reklamlarımı reddediyor? <span class="faq-icon">+</span></button>
+            <div class="faq-a">En sık nedenler; kesin sonuç vaadi içeren metinler, abartılı öncesi-sonrası görseller, "sen/senin vücudun" gibi kişisel niteliklere atıf yapan ifadeler, yanıltıcı fiyat iddiaları ve landing page ile reklam arasındaki tutarsızlıktır. Bu araçtaki kontrol listesi, bu yaygın red sebeplerini madde madde değerlendirmenizi sağlar.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-q" type="button">Öncesi-sonrası görsel kullanmak tamamen yasak mı? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Meta, ideal vücut imajını dayatan veya kişiyi mevcut haliyle olumsuz hissettiren öncesi-sonrası görsellerini kısıtlar. Birebir yan yana "öncesi vs sonrası" karşılaştırmaları genellikle reddedilir. Bunun yerine süreci, kliniği veya bilgilendirici içeriği öne çıkaran, abartısız görseller tercih edilmelidir.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-q" type="button">Özel Reklam Kategorisi nedir, ne zaman seçmeliyim? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Özel Reklam Kategorileri (Special Ad Categories), Meta'nın hassas konularda hedefleme seçeneklerini kısıtladığı bir ayardır. Sağlıkla doğrudan ilişkili bazı kampanyalarda doğru kategorinin seçilmesi gerekebilir. Yanlış veya eksik kategori, kampanyanın reddedilmesine yol açabilir. Kampanya kurarken Meta'nın yönlendirmelerini ve güncel politikayı kontrol edin.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-q" type="button">Bu araç resmi bir Meta denetimi mi? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Hayır. Bu araç, Meta'nın kamuya açık reklam politikalarına dayalı bilgilendirici bir kontrol listesidir ve Meta ile resmi bir bağlantısı yoktur. Skor, reklamınızın onaylanacağını garanti etmez; amacı yaygın risk noktalarını önceden görmenizi sağlamaktır. Nihai değerlendirme Meta'nın inceleme sistemine aittir.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-q" type="button">Skorumu nasıl yükseltebilirim? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Denetim sonucundaki "Önerilen Düzeltmeler" bölümünde, işaretlemediğiniz her madde için somut bir aksiyon adımı listelenir. Önce yüksek riskli (kırmızı) maddeleri giderin: kesin vaatleri kaldırın, görselleri politikaya uygun hale getirin, landing page'e KVKK/gizlilik bilgilerini ekleyin ve işletme doğrulamasını tamamlayın. Düzeltmeleri yaptıktan sonra listeyi tekrar işaretleyip yeniden denetleyin.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Final WhatsApp CTA -->
+      <div class="wa-cta">
+        <div class="wa-cta-text">
+          <h3>Reklam uyumu ve büyüme için uzmanlarımızla konuşun</h3>
+          <p>Sağlık turizmi reklamlarınızı politikaya uygun, dönüşüm odaklı ve sürdürülebilir hale getirelim. Ücretsiz ön değerlendirme alın.</p>
+        </div>
+        <a href="https://wa.me/905397232292?text=Merhaba%2C%20Meta%20reklam%20uyum%20arac%C4%B1n%C4%B1%20kulland%C4%B1m.%20Reklam%20uyumu%20ve%20pazarlama%20deste%C4%9Fi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn-wa">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp'tan Yazın
+        </a>
+      </div>
+
+    </div>
+  </main>
+  <div id="site-footer"></div>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Meta Reklam Uyum Kontrol Aracı",
+        "url": "https://saglikturizmi.info/araclar/meta-reklam-uyum-kontrol-araci/",
+        "description": "Sağlık reklamlarının Meta (Facebook/Instagram) reklam politikalarına uyumunu denetleyen ücretsiz kontrol listesi aracı. 12 maddelik denetim, uyum skoru ve risk seviyesi hesaplar.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "tr",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "saglikturizmi.info",
+          "url": "https://saglikturizmi.info/"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://saglikturizmi.info/" },
+          { "@type": "ListItem", "position": 2, "name": "Araçlar", "item": "https://saglikturizmi.info/araclar/" },
+          { "@type": "ListItem", "position": 3, "name": "Meta Reklam Uyum Kontrol Aracı", "item": "https://saglikturizmi.info/araclar/meta-reklam-uyum-kontrol-araci/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Meta neden sağlık reklamlarımı reddediyor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "En sık nedenler; kesin sonuç vaadi içeren metinler, abartılı öncesi-sonrası görseller, sen/senin vücudun gibi kişisel niteliklere atıf yapan ifadeler, yanıltıcı fiyat iddiaları ve landing page ile reklam arasındaki tutarsızlıktır. Bu araçtaki kontrol listesi, bu yaygın red sebeplerini madde madde değerlendirmenizi sağlar."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Öncesi-sonrası görsel kullanmak tamamen yasak mı?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Meta, ideal vücut imajını dayatan veya kişiyi mevcut haliyle olumsuz hissettiren öncesi-sonrası görsellerini kısıtlar. Birebir yan yana karşılaştırmalar genellikle reddedilir. Bunun yerine süreci, kliniği veya bilgilendirici içeriği öne çıkaran abartısız görseller tercih edilmelidir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Özel Reklam Kategorisi nedir, ne zaman seçmeliyim?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Özel Reklam Kategorileri, Meta'nın hassas konularda hedefleme seçeneklerini kısıtladığı bir ayardır. Sağlıkla doğrudan ilişkili bazı kampanyalarda doğru kategorinin seçilmesi gerekebilir. Yanlış veya eksik kategori, kampanyanın reddedilmesine yol açabilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Bu araç resmi bir Meta denetimi mi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hayır. Bu araç, Meta'nın kamuya açık reklam politikalarına dayalı bilgilendirici bir kontrol listesidir ve Meta ile resmi bir bağlantısı yoktur. Skor, reklamınızın onaylanacağını garanti etmez; amacı yaygın risk noktalarını önceden görmenizi sağlamaktır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Skorumu nasıl yükseltebilirim?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Denetim sonucundaki Önerilen Düzeltmeler bölümünde, işaretlemediğiniz her madde için somut bir aksiyon adımı listelenir. Önce yüksek riskli maddeleri giderin: kesin vaatleri kaldırın, görselleri politikaya uygun hale getirin, landing page'e KVKK/gizlilik bilgilerini ekleyin ve işletme doğrulamasını tamamlayın."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script src="/shared.js"></script>
+  <script>
+    /* ===== META REKLAM UYUM KONTROL ARACI ===== */
+    (function () {
+      // Each item: id, weight (risk weight), label, desc (what it means), fix (actionable fix)
+      var ITEMS = [
+        {
+          id: 'before-after',
+          weight: 14,
+          label: 'Öncesi-sonrası (öncesi-sonrası) görsel kullanılmıyor veya politikaya uygun',
+          desc: 'Birebir yan yana öncesi-sonrası karşılaştırması yok; görseller abartısız ve gerçekçi.',
+          fix: 'Yan yana öncesi-sonrası karşılaştırmalarını kaldırın. Bunun yerine süreci, klinik ortamını veya bilgilendirici içeriği gösteren, ideal vücut imajı dayatmayan görseller kullanın.'
+        },
+        {
+          id: 'no-guarantee',
+          weight: 14,
+          label: 'Kişisel sağlık iddiası / "kesin sonuç" vaadi içermiyor',
+          desc: '"%100 başarı", "kesin sonuç", "garantili" gibi kesin tıbbi vaatler yok.',
+          fix: 'Kesin sonuç ve garanti ifadelerini ("kesin", "%100", "garantili sonuç") kaldırın. Sonuçların kişiden kişiye değişebileceğini belirten gerçekçi ve ölçülü bir dil kullanın.'
+        },
+        {
+          id: 'personal-attr',
+          weight: 12,
+          label: '"Sen / senin vücudun" gibi kişisel niteliklere atıf yapan ifade yok',
+          desc: 'Meta sağlık politikası, kişiyi mevcut haliyle hedef alan kişisel atıfları yasaklar.',
+          fix: 'Reklam metnindeki "sen", "senin vücudun", "senin kilon" gibi kişisel atıfları kaldırın. Genel, bilgilendirici ve kişiyi olumsuz hissettirmeyen bir dil kullanın.'
+        },
+        {
+          id: 'landing-legal',
+          weight: 11,
+          label: 'Açılış sayfasında yasal bilgiler / KVKK / gizlilik mevcut',
+          desc: 'Landing page; KVKK aydınlatma metni, gizlilik politikası ve iletişim bilgisi içeriyor.',
+          fix: 'Açılış sayfanıza KVKK aydınlatma metni, gizlilik politikası bağlantısı ve açık iletişim/işletme bilgilerini ekleyin. Form alanlarında açık rıza kutusu bulundurun.'
+        },
+        {
+          id: 'special-category',
+          weight: 9,
+          label: 'Özel Reklam Kategorileri doğru ayarlandı',
+          desc: 'Kampanya, ilgili durumlarda doğru Özel Reklam Kategorisi ile yapılandırıldı.',
+          fix: 'Kampanya kurulumunda, sağlıkla ilişkili durumlarda Meta\'nın istediği Özel Reklam Kategorisini doğru seçin. Güncel politika gerekliliklerini Reklam Yöneticisi içinden teyit edin.'
+        },
+        {
+          id: 'targeting',
+          weight: 8,
+          label: 'Hedefleme yaşa/sağlık durumuna göre ayrımcılık içermiyor',
+          desc: 'Hedefleme, hassas sağlık durumlarına veya ayrımcı kriterlere dayanmıyor.',
+          fix: 'Hassas sağlık durumlarına veya ayrımcı kriterlere dayalı hedeflemeyi kaldırın. Daha geniş ve politikaya uygun ilgi/demografi segmentleri kullanın.'
+        },
+        {
+          id: 'landing-consistent',
+          weight: 8,
+          label: 'Açılış sayfası (landing page) reklam ile tutarlı',
+          desc: 'Reklamdaki teklif, görsel ve mesaj, landing page ile birebir örtüşüyor.',
+          fix: 'Reklamdaki teklif, fiyat ve mesajın landing page ile birebir tutarlı olmasını sağlayın. Tıklayan kullanıcının beklediği içeriği aynı sayfada bulması gerekir.'
+        },
+        {
+          id: 'no-shock',
+          weight: 7,
+          label: 'Görselde aşırı metin yok / dikkat çekici şok içerik yok',
+          desc: 'Görselde rahatsız edici, şok edici içerik veya aşırı metin bulunmuyor.',
+          fix: 'Görseldeki şok edici/rahatsız edici öğeleri ve aşırı metni azaltın. Net, profesyonel ve metin oranı düşük görseller kullanın.'
+        },
+        {
+          id: 'price-claims',
+          weight: 6,
+          label: 'Fiyat/indirim iddiaları doğrulanabilir',
+          desc: '"%50 indirim", "en ucuz" gibi iddialar gerçek ve doğrulanabilir.',
+          fix: 'Fiyat ve indirim iddialarını gerçek, güncel ve doğrulanabilir hale getirin. Yanıltıcı "en ucuz / en iyi" gibi kanıtlanamayan üstünlük iddialarından kaçının.'
+        },
+        {
+          id: 'business-verify',
+          weight: 5,
+          label: 'Sayfa/işletme doğrulaması (business verification) tamam',
+          desc: 'İşletme Yöneticisi üzerinden sayfa ve işletme doğrulaması tamamlandı.',
+          fix: 'Meta İşletme Yöneticisi (Business Manager) üzerinden işletme ve sayfa doğrulamasını tamamlayın. Doğrulanmış hesaplar reklam onayında daha az kısıtlamayla karşılaşır.'
+        },
+        {
+          id: 'clear-brand',
+          weight: 3,
+          label: 'İletişim ve marka adı net, yanıltıcı değil',
+          desc: 'Marka adı, iletişim bilgileri ve kimlik açık; yanıltıcı isim kullanılmıyor.',
+          fix: 'Reklam ve sayfada marka adınızı, iletişim bilgilerinizi ve kim olduğunuzu net belirtin. Yanıltıcı veya başka markayı çağrıştıran isimlerden kaçının.'
+        },
+        {
+          id: 'disclaimer',
+          weight: 3,
+          label: 'Tıbbi/cerrahi işlemler için gerekli izin/sorumluluk reddi mevcut',
+          desc: 'Tıbbi işlemler için gerekli yetki, izin ve sorumluluk reddi (disclaimer) bulunuyor.',
+          fix: 'Tanıtılan tıbbi/cerrahi işlemler için gerekli izin ve yetkilere sahip olduğunuzu, ilgili sorumluluk reddi (disclaimer) ifadelerini landing page ve reklam metnine ekleyin.'
+        }
+      ];
+
+      var TOTAL_WEIGHT = ITEMS.reduce(function (a, it) { return a + it.weight; }, 0);
+
+      var checklistEl = document.getElementById('checklist');
+      var resultsEl = document.getElementById('results');
+      var btnAudit = document.getElementById('btn-audit');
+      var btnReset = document.getElementById('btn-reset');
+      var btnCheckAll = document.getElementById('btn-check-all');
+      var btnUncheckAll = document.getElementById('btn-uncheck-all');
+
+      var state = {};
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function weightTier(w) {
+        if (w >= 11) return { cls: 'w-high', sev: 'sev-high', tag: 'Yüksek Risk', icon: '🔴' };
+        if (w >= 6)  return { cls: 'w-med',  sev: 'sev-med',  tag: 'Orta Risk',   icon: '🟠' };
+        return { cls: 'w-low', sev: 'sev-low', tag: 'Düşük Risk', icon: '🟣' };
+      }
+
+      var checkSvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F0A1A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+      function render() {
+        var html = '';
+        ITEMS.forEach(function (it) {
+          var t = weightTier(it.weight);
+          var checked = state[it.id] ? ' checked' : '';
+          html += '<div class="check-item' + checked + '" data-id="' + it.id + '" role="checkbox" tabindex="0" aria-checked="' + (state[it.id] ? 'true' : 'false') + '">' +
+            '<div class="check-box">' + checkSvg + '</div>' +
+            '<div class="check-body">' +
+              '<div class="check-top">' +
+                '<div class="check-label">' + escapeHtml(it.label) + '</div>' +
+                '<span class="check-weight ' + t.cls + '">' + t.tag + '</span>' +
+              '</div>' +
+              '<div class="check-desc">' + escapeHtml(it.desc) + '</div>' +
+            '</div>' +
+          '</div>';
+        });
+        checklistEl.innerHTML = html;
+
+        checklistEl.querySelectorAll('.check-item').forEach(function (el) {
+          el.addEventListener('click', function () { toggle(el.dataset.id, el); });
+          el.addEventListener('keydown', function (e) {
+            if (e.key === ' ' || e.key === 'Enter') {
+              e.preventDefault();
+              toggle(el.dataset.id, el);
+            }
+          });
+        });
+      }
+
+      function toggle(id, el) {
+        state[id] = !state[id];
+        el.classList.toggle('checked', state[id]);
+        el.setAttribute('aria-checked', state[id] ? 'true' : 'false');
+      }
+
+      function setAll(val) {
+        ITEMS.forEach(function (it) { state[it.id] = val; });
+        render();
+      }
+
+      function compute() {
+        var checkedWeight = 0;
+        var checkedCount = 0;
+        ITEMS.forEach(function (it) {
+          if (state[it.id]) {
+            checkedWeight += it.weight;
+            checkedCount += 1;
+          }
+        });
+        var score = Math.round((checkedWeight / TOTAL_WEIGHT) * 100);
+        score = Math.max(0, Math.min(100, score));
+        return { score: score, checkedCount: checkedCount, checkedWeight: checkedWeight };
+      }
+
+      function riskLevel(score) {
+        if (score >= 85) return { name: 'Uyumlu', color: '#4ade80', bg: 'rgba(34,197,94,0.1)', border: 'rgba(34,197,94,0.45)', sub: 'Reklamınız Meta politikalarına büyük ölçüde uyumlu görünüyor. Yine de kalan maddeleri tamamlayın.' };
+        if (score >= 65) return { name: 'Düşük Risk', color: '#C4B5FD', bg: 'rgba(124,58,237,0.1)', border: 'rgba(124,58,237,0.45)', sub: 'İyi durumdasınız, ancak birkaç madde reddedilme riski yaratabilir. Aşağıdaki düzeltmeleri uygulayın.' };
+        if (score >= 40) return { name: 'Orta Risk', color: '#fbbf24', bg: 'rgba(245,158,11,0.1)', border: 'rgba(245,158,11,0.45)', sub: 'Reklamınızın reddedilme ihtimali belirgin. Özellikle yüksek riskli maddeleri öncelikli giderin.' };
+        return { name: 'Yüksek Risk', color: '#f87171', bg: 'rgba(239,68,68,0.1)', border: 'rgba(239,68,68,0.45)', sub: 'Reklamınızın reddedilme veya hesabınızın kısıtlanma riski yüksek. Aşağıdaki düzeltmeleri ivedilikle uygulayın.' };
+      }
+
+      function renderResults() {
+        var r = compute();
+        var lvl = riskLevel(r.score);
+
+        // Gauge via shared.js
+        if (typeof window.renderScoreGauge === 'function') {
+          window.renderScoreGauge('score-gauge', r.score, 100, lvl.name);
+        } else {
+          document.getElementById('score-gauge').innerHTML =
+            '<div style="text-align:center;padding:32px"><div class="score-display" style="color:' + lvl.color + '">' + r.score + '</div><div class="caption mt-8">100 üzerinden</div></div>';
+        }
+
+        // Risk banner
+        document.getElementById('risk-banner').innerHTML =
+          '<div class="risk-banner" style="background:' + lvl.bg + ';border-color:' + lvl.border + '">' +
+            '<div class="risk-name" style="color:' + lvl.color + '">' + escapeHtml(lvl.name) + '</div>' +
+            '<div class="risk-sub" style="color:' + lvl.color + '">' + escapeHtml(lvl.sub) + '</div>' +
+          '</div>';
+
+        // Summary stats
+        var unchecked = ITEMS.length - r.checkedCount;
+        document.getElementById('summary-grid').innerHTML =
+          '<div class="stat-box"><div class="stat-val">' + r.checkedCount + '/' + ITEMS.length + '</div><div class="stat-label">Uyumlu Madde</div></div>' +
+          '<div class="stat-box"><div class="stat-val" style="color:' + lvl.color + '">' + r.score + '</div><div class="stat-label">Uyum Skoru</div></div>' +
+          '<div class="stat-box"><div class="stat-val purple">' + escapeHtml(lvl.name) + '</div><div class="stat-label">Risk Seviyesi</div></div>' +
+          '<div class="stat-box"><div class="stat-val">' + unchecked + '</div><div class="stat-label">Açık Risk</div></div>';
+
+        // Fixes — for each UNCHECKED item, sorted by weight desc
+        var fixList = document.getElementById('fix-list');
+        var pending = ITEMS.filter(function (it) { return !state[it.id]; })
+          .sort(function (a, b) { return b.weight - a.weight; });
+
+        if (pending.length === 0) {
+          fixList.innerHTML =
+            '<div class="all-clear"><span>✅</span>Tüm maddeleri işaretlediniz. Bu kontrol listesine göre belirgin bir risk noktası bulunmuyor. Yine de Meta\'nın güncel politikalarını kampanya öncesi teyit edin.</div>';
+        } else {
+          var html = '';
+          pending.forEach(function (it) {
+            var t = weightTier(it.weight);
+            html += '<div class="fix-item ' + t.sev + '">' +
+              '<div class="fix-icon">' + t.icon + '</div>' +
+              '<div class="fix-text">' +
+                '<div class="fix-issue">' + escapeHtml(it.label) + '</div>' +
+                '<div class="fix-how">' + escapeHtml(it.fix) + '</div>' +
+              '</div>' +
+              '<span class="fix-sev-tag">' + t.tag + '</span>' +
+            '</div>';
+          });
+          fixList.innerHTML = html;
+        }
+
+        resultsEl.classList.add('visible');
+        setTimeout(function () {
+          resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+
+      btnAudit.addEventListener('click', renderResults);
+
+      btnReset.addEventListener('click', function () {
+        setAll(false);
+        resultsEl.classList.remove('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      btnCheckAll.addEventListener('click', function () { setAll(true); });
+      btnUncheckAll.addEventListener('click', function () { setAll(false); });
+
+      // Init
+      ITEMS.forEach(function (it) { state[it.id] = false; });
+      render();
+    })();
+  </script>
+</body>
+</html>

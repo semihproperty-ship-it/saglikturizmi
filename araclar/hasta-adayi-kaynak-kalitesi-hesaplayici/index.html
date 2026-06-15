@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasta Adayı Kaynak Kalitesi Hesaplayıcı | saglikturizmi.info</title>
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0F0A1A;
+      color: #F8F7FF;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    #site-header:empty, #site-footer:empty { display: none; }
+
+    a { color: #C4B5FD; text-decoration: none; }
+    a:hover { color: #F8F7FF; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      background: #1A1028;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+      padding: 12px 0;
+    }
+    .breadcrumb-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #C4B5FD;
+      flex-wrap: wrap;
+    }
+    .breadcrumb-sep {
+      color: rgba(196, 181, 253, 0.4);
+      font-size: 11px;
+    }
+    .breadcrumb-current {
+      color: #F8F7FF;
+      font-weight: 500;
+    }
+
+    /* Page header */
+    .page-header {
+      background: linear-gradient(135deg, #1A1028 0%, #231535 100%);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.25);
+      padding: 48px 20px 40px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+    .page-header h1 span {
+      background: linear-gradient(90deg, #7C3AED, #C4B5FD);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-header p {
+      color: #C4B5FD;
+      font-size: 15px;
+      max-width: 560px;
+      margin: 0 auto;
+      opacity: 0.85;
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(124, 58, 237, 0.2);
+      border: 1px solid rgba(124, 58, 237, 0.4);
+      color: #C4B5FD;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    /* Main container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* Card */
+    .card {
+      background: #1A1028;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-title .icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(124, 58, 237, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .card-subtitle {
+      font-size: 13px;
+      color: #C4B5FD;
+      opacity: 0.7;
+      margin-bottom: 24px;
+      padding-left: 42px;
+    }
+
+    /* Source rows */
+    .source-row {
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 14px;
+      transition: border-color 0.2s;
+    }
+    .source-row:focus-within {
+      border-color: rgba(124, 58, 237, 0.5);
+    }
+    .source-row-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .source-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #C4B5FD;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .source-num-badge {
+      background: rgba(124, 58, 237, 0.25);
+      border: 1px solid rgba(124, 58, 237, 0.4);
+      color: #C4B5FD;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 20px;
+    }
+
+    .fields-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .field-name-wrap {
+      grid-column: 1 / -1;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .field-group label {
+      font-size: 12px;
+      color: #C4B5FD;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+    .field-group input {
+      background: #0F0A1A;
+      border: 1px solid rgba(124, 58, 237, 0.25);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #F8F7FF;
+      font-size: 14px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+    }
+    .field-group input::placeholder {
+      color: rgba(196, 181, 253, 0.35);
+    }
+    .field-group input:focus {
+      border-color: #7C3AED;
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+    }
+    .field-group input[type="number"]::-webkit-inner-spin-button,
+    .field-group input[type="number"]::-webkit-outer-spin-button {
+      opacity: 0.4;
+    }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #7C3AED, #6D28D9);
+      color: #F8F7FF;
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-secondary {
+      background: rgba(124, 58, 237, 0.15);
+      color: #C4B5FD;
+      border: 1px solid rgba(124, 58, 237, 0.35);
+    }
+    .btn-secondary:hover {
+      background: rgba(124, 58, 237, 0.25);
+      color: #F8F7FF;
+    }
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+    .btn-reset {
+      background: transparent;
+      color: rgba(196, 181, 253, 0.5);
+      border: 1px solid rgba(196, 181, 253, 0.15);
+      font-size: 13px;
+      padding: 10px 18px;
+    }
+    .btn-reset:hover {
+      color: #C4B5FD;
+      border-color: rgba(196, 181, 253, 0.35);
+      background: rgba(196, 181, 253, 0.05);
+    }
+
+    /* Results section */
+    #results {
+      display: none;
+    }
+    #results.visible {
+      display: block;
+    }
+
+    /* Results header */
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .results-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #F8F7FF;
+    }
+
+    /* Summary stats */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .stat-box {
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-box .stat-val {
+      font-size: 26px;
+      font-weight: 800;
+      color: #F8F7FF;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-box .stat-val.purple { color: #C4B5FD; }
+    .stat-box .stat-label {
+      font-size: 11px;
+      color: #C4B5FD;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Table */
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 28px;
+      border-radius: 12px;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 620px;
+    }
+    thead tr {
+      background: #231535;
+      border-bottom: 2px solid rgba(124, 58, 237, 0.3);
+    }
+    thead th {
+      padding: 13px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      color: #C4B5FD;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      white-space: nowrap;
+    }
+    thead th:first-child { border-radius: 12px 0 0 0; }
+    thead th:last-child { border-radius: 0 12px 0 0; text-align: center; }
+    tbody tr {
+      border-bottom: 1px solid rgba(124, 58, 237, 0.08);
+      transition: background 0.15s;
+    }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(124, 58, 237, 0.06); }
+    tbody tr.rank-1 { background: rgba(124, 58, 237, 0.08); }
+    tbody td {
+      padding: 13px 16px;
+      font-size: 13px;
+      color: #F8F7FF;
+      white-space: nowrap;
+    }
+    .td-name {
+      font-weight: 600;
+      color: #F8F7FF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .rank-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .rank-1 .rank-badge { background: #7C3AED; color: #fff; }
+    .rank-2 .rank-badge { background: rgba(124,58,237,0.35); color: #C4B5FD; }
+    .rank-other .rank-badge { background: rgba(196,181,253,0.1); color: rgba(196,181,253,0.6); }
+    td.td-num { color: #C4B5FD; text-align: right; }
+    td.td-cost { color: #F8F7FF; text-align: right; }
+
+    /* Quality badge */
+    .quality-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 800;
+      margin: 0 auto;
+    }
+    .quality-A { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34,197,94,0.35); }
+    .quality-B { background: rgba(124, 58, 237, 0.2); color: #C4B5FD; border: 1px solid rgba(124,58,237,0.35); }
+    .quality-C { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+    .quality-D { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+    td.td-quality { text-align: center; }
+
+    .roi-score {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* Bar chart */
+    .chart-section { margin-bottom: 28px; }
+    .chart-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 16px;
+    }
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .bar-name {
+      font-size: 12px;
+      color: #C4B5FD;
+      width: 140px;
+      flex-shrink: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: right;
+    }
+    .bar-track {
+      flex: 1;
+      background: rgba(124, 58, 237, 0.1);
+      border-radius: 6px;
+      height: 26px;
+      overflow: hidden;
+      position: relative;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #6D28D9, #7C3AED, #A78BFA);
+      transition: width 0.8s cubic-bezier(.4,0,.2,1);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      min-width: 36px;
+    }
+    .bar-fill.bar-top { background: linear-gradient(90deg, #5B21B6, #7C3AED, #C4B5FD); }
+    .bar-fill.bar-mid { background: linear-gradient(90deg, #4C1D95, #6D28D9, #8B5CF6); opacity: 0.85; }
+    .bar-fill.bar-low { background: linear-gradient(90deg, #3B0764, #5B21B6, #7C3AED); opacity: 0.65; }
+
+    /* Recommendations */
+    .reco-section { margin-bottom: 28px; }
+    .reco-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 14px;
+    }
+    .reco-best {
+      background: rgba(124, 58, 237, 0.12);
+      border: 1px solid rgba(124, 58, 237, 0.35);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .reco-best-icon {
+      font-size: 22px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .reco-best-text strong {
+      display: block;
+      font-size: 15px;
+      color: #F8F7FF;
+      margin-bottom: 4px;
+    }
+    .reco-best-text p {
+      font-size: 13px;
+      color: #C4B5FD;
+      opacity: 0.85;
+    }
+    .reco-items {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .reco-item {
+      background: #231535;
+      border: 1px solid rgba(124, 58, 237, 0.12);
+      border-radius: 10px;
+      padding: 13px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .reco-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .dot-a { background: #4ade80; }
+    .dot-b { background: #C4B5FD; }
+    .dot-c { background: #fbbf24; }
+    .dot-d { background: #f87171; }
+    .reco-item-text {
+      font-size: 13px;
+      color: #C4B5FD;
+      line-height: 1.5;
+    }
+    .reco-item-text strong {
+      color: #F8F7FF;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* WhatsApp CTA */
+    .wa-cta {
+      background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(37, 211, 102, 0.05));
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .wa-cta-text h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #F8F7FF;
+      margin-bottom: 6px;
+    }
+    .wa-cta-text p {
+      font-size: 13px;
+      color: #C4B5FD;
+      opacity: 0.8;
+    }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 13px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+    }
+    .btn-wa:hover {
+      background: #20c05a;
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+    }
+    .wa-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Info tip */
+    .info-tip {
+      background: rgba(124, 58, 237, 0.07);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: #C4B5FD;
+      opacity: 0.8;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin-top: 14px;
+    }
+    .info-tip .tip-icon { flex-shrink: 0; margin-top: 1px; }
+
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(124, 58, 237, 0.15);
+      margin: 28px 0;
+    }
+
+    /* Error */
+    .error-msg {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #f87171;
+      margin-top: 14px;
+      display: none;
+    }
+    .error-msg.visible { display: block; }
+
+    @media (max-width: 600px) {
+      .card { padding: 18px 14px; }
+      .fields-grid { grid-template-columns: 1fr 1fr; }
+      .field-name-wrap { grid-column: 1 / -1; }
+      .bar-name { width: 90px; }
+      .wa-cta { flex-direction: column; text-align: center; }
+      .btn-wa { width: 100%; justify-content: center; }
+      .summary-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main style="padding-top:64px">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="/">Ana Sayfa</a>
+        <span class="breadcrumb-sep">&#9656;</span>
+        <a href="/araclar/">Araçlar</a>
+        <span class="breadcrumb-sep">&#9656;</span>
+        <span class="breadcrumb-current">Hasta Adayı Kaynak Kalitesi Hesaplayıcı</span>
+      </div>
+    </nav>
+
+    <!-- Page header -->
+    <div class="page-header">
+      <div class="header-badge">Ücretsiz Analiz Aracı</div>
+      <h1>Hasta Adayı <span>Kaynak Kalitesi</span> Hesaplayıcı</h1>
+      <p>Farklı lead kaynaklarınızı karşılaştırın, ROI skorlarını hesaplayın ve en verimli kanalı keşfedin.</p>
+    </div>
+
+    <div class="container">
+
+      <!-- Form Card -->
+      <div class="card">
+        <div class="card-title">
+          <div class="icon">&#128202;</div>
+          Kaynak Verilerini Girin
+        </div>
+        <div class="card-subtitle">Her lead kaynağı için aşağıdaki bilgileri doldurun. En az 1, en fazla 5 kaynak ekleyebilirsiniz.</div>
+
+        <div id="sources-container">
+          <!-- Source rows injected by JS -->
+        </div>
+
+        <div class="btn-row" style="margin-top: 20px;">
+          <button class="btn btn-secondary" id="btn-add-source" type="button">
+            <span>&#43;</span> Kaynak Ekle
+          </button>
+        </div>
+
+        <hr class="divider">
+
+        <div class="btn-row">
+          <button class="btn btn-primary" id="btn-hesapla" type="button">
+            &#9654;&#65039; Hesapla
+          </button>
+          <button class="btn btn-reset" id="btn-reset" type="button">
+            &#8635; Sıfırla
+          </button>
+        </div>
+        <div class="error-msg" id="error-msg"></div>
+
+        <div class="info-tip">
+          <span class="tip-icon">&#128161;</span>
+          ROI skoru; dönüşüm oranı (%40), randevu gösterme oranı (%30) ve maliyet verimliliği (%30) ağırlıklarına göre hesaplanır.
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div id="results">
+
+        <!-- Summary Stats -->
+        <div class="results-header">
+          <div class="results-title">&#128202; Analiz Sonuçları</div>
+        </div>
+        <div class="summary-grid" id="summary-grid"></div>
+
+        <!-- Ranked Table -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <div style="padding: 20px 22px 0;">
+            <div class="card-title"><div class="icon">&#127942;</div> Kaynak Sıralama Tablosu</div>
+            <div class="card-subtitle" style="margin-bottom: 8px;">ROI skoruna göre en iyiden en kötüye sıralanmıştır.</div>
+          </div>
+          <div class="table-wrap">
+            <table id="results-table">
+              <thead>
+                <tr>
+                  <th>Kaynak</th>
+                  <th style="text-align:right">Lead/ay</th>
+                  <th style="text-align:right">Dönüşüm</th>
+                  <th style="text-align:right">Hasta/ay</th>
+                  <th style="text-align:right">Hasta Maliyeti</th>
+                  <th style="text-align:right">Gösterme</th>
+                  <th style="text-align:right">ROI Skoru</th>
+                  <th style="text-align:center">Kalite</th>
+                </tr>
+              </thead>
+              <tbody id="results-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="card">
+          <div class="card-title"><div class="icon">&#9644;</div> ROI Skoru Görsel Karşılaştırma</div>
+          <div class="card-subtitle">Yüksek skor, daha iyi kaynak kalitesi anlamına gelir (0–100).</div>
+          <div id="bar-chart"></div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="card">
+          <div class="card-title"><div class="icon">&#128270;</div> Öneriler ve Değerlendirme</div>
+          <div class="card-subtitle">Kaynak kalite notuna göre özelleştirilmiş öneriler.</div>
+          <div id="reco-best"></div>
+          <div class="reco-items" id="reco-items"></div>
+        </div>
+
+        <!-- WhatsApp CTA -->
+        <div class="wa-cta">
+          <div class="wa-cta-text">
+            <h3>Kaynak optimizasyonu için uzmanlarımızla konuşun</h3>
+            <p>Sağlık turizmi lead yönetiminde ücretsiz danışmanlık alın. Doğru kaynağa doğru bütçe.</p>
+          </div>
+          <a href="https://wa.me/905397232292?text=Merhaba%2C%20hasta%20aday%C4%B1%20kaynak%20optimizasyonu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn-wa">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            WhatsApp'tan Yazın
+          </a>
+        </div>
+
+      </div>
+      <!-- /results -->
+
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/shared.js"></script>
+  <script>
+    /* ===== HASTA ADAYI KAYNAK KALİTESİ HESAPLAYICI ===== */
+
+    const MAX_SOURCES = 5;
+    let visibleCount = 2;
+
+    const sourcesContainer = document.getElementById('sources-container');
+    const btnAdd = document.getElementById('btn-add-source');
+    const btnHesapla = document.getElementById('btn-hesapla');
+    const btnReset = document.getElementById('btn-reset');
+    const errorMsg = document.getElementById('error-msg');
+    const resultsSection = document.getElementById('results');
+
+    const defaultNames = [
+      'Facebook Reklamı',
+      'Google Ads',
+      'Organik SEO',
+      'Referans / Tavsiye',
+      'Instagram Reklamı'
+    ];
+
+    function createSourceRow(index) {
+      const row = document.createElement('div');
+      row.className = 'source-row';
+      row.id = 'source-row-' + index;
+      row.dataset.index = index;
+      row.innerHTML = `
+        <div class="source-row-header">
+          <span class="source-label">Kaynak ${index + 1}</span>
+          <span class="source-num-badge">#${index + 1}</span>
+        </div>
+        <div class="fields-grid">
+          <div class="field-group field-name-wrap">
+            <label for="name-${index}">Kaynak Adı</label>
+            <input type="text" id="name-${index}" placeholder="${defaultNames[index] || 'Kaynak adı girin'}" autocomplete="off">
+          </div>
+          <div class="field-group">
+            <label for="leads-${index}">Aylık Lead Sayısı</label>
+            <input type="number" id="leads-${index}" placeholder="örn: 150" min="0" step="1">
+          </div>
+          <div class="field-group">
+            <label for="conv-${index}">Dönüşüm Oranı %</label>
+            <input type="number" id="conv-${index}" placeholder="örn: 12" min="0" max="100" step="0.1">
+          </div>
+          <div class="field-group">
+            <label for="cost-${index}">Ortalama Lead Maliyeti (TL)</label>
+            <input type="number" id="cost-${index}" placeholder="örn: 85" min="0" step="0.01">
+          </div>
+          <div class="field-group">
+            <label for="show-${index}">Randevu Gösterme Oranı %</label>
+            <input type="number" id="show-${index}" placeholder="örn: 65" min="0" max="100" step="0.1">
+          </div>
+        </div>
+      `;
+      return row;
+    }
+
+    function initRows() {
+      sourcesContainer.innerHTML = '';
+      for (let i = 0; i < MAX_SOURCES; i++) {
+        const row = createSourceRow(i);
+        if (i >= visibleCount) row.style.display = 'none';
+        sourcesContainer.appendChild(row);
+      }
+      updateAddBtn();
+    }
+
+    function updateAddBtn() {
+      btnAdd.disabled = visibleCount >= MAX_SOURCES;
+    }
+
+    btnAdd.addEventListener('click', function () {
+      if (visibleCount < MAX_SOURCES) {
+        const row = document.getElementById('source-row-' + visibleCount);
+        row.style.display = 'block';
+        visibleCount++;
+        updateAddBtn();
+        row.querySelector('input').focus();
+      }
+    });
+
+    btnReset.addEventListener('click', function () {
+      visibleCount = 2;
+      initRows();
+      hideResults();
+      hideError();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    function showError(msg) {
+      errorMsg.textContent = msg;
+      errorMsg.classList.add('visible');
+    }
+    function hideError() {
+      errorMsg.textContent = '';
+      errorMsg.classList.remove('visible');
+    }
+    function hideResults() {
+      resultsSection.classList.remove('visible');
+    }
+
+    function getVal(id) {
+      return document.getElementById(id).value.trim();
+    }
+    function getNum(id) {
+      const v = parseFloat(document.getElementById(id).value);
+      return isNaN(v) ? null : v;
+    }
+
+    btnHesapla.addEventListener('click', function () {
+      hideError();
+
+      const sources = [];
+      for (let i = 0; i < visibleCount; i++) {
+        const name = getVal('name-' + i) || defaultNames[i] || ('Kaynak ' + (i + 1));
+        const leads = getNum('leads-' + i);
+        const conv = getNum('conv-' + i);
+        const cost = getNum('cost-' + i);
+        const show = getNum('show-' + i);
+
+        if (leads === null || conv === null || cost === null || show === null) {
+          showError('Lütfen Kaynak ' + (i + 1) + ' için tüm sayısal alanları doldurun.');
+          return;
+        }
+        if (leads < 0 || conv < 0 || conv > 100 || cost < 0 || show < 0 || show > 100) {
+          showError('Kaynak ' + (i + 1) + ': Geçersiz değer. Oranlar 0-100 arasında, diğer değerler 0 veya üzeri olmalıdır.');
+          return;
+        }
+
+        const monthlyPatients = leads * (conv / 100);
+        const realCostPerPatient = monthlyPatients > 0 ? (leads * cost) / monthlyPatients : 0;
+
+        sources.push({ name, leads, conv, cost, show, monthlyPatients, realCostPerPatient });
+      }
+
+      if (sources.length === 0) {
+        showError('Lütfen en az bir kaynak ekleyin.');
+        return;
+      }
+
+      // Cost efficiency: normalize by max cost
+      const maxCost = Math.max(...sources.map(s => s.realCostPerPatient));
+
+      sources.forEach(s => {
+        if (maxCost === 0) {
+          s.costEfficiency = 100;
+        } else {
+          s.costEfficiency = 100 - (s.realCostPerPatient / maxCost * 100);
+        }
+        // Normalize conversion rate (already 0-100 range, treat as score)
+        const convNorm = Math.min(s.conv, 100);
+        const showNorm = Math.min(s.show, 100);
+        s.roiScore = Math.round((convNorm * 0.4) + (showNorm * 0.3) + (s.costEfficiency * 0.3));
+        s.roiScore = Math.max(0, Math.min(100, s.roiScore));
+
+        if (s.roiScore >= 70) s.grade = 'A';
+        else if (s.roiScore >= 50) s.grade = 'B';
+        else if (s.roiScore >= 30) s.grade = 'C';
+        else s.grade = 'D';
+      });
+
+      // Sort by ROI desc
+      sources.sort((a, b) => b.roiScore - a.roiScore);
+
+      renderResults(sources);
+    });
+
+    function fmt(n, dec) {
+      if (n === null || n === undefined) return '-';
+      return n.toLocaleString('tr-TR', { minimumFractionDigits: dec || 0, maximumFractionDigits: dec || 0 });
+    }
+
+    function renderResults(sources) {
+      // Summary stats
+      const totalLeads = sources.reduce((a, s) => a + s.leads, 0);
+      const totalPatients = sources.reduce((a, s) => a + s.monthlyPatients, 0);
+      const bestSource = sources[0];
+      const avgRoi = Math.round(sources.reduce((a, s) => a + s.roiScore, 0) / sources.length);
+
+      const summaryGrid = document.getElementById('summary-grid');
+      summaryGrid.innerHTML = `
+        <div class="stat-box">
+          <div class="stat-val">${sources.length}</div>
+          <div class="stat-label">Karşılaştırılan Kaynak</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">${fmt(totalLeads)}</div>
+          <div class="stat-label">Toplam Aylık Lead</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">${fmt(totalPatients, 1)}</div>
+          <div class="stat-label">Toplam Aylık Hasta</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val purple">${avgRoi}</div>
+          <div class="stat-label">Ortalama ROI Skoru</div>
+        </div>
+      `;
+
+      // Table
+      const tbody = document.getElementById('results-tbody');
+      tbody.innerHTML = '';
+      sources.forEach((s, i) => {
+        const rankClass = i === 0 ? 'rank-1' : (i === 1 ? 'rank-2' : 'rank-other');
+        const tr = document.createElement('tr');
+        tr.className = rankClass;
+
+        const roiColor = s.roiScore >= 70 ? '#4ade80' : s.roiScore >= 50 ? '#C4B5FD' : s.roiScore >= 30 ? '#fbbf24' : '#f87171';
+
+        tr.innerHTML = `
+          <td>
+            <div class="td-name">
+              <span class="rank-badge">${i + 1}</span>
+              ${escapeHtml(s.name)}
+            </div>
+          </td>
+          <td class="td-num">${fmt(s.leads)}</td>
+          <td class="td-num">${fmt(s.conv, 1)}%</td>
+          <td class="td-num">${fmt(s.monthlyPatients, 1)}</td>
+          <td class="td-cost">${s.realCostPerPatient > 0 ? fmt(s.realCostPerPatient, 0) + ' TL' : '-'}</td>
+          <td class="td-num">${fmt(s.show, 1)}%</td>
+          <td class="td-num"><span class="roi-score" style="color:${roiColor}">${s.roiScore}</span></td>
+          <td class="td-quality"><span class="quality-badge quality-${s.grade}">${s.grade}</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Bar chart
+      const chart = document.getElementById('bar-chart');
+      chart.innerHTML = '';
+      const maxRoi = Math.max(...sources.map(s => s.roiScore), 1);
+      sources.forEach((s, i) => {
+        const pct = Math.max((s.roiScore / 100) * 100, 2);
+        const barClass = i === 0 ? 'bar-top' : (i === 1 ? 'bar-mid' : 'bar-low');
+        const div = document.createElement('div');
+        div.className = 'bar-row';
+        div.innerHTML = `
+          <div class="bar-name" title="${escapeHtml(s.name)}">${escapeHtml(s.name)}</div>
+          <div class="bar-track">
+            <div class="bar-fill ${barClass}" style="width: ${pct}%">${s.roiScore}</div>
+          </div>
+        `;
+        chart.appendChild(div);
+      });
+
+      // Recommendations
+      const recoBest = document.getElementById('reco-best');
+      recoBest.innerHTML = `
+        <div class="reco-best">
+          <div class="reco-best-icon">&#127942;</div>
+          <div class="reco-best-text">
+            <strong>En İyi Kaynak: ${escapeHtml(bestSource.name)}</strong>
+            <p>ROI skoru <strong>${bestSource.roiScore}/100</strong> — Kalite notu: <strong>${bestSource.grade}</strong>. Bu kaynağa yatırımınızı artırmayı değerlendirin. Aylık ortalama ${fmt(bestSource.monthlyPatients, 1)} hasta dönüşümü ve hasta başına ${bestSource.realCostPerPatient > 0 ? fmt(bestSource.realCostPerPatient, 0) + ' TL maliyet' : 'hesaplanamayan maliyet'} sunuyor.</p>
+          </div>
+        </div>
+      `;
+
+      const recoItems = document.getElementById('reco-items');
+      recoItems.innerHTML = '';
+
+      const gradeAdvice = {
+        A: {
+          dot: 'dot-a',
+          title: 'Mükemmel Kaynak (A)',
+          text: 'Bu kaynak yüksek dönüşüm oranı, iyi randevu katılımı ve düşük maliyet performansı sunuyor. Bütçenin büyük bölümünü buraya yönlendirin ve bu kanalı ölçeklendirin.'
+        },
+        B: {
+          dot: 'dot-b',
+          title: 'İyi Kaynak (B)',
+          text: 'Performans tatmin edici ancak geliştirme potansiyeli var. Hedefleme veya reklam kreatiflerini optimize ederek A seviyesine taşıyabilirsiniz.'
+        },
+        C: {
+          dot: 'dot-c',
+          title: 'Ortalama Kaynak (C)',
+          text: 'Bu kaynak bütçe verimliliği ya da dönüşüm açısından zorlanıyor. Landing page, takip süreci veya hedef kitle segmentasyonunu gözden geçirin.'
+        },
+        D: {
+          dot: 'dot-d',
+          title: 'Zayıf Kaynak (D)',
+          text: 'Bu kaynaktan gelen leadler dönüşüme katkı sağlamıyor ve maliyet yüksek. Bütçeyi kesmeden önce kısa bir A/B testi yapın; sonuç değişmezse yatırımı durdurun.'
+        }
+      };
+
+      const gradesSeen = {};
+      sources.forEach(s => {
+        if (!gradesSeen[s.grade]) {
+          gradesSeen[s.grade] = [];
+        }
+        gradesSeen[s.grade].push(s.name);
+      });
+
+      ['A', 'B', 'C', 'D'].forEach(grade => {
+        if (gradesSeen[grade]) {
+          const advice = gradeAdvice[grade];
+          const names = gradesSeen[grade].map(n => `<strong>${escapeHtml(n)}</strong>`).join(', ');
+          const item = document.createElement('div');
+          item.className = 'reco-item';
+          item.innerHTML = `
+            <div class="reco-dot ${advice.dot}"></div>
+            <div class="reco-item-text">
+              <strong>${advice.title} — ${names}</strong>
+              ${advice.text}
+            </div>
+          `;
+          recoItems.appendChild(item);
+        }
+      });
+
+      // Show results
+      resultsSection.classList.add('visible');
+
+      // Animate bars
+      setTimeout(() => {
+        // bars animate via CSS transition on width
+      }, 50);
+
+      // Scroll to results
+      setTimeout(() => {
+        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    // Init
+    initRows();
+  </script>
+</body>
+</html>

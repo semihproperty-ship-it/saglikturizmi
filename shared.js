@@ -13,7 +13,6 @@
     const el = document.getElementById('site-header');
     if (!el) return;
     const navItems = [
-      ['/rehber/', 'Sağlık Turizmi Rehberi'],
       ['/doktorlar/', 'Doktorlar İçin'],
       ['/klinikler/', 'Klinikler İçin'],
       ['/dijital-pazarlama/', 'Dijital Pazarlama'],
@@ -110,7 +109,7 @@
             </div>
             <div>
               <div class="footer-col-title">Sağlık Turizmi</div>
-              <a href="/rehber/" class="footer-link">Nedir?</a>
+              <a href="/saglik-turizmi/" class="footer-link">Nedir?</a>
               <a href="/doktorlar/" class="footer-link">Doktorlar İçin</a>
               <a href="/klinikler/" class="footer-link">Klinikler İçin</a>
               <a href="/rehber/uluslararasi-pazar/" class="footer-link">Uluslararası Pazar</a>

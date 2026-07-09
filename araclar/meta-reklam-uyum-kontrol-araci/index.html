@@ -62,7 +62,7 @@
 
       <div id="checklist"></div>
 
-      <button class="btn btn-primary btn-lg mt-24" onclick="evaluate()">Risk Seviyesini Hesapla</button>
+      <button class="btn btn-primary btn-lg mt-24" onclick="evalMeta()">Risk Seviyesini Hesapla</button>
 
       <div id="result" style="display:none" class="mt-24"></div>
     </div>
@@ -137,7 +137,7 @@ function render() {
 
 function toggle(i) { if (state.has(i)) state.delete(i); else state.add(i); render(); }
 
-function evaluate() {
+function evalMeta() {
   const total = CHECKS.length;
   const checked = state.size;
   const pct = Math.round((checked/total)*100);

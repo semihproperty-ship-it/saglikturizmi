@@ -124,7 +124,7 @@ function evalLP() {
   let color, title, msg;
   if (pct >= 80) { color = 'var(--purple-main)'; title = 'Sayfanız sağlık turizmi standartlarını büyük ölçüde karşılıyor.'; msg = 'Eksik kalan maddeleri tamamlayarak performansı daha da artırabilirsiniz.'; }
   else if (pct >= 55) { color = '#D97706'; title = 'Geliştirme alanları var.'; msg = 'Eksik maddeleri önceliklendirip iyileştirme yol haritası oluşturmanız önerilir.'; }
-  else { color = '#DC2626'; title = 'Sayfa önemli eksikler içeriyor.'; msg = 'Reklam yatırımının verimi açısından landing page'in kapsamlı olarak gözden geçirilmesi önerilir.'; }
+  else { color = '#DC2626'; title = 'Sayfa önemli eksikler içeriyor.'; msg = "Reklam yatırımının verimi açısından landing page'in kapsamlı olarak gözden geçirilmesi önerilir."; }
 
   document.getElementById('result').innerHTML = `
     <div class="card-base" style="padding:28px;text-align:center;border-top:3px solid ${color}">
